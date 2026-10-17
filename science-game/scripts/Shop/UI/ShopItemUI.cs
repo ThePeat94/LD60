@@ -1,0 +1,51 @@
+using System;
+using Godot;
+using Nidavellir.GDResource.Shop;
+using Nidavellir.IdleNumbers;
+
+namespace Nidavellir.Shop.UI;
+
+public partial class ShopItemUI : Node
+{
+    private Action<ShopItemData> m_onClick;
+    
+    [Export]
+    public Label ItemName { private get; set; }
+    
+    [Export]
+    public TextureRect Icon { private get; set; }
+    
+    [Export]
+    public Label Description { private get; set; }
+    
+    [Export]
+    public Button Purchase { private get; set; }
+
+    private ShopItemData m_itemData;
+
+    public event Action<ShopItemData> Clicked
+    {
+        add => this.m_onClick += value;
+        remove => this.m_onClick -= value;
+    }
+
+    public override void _Ready()
+    {
+        base._Ready();
+        this.Purchase.Pressed += this.HandlePurchaseClick;
+    }
+
+    public void Show(ShopItemData itemData, int upgradeAmount)
+    {
+        this.ItemName.Text = itemData.UpgradeName;
+        this.Description.Text = itemData.Description;
+        this.Icon.Texture = itemData.Icon;
+        this.Purchase.Text = itemData.CostModel.CalculateFor(new IdleNumber(upgradeAmount)).ToString();
+        this.m_itemData = itemData;
+    }
+    
+    public void HandlePurchaseClick()
+    {
+        this.m_onClick?.Invoke(this.m_itemData);
+    }
+}

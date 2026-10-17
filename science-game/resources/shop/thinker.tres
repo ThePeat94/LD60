@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ShopItemData" format=3 uid="uid://dweg1ryfmi1vw"]
+
+[ext_resource type="Script" uid="uid://bm5tdny5chcwa" path="res://scripts/GDResource/Shop/ShopItemData.cs" id="1_s8lh6"]
+[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_xu0xv"]
+[ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.cs" id="2_fa7om"]
+[ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="3_b4hb2"]
+[ext_resource type="Script" uid="uid://ejyja6ocrtbs" path="res://scripts/GDResource/Shop/NoopUpgrade.cs" id="4_f84lb"]
+
+[sub_resource type="Resource" id="Resource_dxvlt"]
+script = ExtResource("1_xu0xv")
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_whmdq"]
+script = ExtResource("1_xu0xv")
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_okqxr"]
+script = ExtResource("2_fa7om")
+Base = SubResource("Resource_dxvlt")
+Slope = SubResource("Resource_whmdq")
+metadata/_custom_type_script = "uid://ddxwa8yrpoypp"
+
+[sub_resource type="Resource" id="Resource_b4hb2"]
+script = ExtResource("4_f84lb")
+metadata/_custom_type_script = "uid://ejyja6ocrtbs"
+
+[resource]
+script = ExtResource("1_s8lh6")
+CostModel = SubResource("Resource_okqxr")
+UpgradeName = "Thinker"
+Description = "Someone who thinks hard. Or hardly thinks? You never know."
+Icon = ExtResource("3_b4hb2")
+UpgradeData = SubResource("Resource_b4hb2")
+metadata/_custom_type_script = "uid://bm5tdny5chcwa"

@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://wbj312y6wcdh"]
 
+[ext_resource type="Script" uid="uid://dkyhgeqereo0f" path="res://scripts/UI/GameHUD.cs" id="1_gjmhc"]
 [ext_resource type="Script" uid="uid://0c6plthlac1x" path="res://scripts/UI/ResourceDisplay.cs" id="1_jna2d"]
+[ext_resource type="Script" uid="uid://cw66s6x3klg6l" path="res://scripts/Shop/UI/ShopUI.cs" id="2_n64bn"]
+[ext_resource type="PackedScene" uid="uid://b74twwfigbo50" path="res://scenes/shop/item_ui.tscn" id="3_pexd4"]
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1847261213]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1847261213 node_paths=PackedStringArray("ShopUI")]
+script = ExtResource("1_gjmhc")
+ShopUI = NodePath("ShopUI")
 
-[node name="Panel" type="Panel" parent="." unique_id=2068049129]
+[node name="Resource Panel" type="Panel" parent="." unique_id=2068049129]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -12,7 +17,7 @@ offset_left = -681.0
 offset_bottom = 173.0
 grow_horizontal = 0
 
-[node name="HFlowContainer" type="VBoxContainer" parent="Panel" unique_id=155163316]
+[node name="HFlowContainer" type="VBoxContainer" parent="Resource Panel" unique_id=155163316]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,17 +25,89 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Knowledge Display" type="Label" parent="Panel/HFlowContainer" unique_id=333511476 node_paths=PackedStringArray("ControllerContainer")]
+[node name="Knowledge Display" type="Label" parent="Resource Panel/HFlowContainer" unique_id=333511476]
 layout_mode = 2
 theme_override_font_sizes/font_size = 54
 text = "Knowledge: 0"
 script = ExtResource("1_jna2d")
-ControllerContainer = NodePath("")
 
-[node name="Money Display" type="Label" parent="Panel/HFlowContainer" unique_id=146977840 node_paths=PackedStringArray("ControllerContainer")]
+[node name="Money Display" type="Label" parent="Resource Panel/HFlowContainer" unique_id=146977840]
 layout_mode = 2
 theme_override_font_sizes/font_size = 54
 text = "Money: 0"
 script = ExtResource("1_jna2d")
 TypeToDisplay = 1
-ControllerContainer = NodePath("")
+
+[node name="ShopUI" type="Control" parent="." unique_id=416408425 node_paths=PackedStringArray("ItemsParent")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_n64bn")
+ItemPrefab = ExtResource("3_pexd4")
+ItemsParent = NodePath("Panel/ItemPanel/ScrollView/HBoxContainer")
+
+[node name="Panel" type="Panel" parent="ShopUI" unique_id=1020440886]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -400.0
+offset_right = 700.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(700, 400)
+
+[node name="Close Button" type="Button" parent="ShopUI/Panel" unique_id=1869538052]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -329.0
+offset_top = -105.0
+offset_right = -29.0
+offset_bottom = -25.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 42
+text = "Close"
+
+[node name="ItemPanel" type="Panel" parent="ShopUI/Panel" unique_id=2006234625]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -330.0
+offset_right = 600.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="ScrollView" type="ScrollContainer" parent="ShopUI/Panel/ItemPanel" unique_id=1744236847]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopUI/Panel/ItemPanel/ScrollView" unique_id=94022425]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[connection signal="pressed" from="ShopUI/Panel/Close Button" to="ShopUI" method="Hide"]
