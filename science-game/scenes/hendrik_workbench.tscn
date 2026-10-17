@@ -74,6 +74,7 @@ script = ExtResource("4_vmktp")
 PlayerStatsData = SubResource("Resource_c16ls")
 
 [node name="GameHUD" parent="." unique_id=1847261213 instance=ExtResource("7_6t4bp")]
+visible = false
 
 [node name="Knowledge Display" parent="GameHUD/Resource Panel/HFlowContainer" parent_id_path=PackedInt32Array(1847261213, 155163316) index="0" unique_id=333511476 node_paths=PackedStringArray("ResourceControllerNode")]
 ResourceControllerNode = NodePath("../../../../ResourceControllers/GlobalScienceController")
@@ -104,6 +105,17 @@ texture = ExtResource("8_edqit")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shop/Sprite2D/Area2D" unique_id=1423172229]
 shape = SubResource("RectangleShape2D_k5vd1")
 
+[node name="Skilltree" type="Node2D" parent="." unique_id=379888565]
+position = Vector2(597, 387)
+
+[node name="Sprite2D" type="Sprite2D" parent="Skilltree" unique_id=1143286315]
+texture = ExtResource("8_edqit")
+
+[node name="Area2D" type="Area2D" parent="Skilltree/Sprite2D" unique_id=1129997428]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skilltree/Sprite2D/Area2D" unique_id=104535738]
+shape = SubResource("RectangleShape2D_k5vd1")
+
 [node name="EmployeeController" type="Node" parent="." unique_id=1468403037 node_paths=PackedStringArray("m_patentGenerator", "m_skillpointGenerator", "m_scienceGenerator")]
 script = ExtResource("12_ubj5k")
 m_thinkerEmployeeScene = ExtResource("13_2n7ax")
@@ -118,6 +130,7 @@ script = ExtResource("15_sm0ys")
 m_employeeController = NodePath("../EmployeeController")
 
 [connection signal="input_event" from="Shop/Sprite2D/Area2D" to="Shop" method="OnClick"]
+[connection signal="input_event" from="Skilltree/Sprite2D/Area2D" to="Skilltree" method="OnClick"]
 
 [editable path="ScienceGenerator"]
 [editable path="PatentGenerator"]
