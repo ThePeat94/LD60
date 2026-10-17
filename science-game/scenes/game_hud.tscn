@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://wbj312y6wcdh"]
+
+[ext_resource type="Script" uid="uid://0c6plthlac1x" path="res://scripts/UI/ResourceDisplay.cs" id="1_jna2d"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1847261213]
+
+[node name="Panel" type="Panel" parent="." unique_id=2068049129]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -681.0
+offset_bottom = 173.0
+grow_horizontal = 0
+
+[node name="HFlowContainer" type="VBoxContainer" parent="Panel" unique_id=155163316]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Knowledge Display" type="Label" parent="Panel/HFlowContainer" unique_id=333511476 node_paths=PackedStringArray("ControllerContainer")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 54
+text = "Knowledge: 0"
+script = ExtResource("1_jna2d")
+ControllerContainer = NodePath("")
+
+[node name="Money Display" type="Label" parent="Panel/HFlowContainer" unique_id=146977840 node_paths=PackedStringArray("ControllerContainer")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 54
+text = "Money: 0"
+script = ExtResource("1_jna2d")
+TypeToDisplay = 1
+ControllerContainer = NodePath("")
