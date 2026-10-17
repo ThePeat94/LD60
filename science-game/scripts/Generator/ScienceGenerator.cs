@@ -8,7 +8,7 @@ namespace Nidavellir.Generator;
 public partial class ScienceGenerator : Node2D
 {
     [Export]
-    public ResourceControllerContainer ResourceControllerContainer { get; set; }
+    public ResourceControllerNode ScienceResourceControllerNode { get; set; }
     
     [Export]
     public PlayerStatsContainer PlayerStatsContainer { get; set; }
@@ -22,6 +22,6 @@ public partial class ScienceGenerator : Node2D
 
     public void GenerateScience(IdleNumber value)
     {
-        this.ResourceControllerContainer.ScienceResourceController.Add(value);
+        this.ScienceResourceControllerNode.ResourceController.Add(value);
     }
 }

@@ -6,11 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
 size = Vector2(128, 128)
 
-[node name="ScienceGenerator" type="Sprite2D" unique_id=147243357 node_paths=PackedStringArray("ResourceControllerContainer", "PlayerStatsContainer")]
+[node name="ScienceGenerator" type="Sprite2D" unique_id=147243357]
 texture = ExtResource("1_mp6ib")
 script = ExtResource("2_w5mg2")
-ResourceControllerContainer = NodePath("")
-PlayerStatsContainer = NodePath("")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=317168343]
 

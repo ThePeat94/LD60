@@ -10,17 +10,17 @@ public partial class ResourceDisplay : Label
     public ResourceType TypeToDisplay { get; set; }
     
     [Export]
-    public ResourceControllerContainer ControllerContainer { get; set; }
+    public ResourceControllerNode ResourceControllerNode { get; set; }
 
     public override void _Ready()
     {
         switch (this.TypeToDisplay)
         {
             case ResourceType.Science:
-                this.ControllerContainer.ScienceResourceController.ResourceValueChanged += this.OnScienceValueChanged;
+                this.ResourceControllerNode.ResourceController.ResourceValueChanged += this.OnScienceValueChanged;
                 break;
             case ResourceType.Money:
-                this.ControllerContainer.MoneyResourceController.ResourceValueChanged += this.OnMoneyValueChanged;
+                this.ResourceControllerNode.ResourceController.ResourceValueChanged += this.OnMoneyValueChanged;
                 break;
         }
     }

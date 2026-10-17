@@ -8,7 +8,10 @@ namespace Nidavellir.Generator;
 public partial class PatentGenerator : Node
 {
     [Export]
-    public ResourceControllerContainer ResourceControllerContainer { get; set; }
+    public ResourceControllerNode ScienceResourceControllerNode { get; set; }
+    
+    [Export]
+    public ResourceControllerNode MoneyResourceControllerNode { get; set; }
     
     [Export]
     public PlayerStatsContainer PlayerStatsContainer { get; set; }
@@ -16,7 +19,11 @@ public partial class PatentGenerator : Node
     [Export]
     public ProgressionLevelData ProgressionLevelData { get; set; }
     
-    private readonly IdleNumberResourceController m_resourceController = new();
+    [Export]
+    public ResourceControllerNode ResourceControllerNode { get; set; }
+
+    public IdleNumber Requirement => this.GetLevelRequirement();
+    
     private int m_currentLevel = 0;
     
     public void OnClick(Node viewport, InputEvent evt, int shapeIdx)
@@ -24,25 +31,29 @@ public partial class PatentGenerator : Node
         if (evt is not InputEventMouseButton mouseButton) return;
         if (!mouseButton.Pressed) return;
 
-        var strengthToApply = this.ResourceControllerContainer.ScienceResourceController.CurrentValue >=
+        var strengthToApply = this.ScienceResourceControllerNode.ResourceController.CurrentValue >=
                               this.PlayerStatsContainer.ClickStrength
             ? this.PlayerStatsContainer.ClickStrength
-            : this.ResourceControllerContainer.ScienceResourceController.CurrentValue;
+            : this.ScienceResourceControllerNode.ResourceController.CurrentValue;
         
-        this.ResourceControllerContainer.ScienceResourceController.UseResource(strengthToApply);
-        this.m_resourceController.Add(strengthToApply);
-        
-        var valueToBeat = this.m_currentLevel < this.ProgressionLevelData.FixedLevels.Count ? 
-            this.ProgressionLevelData.FixedLevels[this.m_currentLevel].ToIdleNumber() : 
-            this.ProgressionLevelData.DynamicLevels.CalculateFor(new IdleNumber(this.m_currentLevel));
+        this.ScienceResourceControllerNode.ResourceController.UseResource(strengthToApply);
+        this.ResourceControllerNode.ResourceController.Add(strengthToApply);
+        var valueToBeat = this.GetLevelRequirement();
 
-        if (this.m_resourceController.CurrentValue >= valueToBeat)
+        if (this.ResourceControllerNode.ResourceController.CurrentValue >= valueToBeat)
         {
             var moneyToAdd = this.PlayerStatsContainer.MoneyPerPatent;
             this.m_currentLevel++;
-            this.ResourceControllerContainer.MoneyResourceController.Add(moneyToAdd);
-            this.m_resourceController.ResetValues();
+            this.MoneyResourceControllerNode.ResourceController.Add(moneyToAdd);
+            this.ResourceControllerNode.ResourceController.ResetValues();
             GD.Print("Reached Level. Going for next.");
         }
+    }
+
+    private IdleNumber GetLevelRequirement()
+    {
+        return this.m_currentLevel < this.ProgressionLevelData.FixedLevels.Count ? 
+            this.ProgressionLevelData.FixedLevels[this.m_currentLevel].ToIdleNumber() : 
+            this.ProgressionLevelData.DynamicLevels.CalculateFor(new IdleNumber(this.m_currentLevel));
     }
 }

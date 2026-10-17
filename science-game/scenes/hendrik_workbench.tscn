@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://ci5iouq4lh2y5"]
+
+[ext_resource type="PackedScene" uid="uid://b07fw6hiuhj2u" path="res://scenes/science_generator.tscn" id="1_mlknq"]
+[ext_resource type="PackedScene" uid="uid://dcuw26e2ppgd3" path="res://scenes/patent_generator.tscn" id="2_edqit"]
+[ext_resource type="Script" uid="uid://dmywt6vc0vtok" path="res://scripts/ResourceControllerNode.cs" id="3_mlknq"]
+[ext_resource type="Script" uid="uid://0tgd1yd4japm" path="res://scripts/PlayerStats/PlayerStatsContainer.cs" id="4_vmktp"]
+[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="5_ru7pr"]
+[ext_resource type="Script" uid="uid://dl8x2275tt5qn" path="res://scripts/GDResource/PlayerStatsData.cs" id="6_rep15"]
+[ext_resource type="PackedScene" uid="uid://wbj312y6wcdh" path="res://scenes/game_hud.tscn" id="7_6t4bp"]
+
+[sub_resource type="Resource" id="Resource_6wevv"]
+script = ExtResource("5_ru7pr")
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_e1cbu"]
+script = ExtResource("5_ru7pr")
+Value = 4.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_c16ls"]
+script = ExtResource("6_rep15")
+InitialClickStrength = SubResource("Resource_6wevv")
+InitialMoneyPerPatent = SubResource("Resource_e1cbu")
+metadata/_custom_type_script = "uid://dl8x2275tt5qn"
+
+[node name="Node2D" type="Node2D" unique_id=1462648990]
+
+[node name="ScienceGenerator" parent="." unique_id=147243357 node_paths=PackedStringArray("ScienceResourceControllerNode", "PlayerStatsContainer") instance=ExtResource("1_mlknq")]
+position = Vector2(9, 5)
+ScienceResourceControllerNode = NodePath("../ResourceControllers/GlobalScienceController")
+PlayerStatsContainer = NodePath("../PlayerStats")
+
+[node name="PatentGenerator" parent="." unique_id=53403002 node_paths=PackedStringArray("ScienceResourceControllerNode", "MoneyResourceControllerNode", "PlayerStatsContainer") instance=ExtResource("2_edqit")]
+position = Vector2(-635, 318)
+ScienceResourceControllerNode = NodePath("../ResourceControllers/GlobalScienceController")
+MoneyResourceControllerNode = NodePath("../ResourceControllers/GlobalMoneyController")
+PlayerStatsContainer = NodePath("../PlayerStats")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1384018772]
+
+[node name="ResourceControllers" type="Node" parent="." unique_id=1918748057]
+
+[node name="GlobalScienceController" type="Node" parent="ResourceControllers" unique_id=1118969209]
+script = ExtResource("3_mlknq")
+
+[node name="GlobalMoneyController" type="Node" parent="ResourceControllers" unique_id=1808124561]
+script = ExtResource("3_mlknq")
+
+[node name="PlayerStats" type="Node" parent="." unique_id=1361375017]
+script = ExtResource("4_vmktp")
+PlayerStatsData = SubResource("Resource_c16ls")
+
+[node name="GameHUD" parent="." unique_id=1847261213 instance=ExtResource("7_6t4bp")]
+
+[node name="Knowledge Display" parent="GameHUD/Panel/HFlowContainer" parent_id_path=PackedInt32Array(1847261213, 155163316) index="0" unique_id=333511476 node_paths=PackedStringArray("ResourceControllerNode")]
+ResourceControllerNode = NodePath("../../../../ResourceControllers/GlobalScienceController")
+
+[node name="Money Display" parent="GameHUD/Panel/HFlowContainer" parent_id_path=PackedInt32Array(1847261213, 155163316) index="1" unique_id=146977840 node_paths=PackedStringArray("ResourceControllerNode")]
+ResourceControllerNode = NodePath("../../../../ResourceControllers/GlobalMoneyController")
+
+[editable path="ScienceGenerator"]
+[editable path="PatentGenerator"]
+[editable path="GameHUD"]

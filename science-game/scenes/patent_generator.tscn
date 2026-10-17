@@ -3,20 +3,44 @@
 [ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="1_nn88t"]
 [ext_resource type="Script" uid="uid://ctythfuj4qpbg" path="res://scripts/Generator/PatentGenerator.cs" id="2_3i7xt"]
 [ext_resource type="Resource" uid="uid://uhjlsasuo436" path="res://resources/patent_level_data.tres" id="3_a4kuy"]
+[ext_resource type="Script" uid="uid://dmywt6vc0vtok" path="res://scripts/ResourceControllerNode.cs" id="4_3i7xt"]
+[ext_resource type="Script" uid="uid://1wv4xpg7yo4e" path="res://scripts/UI/GeneratorProgressDisplay.cs" id="4_a4kuy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
 size = Vector2(128, 128)
 
-[node name="PatentGenerator" type="Sprite2D" unique_id=53403002 node_paths=PackedStringArray("ResourceControllerContainer", "PlayerStatsContainer")]
+[node name="PatentGenerator" type="Sprite2D" unique_id=53403002 node_paths=PackedStringArray("ResourceControllerNode")]
 texture = ExtResource("1_nn88t")
 script = ExtResource("2_3i7xt")
-ResourceControllerContainer = NodePath("")
-PlayerStatsContainer = NodePath("")
 ProgressionLevelData = ExtResource("3_a4kuy")
+ResourceControllerNode = NodePath("Resource Controller")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2009975528]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=186203293]
 shape = SubResource("RectangleShape2D_bklno")
+
+[node name="Control" type="Control" parent="." unique_id=62698773]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -80.0
+offset_top = -111.0
+offset_right = 80.0
+offset_bottom = -71.0
+
+[node name="ProgressBar" type="ProgressBar" parent="Control" unique_id=516059340 node_paths=PackedStringArray("PatentGenerator")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+show_percentage = false
+script = ExtResource("4_a4kuy")
+PatentGenerator = NodePath("../..")
+
+[node name="Resource Controller" type="Node" parent="." unique_id=2055854104]
+script = ExtResource("4_3i7xt")
 
 [connection signal="input_event" from="Area2D" to="." method="OnClick"]

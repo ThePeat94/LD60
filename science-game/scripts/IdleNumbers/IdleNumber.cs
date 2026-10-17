@@ -105,6 +105,17 @@ namespace Nidavellir.IdleNumbers
             return new IdleNumber(mantissa, resultExponent).Normalize();
         }
 
+        public double GetRelativeAmountTo(IdleNumber other)
+        {
+            if (other.Value == 0)
+                throw new DivideByZeroException();
+
+            var exponentDifference = (long)this.Exponent - other.Exponent;
+
+            return (this.Value / other.Value)
+                   * Math.Pow(10, exponentDifference);
+        }
+
         public static IdleNumber operator +(IdleNumber left, IdleNumber right)
         {
             var bigger = left.Exponent >= right.Exponent ? left : right;
