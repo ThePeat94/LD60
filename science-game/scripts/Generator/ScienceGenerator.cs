@@ -1,4 +1,5 @@
 using Godot;
+using Nidavellir.IdleNumbers;
 using Nidavellir.PlayerStats;
 
 namespace Nidavellir.Generator;
@@ -18,7 +19,7 @@ public partial class ScienceGenerator : Node2D
         {
             if (mouseButton.Pressed)
             {
-                GD.Print($"Pressed with power of {this.PlayerStatsContainer.PlayerStats.ClickStrength}");
+                this.ResourceControllerContainer.ScienceResourceController.Add(new IdleNumber(1));
             }
         }
     }

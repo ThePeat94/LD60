@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dlp028tfs6u27" path="res://scripts/ResourceControllerContainer.cs" id="2_pw63i"]
 [ext_resource type="Script" uid="uid://0tgd1yd4japm" path="res://scripts/PlayerStats/PlayerStatsContainer.cs" id="4_gubc5"]
 [ext_resource type="Resource" uid="uid://d3c0whvd1shx6" path="res://resources/basePlayerStats.tres" id="5_gubc5"]
+[ext_resource type="Script" uid="uid://0c6plthlac1x" path="res://scripts/UI/ResourceDisplay.cs" id="6_rt2n2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
 size = Vector2(128, 128)
@@ -31,5 +32,24 @@ script = ExtResource("2_pw63i")
 [node name="PlayerStats" type="Node" parent="." unique_id=1361375017]
 script = ExtResource("4_gubc5")
 PlayerStatsData = ExtResource("5_gubc5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=642085449]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1253706637]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -681.0
+offset_bottom = 173.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel" unique_id=863341339 node_paths=PackedStringArray("ControllerContainer")]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 54
+text = "Knowledge: 0"
+script = ExtResource("6_rt2n2")
+ControllerContainer = NodePath("../../../ResourceControllers")
 
 [connection signal="input_event" from="ScienceGenerator/Area2D" to="ScienceGenerator" method="OnClick"]
