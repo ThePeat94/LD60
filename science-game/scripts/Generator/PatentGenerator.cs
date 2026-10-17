@@ -5,7 +5,7 @@ using Nidavellir.PlayerStats;
 
 namespace Nidavellir.Generator;
 
-public partial class PatentGenerator : Node
+public partial class PatentGenerator : Node, IGenerator
 {
     [Export]
     public ResourceControllerNode ScienceResourceControllerNode { get; set; }
@@ -31,9 +31,14 @@ public partial class PatentGenerator : Node
         if (evt is not InputEventMouseButton mouseButton) return;
         if (!mouseButton.Pressed) return;
 
-        var strengthToApply = this.ScienceResourceControllerNode.ResourceController.CurrentValue >=
-                              this.PlayerStatsContainer.ClickStrength
-            ? this.PlayerStatsContainer.ClickStrength
+        this.Generate(this.PlayerStatsContainer.ClickStrength);
+        
+    }
+
+    public void Generate(IdleNumber strength)
+    {
+        var strengthToApply = this.ScienceResourceControllerNode.ResourceController.CurrentValue >= strength
+            ? strength
             : this.ScienceResourceControllerNode.ResourceController.CurrentValue;
         
         this.ScienceResourceControllerNode.ResourceController.UseResource(strengthToApply);

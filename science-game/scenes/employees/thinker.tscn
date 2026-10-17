@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://4ux0ljfhtpgf"]
+
+[ext_resource type="Script" uid="uid://dak1fxj4acwyo" path="res://scripts/Automation/Employee.cs" id="1_cv3lf"]
+[ext_resource type="Resource" uid="uid://c77eepetb3eb7" path="res://resources/employees/thinker.tres" id="2_xcoai"]
+
+[node name="Thinker" type="Node" unique_id=1428137053 node_paths=PackedStringArray("m_timer")]
+script = ExtResource("1_cv3lf")
+m_data = ExtResource("2_xcoai")
+m_timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="." unique_id=1805375023]

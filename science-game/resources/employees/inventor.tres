@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EmployeeData" format=3 uid="uid://dsswpexp7xtvm"]
+
+[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_480wg"]
+[ext_resource type="Script" uid="uid://dj4g1vjvrf4hn" path="res://scripts/GDResource/EmployeeData.cs" id="1_ba20h"]
+[ext_resource type="Texture2D" uid="uid://0varc61h6log" path="res://assets/external/Knight(F).png" id="2_480wg"]
+
+[sub_resource type="Resource" id="Resource_oagta"]
+script = ExtResource("1_480wg")
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[resource]
+script = ExtResource("1_ba20h")
+EmployeeName = "Inventor"
+Icon = ExtResource("2_480wg")
+BaseWorkForce = SubResource("Resource_oagta")
+BaseTickSpeed = 1.5
+metadata/_custom_type_script = "uid://dj4g1vjvrf4hn"

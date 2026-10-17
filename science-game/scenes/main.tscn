@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://kskc1m64jkxh"]
+
+[ext_resource type="PackedScene" uid="uid://b07fw6hiuhj2u" path="res://scenes/science_generator.tscn" id="1_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://dcuw26e2ppgd3" path="res://scenes/patent_generator.tscn" id="2_jbj1t"]
+[ext_resource type="Script" uid="uid://dmywt6vc0vtok" path="res://scripts/ResourceControllerNode.cs" id="3_muem4"]
+[ext_resource type="Script" uid="uid://0tgd1yd4japm" path="res://scripts/PlayerStats/PlayerStatsContainer.cs" id="4_dp3eg"]
+[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="5_0ld40"]
+[ext_resource type="Script" uid="uid://dl8x2275tt5qn" path="res://scripts/GDResource/PlayerStatsData.cs" id="6_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://wbj312y6wcdh" path="res://scenes/game_hud.tscn" id="7_yc10j"]
+[ext_resource type="Script" uid="uid://b1ekel20d43cr" path="res://scripts/Shop/ShopController.cs" id="8_jscy8"]
+[ext_resource type="Resource" uid="uid://dweg1ryfmi1vw" path="res://resources/shop/thinker.tres" id="9_pm3ni"]
+[ext_resource type="Resource" uid="uid://dhy1gqn20qbpp" path="res://resources/shop/inventor.tres" id="10_y6deb"]
+[ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="11_og1vs"]
+[ext_resource type="Script" uid="uid://ddemuenp0lqtk" path="res://scripts/Automation/EmployeeController.cs" id="12_2wyq8"]
+[ext_resource type="PackedScene" uid="uid://4ux0ljfhtpgf" path="res://scenes/employees/thinker.tscn" id="13_vxglm"]
+[ext_resource type="PackedScene" uid="uid://cd3v04n6sk73t" path="res://scenes/employees/inventor.tscn" id="14_2f3dj"]
+[ext_resource type="Script" uid="uid://d1fhk0b1fsuov" path="res://scripts/Upgrades/UpgradeController.cs" id="15_yq6so"]
+
+[sub_resource type="Resource" id="Resource_6wevv"]
+script = ExtResource("5_0ld40")
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_e1cbu"]
+script = ExtResource("5_0ld40")
+Value = 4.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_c16ls"]
+script = ExtResource("6_gqmmt")
+InitialClickStrength = SubResource("Resource_6wevv")
+InitialMoneyPerPatent = SubResource("Resource_e1cbu")
+metadata/_custom_type_script = "uid://dl8x2275tt5qn"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
+size = Vector2(128, 128)
+
+[node name="Node2D" type="Node2D" unique_id=1462648990]
+
+[node name="ScienceGenerator" parent="." unique_id=147243357 node_paths=PackedStringArray("ScienceResourceControllerNode", "PlayerStatsContainer") instance=ExtResource("1_jkv2x")]
+position = Vector2(9, 5)
+ScienceResourceControllerNode = NodePath("../ResourceControllers/GlobalScienceController")
+PlayerStatsContainer = NodePath("../PlayerStats")
+
+[node name="PatentGenerator" parent="." unique_id=53403002 node_paths=PackedStringArray("ScienceResourceControllerNode", "MoneyResourceControllerNode", "PlayerStatsContainer") instance=ExtResource("2_jbj1t")]
+position = Vector2(-635, 318)
+ScienceResourceControllerNode = NodePath("../ResourceControllers/GlobalScienceController")
+MoneyResourceControllerNode = NodePath("../ResourceControllers/GlobalMoneyController")
+PlayerStatsContainer = NodePath("../PlayerStats")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1384018772]
+
+[node name="ResourceControllers" type="Node" parent="." unique_id=1918748057]
+
+[node name="GlobalScienceController" type="Node" parent="ResourceControllers" unique_id=1118969209]
+script = ExtResource("3_muem4")
+
+[node name="GlobalMoneyController" type="Node" parent="ResourceControllers" unique_id=1808124561]
+script = ExtResource("3_muem4")
+
+[node name="PlayerStats" type="Node" parent="." unique_id=1361375017]
+script = ExtResource("4_dp3eg")
+PlayerStatsData = SubResource("Resource_c16ls")
+
+[node name="GameHUD" parent="." unique_id=1847261213 instance=ExtResource("7_yc10j")]
+
+[node name="Knowledge Display" parent="GameHUD/Resource Panel/HFlowContainer" parent_id_path=PackedInt32Array(1847261213, 155163316) index="0" unique_id=333511476 node_paths=PackedStringArray("ResourceControllerNode")]
+ResourceControllerNode = NodePath("../../../../ResourceControllers/GlobalScienceController")
+
+[node name="Money Display" parent="GameHUD/Resource Panel/HFlowContainer" parent_id_path=PackedInt32Array(1847261213, 155163316) index="1" unique_id=146977840 node_paths=PackedStringArray("ResourceControllerNode")]
+ResourceControllerNode = NodePath("../../../../ResourceControllers/GlobalMoneyController")
+
+[node name="ShopUI" parent="GameHUD" index="1" unique_id=416408425 node_paths=PackedStringArray("ShopController")]
+ShopController = NodePath("../../Shop")
+
+[node name="Shop" type="Node2D" parent="." unique_id=85274226 node_paths=PackedStringArray("m_upgradeController", "Money", "ShopUI")]
+position = Vector2(424, 203)
+script = ExtResource("8_jscy8")
+m_upgradeController = NodePath("../UpgradeController")
+ShopUpgrades = Array[Object]([ExtResource("9_pm3ni"), ExtResource("10_y6deb")])
+Money = NodePath("../ResourceControllers/GlobalMoneyController")
+ShopUI = NodePath("../GameHUD/ShopUI")
+
+[node name="Sprite2D" type="Sprite2D" parent="Shop" unique_id=1995147100]
+texture = ExtResource("11_og1vs")
+
+[node name="Area2D" type="Area2D" parent="Shop/Sprite2D" unique_id=1543404104]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shop/Sprite2D/Area2D" unique_id=1423172229]
+shape = SubResource("RectangleShape2D_bklno")
+
+[node name="EmployeeController" type="Node" parent="." unique_id=1468403037 node_paths=PackedStringArray("m_patentGenerator", "m_scienceGenerator")]
+script = ExtResource("12_2wyq8")
+m_thinkerEmployeeScene = ExtResource("13_vxglm")
+m_inventorEmployeeScene = ExtResource("14_2f3dj")
+m_patentGenerator = NodePath("../PatentGenerator")
+m_scienceGenerator = NodePath("../ScienceGenerator")
+
+[node name="UpgradeController" type="Node" parent="." unique_id=1239405905 node_paths=PackedStringArray("m_employeeController")]
+script = ExtResource("15_yq6so")
+m_employeeController = NodePath("../EmployeeController")
+
+[connection signal="input_event" from="Shop/Sprite2D/Area2D" to="Shop" method="OnClick"]
+
+[editable path="ScienceGenerator"]
+[editable path="PatentGenerator"]
+[editable path="GameHUD"]

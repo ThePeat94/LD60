@@ -11,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="8_edqit"]
 [ext_resource type="Resource" uid="uid://dweg1ryfmi1vw" path="res://resources/shop/thinker.tres" id="9_vmktp"]
 [ext_resource type="Resource" uid="uid://dhy1gqn20qbpp" path="res://resources/shop/inventor.tres" id="10_ru7pr"]
+[ext_resource type="Script" uid="uid://ddemuenp0lqtk" path="res://scripts/Automation/EmployeeController.cs" id="12_ubj5k"]
+[ext_resource type="PackedScene" uid="uid://4ux0ljfhtpgf" path="res://scenes/employees/thinker.tscn" id="13_2n7ax"]
+[ext_resource type="PackedScene" uid="uid://cd3v04n6sk73t" path="res://scenes/employees/inventor.tscn" id="14_yvvbm"]
+[ext_resource type="Script" uid="uid://d1fhk0b1fsuov" path="res://scripts/Upgrades/UpgradeController.cs" id="15_sm0ys"]
 
 [sub_resource type="Resource" id="Resource_6wevv"]
 script = ExtResource("5_ru7pr")
@@ -68,9 +72,10 @@ ResourceControllerNode = NodePath("../../../../ResourceControllers/GlobalMoneyCo
 [node name="ShopUI" parent="GameHUD" index="1" unique_id=416408425 node_paths=PackedStringArray("ShopController")]
 ShopController = NodePath("../../Shop")
 
-[node name="Shop" type="Node2D" parent="." unique_id=85274226 node_paths=PackedStringArray("Money", "ShopUI")]
+[node name="Shop" type="Node2D" parent="." unique_id=85274226 node_paths=PackedStringArray("m_upgradeController", "Money", "ShopUI")]
 position = Vector2(424, 203)
 script = ExtResource("8_8aw4k")
+m_upgradeController = NodePath("../UpgradeController")
 ShopUpgrades = Array[Object]([ExtResource("9_vmktp"), ExtResource("10_ru7pr")])
 Money = NodePath("../ResourceControllers/GlobalMoneyController")
 ShopUI = NodePath("../GameHUD/ShopUI")
@@ -82,6 +87,17 @@ texture = ExtResource("8_edqit")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shop/Sprite2D/Area2D" unique_id=1423172229]
 shape = SubResource("RectangleShape2D_bklno")
+
+[node name="EmployeeController" type="Node" parent="." unique_id=1468403037 node_paths=PackedStringArray("m_patentGenerator", "m_scienceGenerator")]
+script = ExtResource("12_ubj5k")
+m_thinkerEmployeeScene = ExtResource("13_2n7ax")
+m_inventorEmployeeScene = ExtResource("14_yvvbm")
+m_patentGenerator = NodePath("../PatentGenerator")
+m_scienceGenerator = NodePath("../ScienceGenerator")
+
+[node name="UpgradeController" type="Node" parent="." unique_id=1239405905 node_paths=PackedStringArray("m_employeeController")]
+script = ExtResource("15_sm0ys")
+m_employeeController = NodePath("../EmployeeController")
 
 [connection signal="input_event" from="Shop/Sprite2D/Area2D" to="Shop" method="OnClick"]
 

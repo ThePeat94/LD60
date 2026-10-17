@@ -5,7 +5,7 @@ using Nidavellir.PlayerStats;
 namespace Nidavellir.Generator;
 
 [GlobalClass]
-public partial class ScienceGenerator : Node2D
+public partial class ScienceGenerator : Node2D, IGenerator
 {
     [Export]
     public ResourceControllerNode ScienceResourceControllerNode { get; set; }
@@ -17,10 +17,10 @@ public partial class ScienceGenerator : Node2D
     {
         if (evt is not InputEventMouseButton { Pressed: true }) return;
         
-        this.GenerateScience(new IdleNumber(1));
+        this.Generate(new IdleNumber(1));
     }
 
-    public void GenerateScience(IdleNumber value)
+    public void Generate(IdleNumber value)
     {
         this.ScienceResourceControllerNode.ResourceController.Add(value);
     }

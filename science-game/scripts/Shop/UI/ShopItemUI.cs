@@ -7,17 +7,19 @@ namespace Nidavellir.Shop.UI;
 
 public partial class ShopItemUI : Node
 {
-    private Action<ShopItemData> m_onClick;
+    [Export] private Label m_quantity;
     
+    private Action<ShopItemData> m_onClick;
+
     [Export]
     public Label ItemName { private get; set; }
-    
+
     [Export]
     public TextureRect Icon { private get; set; }
-    
+
     [Export]
     public Label Description { private get; set; }
-    
+
     [Export]
     public Button Purchase { private get; set; }
 
@@ -42,6 +44,7 @@ public partial class ShopItemUI : Node
         this.Icon.Texture = itemData.Icon;
         this.Purchase.Text = itemData.CostModel.CalculateFor(new IdleNumber(upgradeAmount)).ToString();
         this.m_itemData = itemData;
+        this.m_quantity.Text = itemData.MaximumAmount > 0 ? $"{upgradeAmount}/{itemData.MaximumAmount}" : $"{upgradeAmount}";
     }
     
     private void HandlePurchaseClick()

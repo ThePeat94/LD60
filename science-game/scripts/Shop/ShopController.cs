@@ -3,20 +3,23 @@ using Godot;
 using Godot.Collections;
 using Nidavellir.GDResource.Shop;
 using Nidavellir.IdleNumbers;
-using Nidavellir.UI;
+using Nidavellir.Upgrades;
 using ShopUI = Nidavellir.Shop.UI.ShopUI;
 
 namespace Nidavellir.Shop;
 
 public partial class ShopController : Node2D
 {
+    [Export] private UpgradeController m_upgradeController;
+    
+    private System.Collections.Generic.Dictionary<ShopItemData, int> m_boughtUpgrades = new();
+    
     [Export]
     public Array<ShopItemData> ShopUpgrades { get; set; }
     
     [Export]
     public ResourceControllerNode Money { get; set; }
     
-    private System.Collections.Generic.Dictionary<ShopItemData, int> m_boughtUpgrades = new();
     
     [Export]
     public ShopUI ShopUI { get; set; }
@@ -50,7 +53,7 @@ public partial class ShopController : Node2D
             return;
         }
         this.m_boughtUpgrades[itemData]++;
-        itemData.UpgradeData.Apply();
+        itemData.UpgradeData.Apply(this.m_upgradeController);
         this.ShopUI.Open(this.m_boughtUpgrades);
     }
 }

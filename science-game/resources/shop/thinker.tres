@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://bm5tdny5chcwa" path="res://scripts/GDResource/Shop/ShopItemData.cs" id="1_s8lh6"]
 [ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_xu0xv"]
 [ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.cs" id="2_fa7om"]
-[ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="3_b4hb2"]
+[ext_resource type="Texture2D" uid="uid://0varc61h6log" path="res://assets/external/Knight(F).png" id="3_b4hb2"]
+[ext_resource type="Script" uid="uid://dhye4roeii8xm" path="res://scripts/GDResource/Shop/ThinkerUpgradeData.cs" id="4_b4hb2"]
 
 [sub_resource type="Resource" id="Resource_dxvlt"]
 script = ExtResource("1_xu0xv")
@@ -19,8 +20,9 @@ Base = SubResource("Resource_dxvlt")
 Slope = SubResource("Resource_whmdq")
 metadata/_custom_type_script = "uid://ddxwa8yrpoypp"
 
-[sub_resource type="JSON" id="JSON_6t4bp"]
-data = null
+[sub_resource type="Resource" id="Resource_30bjx"]
+script = ExtResource("4_b4hb2")
+metadata/_custom_type_script = "uid://dhye4roeii8xm"
 
 [resource]
 script = ExtResource("1_s8lh6")
@@ -29,5 +31,5 @@ UpgradeName = "Thinker"
 Description = "Someone who thinks hard. Or hardly thinks? You never know."
 Icon = ExtResource("3_b4hb2")
 MaximumAmount = 5
-UpgradeData = SubResource("JSON_6t4bp")
+UpgradeData = SubResource("Resource_30bjx")
 metadata/_custom_type_script = "uid://bm5tdny5chcwa"
