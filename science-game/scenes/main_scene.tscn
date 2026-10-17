@@ -1,19 +1,35 @@
 [gd_scene format=3 uid="uid://djv27a54r3brp"]
 
 [ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="1_w2twt"]
+[ext_resource type="Script" uid="uid://bj6kx41u5xkb2" path="res://scripts/Generator/ScienceGenerator.cs" id="2_pu3yx"]
+[ext_resource type="Script" uid="uid://dlp028tfs6u27" path="res://scripts/ResourceControllerContainer.cs" id="2_pw63i"]
+[ext_resource type="Script" uid="uid://0tgd1yd4japm" path="res://scripts/PlayerStats/PlayerStatsContainer.cs" id="4_gubc5"]
+[ext_resource type="Resource" uid="uid://d3c0whvd1shx6" path="res://resources/basePlayerStats.tres" id="5_gubc5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
 size = Vector2(128, 128)
 
 [node name="Node2D" type="Node2D" unique_id=1462648990]
 
-[node name="FOO" type="Sprite2D" parent="." unique_id=1401894253]
+[node name="ScienceGenerator" type="Sprite2D" parent="." unique_id=1401894253 node_paths=PackedStringArray("ResourceControllerContainer", "PlayerStatsContainer")]
 position = Vector2(319, 307)
 texture = ExtResource("1_w2twt")
+script = ExtResource("2_pu3yx")
+ResourceControllerContainer = NodePath("../ResourceControllers")
+PlayerStatsContainer = NodePath("../PlayerStats")
 
-[node name="Area2D" type="Area2D" parent="FOO" unique_id=1102790861]
+[node name="Area2D" type="Area2D" parent="ScienceGenerator" unique_id=1102790861]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FOO/Area2D" unique_id=1025174795]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScienceGenerator/Area2D" unique_id=1025174795]
 shape = SubResource("RectangleShape2D_bklno")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1384018772]
+
+[node name="ResourceControllers" type="Node" parent="." unique_id=1918748057]
+script = ExtResource("2_pw63i")
+
+[node name="PlayerStats" type="Node" parent="." unique_id=1361375017]
+script = ExtResource("4_gubc5")
+PlayerStatsData = ExtResource("5_gubc5")
+
+[connection signal="input_event" from="ScienceGenerator/Area2D" to="ScienceGenerator" method="OnClick"]

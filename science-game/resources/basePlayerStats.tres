@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PlayerStatsData" format=3 uid="uid://d3c0whvd1shx6"]
+
+[ext_resource type="Script" uid="uid://dl8x2275tt5qn" path="res://scripts/GDResource/PlayerStatsData.cs" id="1_dg2g8"]
+
+[resource]
+script = ExtResource("1_dg2g8")
+InitialClickStrength = 1.0
+metadata/_custom_type_script = "uid://dl8x2275tt5qn"
