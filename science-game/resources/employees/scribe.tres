@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EmployeeData" format=3 uid="uid://chdeqx4qgw2h0"]
+
+[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_pv4st"]
+[ext_resource type="Texture2D" uid="uid://cd0g0vppcsu1n" path="res://assets/external/Clara(F).png" id="2_pv4st"]
+[ext_resource type="Script" uid="uid://dj4g1vjvrf4hn" path="res://scripts/GDResource/EmployeeData.cs" id="3_uuf37"]
+
+[sub_resource type="Resource" id="Resource_oagta"]
+script = ExtResource("1_pv4st")
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[resource]
+script = ExtResource("3_uuf37")
+EmployeeName = "Scribe"
+Icon = ExtResource("2_pv4st")
+BaseWorkForce = SubResource("Resource_oagta")
+BaseTickSpeed = 1.5
+metadata/_custom_type_script = "uid://dj4g1vjvrf4hn"

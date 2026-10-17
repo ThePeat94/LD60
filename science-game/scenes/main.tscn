@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://kskc1m64jkxh"]
 
-[ext_resource type="PackedScene" uid="uid://b07fw6hiuhj2u" path="res://scenes/science_generator.tscn" id="1_jkv2x"]
-[ext_resource type="PackedScene" uid="uid://dcuw26e2ppgd3" path="res://scenes/patent_generator.tscn" id="2_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://b07fw6hiuhj2u" path="res://scenes/generators/science_generator.tscn" id="1_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://dcuw26e2ppgd3" path="res://scenes/generators/patent_generator.tscn" id="2_jbj1t"]
 [ext_resource type="Script" uid="uid://dmywt6vc0vtok" path="res://scripts/ResourceControllerNode.cs" id="3_muem4"]
 [ext_resource type="Script" uid="uid://0tgd1yd4japm" path="res://scripts/PlayerStats/PlayerStatsContainer.cs" id="4_dp3eg"]
 [ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="5_0ld40"]

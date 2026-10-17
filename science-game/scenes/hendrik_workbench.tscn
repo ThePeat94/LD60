@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://ci5iouq4lh2y5"]
 
-[ext_resource type="PackedScene" uid="uid://b07fw6hiuhj2u" path="res://scenes/science_generator.tscn" id="1_mlknq"]
-[ext_resource type="PackedScene" uid="uid://dcuw26e2ppgd3" path="res://scenes/patent_generator.tscn" id="2_edqit"]
+[ext_resource type="PackedScene" uid="uid://b07fw6hiuhj2u" path="res://scenes/generators/science_generator.tscn" id="1_mlknq"]
+[ext_resource type="PackedScene" uid="uid://dcuw26e2ppgd3" path="res://scenes/generators/patent_generator.tscn" id="2_edqit"]
 [ext_resource type="Script" uid="uid://dmywt6vc0vtok" path="res://scripts/ResourceControllerNode.cs" id="3_mlknq"]
+[ext_resource type="PackedScene" uid="uid://cop5xu6120mg3" path="res://scenes/generators/skill_point_generator.tscn" id="3_yvvbm"]
 [ext_resource type="Script" uid="uid://0tgd1yd4japm" path="res://scripts/PlayerStats/PlayerStatsContainer.cs" id="4_vmktp"]
 [ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="5_ru7pr"]
 [ext_resource type="Script" uid="uid://dl8x2275tt5qn" path="res://scripts/GDResource/PlayerStatsData.cs" id="6_rep15"]
@@ -11,10 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="8_edqit"]
 [ext_resource type="Resource" uid="uid://dweg1ryfmi1vw" path="res://resources/shop/thinker.tres" id="9_vmktp"]
 [ext_resource type="Resource" uid="uid://dhy1gqn20qbpp" path="res://resources/shop/inventor.tres" id="10_ru7pr"]
+[ext_resource type="Resource" uid="uid://qxyt52ihrtlg" path="res://resources/shop/scribe.tres" id="12_sm0ys"]
 [ext_resource type="Script" uid="uid://ddemuenp0lqtk" path="res://scripts/Automation/EmployeeController.cs" id="12_ubj5k"]
 [ext_resource type="PackedScene" uid="uid://4ux0ljfhtpgf" path="res://scenes/employees/thinker.tscn" id="13_2n7ax"]
 [ext_resource type="PackedScene" uid="uid://cd3v04n6sk73t" path="res://scenes/employees/inventor.tscn" id="14_yvvbm"]
 [ext_resource type="Script" uid="uid://d1fhk0b1fsuov" path="res://scripts/Upgrades/UpgradeController.cs" id="15_sm0ys"]
+[ext_resource type="PackedScene" uid="uid://801xtflpr5br" path="res://scenes/employees/scribe.tscn" id="17_jve2n"]
 
 [sub_resource type="Resource" id="Resource_6wevv"]
 script = ExtResource("5_ru7pr")
@@ -31,20 +34,26 @@ InitialClickStrength = SubResource("Resource_6wevv")
 InitialMoneyPerPatent = SubResource("Resource_e1cbu")
 metadata/_custom_type_script = "uid://dl8x2275tt5qn"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5vd1"]
 size = Vector2(128, 128)
 
 [node name="Node2D" type="Node2D" unique_id=1462648990]
 
-[node name="ScienceGenerator" parent="." unique_id=147243357 node_paths=PackedStringArray("ScienceResourceControllerNode", "PlayerStatsContainer") instance=ExtResource("1_mlknq")]
-position = Vector2(9, 5)
-ScienceResourceControllerNode = NodePath("../ResourceControllers/GlobalScienceController")
+[node name="ScienceGenerator" parent="." unique_id=147243357 node_paths=PackedStringArray("Generated", "PlayerStatsContainer") instance=ExtResource("1_mlknq")]
+position = Vector2(9, -253)
+Generated = NodePath("../ResourceControllers/GlobalScienceController")
 PlayerStatsContainer = NodePath("../PlayerStats")
 
-[node name="PatentGenerator" parent="." unique_id=53403002 node_paths=PackedStringArray("ScienceResourceControllerNode", "MoneyResourceControllerNode", "PlayerStatsContainer") instance=ExtResource("2_edqit")]
-position = Vector2(-635, 318)
-ScienceResourceControllerNode = NodePath("../ResourceControllers/GlobalScienceController")
-MoneyResourceControllerNode = NodePath("../ResourceControllers/GlobalMoneyController")
+[node name="PatentGenerator" parent="." unique_id=53403002 node_paths=PackedStringArray("m_generated", "m_consumed", "PlayerStatsContainer") instance=ExtResource("2_edqit")]
+position = Vector2(-635, -270)
+m_generated = NodePath("../ResourceControllers/GlobalMoneyController")
+m_consumed = NodePath("../ResourceControllers/GlobalScienceController")
+PlayerStatsContainer = NodePath("../PlayerStats")
+
+[node name="SkillPointGenerator" parent="." unique_id=948207944 node_paths=PackedStringArray("m_generated", "m_consumed", "PlayerStatsContainer") instance=ExtResource("3_yvvbm")]
+position = Vector2(651, -264)
+m_generated = NodePath("../ResourceControllers/GlobalSkillPointsController")
+m_consumed = NodePath("../ResourceControllers/GlobalScienceController")
 PlayerStatsContainer = NodePath("../PlayerStats")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1384018772]
@@ -55,6 +64,9 @@ PlayerStatsContainer = NodePath("../PlayerStats")
 script = ExtResource("3_mlknq")
 
 [node name="GlobalMoneyController" type="Node" parent="ResourceControllers" unique_id=1808124561]
+script = ExtResource("3_mlknq")
+
+[node name="GlobalSkillPointsController" type="Node" parent="ResourceControllers" unique_id=512772517]
 script = ExtResource("3_mlknq")
 
 [node name="PlayerStats" type="Node" parent="." unique_id=1361375017]
@@ -69,14 +81,18 @@ ResourceControllerNode = NodePath("../../../../ResourceControllers/GlobalScience
 [node name="Money Display" parent="GameHUD/Resource Panel/HFlowContainer" parent_id_path=PackedInt32Array(1847261213, 155163316) index="1" unique_id=146977840 node_paths=PackedStringArray("ResourceControllerNode")]
 ResourceControllerNode = NodePath("../../../../ResourceControllers/GlobalMoneyController")
 
+[node name="Skill Point Display" parent="GameHUD/Resource Panel/HFlowContainer" parent_id_path=PackedInt32Array(1847261213, 155163316) index="2" unique_id=177544303 node_paths=PackedStringArray("ResourceControllerNode")]
+TypeToDisplay = 2
+ResourceControllerNode = NodePath("../../../../ResourceControllers/GlobalSkillPointsController")
+
 [node name="ShopUI" parent="GameHUD" index="1" unique_id=416408425 node_paths=PackedStringArray("ShopController")]
 ShopController = NodePath("../../Shop")
 
 [node name="Shop" type="Node2D" parent="." unique_id=85274226 node_paths=PackedStringArray("m_upgradeController", "Money", "ShopUI")]
-position = Vector2(424, 203)
+position = Vector2(-440, 420)
 script = ExtResource("8_8aw4k")
 m_upgradeController = NodePath("../UpgradeController")
-ShopUpgrades = Array[Object]([ExtResource("9_vmktp"), ExtResource("10_ru7pr")])
+ShopUpgrades = Array[Object]([ExtResource("9_vmktp"), ExtResource("10_ru7pr"), ExtResource("12_sm0ys")])
 Money = NodePath("../ResourceControllers/GlobalMoneyController")
 ShopUI = NodePath("../GameHUD/ShopUI")
 
@@ -86,13 +102,15 @@ texture = ExtResource("8_edqit")
 [node name="Area2D" type="Area2D" parent="Shop/Sprite2D" unique_id=1543404104]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shop/Sprite2D/Area2D" unique_id=1423172229]
-shape = SubResource("RectangleShape2D_bklno")
+shape = SubResource("RectangleShape2D_k5vd1")
 
-[node name="EmployeeController" type="Node" parent="." unique_id=1468403037 node_paths=PackedStringArray("m_patentGenerator", "m_scienceGenerator")]
+[node name="EmployeeController" type="Node" parent="." unique_id=1468403037 node_paths=PackedStringArray("m_patentGenerator", "m_skillpointGenerator", "m_scienceGenerator")]
 script = ExtResource("12_ubj5k")
 m_thinkerEmployeeScene = ExtResource("13_2n7ax")
 m_inventorEmployeeScene = ExtResource("14_yvvbm")
+m_scribeEmployeeScene = ExtResource("17_jve2n")
 m_patentGenerator = NodePath("../PatentGenerator")
+m_skillpointGenerator = NodePath("../SkillPointGenerator")
 m_scienceGenerator = NodePath("../ScienceGenerator")
 
 [node name="UpgradeController" type="Node" parent="." unique_id=1239405905 node_paths=PackedStringArray("m_employeeController")]
@@ -103,4 +121,5 @@ m_employeeController = NodePath("../EmployeeController")
 
 [editable path="ScienceGenerator"]
 [editable path="PatentGenerator"]
+[editable path="SkillPointGenerator"]
 [editable path="GameHUD"]

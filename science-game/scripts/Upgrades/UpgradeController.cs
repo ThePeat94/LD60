@@ -17,4 +17,9 @@ public partial class UpgradeController : Node
     {
         this.m_employeeController.AddInventor();
     }
+
+    public void ApplyScribeUpgrade(ScribeUpgradeData upgradeData)
+    {
+        this.m_employeeController.AddScribe();
+    }
 }

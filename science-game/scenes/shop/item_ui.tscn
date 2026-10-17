@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b74twwfigbo50"]
 
 [ext_resource type="Script" uid="uid://dsijuynwbkqbf" path="res://scripts/Shop/UI/ShopItemUI.cs" id="1_v7xym"]
-[ext_resource type="Texture2D" uid="uid://bpc5d8uqdjb4c" path="res://assets/aigen/inventor.png" id="2_okqxr"]
+[ext_resource type="Texture2D" uid="uid://c7ky34ik03o52" path="res://assets/external/Mark(F).png" id="2_okqxr"]
 
 [node name="ItemUI" type="Panel" unique_id=1546233583 node_paths=PackedStringArray("m_quantity", "ItemName", "Icon", "Description", "Purchase")]
 custom_minimum_size = Vector2(300, 600)

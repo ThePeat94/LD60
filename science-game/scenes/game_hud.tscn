@@ -14,7 +14,7 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -681.0
-offset_bottom = 173.0
+offset_bottom = 250.0
 grow_horizontal = 0
 
 [node name="HFlowContainer" type="VBoxContainer" parent="Resource Panel" unique_id=155163316]
@@ -29,12 +29,25 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 54
 text = "Knowledge: 0"
+horizontal_alignment = 2
+vertical_alignment = 1
 script = ExtResource("1_jna2d")
 
 [node name="Money Display" type="Label" parent="Resource Panel/HFlowContainer" unique_id=146977840]
 layout_mode = 2
 theme_override_font_sizes/font_size = 54
 text = "Money: 0"
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("1_jna2d")
+TypeToDisplay = 1
+
+[node name="Skill Point Display" type="Label" parent="Resource Panel/HFlowContainer" unique_id=177544303]
+layout_mode = 2
+theme_override_font_sizes/font_size = 54
+text = "Skill Points: 0"
+horizontal_alignment = 2
+vertical_alignment = 1
 script = ExtResource("1_jna2d")
 TypeToDisplay = 1
 

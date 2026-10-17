@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using Nidavellir.IdleNumbers;
 using Nidavellir.ResourceInfo;
@@ -14,15 +15,13 @@ public partial class ResourceDisplay : Label
 
     public override void _Ready()
     {
-        switch (this.TypeToDisplay)
+        this.ResourceControllerNode.ResourceController.ResourceValueChanged += this.TypeToDisplay switch
         {
-            case ResourceType.Science:
-                this.ResourceControllerNode.ResourceController.ResourceValueChanged += this.OnScienceValueChanged;
-                break;
-            case ResourceType.Money:
-                this.ResourceControllerNode.ResourceController.ResourceValueChanged += this.OnMoneyValueChanged;
-                break;
-        }
+            ResourceType.Science => this.OnScienceValueChanged,
+            ResourceType.Money => this.OnMoneyValueChanged,
+            ResourceType.Skillpoint => this.OnSkillPointValueChanged,
+            _ => throw new ArgumentOutOfRangeException()
+        };
     }
 
     private void OnScienceValueChanged(object sender, ResourceValueChangedEvent e)
@@ -33,5 +32,10 @@ public partial class ResourceDisplay : Label
     private void OnMoneyValueChanged(object sender, ResourceValueChangedEvent e)
     {
         this.Text = $"Money: {e.NewValue}";
+    }
+
+    private void OnSkillPointValueChanged(object sender, ResourceValueChangedEvent e)
+    {
+        this.Text = $"Skill Points: {e.NewValue}";
     }
 }
