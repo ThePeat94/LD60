@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SkillTreeItemData" format=3 uid="uid://c4dhm6i7m4tr"]
+
+[ext_resource type="Resource" uid="uid://cac8ru3omfski" path="res://resources/skillTree/items/click_upgrade_1.tres" id="1_e0igi"]
+[ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.cs" id="1_rhhgp"]
+
+[resource]
+script = ExtResource("1_rhhgp")
+SkillName = "Discover your inner beings"
+Description = "Blablabla"
+PreRequisites = Array[Object]([ExtResource("1_e0igi")])
+metadata/_custom_type_script = "uid://ccdf3herk8v4r"

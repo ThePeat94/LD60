@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SkillTreeItemData" format=3 uid="uid://cac8ru3omfski"]
+
+[ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.cs" id="1_8bert"]
+
+[resource]
+script = ExtResource("1_8bert")
+SkillName = "Sharpen your mind"
+Description = "Blablabla"
+PreRequisites = Array[Object]([])
+metadata/_custom_type_script = "uid://ccdf3herk8v4r"

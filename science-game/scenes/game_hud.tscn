@@ -2,8 +2,18 @@
 
 [ext_resource type="Script" uid="uid://dkyhgeqereo0f" path="res://scripts/UI/GameHUD.cs" id="1_gjmhc"]
 [ext_resource type="Script" uid="uid://0c6plthlac1x" path="res://scripts/UI/ResourceDisplay.cs" id="1_jna2d"]
-[ext_resource type="Script" uid="uid://cw66s6x3klg6l" path="res://scripts/Shop/UI/ShopUI.cs" id="2_n64bn"]
-[ext_resource type="PackedScene" uid="uid://b74twwfigbo50" path="res://scenes/shop/item_ui.tscn" id="3_pexd4"]
+[ext_resource type="PackedScene" uid="uid://fol8hisegv4k" path="res://scenes/shop/shop_ui.tscn" id="3_b3s3x"]
+[ext_resource type="Script" uid="uid://dcjym3cy33l6t" path="res://scripts/SkillTree/UI/SkillTreeUI.cs" id="4_i7dyb"]
+[ext_resource type="Script" uid="uid://c1py2mbhl1pc6" path="res://scripts/SkillTree/UI/SkillTreeNodeUI.cs" id="4_jlahc"]
+[ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="4_pexd4"]
+[ext_resource type="Resource" uid="uid://cac8ru3omfski" path="res://resources/skillTree/items/click_upgrade_1.tres" id="5_i7dyb"]
+[ext_resource type="Resource" uid="uid://c4dhm6i7m4tr" path="res://resources/skillTree/items/click_upgrade_2.tres" id="8_qeyxp"]
+[ext_resource type="Resource" uid="uid://f82dr3wb1xlu" path="res://resources/skillTree/items/click_upgrade_3.tres" id="9_4h3m3"]
+[ext_resource type="Resource" uid="uid://btvasmfjvbxqn" path="res://resources/skillTree/items/click_upgrade_4.tres" id="10_gvb8p"]
+[ext_resource type="Resource" uid="uid://chrrbmymbnbvy" path="res://resources/skillTree/items/click_upgrade_5.tres" id="11_hwndf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qeyxp"]
+bg_color = Color(0.30121267, 0.33398592, 0.30768323, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1847261213 node_paths=PackedStringArray("ShopUI")]
 script = ExtResource("1_gjmhc")
@@ -51,18 +61,17 @@ vertical_alignment = 1
 script = ExtResource("1_jna2d")
 TypeToDisplay = 1
 
-[node name="ShopUI" type="Control" parent="." unique_id=416408425 node_paths=PackedStringArray("ItemsParent")]
+[node name="ShopUI" parent="." unique_id=1511127767 instance=ExtResource("3_b3s3x")]
+
+[node name="Skill Tree" type="Control" parent="." unique_id=1222491598]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_n64bn")
-ItemPrefab = ExtResource("3_pexd4")
-ItemsParent = NodePath("Panel/ItemPanel/ScrollView/HBoxContainer")
 
-[node name="Panel" type="Panel" parent="ShopUI" unique_id=1020440886]
+[node name="Panel" type="Panel" parent="Skill Tree" unique_id=372858125]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -77,36 +86,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(700, 400)
 
-[node name="ItemPanel" type="Panel" parent="ShopUI/Panel" unique_id=2006234625]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -600.0
-offset_top = -330.0
-offset_right = 600.0
-offset_bottom = 270.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-
-[node name="ScrollView" type="ScrollContainer" parent="ShopUI/Panel/ItemPanel" unique_id=1744236847]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-vertical_scroll_mode = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ShopUI/Panel/ItemPanel/ScrollView" unique_id=94022425]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 20
-
-[node name="Close Button" type="Button" parent="ShopUI/Panel" unique_id=1869538052]
+[node name="Close Button" type="Button" parent="Skill Tree/Panel" unique_id=819960803]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -123,4 +103,284 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_font_sizes/font_size = 42
 text = "Close"
 
-[connection signal="pressed" from="ShopUI/Panel/Close Button" to="ShopUI" method="Close"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Skill Tree/Panel" unique_id=2100763476]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -125.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Skill Tree/Panel/VBoxContainer" unique_id=1299036100]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Skill Tree"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Skill Tree/Panel/VBoxContainer" unique_id=2108983879]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Container" type="Control" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer" unique_id=1347082111]
+custom_minimum_size = Vector2(3000, 3000)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_i7dyb")
+
+[node name="SkillTreeNodeUI" type="PanelContainer" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=234590162 node_paths=PackedStringArray("m_icon", "m_name", "m_amount", "m_cost")]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 0
+offset_left = 572.0
+offset_top = 105.0
+offset_right = 872.0
+offset_bottom = 205.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qeyxp")
+script = ExtResource("4_jlahc")
+m_data = ExtResource("5_i7dyb")
+m_icon = NodePath("HBoxContainer/Icon")
+m_name = NodePath("HBoxContainer/VBoxContainer/Name")
+m_amount = NodePath("HBoxContainer/VBoxContainer/Amount")
+m_cost = NodePath("HBoxContainer/VBoxContainer/Cost")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI" unique_id=411993797]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI/HBoxContainer" unique_id=564482019]
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+texture = ExtResource("4_pexd4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI/HBoxContainer" unique_id=1374239484]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Name" type="Label" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI/HBoxContainer/VBoxContainer" unique_id=1064365329]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 26
+text = "%SKILL NAME%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Amount" type="Label" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI/HBoxContainer/VBoxContainer" unique_id=1465487910]
+layout_mode = 2
+text = "%AMOUNT%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cost" type="Label" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI/HBoxContainer/VBoxContainer" unique_id=1413818763]
+layout_mode = 2
+text = "%COST%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkillTreeNodeUI2" type="PanelContainer" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=1809635280 node_paths=PackedStringArray("m_icon", "m_name", "m_amount", "m_cost")]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 0
+offset_left = 568.0
+offset_top = 250.0
+offset_right = 868.0
+offset_bottom = 350.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qeyxp")
+script = ExtResource("4_jlahc")
+m_data = ExtResource("8_qeyxp")
+m_icon = NodePath("HBoxContainer/Icon")
+m_name = NodePath("HBoxContainer/VBoxContainer/Name")
+m_amount = NodePath("HBoxContainer/VBoxContainer/Amount")
+m_cost = NodePath("HBoxContainer/VBoxContainer/Cost")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI2" unique_id=727192570]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI2/HBoxContainer" unique_id=950768677]
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+texture = ExtResource("4_pexd4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI2/HBoxContainer" unique_id=225544185]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Name" type="Label" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI2/HBoxContainer/VBoxContainer" unique_id=331142559]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 26
+text = "%SKILL NAME%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Amount" type="Label" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI2/HBoxContainer/VBoxContainer" unique_id=1304005529]
+layout_mode = 2
+text = "%AMOUNT%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cost" type="Label" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI2/HBoxContainer/VBoxContainer" unique_id=828977424]
+layout_mode = 2
+text = "%COST%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkillTreeNodeUI3" type="PanelContainer" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=1763958030 node_paths=PackedStringArray("m_icon", "m_name", "m_amount", "m_cost")]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 0
+offset_left = 568.0
+offset_top = 387.0
+offset_right = 868.0
+offset_bottom = 487.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qeyxp")
+script = ExtResource("4_jlahc")
+m_data = ExtResource("9_4h3m3")
+m_icon = NodePath("HBoxContainer/Icon")
+m_name = NodePath("HBoxContainer/VBoxContainer/Name")
+m_amount = NodePath("HBoxContainer/VBoxContainer/Amount")
+m_cost = NodePath("HBoxContainer/VBoxContainer/Cost")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI3" unique_id=1507540330]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI3/HBoxContainer" unique_id=2110481155]
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+texture = ExtResource("4_pexd4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI3/HBoxContainer" unique_id=2040613377]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Name" type="Label" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI3/HBoxContainer/VBoxContainer" unique_id=2002038023]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 26
+text = "%SKILL NAME%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Amount" type="Label" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI3/HBoxContainer/VBoxContainer" unique_id=1097716160]
+layout_mode = 2
+text = "%AMOUNT%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cost" type="Label" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI3/HBoxContainer/VBoxContainer" unique_id=1132517162]
+layout_mode = 2
+text = "%COST%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkillTreeNodeUI4" type="PanelContainer" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=998227870 node_paths=PackedStringArray("m_icon", "m_name", "m_amount", "m_cost")]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 0
+offset_left = 373.0
+offset_top = 551.0
+offset_right = 673.0
+offset_bottom = 651.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qeyxp")
+script = ExtResource("4_jlahc")
+m_data = ExtResource("10_gvb8p")
+m_icon = NodePath("HBoxContainer/Icon")
+m_name = NodePath("HBoxContainer/VBoxContainer/Name")
+m_amount = NodePath("HBoxContainer/VBoxContainer/Amount")
+m_cost = NodePath("HBoxContainer/VBoxContainer/Cost")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI4" unique_id=1159415124]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI4/HBoxContainer" unique_id=215817116]
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+texture = ExtResource("4_pexd4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI4/HBoxContainer" unique_id=870191967]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Name" type="Label" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI4/HBoxContainer/VBoxContainer" unique_id=1084616370]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 26
+text = "%SKILL NAME%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Amount" type="Label" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI4/HBoxContainer/VBoxContainer" unique_id=473446060]
+layout_mode = 2
+text = "%AMOUNT%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cost" type="Label" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI4/HBoxContainer/VBoxContainer" unique_id=271245159]
+layout_mode = 2
+text = "%COST%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkillTreeNodeUI5" type="PanelContainer" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=72202640 node_paths=PackedStringArray("m_icon", "m_name", "m_amount", "m_cost")]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 0
+offset_left = 730.0
+offset_top = 549.0
+offset_right = 1030.0
+offset_bottom = 649.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qeyxp")
+script = ExtResource("4_jlahc")
+m_data = ExtResource("11_hwndf")
+m_icon = NodePath("HBoxContainer/Icon")
+m_name = NodePath("HBoxContainer/VBoxContainer/Name")
+m_amount = NodePath("HBoxContainer/VBoxContainer/Amount")
+m_cost = NodePath("HBoxContainer/VBoxContainer/Cost")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI5" unique_id=843098843]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI5/HBoxContainer" unique_id=1119733208]
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+texture = ExtResource("4_pexd4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI5/HBoxContainer" unique_id=823749918]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Name" type="Label" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI5/HBoxContainer/VBoxContainer" unique_id=352628923]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 26
+text = "%SKILL NAME%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Amount" type="Label" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI5/HBoxContainer/VBoxContainer" unique_id=888145148]
+layout_mode = 2
+text = "%AMOUNT%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cost" type="Label" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI5/HBoxContainer/VBoxContainer" unique_id=444752493]
+layout_mode = 2
+text = "%COST%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Skill Tree/Panel/Close Button" to="Skill Tree" method="Close"]
+
+[editable path="ShopUI"]

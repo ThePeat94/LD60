@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SkillTreeItemData" format=3 uid="uid://chrrbmymbnbvy"]
+
+[ext_resource type="Resource" uid="uid://f82dr3wb1xlu" path="res://resources/skillTree/items/click_upgrade_3.tres" id="1_ht2rn"]
+[ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.cs" id="2_tgc8g"]
+
+[resource]
+script = ExtResource("2_tgc8g")
+SkillName = "Enlighten your mood"
+Description = "Blablabla"
+PreRequisites = Array[Object]([ExtResource("1_ht2rn")])
+metadata/_custom_type_script = "uid://ccdf3herk8v4r"

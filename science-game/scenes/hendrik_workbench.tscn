@@ -74,7 +74,6 @@ script = ExtResource("4_vmktp")
 PlayerStatsData = SubResource("Resource_c16ls")
 
 [node name="GameHUD" parent="." unique_id=1847261213 instance=ExtResource("7_6t4bp")]
-visible = false
 
 [node name="Knowledge Display" parent="GameHUD/Resource Panel/HFlowContainer" parent_id_path=PackedInt32Array(1847261213, 155163316) index="0" unique_id=333511476 node_paths=PackedStringArray("ResourceControllerNode")]
 ResourceControllerNode = NodePath("../../../../ResourceControllers/GlobalScienceController")
@@ -86,7 +85,7 @@ ResourceControllerNode = NodePath("../../../../ResourceControllers/GlobalMoneyCo
 TypeToDisplay = 2
 ResourceControllerNode = NodePath("../../../../ResourceControllers/GlobalSkillPointsController")
 
-[node name="ShopUI" parent="GameHUD" index="1" unique_id=416408425 node_paths=PackedStringArray("ShopController")]
+[node name="ShopUI" parent="GameHUD" index="1" unique_id=1511127767 node_paths=PackedStringArray("ShopController")]
 ShopController = NodePath("../../Shop")
 
 [node name="Shop" type="Node2D" parent="." unique_id=85274226 node_paths=PackedStringArray("m_upgradeController", "Money", "ShopUI")]
@@ -136,3 +135,4 @@ m_employeeController = NodePath("../EmployeeController")
 [editable path="PatentGenerator"]
 [editable path="SkillPointGenerator"]
 [editable path="GameHUD"]
+[editable path="GameHUD/ShopUI"]
