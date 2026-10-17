@@ -15,12 +15,13 @@ public partial class ScienceGenerator : Node2D
     
     public void OnClick(Node viewport, InputEvent evt, int shapeIdx)
     {
-        if (evt is InputEventMouseButton mouseButton)
-        {
-            if (mouseButton.Pressed)
-            {
-                this.ResourceControllerContainer.ScienceResourceController.Add(new IdleNumber(1));
-            }
-        }
+        if (evt is not InputEventMouseButton { Pressed: true }) return;
+        
+        this.GenerateScience(new IdleNumber(1));
+    }
+
+    public void GenerateScience(IdleNumber value)
+    {
+        this.ResourceControllerContainer.ScienceResourceController.Add(value);
     }
 }
