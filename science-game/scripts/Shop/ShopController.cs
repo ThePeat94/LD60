@@ -24,7 +24,6 @@ public partial class ShopController : Node2D
     public override void _Ready()
     {
         this.m_boughtUpgrades = this.ShopUpgrades.ToDictionary(k => k, _ => 0);
-        this.ShopUI.Hide();
     }
 
     public void OnClick(Node viewport, InputEvent evt, int shapeIdx)
@@ -32,20 +31,26 @@ public partial class ShopController : Node2D
         if (evt is not InputEventMouseButton { Pressed: true })
             return;
         
-        this.ShopUI.Show(this.m_boughtUpgrades);
+        this.ShopUI.Open(this.m_boughtUpgrades);
     }
 
     public void AttemptPurchase(ShopItemData itemData)
     {
         GD.Print("AttemptPurchase");
         var currentAmount = this.m_boughtUpgrades[itemData];
+
+        if (currentAmount >= itemData.MaximumAmount)
+            return;
+        
+        
         var cost = itemData.CostModel.CalculateFor(new IdleNumber(currentAmount));
+        GD.Print($"Cost to buy {itemData.UpgradeName}: {cost}");
         if (!this.Money.ResourceController.CanAfford(cost))
         {
             return;
         }
         this.m_boughtUpgrades[itemData]++;
         itemData.UpgradeData.Apply();
-        this.ShopUI.Show(this.m_boughtUpgrades);
+        this.ShopUI.Open(this.m_boughtUpgrades);
     }
 }

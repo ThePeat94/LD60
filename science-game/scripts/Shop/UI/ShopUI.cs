@@ -17,7 +17,7 @@ public partial class ShopUI : Control
     
     private Dictionary<ShopItemData, ShopItemUI> m_items = new();
     
-    public void Show(Dictionary<ShopItemData, int> upgrades)
+    public void Open(Dictionary<ShopItemData, int> upgrades)
     {
         foreach (var keyValuePair in upgrades)
         {
@@ -29,6 +29,10 @@ public partial class ShopUI : Control
                 initializedItem.Show(keyValuePair.Key, keyValuePair.Value);
                 initializedItem.Clicked += this.OnItemPurchase; 
             }
+            else
+            {
+                this.m_items[keyValuePair.Key].Show(keyValuePair.Key, keyValuePair.Value);
+            }
         }
         this.Visible = true;
     }
@@ -38,7 +42,7 @@ public partial class ShopUI : Control
         this.ShopController.AttemptPurchase(obj);
     }
 
-    public void Hide()
+    public void Close()
     {
         this.Visible = false;
     }

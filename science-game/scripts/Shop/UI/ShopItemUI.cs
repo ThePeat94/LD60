@@ -44,7 +44,7 @@ public partial class ShopItemUI : Node
         this.m_itemData = itemData;
     }
     
-    public void HandlePurchaseClick()
+    private void HandlePurchaseClick()
     {
         this.m_onClick?.Invoke(this.m_itemData);
     }

@@ -1,7 +1,7 @@
 using Godot;
 using Nidavellir.Shop.UI;
 
-namespace Nidavellir.Shop;
+namespace Nidavellir.UI;
 
 public partial class GameHUD : Node
 {
@@ -10,6 +10,6 @@ public partial class GameHUD : Node
 
     public override void _Ready()
     {
-        this.ShopUI.Hide();
+        this.ShopUI.Close();
     }
 }

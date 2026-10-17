@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://b1ekel20d43cr" path="res://scripts/Shop/ShopController.cs" id="8_8aw4k"]
 [ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="8_edqit"]
 [ext_resource type="Resource" uid="uid://dweg1ryfmi1vw" path="res://resources/shop/thinker.tres" id="9_vmktp"]
+[ext_resource type="Resource" uid="uid://dhy1gqn20qbpp" path="res://resources/shop/inventor.tres" id="10_ru7pr"]
 
 [sub_resource type="Resource" id="Resource_6wevv"]
 script = ExtResource("5_ru7pr")
@@ -70,7 +71,7 @@ ShopController = NodePath("../../Shop")
 [node name="Shop" type="Node2D" parent="." unique_id=85274226 node_paths=PackedStringArray("Money", "ShopUI")]
 position = Vector2(424, 203)
 script = ExtResource("8_8aw4k")
-ShopUpgrades = Array[Object]([ExtResource("9_vmktp")])
+ShopUpgrades = Array[Object]([ExtResource("9_vmktp"), ExtResource("10_ru7pr")])
 Money = NodePath("../ResourceControllers/GlobalMoneyController")
 ShopUI = NodePath("../GameHUD/ShopUI")
 

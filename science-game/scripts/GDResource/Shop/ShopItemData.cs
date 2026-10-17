@@ -19,5 +19,8 @@ public partial class ShopItemData : Resource
     public Texture2D Icon { get; set; }
     
     [Export]
+    public int MaximumAmount { get; set; }
+    
+    [Export]
     public ShopUpgradeData UpgradeData { get; set; }
 }
