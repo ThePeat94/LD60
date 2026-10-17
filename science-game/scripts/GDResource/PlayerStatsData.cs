@@ -7,5 +7,8 @@ namespace Nidavellir.GDResource;
 public partial class PlayerStatsData : Resource
 {
     [Export]
-    public double InitialClickStrength { get; set; }
+    public IdleNumberResource InitialClickStrength { get; set; }
+    
+    [Export]
+    public IdleNumberResource InitialMoneyPerPatent { get; set; }
 }

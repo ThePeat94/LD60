@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PlayerStatsData" format=3 uid="uid://b0lmcslgtykk4"]
+
+[ext_resource type="Script" uid="uid://dl8x2275tt5qn" path="res://scripts/GDResource/PlayerStatsData.cs" id="1_fsjcq"]
+[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_ynyfj"]
+
+[sub_resource type="Resource" id="Resource_ynyfj"]
+script = ExtResource("1_ynyfj")
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[resource]
+script = ExtResource("1_fsjcq")
+InitialClickStrength = SubResource("Resource_ynyfj")
+metadata/_custom_type_script = "uid://dl8x2275tt5qn"

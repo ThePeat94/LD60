@@ -9,11 +9,13 @@ public partial class PlayerStatsContainer : Node
     [Export]
     public PlayerStatsData PlayerStatsData { get; set;  }
     
-    public PlayerStats PlayerStats { get; private set; }
+    public IdleNumber ClickStrength { get; private set; }
+    
+    public IdleNumber MoneyPerPatent { get; private set; }
 
     public override void _Ready()
     {
-        var initialStrength = new IdleNumber(this.PlayerStatsData.InitialClickStrength);
-        this.PlayerStats = new PlayerStats(initialStrength);
+        this.ClickStrength = this.PlayerStatsData.InitialClickStrength.ToIdleNumber();
+        this.MoneyPerPatent = this.PlayerStatsData.InitialMoneyPerPatent.ToIdleNumber();
     }
 }

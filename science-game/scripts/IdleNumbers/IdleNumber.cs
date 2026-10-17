@@ -72,6 +72,39 @@ namespace Nidavellir.IdleNumbers
             return this;
         }
 
+        public IdleNumber Pow(IdleNumber exponent)
+        {
+            if (this.Value <= 0)
+                throw new ArgumentOutOfRangeException(nameof(this.Value),
+                    "Only positive bases are supported.");
+
+            if (exponent.Value == 0)
+                return new IdleNumber(1);
+
+            // log10(base)
+            var logBase = Math.Log10(this.Value) + Exponent;
+
+            if (logBase == 0)
+                return new IdleNumber(1);
+
+            // Convert exponent to double
+            var power = exponent.Value * Math.Pow(10, exponent.Exponent);
+
+            // log10(base^power)
+            var logResult = power * logBase;
+
+            if (!double.IsFinite(logResult) ||
+                logResult <= int.MinValue + 1 ||
+                logResult >= int.MaxValue - 1)
+                throw new OverflowException("Exponent exceeds IdleNumber range.");
+
+            // Split into exponent and mantissa
+            var resultExponent = (int)Math.Floor(logResult);
+            var mantissa = Math.Pow(10, logResult - resultExponent);
+
+            return new IdleNumber(mantissa, resultExponent).Normalize();
+        }
+
         public static IdleNumber operator +(IdleNumber left, IdleNumber right)
         {
             var bigger = left.Exponent >= right.Exponent ? left : right;
