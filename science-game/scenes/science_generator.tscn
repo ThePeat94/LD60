@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b07fw6hiuhj2u"]
+
+[ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="1_mp6ib"]
+[ext_resource type="Script" uid="uid://bj6kx41u5xkb2" path="res://scripts/Generator/ScienceGenerator.cs" id="2_w5mg2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
+size = Vector2(128, 128)
+
+[node name="ScienceGenerator" type="Sprite2D" unique_id=147243357 node_paths=PackedStringArray("ResourceControllerContainer", "PlayerStatsContainer")]
+texture = ExtResource("1_mp6ib")
+script = ExtResource("2_w5mg2")
+ResourceControllerContainer = NodePath("")
+PlayerStatsContainer = NodePath("")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=317168343]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1882448020]
+shape = SubResource("RectangleShape2D_bklno")
+
+[connection signal="input_event" from="Area2D" to="." method="OnClick"]
