@@ -11,15 +11,15 @@ public class EntityStat(IdleNumber baseValue)
     private readonly List<EntityStatUpgrade> m_additivePlayerStatUpgrades = [];
     private readonly List<EntityStatUpgrade> m_multiplicativeEntityStatUpgrades = [];
 
-    public void AddEntityStatUpgrade(EntityStatUpgradeData entityStatUpgrade)
+    public void AddEntityStatUpgrade(EntityStatUpgradeData entityStatUpgrade, IdleNumber increase)
     {
         switch (entityStatUpgrade)
         {
             case AdditiveEntityStatUpgradeData u:
-                this.m_additivePlayerStatUpgrades.Add(new EntityStatUpgrade(u));
+                this.m_additivePlayerStatUpgrades.Add(new EntityStatUpgrade(increase));
                 break;
             case MultiplicativeEntityStatUpgradeData m:
-                this.m_multiplicativeEntityStatUpgrades.Add(new EntityStatUpgrade(m));
+                this.m_multiplicativeEntityStatUpgrades.Add(new EntityStatUpgrade(increase));
                 break;
         }
 

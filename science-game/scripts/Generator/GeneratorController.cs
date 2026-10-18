@@ -7,11 +7,11 @@ namespace Nidavellir.Generator;
 
 public partial class GeneratorController : Node, IGenerator
 {
-    [Export] private ResourceControllerNode m_generated;
     [Export] private ResourceControllerNode m_consumed;
     [Export] private ResourceControllerNode m_required;
-    
-    public ResourceControllerNode Generated => this.m_generated;
+    [Export] private GeneratorRewardController m_generatorRewardController;
+
+    public ResourceControllerNode Generated => this.m_generatorRewardController.Generated;
     public ResourceControllerNode Required => this.m_required;
     public IdleNumber Requirement => this.GetLevelRequirement();
         
@@ -44,12 +44,10 @@ public partial class GeneratorController : Node, IGenerator
         var valueToBeat = this.GetLevelRequirement();
 
         if (this.m_required.ResourceController.CurrentValue < valueToBeat) return;
-        
-        var moneyToAdd = this.PlayerStatsContainer.MoneyPerPatent.Value;
         this.m_currentLevel++;
-        this.m_generated.ResourceController.Add(moneyToAdd);
+        
+        this.m_generatorRewardController.ApplyReward();
         this.m_required.ResourceController.ResetValues();
-        GD.Print("Reached Level. Going for next.");
     }
     
     private IdleNumber GetLevelRequirement()

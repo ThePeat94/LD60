@@ -10,5 +10,8 @@ public partial class PlayerStatsData : Resource
     public IdleNumberResource InitialClickStrength { get; set; }
     
     [Export]
-    public IdleNumberResource InitialMoneyPerPatent { get; set; }
+    public IdleNumberResource InitialMoneyConversion { get; set; }
+
+    [Export]
+    public IdleNumberResource InitialSkillPointConversion { get; set; }
 }

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="SkillTreeItemData" format=3 uid="uid://btvasmfjvbxqn"]
+
+[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_5wdx0"]
+[ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.cs" id="2_vodly"]
+[ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="3_8wrus"]
+[ext_resource type="Resource" uid="uid://c4dhm6i7m4tr" path="res://resources/skillTree/items/click_upgrade_2.tres" id="4_h8doe"]
+[ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.cs" id="5_t6ywl"]
+
+[sub_resource type="Resource" id="Resource_oxnmk"]
+script = ExtResource("1_5wdx0")
+Value = 0.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_01kl4"]
+script = ExtResource("1_5wdx0")
+Value = 0.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_tekeu"]
+script = ExtResource("2_vodly")
+Base = SubResource("Resource_oxnmk")
+Slope = SubResource("Resource_01kl4")
+metadata/_custom_type_script = "uid://ddxwa8yrpoypp"
+
+[resource]
+script = ExtResource("5_t6ywl")
+SkillName = "Skilled Skiller"
+Description = "Blablabla"
+Icon = ExtResource("3_8wrus")
+CostModel = SubResource("Resource_tekeu")
+PreRequisites = Array[Object]([ExtResource("4_h8doe")])
+metadata/_custom_type_script = "uid://ccdf3herk8v4r"
