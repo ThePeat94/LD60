@@ -2,10 +2,9 @@
 
 [ext_resource type="Script" uid="uid://rqesxtjjsjl4" path="res://scripts/Generator/GeneratorController.cs" id="2_ep6bw"]
 [ext_resource type="Resource" uid="uid://fk7grp2true3" path="res://resources/skill_point_level_data.tres" id="3_34ywl"]
-[ext_resource type="Script" uid="uid://1wv4xpg7yo4e" path="res://scripts/UI/GeneratorProgressDisplay.cs" id="4_0ko83"]
 [ext_resource type="Script" uid="uid://dmywt6vc0vtok" path="res://scripts/ResourceControllerNode.cs" id="5_s5ah5"]
 [ext_resource type="Script" uid="uid://nto14lja7dgm" path="res://scripts/Generator/SkillPointGeneratorRewardController.cs" id="6_8dt4t"]
-[ext_resource type="Texture2D" uid="uid://b1fkc57o7ydbe" path="res://assets/art/bookshelf-right-section.png" id="6_iuxxb"]
+[ext_resource type="Texture2D" uid="uid://b1fkc57o7ydbe" path="res://assets/art/right_section_bookshelf/bookshelf-right-section.png" id="6_iuxxb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
 size = Vector2(66, 115)
@@ -21,26 +20,6 @@ ProgressionLevelData = ExtResource("3_34ywl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1489615702]
 position = Vector2(-1, -5)
 shape = SubResource("RectangleShape2D_bklno")
-
-[node name="Control" type="Control" parent="." unique_id=1008209505]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -80.0
-offset_top = -111.0
-offset_right = 80.0
-offset_bottom = -71.0
-
-[node name="ProgressBar" type="ProgressBar" parent="Control" unique_id=1141140354 node_paths=PackedStringArray("m_generator")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-max_value = 1.0
-show_percentage = false
-script = ExtResource("4_0ko83")
-m_generator = NodePath("../..")
 
 [node name="Resource Controller" type="Node" parent="." unique_id=1319895949]
 script = ExtResource("5_s5ah5")

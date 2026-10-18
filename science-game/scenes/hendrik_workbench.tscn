@@ -1,17 +1,21 @@
 [gd_scene format=3 uid="uid://ci5iouq4lh2y5"]
 
-[ext_resource type="Texture2D" uid="uid://867h8bdu6r77" path="res://assets/art/background-removedcurtainonright.png" id="1_6t4bp"]
+[ext_resource type="Texture2D" uid="uid://867h8bdu6r77" path="res://assets/art/room/background-removedcurtainonright.png" id="1_6t4bp"]
 [ext_resource type="PackedScene" uid="uid://b07fw6hiuhj2u" path="res://scenes/generators/science_generator.tscn" id="1_mlknq"]
-[ext_resource type="Texture2D" uid="uid://icusctrgg47r" path="res://assets/art/room_removedcurtainonright.png" id="2_6t4bp"]
+[ext_resource type="Texture2D" uid="uid://icusctrgg47r" path="res://assets/art/room/room_removedcurtainonright.png" id="2_6t4bp"]
 [ext_resource type="PackedScene" uid="uid://dcuw26e2ppgd3" path="res://scenes/generators/patent_generator.tscn" id="2_edqit"]
 [ext_resource type="Script" uid="uid://dmywt6vc0vtok" path="res://scripts/ResourceControllerNode.cs" id="3_mlknq"]
-[ext_resource type="Texture2D" uid="uid://dac0bk76lfpwp" path="res://assets/art/animals.png" id="3_vq575"]
+[ext_resource type="Texture2D" uid="uid://dac0bk76lfpwp" path="res://assets/art/room/animals.png" id="3_vq575"]
 [ext_resource type="PackedScene" uid="uid://cop5xu6120mg3" path="res://scenes/generators/skill_point_generator.tscn" id="3_yvvbm"]
-[ext_resource type="Texture2D" uid="uid://2adk1jsitgvd" path="res://assets/art/icons and plates/science-plate-filled.png" id="4_2n7ax"]
+[ext_resource type="PackedScene" uid="uid://bhipn7hbuwba5" path="res://scenes/ui/resource_display.tscn" id="4_fep4v"]
 [ext_resource type="Script" uid="uid://0tgd1yd4japm" path="res://scripts/PlayerStats/PlayerStatsContainer.cs" id="4_vmktp"]
-[ext_resource type="Texture2D" uid="uid://bn7a5ua43ciwa" path="res://assets/art/icons and plates/science-icon.png" id="5_yvvbm"]
+[ext_resource type="Texture2D" uid="uid://386fpde1x5rj" path="res://assets/art/icons and plates/knowledge-plate-filled.png" id="5_lmrt3"]
 [ext_resource type="Resource" uid="uid://b0lmcslgtykk4" path="res://resources/base_player_stats.tres" id="6_3k14s"]
+[ext_resource type="Texture2D" uid="uid://cj66xpguevb3g" path="res://assets/art/icons and plates/knowledge-icon.png" id="6_k5vd1"]
 [ext_resource type="PackedScene" uid="uid://wbj312y6wcdh" path="res://scenes/game_hud.tscn" id="7_6t4bp"]
+[ext_resource type="Texture2D" uid="uid://w26hqmndlb71" path="res://assets/art/desk/desk.png" id="7_jve2n"]
+[ext_resource type="Texture2D" uid="uid://dvhmtohgfvgc1" path="res://assets/art/icons and plates/money-plate-filled.png" id="7_o7jdt"]
+[ext_resource type="Texture2D" uid="uid://p7e0ismvxame" path="res://assets/art/icons and plates/money-icon.png" id="8_3k14s"]
 [ext_resource type="PackedScene" uid="uid://cwor0siurx2e8" path="res://scenes/shop/shop_controller.tscn" id="10_rep15"]
 [ext_resource type="PackedScene" uid="uid://vbfiwdh1714m" path="res://scenes/skillTree/skilltree_controller.tscn" id="15_lmrt3"]
 [ext_resource type="PackedScene" uid="uid://dmvasq8mrr7ks" path="res://scenes/employees/employee_controller.tscn" id="16_sm0ys"]
@@ -35,54 +39,82 @@ z_index = 3
 scale = Vector2(6.0065217, 6.0065217)
 texture = ExtResource("3_vq575")
 
-[node name="Science Display" type="Node2D" parent="Room" unique_id=913262037]
-position = Vector2(0, -462)
+[node name="Science Display" parent="Room" unique_id=1726028393 instance=ExtResource("4_fep4v")]
+position = Vector2(-12, -462)
 
-[node name="Sprite2D" type="Sprite2D" parent="Room/Science Display" unique_id=990485753]
+[node name="Label" parent="Room/Science Display" index="2" unique_id=69640884 node_paths=PackedStringArray("ResourceControllerNode")]
+ResourceControllerNode = NodePath("../../../ResourceControllers/GlobalScienceController")
+
+[node name="Skillpoints Displa" parent="Room" unique_id=2058778312 instance=ExtResource("4_fep4v")]
+position = Vector2(565, -462)
+
+[node name="Plate" parent="Room/Skillpoints Displa" index="0" unique_id=2014709232]
+texture = ExtResource("5_lmrt3")
+region_rect = Rect2(230, 7, 40, 16)
+
+[node name="Icon" parent="Room/Skillpoints Displa" index="1" unique_id=605890247]
+scale = Vector2(8.461024, 8.461024)
+texture = ExtResource("6_k5vd1")
+region_rect = Rect2(237, 10, 10, 10)
+
+[node name="Label" parent="Room/Skillpoints Displa" index="2" unique_id=69640884 node_paths=PackedStringArray("ResourceControllerNode")]
+ResourceControllerNode = NodePath("../../../ResourceControllers/GlobalSkillPointsController")
+
+[node name="Money Display" parent="Room" unique_id=77030413 instance=ExtResource("4_fep4v")]
+position = Vector2(-542, -462)
+
+[node name="Plate" parent="Room/Money Display" index="0" unique_id=2014709232]
+texture = ExtResource("7_o7jdt")
+region_rect = Rect2(52, 5, 40, 16)
+
+[node name="Icon" parent="Room/Money Display" index="1" unique_id=605890247]
+scale = Vector2(10.406994, 10.438085)
+texture = ExtResource("8_3k14s")
+region_rect = Rect2(58, 8, 7, 10)
+
+[node name="Label" parent="Room/Money Display" index="2" unique_id=69640884 node_paths=PackedStringArray("ResourceControllerNode")]
+scale = Vector2(7.105793, 7.1425014)
+ResourceControllerNode = NodePath("../../../ResourceControllers/GlobalMoneyController")
+
+[node name="Desk" type="Sprite2D" parent="Room" unique_id=926012049]
 z_index = 10
 scale = Vector2(6.007, 6.007)
-texture = ExtResource("4_2n7ax")
-region_enabled = true
-region_rect = Rect2(139, 6, 40, 16)
+texture = ExtResource("7_jve2n")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Room/Science Display" unique_id=1809486072]
-z_index = 10
-position = Vector2(-66, -0.99999994)
-scale = Vector2(6.007, 6.007)
-texture = ExtResource("5_yvvbm")
-region_enabled = true
-region_rect = Rect2(145, 8, 8, 11)
+[node name="SkilltreeController" parent="Room/Desk" unique_id=85181344 node_paths=PackedStringArray("m_skillTreeUi", "m_skillPoints") instance=ExtResource("15_lmrt3")]
+position = Vector2(31.96271, 55.268852)
+m_skillTreeUi = NodePath("../../../GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container")
+m_skillPoints = NodePath("../../../ResourceControllers/GlobalSkillPointsController")
 
-[node name="Label" type="Label" parent="Room/Science Display" unique_id=261942194]
-z_index = 100
-offset_left = -35.0
-offset_top = -53.999996
-offset_right = 15.0
-offset_bottom = -30.999996
-scale = Vector2(7.114649, 7.114649)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 10
-text = "100"
+[node name="Sprite2D" parent="Room/Desk/SkilltreeController" index="0" unique_id=875432051]
+z_index = 5
+position = Vector2(0, 1)
+
+[node name="UpgradeController" parent="Room/Desk/SkilltreeController" index="1" unique_id=1259699767 node_paths=PackedStringArray("m_playerStats", "m_employeeController", "m_shopController")]
+m_playerStats = NodePath("../../../../PlayerStats")
+m_employeeController = NodePath("../../../../EmployeeController")
+m_shopController = NodePath("../../ShopController")
+
+[node name="ShopController" parent="Room/Desk" unique_id=524025840 node_paths=PackedStringArray("Money", "ShopUI") instance=ExtResource("10_rep15")]
+position = Vector2(-108.04062, 44.78109)
+ShopUpgrades = Array[Object]([])
+Money = NodePath("../../../ResourceControllers/GlobalMoneyController")
+ShopUI = NodePath("../../../GameHUD/ShopUI")
+
+[node name="Sprite2D" parent="Room/Desk/ShopController" index="0" unique_id=394533374]
+z_index = 5
+position = Vector2(54.103542, 14.816047)
+
+[node name="UpgradeController" parent="Room/Desk/ShopController" index="1" unique_id=352711260 node_paths=PackedStringArray("m_employeeController")]
+m_employeeController = NodePath("../../../../EmployeeController")
 
 [node name="GameHUD" parent="." unique_id=1847261213 instance=ExtResource("7_6t4bp")]
 
-[node name="Knowledge Display" parent="GameHUD/Resource Panel/HFlowContainer" parent_id_path=PackedInt32Array(1847261213, 155163316) index="0" unique_id=333511476 node_paths=PackedStringArray("ResourceControllerNode")]
-ResourceControllerNode = NodePath("../../../../ResourceControllers/GlobalScienceController")
-
-[node name="Money Display" parent="GameHUD/Resource Panel/HFlowContainer" parent_id_path=PackedInt32Array(1847261213, 155163316) index="1" unique_id=146977840 node_paths=PackedStringArray("ResourceControllerNode")]
-ResourceControllerNode = NodePath("../../../../ResourceControllers/GlobalMoneyController")
-
-[node name="Skill Point Display" parent="GameHUD/Resource Panel/HFlowContainer" parent_id_path=PackedInt32Array(1847261213, 155163316) index="2" unique_id=177544303 node_paths=PackedStringArray("ResourceControllerNode")]
-TypeToDisplay = 2
-ResourceControllerNode = NodePath("../../../../ResourceControllers/GlobalSkillPointsController")
-
-[node name="ShopUI" parent="GameHUD" index="1" unique_id=1511127767 node_paths=PackedStringArray("ShopController")]
-ShopController = NodePath("../../ShopController")
+[node name="ShopUI" parent="GameHUD" index="0" unique_id=1511127767 node_paths=PackedStringArray("ShopController")]
+ShopController = NodePath("../../Room/Desk/ShopController")
 
 [node name="Container" parent="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer" parent_id_path=PackedInt32Array(1847261213, 2108983879) index="0" unique_id=1347082111 node_paths=PackedStringArray("m_skillTreeController")]
-m_skillTreeController = NodePath("../../../../../../SkilltreeController")
+m_skillTreeController = NodePath("../../../../../../Room/Desk/SkilltreeController")
 
 [node name="Base Click Upgrade" parent="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" index="0" unique_id=878878694]
 offset_right = 300.0
@@ -141,37 +173,16 @@ script = ExtResource("3_mlknq")
 script = ExtResource("4_vmktp")
 BaseStats = ExtResource("6_3k14s")
 
-[node name="ShopController" parent="." unique_id=524025840 node_paths=PackedStringArray("Money", "ShopUI") instance=ExtResource("10_rep15")]
-position = Vector2(-440, 419)
-ShopUpgrades = Array[Object]([])
-Money = NodePath("../ResourceControllers/GlobalMoneyController")
-ShopUI = NodePath("../GameHUD/ShopUI")
-
-[node name="Sprite2D" parent="ShopController" index="0" unique_id=394533374]
-z_index = 5
-
-[node name="UpgradeController" parent="ShopController" index="1" unique_id=352711260 node_paths=PackedStringArray("m_employeeController")]
-m_employeeController = NodePath("../../EmployeeController")
-
-[node name="SkilltreeController" parent="." unique_id=85181344 node_paths=PackedStringArray("m_skillTreeUi", "m_skillPoints") instance=ExtResource("15_lmrt3")]
-position = Vector2(609, 433)
-m_skillTreeUi = NodePath("../GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container")
-m_skillPoints = NodePath("../ResourceControllers/GlobalSkillPointsController")
-
-[node name="Sprite2D" parent="SkilltreeController" index="0" unique_id=875432051]
-z_index = 5
-position = Vector2(0, 1)
-
-[node name="UpgradeController" parent="SkilltreeController" index="1" unique_id=1259699767 node_paths=PackedStringArray("m_playerStats", "m_employeeController", "m_shopController")]
-m_playerStats = NodePath("../../PlayerStats")
-m_employeeController = NodePath("../../EmployeeController")
-m_shopController = NodePath("../../ShopController")
-
 [node name="EmployeeController" parent="." unique_id=130145111 node_paths=PackedStringArray("m_patentGenerator", "m_skillpointGenerator", "m_scienceGenerator") instance=ExtResource("16_sm0ys")]
 m_patentGenerator = NodePath("../PatentGenerator")
 m_skillpointGenerator = NodePath("../SkillPointGenerator")
 m_scienceGenerator = NodePath("../ScienceGenerator")
 
+[editable path="Room/Science Display"]
+[editable path="Room/Skillpoints Displa"]
+[editable path="Room/Money Display"]
+[editable path="Room/Desk/SkilltreeController"]
+[editable path="Room/Desk/ShopController"]
 [editable path="GameHUD"]
 [editable path="GameHUD/ShopUI"]
 [editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Base Click Upgrade"]
@@ -190,5 +201,3 @@ m_scienceGenerator = NodePath("../ScienceGenerator")
 [editable path="ScienceGenerator"]
 [editable path="PatentGenerator"]
 [editable path="SkillPointGenerator"]
-[editable path="ShopController"]
-[editable path="SkilltreeController"]

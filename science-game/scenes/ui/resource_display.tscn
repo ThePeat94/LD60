@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bhipn7hbuwba5"]
+
+[ext_resource type="Texture2D" uid="uid://2adk1jsitgvd" path="res://assets/art/icons and plates/science-plate-filled.png" id="1_3a1rf"]
+[ext_resource type="Texture2D" uid="uid://bn7a5ua43ciwa" path="res://assets/art/icons and plates/science-icon.png" id="2_gar0h"]
+[ext_resource type="Script" uid="uid://0c6plthlac1x" path="res://scripts/UI/ResourceDisplay.cs" id="3_rlfi3"]
+
+[node name="Resource Display" type="Node2D" unique_id=1726028393]
+
+[node name="Plate" type="Sprite2D" parent="." unique_id=2014709232]
+z_index = 10
+scale = Vector2(8.767001, 8.767001)
+texture = ExtResource("1_3a1rf")
+region_enabled = true
+region_rect = Rect2(139, 6, 40, 16)
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=605890247]
+z_index = 10
+position = Vector2(-103, -0.99999994)
+scale = Vector2(7.0469985, 7.0469985)
+texture = ExtResource("2_gar0h")
+region_enabled = true
+region_rect = Rect2(145, 8, 8, 11)
+
+[node name="Label" type="Label" parent="." unique_id=69640884 node_paths=PackedStringArray("ResourceControllerNode")]
+z_index = 100
+offset_left = -70.0
+offset_top = -53.999996
+offset_right = -38.65622
+offset_bottom = -40.041664
+scale = Vector2(7.114649, 7.114649)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 10
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_rlfi3")
+ResourceControllerNode = NodePath("")
