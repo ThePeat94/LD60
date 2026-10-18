@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://icusctrgg47r"
-path="res://.godot/imported/room_removedcurtainonright.png-109beb525b2b4be2e5e7153206da2eee.ctex"
+uid="uid://cvfs36y1dbfa3"
+path="res://.godot/imported/gnomes.png-012dbd8d7a13c899c1fcaf7d922f8a5f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/room_removedcurtainonright.png"
-dest_files=["res://.godot/imported/room_removedcurtainonright.png-109beb525b2b4be2e5e7153206da2eee.ctex"]
+source_file="res://assets/art/gnomes.png"
+dest_files=["res://.godot/imported/gnomes.png-012dbd8d7a13c899c1fcaf7d922f8a5f.ctex"]
 
 [params]
 

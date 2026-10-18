@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k4yp4cltrq2s"
-path="res://.godot/imported/tablestand-standalone.png-43a17f7be2756ca62c9af142cabfcaba.ctex"
+uid="uid://867h8bdu6r77"
+path="res://.godot/imported/background-removedcurtainonright.png-bd5b0731807593b489305ee27a12fb10.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/tablestand-standalone.png"
-dest_files=["res://.godot/imported/tablestand-standalone.png-43a17f7be2756ca62c9af142cabfcaba.ctex"]
+source_file="res://assets/art/room/background-removedcurtainonright.png"
+dest_files=["res://.godot/imported/background-removedcurtainonright.png-bd5b0731807593b489305ee27a12fb10.ctex"]
 
 [params]
 

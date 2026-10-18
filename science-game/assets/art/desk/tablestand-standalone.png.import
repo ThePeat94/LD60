@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dir7x4br5omin"
-path="res://.godot/imported/buttons-pressed-shop.png-36a3b45ff4a155aca1b23310db211449.ctex"
+uid="uid://k4yp4cltrq2s"
+path="res://.godot/imported/tablestand-standalone.png-bdad1be724c2059877451a908ee62fea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/buttons-pressed-shop.png"
-dest_files=["res://.godot/imported/buttons-pressed-shop.png-36a3b45ff4a155aca1b23310db211449.ctex"]
+source_file="res://assets/art/desk/tablestand-standalone.png"
+dest_files=["res://.godot/imported/tablestand-standalone.png-bdad1be724c2059877451a908ee62fea.ctex"]
 
 [params]
 

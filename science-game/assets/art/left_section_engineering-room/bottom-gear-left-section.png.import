@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4my0w86cpv2p"
-path="res://.godot/imported/table-standalone.png-f1370402849bb9e9248c851a12baf1fd.ctex"
+uid="uid://d0023g7ttxh2d"
+path="res://.godot/imported/bottom-gear-left-section.png-6fddd995cd545eff9f20044c87f9cbef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/table-standalone.png"
-dest_files=["res://.godot/imported/table-standalone.png-f1370402849bb9e9248c851a12baf1fd.ctex"]
+source_file="res://assets/art/left_section_engineering-room/bottom-gear-left-section.png"
+dest_files=["res://.godot/imported/bottom-gear-left-section.png-6fddd995cd545eff9f20044c87f9cbef.ctex"]
 
 [params]
 

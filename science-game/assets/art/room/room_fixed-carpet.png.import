@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clyqs7g7pg1do"
-path="res://.godot/imported/skilltree-elements.png-2450f6309252519d34e4c3e72616e11e.ctex"
+uid="uid://dyfh1ge8jgvk2"
+path="res://.godot/imported/room_fixed-carpet.png-2b35f18985fe47b657d4e43a34cf941f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/skilltree-elements.png"
-dest_files=["res://.godot/imported/skilltree-elements.png-2450f6309252519d34e4c3e72616e11e.ctex"]
+source_file="res://assets/art/room/room_fixed-carpet.png"
+dest_files=["res://.godot/imported/room_fixed-carpet.png-2b35f18985fe47b657d4e43a34cf941f.ctex"]
 
 [params]
 

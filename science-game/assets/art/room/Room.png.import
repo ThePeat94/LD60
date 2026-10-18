@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://867h8bdu6r77"
-path="res://.godot/imported/background-removedcurtainonright.png-d7872b79b90b8493f4b44f45194ecfeb.ctex"
+uid="uid://bsjk77se4srte"
+path="res://.godot/imported/Room.png-46368874b84c0bfe0d12558edcb48e9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/background-removedcurtainonright.png"
-dest_files=["res://.godot/imported/background-removedcurtainonright.png-d7872b79b90b8493f4b44f45194ecfeb.ctex"]
+source_file="res://assets/art/room/Room.png"
+dest_files=["res://.godot/imported/Room.png-46368874b84c0bfe0d12558edcb48e9e.ctex"]
 
 [params]
 

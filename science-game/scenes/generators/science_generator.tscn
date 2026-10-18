@@ -5,10 +5,10 @@
 [ext_resource type="AudioStream" uid="uid://cds1yd1vmmhcr" path="res://assets/sfx/400 Sounds Pack/Materials/concrete_scrape.wav" id="4_4djqy"]
 [ext_resource type="Script" uid="uid://bglusmjfbdqlj" path="res://scripts/GameFeel/FeelSfxPlayer.cs" id="4_8nhun"]
 [ext_resource type="AudioStream" uid="uid://8xnjy2l18ssh" path="res://assets/sfx/400 Sounds Pack/Materials/cardboard_hit.wav" id="5_vfhpw"]
-[ext_resource type="Texture2D" uid="uid://k4yp4cltrq2s" path="res://assets/art/tablestand-standalone.png" id="6_oh4or"]
+[ext_resource type="Texture2D" uid="uid://k4yp4cltrq2s" path="res://assets/art/desk/tablestand-standalone.png" id="6_oh4or"]
 [ext_resource type="Script" uid="uid://ngvqkxdthk4f" path="res://scripts/GameFeel/FeelShaker.cs" id="7_ssgk1"]
-[ext_resource type="Texture2D" uid="uid://4my0w86cpv2p" path="res://assets/art/table-standalone.png" id="7_tqpxg"]
-[ext_resource type="Texture2D" uid="uid://c1saok5efp1m5" path="res://assets/art/stool-middle-section.png" id="8_5do4e"]
+[ext_resource type="Texture2D" uid="uid://4my0w86cpv2p" path="res://assets/art/desk/table-standalone.png" id="7_tqpxg"]
+[ext_resource type="Texture2D" uid="uid://c1saok5efp1m5" path="res://assets/art/desk/stool-middle-section.png" id="8_5do4e"]
 [ext_resource type="Script" uid="uid://mod3uhf0e68j" path="res://scripts/GameFeel/FeelVfxIconSpawner.cs" id="10_5do4e"]
 [ext_resource type="PackedScene" uid="uid://bntuvd3a5igwm" path="res://scenes/feel/board_particles.tscn" id="11_nsibk"]
 
@@ -57,7 +57,7 @@ script = ExtResource("10_5do4e")
 m_origin = NodePath("../Board")
 m_particles = ExtResource("11_nsibk")
 
+[connection signal="input_event" from="Area2D" to="." method="OnClick"]
 [connection signal="input_event" from="Area2D" to="AudioPlayer" method="Trigger"]
 [connection signal="input_event" from="Area2D" to="Shaker" method="OnClick"]
-[connection signal="input_event" from="Area2D" to="." method="OnClick"]
 [connection signal="input_event" from="Area2D" to="VfxSpawner" method="OnClick"]

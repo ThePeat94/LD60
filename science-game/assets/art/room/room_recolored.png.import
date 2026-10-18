@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh0wjcwfa174b"
-path="res://.godot/imported/buttons-active-shop.png-8ad3c4dc2894393ceff627f13ae5143f.ctex"
+uid="uid://hwa32mecg030"
+path="res://.godot/imported/room_recolored.png-d1a0bce5280673715bd9ab8f0ad76661.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/buttons-active-shop.png"
-dest_files=["res://.godot/imported/buttons-active-shop.png-8ad3c4dc2894393ceff627f13ae5143f.ctex"]
+source_file="res://assets/art/room/room_recolored.png"
+dest_files=["res://.godot/imported/room_recolored.png-d1a0bce5280673715bd9ab8f0ad76661.ctex"]
 
 [params]
 

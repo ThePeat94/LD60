@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw4soeir05tr6"
-path="res://.godot/imported/top-gear-left-section.png-b8fcacf204218591b95accec82dae765.ctex"
+uid="uid://w26hqmndlb71"
+path="res://.godot/imported/desk.png-f2d81310d89f22189fffe144762dd26d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/top-gear-left-section.png"
-dest_files=["res://.godot/imported/top-gear-left-section.png-b8fcacf204218591b95accec82dae765.ctex"]
+source_file="res://assets/art/desk/desk.png"
+dest_files=["res://.godot/imported/desk.png-f2d81310d89f22189fffe144762dd26d.ctex"]
 
 [params]
 

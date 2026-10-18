@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cl67lf1feujn"
-path="res://.godot/imported/items-desk-shop.png-c0b68e88246c36712f7406e607742c54.ctex"
+uid="uid://d3g105rod4v0p"
+path="res://.godot/imported/machinery-back-left-section.png-fd9bf9ceb541bb8fa6f431d34aae49de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/items-desk-shop.png"
-dest_files=["res://.godot/imported/items-desk-shop.png-c0b68e88246c36712f7406e607742c54.ctex"]
+source_file="res://assets/art/left_section_engineering-room/machinery-back-left-section.png"
+dest_files=["res://.godot/imported/machinery-back-left-section.png-fd9bf9ceb541bb8fa6f431d34aae49de.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cob6wc6acjns1"
-path="res://.godot/imported/table-middle-section.png-3adf7b1550530e8970a87b56675ca03f.ctex"
+uid="uid://dh0wjcwfa174b"
+path="res://.godot/imported/buttons-active-shop.png-29266183f4715307dad06a032e567000.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/table-middle-section.png"
-dest_files=["res://.godot/imported/table-middle-section.png-3adf7b1550530e8970a87b56675ca03f.ctex"]
+source_file="res://assets/art/desk/buttons-active-shop.png"
+dest_files=["res://.godot/imported/buttons-active-shop.png-29266183f4715307dad06a032e567000.ctex"]
 
 [params]
 

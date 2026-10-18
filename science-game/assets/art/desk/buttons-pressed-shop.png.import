@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3g105rod4v0p"
-path="res://.godot/imported/machinery-back-left-section.png-9d8605caa49c55854daa2cbad3fc4617.ctex"
+uid="uid://dir7x4br5omin"
+path="res://.godot/imported/buttons-pressed-shop.png-9a9a87d9bcd2786c26e8ab625f442815.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/machinery-back-left-section.png"
-dest_files=["res://.godot/imported/machinery-back-left-section.png-9d8605caa49c55854daa2cbad3fc4617.ctex"]
+source_file="res://assets/art/desk/buttons-pressed-shop.png"
+dest_files=["res://.godot/imported/buttons-pressed-shop.png-9a9a87d9bcd2786c26e8ab625f442815.ctex"]
 
 [params]
 

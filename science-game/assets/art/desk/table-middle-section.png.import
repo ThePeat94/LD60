@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hwa32mecg030"
-path="res://.godot/imported/room_recolored.png-e10fee6417be970dad19f39b0e16c632.ctex"
+uid="uid://cob6wc6acjns1"
+path="res://.godot/imported/table-middle-section.png-27c681190446e78e1f610c82d2285844.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/room_recolored.png"
-dest_files=["res://.godot/imported/room_recolored.png-e10fee6417be970dad19f39b0e16c632.ctex"]
+source_file="res://assets/art/desk/table-middle-section.png"
+dest_files=["res://.godot/imported/table-middle-section.png-27c681190446e78e1f610c82d2285844.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brlj063h1nsya"
-path="res://.godot/imported/desk-utensils.png-4969fc31934503baea13eddd23bf256c.ctex"
+uid="uid://cq7tvjh70ndg4"
+path="res://.godot/imported/tools-left-section.png-472ae107e545e716d69cdcd2d863f82d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/desk-utensils.png"
-dest_files=["res://.godot/imported/desk-utensils.png-4969fc31934503baea13eddd23bf256c.ctex"]
+source_file="res://assets/art/left_section_engineering-room/tools-left-section.png"
+dest_files=["res://.godot/imported/tools-left-section.png-472ae107e545e716d69cdcd2d863f82d.ctex"]
 
 [params]
 

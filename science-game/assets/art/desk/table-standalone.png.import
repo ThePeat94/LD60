@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b30yub36xfftf"
-path="res://.godot/imported/light-bulb-left-section.png-18806d63e8628da94cf833c7d95f2879.ctex"
+uid="uid://4my0w86cpv2p"
+path="res://.godot/imported/table-standalone.png-0921496310f60d1eaca24400c1f9c564.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/light-bulb-left-section.png"
-dest_files=["res://.godot/imported/light-bulb-left-section.png-18806d63e8628da94cf833c7d95f2879.ctex"]
+source_file="res://assets/art/desk/table-standalone.png"
+dest_files=["res://.godot/imported/table-standalone.png-0921496310f60d1eaca24400c1f9c564.ctex"]
 
 [params]
 
