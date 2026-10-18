@@ -1,6 +1,7 @@
 using Godot;
+using Nidavellir.GDResource.Employee;
 
-namespace Nidavellir.GDResource.SkillTree;
+namespace Nidavellir.GDResource.SkillTree.EntityStatUpgrades.Employee;
 
 [GlobalClass]
 public partial class EmployeeStatUpgradeData : EntityStatUpgradeData

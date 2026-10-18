@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Nidavellir.GDResource.SkillTree;
+using Nidavellir.GDResource.SkillTree.EntityStatUpgrades;
 using Nidavellir.IdleNumbers;
+using EntityStatUpgradeData = Nidavellir.GDResource.SkillTree.EntityStatUpgrades.EntityStatUpgradeData;
 
 namespace Nidavellir.Stats;
 

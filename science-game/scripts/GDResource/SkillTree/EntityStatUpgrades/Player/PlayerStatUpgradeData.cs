@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Nidavellir.GDResource.SkillTree;
+namespace Nidavellir.GDResource.SkillTree.EntityStatUpgrades.Player;
 
 [GlobalClass]
 public partial class PlayerStatUpgradeData : EntityStatUpgradeData

@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Nidavellir.GDResource.SkillTree;
+namespace Nidavellir.GDResource.SkillTree.EntityStatUpgrades;
 
 public abstract partial class EntityStatUpgradeData : Resource
 {

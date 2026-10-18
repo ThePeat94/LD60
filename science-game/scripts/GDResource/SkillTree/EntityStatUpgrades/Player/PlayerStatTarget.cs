@@ -1,4 +1,4 @@
-namespace Nidavellir.GDResource.SkillTree;
+namespace Nidavellir.GDResource.SkillTree.EntityStatUpgrades.Player;
 
 public enum PlayerStatTarget
 {

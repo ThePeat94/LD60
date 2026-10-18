@@ -2,10 +2,10 @@ using System.Linq;
 using Godot;
 using Godot.Collections;
 using Nidavellir.GDResource.Shop;
-using Nidavellir.GDResource.SkillTree.FeatureUnlockUpgrades;
 using Nidavellir.IdleNumbers;
 using Nidavellir.Upgrades;
 using ShopUI = Nidavellir.Shop.UI.ShopUI;
+using UnlockShopFeatureData = Nidavellir.GDResource.SkillTree.FeatureUnlock.UnlockShopFeatureData;
 
 namespace Nidavellir.Shop;
 

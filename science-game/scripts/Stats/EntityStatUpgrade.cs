@@ -1,4 +1,3 @@
-using Nidavellir.GDResource.SkillTree;
 using Nidavellir.IdleNumbers;
 
 namespace Nidavellir.Stats;

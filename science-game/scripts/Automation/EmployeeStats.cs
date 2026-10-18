@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using Nidavellir.GDResource;
 using Nidavellir.GDResource.SkillTree;
+using Nidavellir.GDResource.SkillTree.EntityStatUpgrades.Employee;
 using Nidavellir.IdleNumbers;
 using Nidavellir.Stats;
+using EmployeeData = Nidavellir.GDResource.Employee.EmployeeData;
 
 namespace Nidavellir.Automation;
 
