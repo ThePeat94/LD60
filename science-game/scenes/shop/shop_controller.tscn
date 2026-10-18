@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cwor0siurx2e8"]
+
+[ext_resource type="Script" uid="uid://b1ekel20d43cr" path="res://scripts/Shop/ShopController.cs" id="1_ye267"]
+[ext_resource type="Resource" uid="uid://dweg1ryfmi1vw" path="res://resources/shop/thinker.tres" id="2_ojs2r"]
+[ext_resource type="Resource" uid="uid://dhy1gqn20qbpp" path="res://resources/shop/inventor.tres" id="3_oltln"]
+[ext_resource type="Resource" uid="uid://qxyt52ihrtlg" path="res://resources/shop/scribe.tres" id="4_5vpls"]
+[ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="5_d1p4o"]
+[ext_resource type="Script" uid="uid://d1fhk0b1fsuov" path="res://scripts/Upgrades/UpgradeController.cs" id="6_ojs2r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5vd1"]
+size = Vector2(128, 128)
+
+[node name="ShopController" type="Node2D" unique_id=524025840 node_paths=PackedStringArray("m_upgradeController", "Money", "ShopUI")]
+script = ExtResource("1_ye267")
+m_upgradeController = NodePath("UpgradeController")
+ShopUpgrades = Array[Object]([ExtResource("2_ojs2r"), ExtResource("3_oltln"), ExtResource("4_5vpls")])
+Money = NodePath("")
+ShopUI = NodePath("")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=394533374]
+texture = ExtResource("5_d1p4o")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=628545616]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=1130492994]
+shape = SubResource("RectangleShape2D_k5vd1")
+
+[node name="UpgradeController" type="Node" parent="." unique_id=352711260 node_paths=PackedStringArray("m_employeeController")]
+script = ExtResource("6_ojs2r")
+m_employeeController = NodePath("")
+
+[connection signal="input_event" from="Sprite2D/Area2D" to="." method="OnClick"]
