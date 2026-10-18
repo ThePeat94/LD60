@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ci5iouq4lh2y5"]
 
-[ext_resource type="Texture2D" uid="uid://hwa32mecg030" path="res://assets/art/room_recolored.png" id="1_5ali7"]
 [ext_resource type="Texture2D" uid="uid://867h8bdu6r77" path="res://assets/art/background-removedcurtainonright.png" id="1_6t4bp"]
 [ext_resource type="PackedScene" uid="uid://b07fw6hiuhj2u" path="res://scenes/generators/science_generator.tscn" id="1_mlknq"]
+[ext_resource type="Texture2D" uid="uid://icusctrgg47r" path="res://assets/art/room_removedcurtainonright.png" id="2_6t4bp"]
 [ext_resource type="PackedScene" uid="uid://dcuw26e2ppgd3" path="res://scenes/generators/patent_generator.tscn" id="2_edqit"]
 [ext_resource type="Script" uid="uid://dmywt6vc0vtok" path="res://scripts/ResourceControllerNode.cs" id="3_mlknq"]
 [ext_resource type="Texture2D" uid="uid://dac0bk76lfpwp" path="res://assets/art/animals.png" id="3_vq575"]
@@ -26,7 +26,7 @@ texture = ExtResource("1_6t4bp")
 [node name="Room" type="Sprite2D" parent="Room" unique_id=983687004]
 z_index = 2
 scale = Vector2(6.0065217, 6.0065217)
-texture = ExtResource("1_5ali7")
+texture = ExtResource("2_6t4bp")
 
 [node name="Animals" type="Sprite2D" parent="Room" unique_id=160194286]
 z_index = 3
