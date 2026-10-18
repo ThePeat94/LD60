@@ -20,7 +20,7 @@
 [ext_resource type="Resource" uid="uid://b0lmcslgtykk4" path="res://resources/base_player_stats.tres" id="18_kmb1v"]
 [ext_resource type="PackedScene" uid="uid://dmvasq8mrr7ks" path="res://scenes/employees/employee_controller.tscn" id="19_fuf3a"]
 
-[node name="Node2D" type="Node2D" unique_id=1462648990]
+[node name="Node2D2" type="Node2D" unique_id=1462648990]
 
 [node name="Room" type="Node2D" parent="." unique_id=709882698]
 
@@ -82,7 +82,7 @@ scale = Vector2(6.007, 6.007)
 texture = ExtResource("9_vxglm")
 
 [node name="SkilltreeController" parent="Room/Desk" unique_id=85181344 node_paths=PackedStringArray("m_skillTreeUi", "m_skillPoints") instance=ExtResource("10_2f3dj")]
-position = Vector2(31.96271, 55.268852)
+position = Vector2(44.947563, 56.434162)
 m_skillTreeUi = NodePath("../../../GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container")
 m_skillPoints = NodePath("../../../ResourceControllers/GlobalSkillPointsController")
 
@@ -96,7 +96,7 @@ m_employeeController = NodePath("../../../../EmployeeController")
 m_shopController = NodePath("../../ShopController")
 
 [node name="ShopController" parent="Room/Desk" unique_id=524025840 node_paths=PackedStringArray("Money", "ShopUI") instance=ExtResource("11_yq6so")]
-position = Vector2(-108.04062, 44.78109)
+position = Vector2(-100.216415, 47.44465)
 ShopUpgrades = Array[Object]([])
 Money = NodePath("../../../ResourceControllers/GlobalMoneyController")
 ShopUI = NodePath("../../../GameHUD/ShopUI")
@@ -135,24 +135,25 @@ position = Vector2(0, 6.337759e-07)
 
 [node name="Stool" parent="ScienceGenerator" index="5" unique_id=1770075103]
 z_index = 4
+position = Vector2(0, 6.3133416)
 
 [node name="PatentGenerator" parent="." unique_id=53403002 node_paths=PackedStringArray("m_consumed", "PlayerStatsContainer") instance=ExtResource("14_qkpxi")]
-position = Vector2(-512, -80)
+position = Vector2(-512, -27.000004)
 scale = Vector2(6.007, 6.007)
 m_consumed = NodePath("../ResourceControllers/GlobalScienceController")
 PlayerStatsContainer = NodePath("../PlayerStats")
 
-[node name="RewardController" parent="PatentGenerator" index="3" unique_id=1303221621 node_paths=PackedStringArray("m_playerStats", "m_generated")]
+[node name="RewardController" parent="PatentGenerator" index="2" unique_id=1303221621 node_paths=PackedStringArray("m_playerStats", "m_generated")]
 m_playerStats = NodePath("../../PlayerStats")
 m_generated = NodePath("../../ResourceControllers/GlobalMoneyController")
 
 [node name="SkillPointGenerator" parent="." unique_id=948207944 node_paths=PackedStringArray("m_consumed", "PlayerStatsContainer") instance=ExtResource("15_5q0nq")]
-position = Vector2(588, 45)
+position = Vector2(563, 16)
 scale = Vector2(6.007, 6.007)
 m_consumed = NodePath("../ResourceControllers/GlobalScienceController")
 PlayerStatsContainer = NodePath("../PlayerStats")
 
-[node name="Reward Controller" parent="SkillPointGenerator" index="3" unique_id=2039802272 node_paths=PackedStringArray("m_playerStats", "m_generated")]
+[node name="Reward Controller" parent="SkillPointGenerator" index="2" unique_id=2039802272 node_paths=PackedStringArray("m_playerStats", "m_generated")]
 m_playerStats = NodePath("../../PlayerStats")
 m_generated = NodePath("../../ResourceControllers/GlobalSkillPointsController")
 
