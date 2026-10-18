@@ -1,17 +1,16 @@
 [gd_scene format=3 uid="uid://cop5xu6120mg3"]
 
-[ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="1_vkgft"]
 [ext_resource type="Script" uid="uid://rqesxtjjsjl4" path="res://scripts/Generator/GeneratorController.cs" id="2_ep6bw"]
 [ext_resource type="Resource" uid="uid://fk7grp2true3" path="res://resources/skill_point_level_data.tres" id="3_34ywl"]
 [ext_resource type="Script" uid="uid://1wv4xpg7yo4e" path="res://scripts/UI/GeneratorProgressDisplay.cs" id="4_0ko83"]
 [ext_resource type="Script" uid="uid://dmywt6vc0vtok" path="res://scripts/ResourceControllerNode.cs" id="5_s5ah5"]
 [ext_resource type="Script" uid="uid://nto14lja7dgm" path="res://scripts/Generator/SkillPointGeneratorRewardController.cs" id="6_8dt4t"]
+[ext_resource type="Texture2D" uid="uid://b1fkc57o7ydbe" path="res://assets/art/bookshelf-right-section.png" id="6_iuxxb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
-size = Vector2(128, 128)
+size = Vector2(66, 115)
 
-[node name="SkillPointGenerator" type="Sprite2D" unique_id=948207944 node_paths=PackedStringArray("m_required", "m_generatorRewardController")]
-texture = ExtResource("1_vkgft")
+[node name="SkillPointGenerator" type="Node2D" unique_id=553754768 node_paths=PackedStringArray("m_required", "m_generatorRewardController")]
 script = ExtResource("2_ep6bw")
 m_required = NodePath("Resource Controller")
 m_generatorRewardController = NodePath("Reward Controller")
@@ -20,6 +19,7 @@ ProgressionLevelData = ExtResource("3_34ywl")
 [node name="Area2D" type="Area2D" parent="." unique_id=501859260]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1489615702]
+position = Vector2(-1, -5)
 shape = SubResource("RectangleShape2D_bklno")
 
 [node name="Control" type="Control" parent="." unique_id=1008209505]
@@ -47,5 +47,9 @@ script = ExtResource("5_s5ah5")
 
 [node name="Reward Controller" type="Node" parent="." unique_id=2039802272]
 script = ExtResource("6_8dt4t")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1480630932]
+position = Vector2(-94, -2)
+texture = ExtResource("6_iuxxb")
 
 [connection signal="input_event" from="Area2D" to="." method="OnClick"]

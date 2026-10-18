@@ -1,17 +1,20 @@
 [gd_scene format=3 uid="uid://dcuw26e2ppgd3"]
 
-[ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="1_nn88t"]
 [ext_resource type="Script" uid="uid://rqesxtjjsjl4" path="res://scripts/Generator/GeneratorController.cs" id="2_a4kuy"]
 [ext_resource type="Resource" uid="uid://uhjlsasuo436" path="res://resources/patent_level_data.tres" id="3_a4kuy"]
 [ext_resource type="Script" uid="uid://dmywt6vc0vtok" path="res://scripts/ResourceControllerNode.cs" id="4_3i7xt"]
 [ext_resource type="Script" uid="uid://1wv4xpg7yo4e" path="res://scripts/UI/GeneratorProgressDisplay.cs" id="4_a4kuy"]
+[ext_resource type="Texture2D" uid="uid://d3g105rod4v0p" path="res://assets/art/machinery-back-left-section.png" id="6_g8ayl"]
 [ext_resource type="Script" uid="uid://xs0wijy71dm1" path="res://scripts/Generator/PatentGeneratorRewardController.cs" id="6_wdtd2"]
+[ext_resource type="Texture2D" uid="uid://b30yub36xfftf" path="res://assets/art/light-bulb-left-section.png" id="7_2fnvo"]
+[ext_resource type="Texture2D" uid="uid://cq7tvjh70ndg4" path="res://assets/art/tools-left-section.png" id="8_pdsy3"]
+[ext_resource type="Texture2D" uid="uid://cw4soeir05tr6" path="res://assets/art/top-gear-left-section.png" id="9_0hrct"]
+[ext_resource type="Texture2D" uid="uid://d0023g7ttxh2d" path="res://assets/art/bottom-gear-left-section.png" id="10_i5752"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
-size = Vector2(128, 128)
+size = Vector2(65, 135)
 
-[node name="PatentGenerator" type="Sprite2D" unique_id=53403002 node_paths=PackedStringArray("m_required", "m_generatorRewardController")]
-texture = ExtResource("1_nn88t")
+[node name="PatentGenerator" type="Node2D" unique_id=1033176365 node_paths=PackedStringArray("m_required", "m_generatorRewardController")]
 script = ExtResource("2_a4kuy")
 m_required = NodePath("Resource Controller")
 m_generatorRewardController = NodePath("RewardController")
@@ -20,6 +23,7 @@ ProgressionLevelData = ExtResource("3_a4kuy")
 [node name="Area2D" type="Area2D" parent="." unique_id=2009975528]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=186203293]
+position = Vector2(-1.5, -3.5)
 shape = SubResource("RectangleShape2D_bklno")
 
 [node name="Control" type="Control" parent="." unique_id=62698773]
@@ -47,5 +51,24 @@ script = ExtResource("4_3i7xt")
 
 [node name="RewardController" type="Node" parent="." unique_id=1303221621]
 script = ExtResource("6_wdtd2")
+
+[node name="PatentSprites" type="Node2D" parent="." unique_id=1654048151]
+position = Vector2(88, 7)
+
+[node name="Sprite2D" type="Sprite2D" parent="PatentSprites" unique_id=400545932]
+texture = ExtResource("6_g8ayl")
+region_rect = Rect2(0, 0, 320, 180)
+
+[node name="Sprite2D2" type="Sprite2D" parent="PatentSprites" unique_id=1572660564]
+texture = ExtResource("7_2fnvo")
+
+[node name="Sprite2D3" type="Sprite2D" parent="PatentSprites" unique_id=1583660717]
+texture = ExtResource("8_pdsy3")
+
+[node name="Sprite2D4" type="Sprite2D" parent="PatentSprites" unique_id=1768583159]
+texture = ExtResource("9_0hrct")
+
+[node name="Sprite2D5" type="Sprite2D" parent="PatentSprites" unique_id=2082845287]
+texture = ExtResource("10_i5752")
 
 [connection signal="input_event" from="Area2D" to="." method="OnClick"]

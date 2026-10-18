@@ -18,6 +18,7 @@ damping_max = 30.000002
 anim_offset_max = 1.0
 
 [node name="Particles" type="GPUParticles2D" unique_id=530427116]
+z_index = 4
 material = SubResource("CanvasItemMaterial_bklno")
 emitting = false
 texture = ExtResource("1_q84hm")
