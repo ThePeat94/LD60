@@ -2,6 +2,7 @@ using System.Linq;
 using Godot;
 using Godot.Collections;
 using Nidavellir.GDResource.SkillTree;
+using Nidavellir.IdleNumbers;
 using Nidavellir.SkillTree.UI;
 
 namespace Nidavellir.SkillTree;
@@ -10,6 +11,8 @@ public partial class SkillTreeController : Node
 {
     [Export] private SkillTreeUI m_skillTreeUi;
     [Export] private Array<SkillTreeItemData> m_shopUpgrades;
+    [Export] private ResourceControllerNode m_skillPoints;
+    [Export] private SkillTreeUpgradeController m_upgradeController;
     
     private System.Collections.Generic.Dictionary<SkillTreeItemData, int> m_boughtUpgrades = new();
 
@@ -25,5 +28,20 @@ public partial class SkillTreeController : Node
             return;
         
         this.m_skillTreeUi.Open(this.m_boughtUpgrades);
+    }
+
+    public void AttemptPurchase(SkillTreeItemData upgradeData)
+    {
+        var bought = this.m_boughtUpgrades[upgradeData];
+        if (bought >= upgradeData.MaximumAmount)
+            return;
+        
+        var costToBuy = upgradeData.CostModel.CalculateFor(new IdleNumber(bought));
+
+        if (!this.m_skillPoints.ResourceController.CanAfford(costToBuy))
+            return;
+        
+        this.m_skillPoints.ResourceController.UseResource(costToBuy);
+        upgradeData.Upgrade.Apply(this.m_upgradeController);
     }
 }
