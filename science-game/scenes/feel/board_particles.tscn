@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bntuvd3a5igwm"]
+
+[ext_resource type="Texture2D" uid="uid://cqfrqfe17ecc1" path="res://assets/art/formulas.png" id="1_q84hm"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bklno"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 4
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oh4or"]
+lifetime_randomness = 0.4
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 30.0
+initial_velocity_max = 80.0
+damping_max = 30.000002
+anim_offset_max = 1.0
+
+[node name="Particles" type="GPUParticles2D" unique_id=530427116]
+z_index = 4
+material = SubResource("CanvasItemMaterial_bklno")
+emitting = false
+texture = ExtResource("1_q84hm")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_oh4or")

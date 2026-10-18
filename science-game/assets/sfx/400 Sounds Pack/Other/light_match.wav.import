@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d2v2c7xhvejvx"
+path="res://.godot/imported/light_match.wav-dce2a6540df3141a68e8b74df167ebee.sample"
+
+[deps]
+
+source_file="res://assets/sfx/400 Sounds Pack/Other/light_match.wav"
+dest_files=["res://.godot/imported/light_match.wav-dce2a6540df3141a68e8b74df167ebee.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

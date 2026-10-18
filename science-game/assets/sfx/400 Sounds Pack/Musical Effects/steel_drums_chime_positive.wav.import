@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://8chq3ac1mjhw"
+path="res://.godot/imported/steel_drums_chime_positive.wav-9f30f34fdfac322b3a69ea8a6e5f7703.sample"
+
+[deps]
+
+source_file="res://assets/sfx/400 Sounds Pack/Musical Effects/steel_drums_chime_positive.wav"
+dest_files=["res://.godot/imported/steel_drums_chime_positive.wav-9f30f34fdfac322b3a69ea8a6e5f7703.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

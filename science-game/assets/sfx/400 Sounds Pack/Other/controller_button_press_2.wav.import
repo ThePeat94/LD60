@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b5u56etfl41f5"
+path="res://.godot/imported/controller_button_press_2.wav-08d0175d1d36015826e94486c3a6226f.sample"
+
+[deps]
+
+source_file="res://assets/sfx/400 Sounds Pack/Other/controller_button_press_2.wav"
+dest_files=["res://.godot/imported/controller_button_press_2.wav-08d0175d1d36015826e94486c3a6226f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

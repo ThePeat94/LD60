@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://clh6haqeap1ls"
+path="res://.godot/imported/fire_lighting.wav-651b7084a10c7491842123e15fcaad6b.sample"
+
+[deps]
+
+source_file="res://assets/sfx/400 Sounds Pack/Environment/fire_lighting.wav"
+dest_files=["res://.godot/imported/fire_lighting.wav-651b7084a10c7491842123e15fcaad6b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
