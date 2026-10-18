@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://befr2a82hvyu1"
+path="res://.godot/imported/munching_food.wav-ec314b0cfd01974517619bacc0f4cc86.sample"
+
+[deps]
+
+source_file="res://assets/sfx/400 Sounds Pack/Other/munching_food.wav"
+dest_files=["res://.godot/imported/munching_food.wav-ec314b0cfd01974517619bacc0f4cc86.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

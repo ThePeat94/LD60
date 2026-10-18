@@ -1,14 +1,26 @@
 [gd_scene format=3 uid="uid://b07fw6hiuhj2u"]
 
-[ext_resource type="Texture2D" uid="uid://cob6wc6acjns1" path="res://assets/art/table-middle-section.png" id="1_mp6ib"]
 [ext_resource type="Script" uid="uid://bj6kx41u5xkb2" path="res://scripts/Generator/ScienceGenerator.cs" id="2_w5mg2"]
 [ext_resource type="Texture2D" uid="uid://cqfrqfe17ecc1" path="res://assets/art/formulas.png" id="3_ao4x3"]
+[ext_resource type="AudioStream" uid="uid://cds1yd1vmmhcr" path="res://assets/sfx/400 Sounds Pack/Materials/concrete_scrape.wav" id="4_4djqy"]
+[ext_resource type="Script" uid="uid://bglusmjfbdqlj" path="res://scripts/GameFeel/FeelSfxPlayer.cs" id="4_8nhun"]
+[ext_resource type="AudioStream" uid="uid://8xnjy2l18ssh" path="res://assets/sfx/400 Sounds Pack/Materials/cardboard_hit.wav" id="5_vfhpw"]
+[ext_resource type="Texture2D" uid="uid://k4yp4cltrq2s" path="res://assets/art/tablestand-standalone.png" id="6_oh4or"]
+[ext_resource type="Script" uid="uid://ngvqkxdthk4f" path="res://scripts/GameFeel/FeelShaker.cs" id="7_ssgk1"]
+[ext_resource type="Texture2D" uid="uid://4my0w86cpv2p" path="res://assets/art/table-standalone.png" id="7_tqpxg"]
+[ext_resource type="Texture2D" uid="uid://c1saok5efp1m5" path="res://assets/art/stool-middle-section.png" id="8_5do4e"]
+[ext_resource type="Script" uid="uid://mod3uhf0e68j" path="res://scripts/GameFeel/FeelVfxIconSpawner.cs" id="10_5do4e"]
+[ext_resource type="PackedScene" uid="uid://bntuvd3a5igwm" path="res://scenes/feel/board_particles.tscn" id="11_nsibk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
 size = Vector2(72, 101)
 
-[node name="ScienceGenerator" type="Sprite2D" unique_id=147243357]
-texture = ExtResource("1_mp6ib")
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rep15"]
+streams_count = 2
+stream_0/stream = ExtResource("4_4djqy")
+stream_1/stream = ExtResource("5_vfhpw")
+
+[node name="ScienceGenerator" type="Node2D" unique_id=2092047668]
 script = ExtResource("2_w5mg2")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=317168343]
@@ -17,9 +29,35 @@ script = ExtResource("2_w5mg2")
 position = Vector2(1, 4.5)
 shape = SubResource("RectangleShape2D_bklno")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1430449463]
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1094893019]
+stream = SubResource("AudioStreamRandomizer_rep15")
+max_polyphony = 8
+script = ExtResource("4_8nhun")
+
+[node name="Shaker" type="Node" parent="." unique_id=51520491 node_paths=PackedStringArray("m_toShake")]
+script = ExtResource("7_ssgk1")
+m_toShake = NodePath("../Board")
+
+[node name="TableStand" type="Sprite2D" parent="." unique_id=1132932598]
+texture = ExtResource("6_oh4or")
+
+[node name="Board" type="Sprite2D" parent="." unique_id=1909314594]
+texture = ExtResource("7_tqpxg")
+
+[node name="Formulas" type="Sprite2D" parent="Board" unique_id=1430449463]
 position = Vector2(0, -15)
 scale = Vector2(0.29764944, 0.29764944)
 texture = ExtResource("3_ao4x3")
 
+[node name="Stool" type="Sprite2D" parent="." unique_id=1770075103]
+texture = ExtResource("8_5do4e")
+
+[node name="VfxSpawner" type="Node" parent="." unique_id=438782268 node_paths=PackedStringArray("m_origin")]
+script = ExtResource("10_5do4e")
+m_origin = NodePath("../Board")
+m_particles = ExtResource("11_nsibk")
+
+[connection signal="input_event" from="Area2D" to="AudioPlayer" method="Trigger"]
+[connection signal="input_event" from="Area2D" to="Shaker" method="OnClick"]
 [connection signal="input_event" from="Area2D" to="." method="OnClick"]
+[connection signal="input_event" from="Area2D" to="VfxSpawner" method="OnClick"]

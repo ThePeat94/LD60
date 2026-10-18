@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://de1h3us33ua15"
+path="res://.godot/imported/paper_move.wav-f4de4d544c2138ac2412a4f9d9655f4a.sample"
+
+[deps]
+
+source_file="res://assets/sfx/400 Sounds Pack/Materials/paper_move.wav"
+dest_files=["res://.godot/imported/paper_move.wav-f4de4d544c2138ac2412a4f9d9655f4a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
