@@ -4,10 +4,27 @@
 [ext_resource type="Resource" uid="uid://fk7grp2true3" path="res://resources/skill_point_level_data.tres" id="3_34ywl"]
 [ext_resource type="Script" uid="uid://dmywt6vc0vtok" path="res://scripts/ResourceControllerNode.cs" id="5_s5ah5"]
 [ext_resource type="Script" uid="uid://nto14lja7dgm" path="res://scripts/Generator/SkillPointGeneratorRewardController.cs" id="6_8dt4t"]
+[ext_resource type="Script" uid="uid://ngvqkxdthk4f" path="res://scripts/GameFeel/FeelShaker.cs" id="6_8tly7"]
 [ext_resource type="Texture2D" uid="uid://b1fkc57o7ydbe" path="res://assets/art/right_section_bookshelf/bookshelf-right-section.png" id="6_iuxxb"]
+[ext_resource type="AudioStream" uid="uid://de1h3us33ua15" path="res://assets/sfx/400 Sounds Pack/Materials/paper_move.wav" id="7_afykx"]
+[ext_resource type="AudioStream" uid="uid://cmqalmau6hix8" path="res://assets/sfx/400 Sounds Pack/Materials/paper_scrunch.wav" id="8_wdhrk"]
+[ext_resource type="AudioStream" uid="uid://gu8l3b8t6dym" path="res://assets/sfx/400 Sounds Pack/Materials/paper_sort.wav" id="9_x3hhi"]
+[ext_resource type="AudioStream" uid="uid://beethmyx1n0x8" path="res://assets/sfx/400 Sounds Pack/Materials/paper_tear_1.wav" id="10_g507v"]
+[ext_resource type="AudioStream" uid="uid://b245csu4a7y0i" path="res://assets/sfx/400 Sounds Pack/Materials/paper_tear_2.wav" id="11_oudt5"]
+[ext_resource type="Script" uid="uid://bglusmjfbdqlj" path="res://scripts/GameFeel/FeelSfxPlayer.cs" id="12_thcd7"]
+[ext_resource type="Script" uid="uid://mod3uhf0e68j" path="res://scripts/GameFeel/FeelVfxIconSpawner.cs" id="13_wdhrk"]
+[ext_resource type="PackedScene" uid="uid://bntuvd3a5igwm" path="res://scenes/feel/board_particles.tscn" id="14_x3hhi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
 size = Vector2(66, 115)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bklno"]
+streams_count = 5
+stream_0/stream = ExtResource("7_afykx")
+stream_1/stream = ExtResource("8_wdhrk")
+stream_2/stream = ExtResource("9_x3hhi")
+stream_3/stream = ExtResource("10_g507v")
+stream_4/stream = ExtResource("11_oudt5")
 
 [node name="SkillPointGenerator" type="Node2D" unique_id=553754768 node_paths=PackedStringArray("m_required", "m_generatorRewardController")]
 script = ExtResource("2_ep6bw")
@@ -31,4 +48,20 @@ script = ExtResource("6_8dt4t")
 position = Vector2(-94, -2)
 texture = ExtResource("6_iuxxb")
 
+[node name="Shaker" type="Node" parent="." unique_id=607128618 node_paths=PackedStringArray("m_toShake")]
+script = ExtResource("6_8tly7")
+m_toShake = NodePath("../Sprite2D")
+
+[node name="AudioFX" type="AudioStreamPlayer2D" parent="." unique_id=304791276]
+stream = SubResource("AudioStreamRandomizer_bklno")
+script = ExtResource("12_thcd7")
+
+[node name="ParticleSpawner" type="Node" parent="." unique_id=253483539 node_paths=PackedStringArray("m_origin")]
+script = ExtResource("13_wdhrk")
+m_origin = NodePath("..")
+m_particles = ExtResource("14_x3hhi")
+
 [connection signal="input_event" from="Area2D" to="." method="OnClick"]
+[connection signal="input_event" from="Area2D" to="Shaker" method="OnClick"]
+[connection signal="input_event" from="Area2D" to="AudioFX" method="Trigger"]
+[connection signal="input_event" from="Area2D" to="ParticleSpawner" method="OnClick"]

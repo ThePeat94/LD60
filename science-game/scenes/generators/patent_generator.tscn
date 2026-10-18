@@ -11,9 +11,20 @@
 [ext_resource type="Texture2D" uid="uid://d18jthb61uo3t" path="res://assets/art/curtains/research-curtain.png" id="10_2fnvo"]
 [ext_resource type="Texture2D" uid="uid://d0023g7ttxh2d" path="res://assets/art/left_section_engineering-room/bottom-gear-left-section.png" id="10_i5752"]
 [ext_resource type="Script" uid="uid://drs0euodsbijl" path="res://scripts/GameFeature/GeneratorUnlocker.cs" id="11_pdsy3"]
+[ext_resource type="AudioStream" uid="uid://135s6dy07bqn" path="res://assets/sfx/400 Sounds Pack/Materials/metal_clang.wav" id="12_sd3r0"]
+[ext_resource type="AudioStream" uid="uid://02s35exnjljy" path="res://assets/sfx/400 Sounds Pack/Materials/metal_blunt_tap.wav" id="13_h832c"]
+[ext_resource type="Script" uid="uid://bglusmjfbdqlj" path="res://scripts/GameFeel/FeelSfxPlayer.cs" id="14_wp5iy"]
+[ext_resource type="Script" uid="uid://mod3uhf0e68j" path="res://scripts/GameFeel/FeelVfxIconSpawner.cs" id="15_m1k5i"]
+[ext_resource type="Script" uid="uid://ngvqkxdthk4f" path="res://scripts/GameFeel/FeelShaker.cs" id="16_1ebab"]
+[ext_resource type="PackedScene" uid="uid://bntuvd3a5igwm" path="res://scenes/feel/board_particles.tscn" id="16_h832c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
 size = Vector2(65, 135)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bklno"]
+streams_count = 2
+stream_0/stream = ExtResource("12_sd3r0")
+stream_1/stream = ExtResource("13_h832c")
 
 [node name="PatentGenerator" type="Node2D" unique_id=1033176365 node_paths=PackedStringArray("m_required", "m_generatorRewardController")]
 script = ExtResource("2_a4kuy")
@@ -60,4 +71,20 @@ script = ExtResource("11_pdsy3")
 m_curtains = NodePath("../PatentSprites/Sprite2D6")
 m_clickArea = NodePath("../Area2D")
 
+[node name="AudioFX" type="AudioStreamPlayer2D" parent="." unique_id=118490050]
+stream = SubResource("AudioStreamRandomizer_bklno")
+script = ExtResource("14_wp5iy")
+
+[node name="ParticleSpawner" type="Node" parent="." unique_id=944262688 node_paths=PackedStringArray("m_origin")]
+script = ExtResource("15_m1k5i")
+m_origin = NodePath("..")
+m_particles = ExtResource("16_h832c")
+
+[node name="Shaker" type="Node" parent="." unique_id=556279007 node_paths=PackedStringArray("m_toShake")]
+script = ExtResource("16_1ebab")
+m_toShake = NodePath("../PatentSprites")
+
 [connection signal="input_event" from="Area2D" to="." method="OnClick"]
+[connection signal="input_event" from="Area2D" to="AudioFX" method="Trigger"]
+[connection signal="input_event" from="Area2D" to="ParticleSpawner" method="OnClick"]
+[connection signal="input_event" from="Area2D" to="Shaker" method="OnClick"]

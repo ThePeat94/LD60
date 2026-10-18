@@ -5,7 +5,7 @@ using Nidavellir.PlayerStats;
 
 namespace Nidavellir.Generator;
 
-public partial class GeneratorController : Node, IGenerator
+public partial class GeneratorController : Node2D, IGenerator
 {
     [Export] private ResourceControllerNode m_consumed;
     [Export] private ResourceControllerNode m_required;
