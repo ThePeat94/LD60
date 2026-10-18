@@ -25,9 +25,9 @@ public partial class SkillTreeController : Node
 
     public void OnClick(Viewport viewport, InputEvent evt, int shapeIdx)
     {
-        if (evt is not InputEventMouseButton { Pressed: true })
+        if (evt is not InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Left })
             return;
-        
+        GD.Print("OPEN SKILLTREEE");
         this.m_skillTreeUi.Open(this.m_boughtUpgrades);
     }
 

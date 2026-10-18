@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="3_8wrus"]
 [ext_resource type="Resource" uid="uid://c4dhm6i7m4tr" path="res://resources/skillTree/items/click_upgrade_2.tres" id="4_h8doe"]
 [ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.cs" id="5_t6ywl"]
+[ext_resource type="Script" uid="uid://cujtkib78qvoo" path="res://scripts/GDResource/SkillTree/PlayerStatUpgrades/AdditiveEntityStatUpgradeData.cs" id="5_vodly"]
 
 [sub_resource type="Resource" id="Resource_oxnmk"]
 script = ExtResource("1_5wdx0")
@@ -22,11 +23,22 @@ Base = SubResource("Resource_oxnmk")
 Slope = SubResource("Resource_01kl4")
 metadata/_custom_type_script = "uid://ddxwa8yrpoypp"
 
+[sub_resource type="Resource" id="Resource_vodly"]
+script = ExtResource("1_5wdx0")
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_5wdx0"]
+script = ExtResource("5_vodly")
+SkillPointConversionIncrease = SubResource("Resource_vodly")
+metadata/_custom_type_script = "uid://cujtkib78qvoo"
+
 [resource]
 script = ExtResource("5_t6ywl")
 SkillName = "Skilled Skiller"
 Description = "Blablabla"
 Icon = ExtResource("3_8wrus")
 CostModel = SubResource("Resource_tekeu")
+Upgrade = SubResource("Resource_5wdx0")
 PreRequisites = Array[Object]([ExtResource("4_h8doe")])
+MaximumAmount = 5
 metadata/_custom_type_script = "uid://ccdf3herk8v4r"
