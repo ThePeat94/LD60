@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Nidavellir.GDResource;
+namespace Nidavellir.GDResource.Employee;
 
 [GlobalClass]
 public partial class EmployeeDataContainer : Resource

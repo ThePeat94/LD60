@@ -2,7 +2,7 @@ using Godot;
 using Nidavellir.GDResource.Shop;
 using Nidavellir.SkillTree;
 
-namespace Nidavellir.GDResource.SkillTree.FeatureUnlockUpgrades;
+namespace Nidavellir.GDResource.SkillTree.FeatureUnlock;
 
 [GlobalClass]
 public partial class UnlockShopFeatureData : SkillTreeUpgradeData

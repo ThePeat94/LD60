@@ -1,6 +1,7 @@
 using Godot;
 using Nidavellir.GDResource;
 using Nidavellir.Generator;
+using EmployeeData = Nidavellir.GDResource.Employee.EmployeeData;
 
 namespace Nidavellir.Automation;
 

@@ -2,8 +2,11 @@ using System;
 using System.Collections.Generic;
 using Godot;
 using Nidavellir.GDResource;
+using Nidavellir.GDResource.Employee;
 using Nidavellir.GDResource.SkillTree;
 using Nidavellir.Generator;
+using EmployeeDataContainer = Nidavellir.GDResource.Employee.EmployeeDataContainer;
+using EmployeeStatUpgradeData = Nidavellir.GDResource.SkillTree.EntityStatUpgrades.Employee.EmployeeStatUpgradeData;
 
 namespace Nidavellir.Automation;
 

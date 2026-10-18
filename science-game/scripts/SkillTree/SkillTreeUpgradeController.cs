@@ -1,11 +1,11 @@
-using System.Collections.Generic;
 using Godot;
-using Godot.Collections;
 using Nidavellir.Automation;
-using Nidavellir.GDResource.SkillTree;
-using Nidavellir.GDResource.SkillTree.FeatureUnlockUpgrades;
+using Nidavellir.GDResource.SkillTree.EntityStatUpgrades.Player;
 using Nidavellir.PlayerStats;
 using Nidavellir.Shop;
+using EmployeeUpgradeData = Nidavellir.GDResource.SkillTree.EntityStatUpgrades.Employee.EmployeeUpgradeData;
+using PlayerUpgradeData = Nidavellir.GDResource.SkillTree.EntityStatUpgrades.Player.PlayerUpgradeData;
+using UnlockShopFeatureData = Nidavellir.GDResource.SkillTree.FeatureUnlock.UnlockShopFeatureData;
 
 namespace Nidavellir.SkillTree;
 

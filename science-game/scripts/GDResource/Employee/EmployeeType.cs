@@ -1,4 +1,4 @@
-namespace Nidavellir.GDResource;
+namespace Nidavellir.GDResource.Employee;
 
 public enum EmployeeType
 {
