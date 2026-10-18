@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b44cjm750ude" path="res://scenes/gnomes/thinker_gnomes.tscn" id="8_nsibk"]
 [ext_resource type="Script" uid="uid://mod3uhf0e68j" path="res://scripts/GameFeel/FeelVfxIconSpawner.cs" id="10_5do4e"]
 [ext_resource type="PackedScene" uid="uid://bntuvd3a5igwm" path="res://scenes/feel/board_particles.tscn" id="11_nsibk"]
+[ext_resource type="Script" uid="uid://q401bcjsgqij" path="res://scripts/GameFeel/CursorChanger.cs" id="12_nsibk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
 size = Vector2(72, 53)
@@ -65,6 +66,11 @@ m_origin = NodePath("../Board")
 m_particles = ExtResource("11_nsibk")
 
 [node name="GeneratedRewardSFX" type="AudioStreamPlayer2D" parent="." unique_id=1603542881]
+
+[node name="CursorChanger" type="Node2D" parent="." unique_id=1509205220 node_paths=PackedStringArray("m_clickArea")]
+script = ExtResource("12_nsibk")
+m_clickArea = NodePath("../Area2D")
+metadata/_custom_type_script = "uid://q401bcjsgqij"
 
 [connection signal="input_event" from="Area2D" to="." method="OnClick"]
 [connection signal="input_event" from="Area2D" to="AudioPlayer" method="Trigger"]

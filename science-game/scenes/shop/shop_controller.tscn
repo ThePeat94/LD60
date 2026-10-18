@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bcgflj1nii0sh" path="res://scripts/GameFeature/ShopUnlocker.cs" id="7_oltln"]
 [ext_resource type="AudioStream" uid="uid://yev6ay8s2psm" path="res://assets/sfx/400 Sounds Pack/Items/book_open.wav" id="8_5vpls"]
 [ext_resource type="Script" uid="uid://bglusmjfbdqlj" path="res://scripts/GameFeel/FeelSfxPlayer.cs" id="9_d1p4o"]
+[ext_resource type="Script" uid="uid://q401bcjsgqij" path="res://scripts/GameFeel/CursorChanger.cs" id="10_3dv6o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5vd1"]
 size = Vector2(64, 25)
@@ -45,6 +46,11 @@ m_shopArea = NodePath("../Sprite2D/Area2D")
 stream = SubResource("AudioStreamRandomizer_d1p4o")
 max_polyphony = 8
 script = ExtResource("9_d1p4o")
+
+[node name="CursorChanger" type="Node2D" parent="." unique_id=1233282911 node_paths=PackedStringArray("m_clickArea")]
+script = ExtResource("10_3dv6o")
+m_clickArea = NodePath("../Sprite2D/Area2D")
+metadata/_custom_type_script = "uid://q401bcjsgqij"
 
 [connection signal="input_event" from="Sprite2D/Area2D" to="." method="OnClick"]
 [connection signal="input_event" from="Sprite2D/Area2D" to="AudioStreamPlayer2D" method="Trigger"]

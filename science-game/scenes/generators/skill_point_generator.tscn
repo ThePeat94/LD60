@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://bglusmjfbdqlj" path="res://scripts/GameFeel/FeelSfxPlayer.cs" id="12_thcd7"]
 [ext_resource type="Script" uid="uid://mod3uhf0e68j" path="res://scripts/GameFeel/FeelVfxIconSpawner.cs" id="13_wdhrk"]
 [ext_resource type="PackedScene" uid="uid://bntuvd3a5igwm" path="res://scenes/feel/board_particles.tscn" id="14_x3hhi"]
+[ext_resource type="Script" uid="uid://q401bcjsgqij" path="res://scripts/GameFeel/CursorChanger.cs" id="16_g507v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
 size = Vector2(66, 115)
@@ -74,6 +75,11 @@ script = ExtResource("12_thcd7")
 script = ExtResource("13_wdhrk")
 m_origin = NodePath("..")
 m_particles = ExtResource("14_x3hhi")
+
+[node name="CursorChanger" type="Node2D" parent="." unique_id=1261240774 node_paths=PackedStringArray("m_clickArea")]
+script = ExtResource("16_g507v")
+m_clickArea = NodePath("../Area2D")
+metadata/_custom_type_script = "uid://q401bcjsgqij"
 
 [connection signal="input_event" from="Area2D" to="." method="OnClick"]
 [connection signal="input_event" from="Area2D" to="Shaker" method="OnClick"]

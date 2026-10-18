@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cvgx6wrfovxjg" path="res://scripts/SkillTree/SkillTreeUpgradeController.cs" id="4_y5km3"]
 [ext_resource type="AudioStream" uid="uid://yev6ay8s2psm" path="res://assets/sfx/400 Sounds Pack/Items/book_open.wav" id="5_cy0jp"]
 [ext_resource type="Script" uid="uid://bglusmjfbdqlj" path="res://scripts/GameFeel/FeelSfxPlayer.cs" id="6_vkbgl"]
+[ext_resource type="Script" uid="uid://q401bcjsgqij" path="res://scripts/GameFeel/CursorChanger.cs" id="7_y5km3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5vd1"]
 size = Vector2(89.5, 37.5)
@@ -36,6 +37,11 @@ script = ExtResource("4_y5km3")
 stream = SubResource("AudioStreamRandomizer_bklno")
 max_polyphony = 8
 script = ExtResource("6_vkbgl")
+
+[node name="CursorChanger" type="Node2D" parent="." unique_id=1769643554 node_paths=PackedStringArray("m_clickArea")]
+script = ExtResource("7_y5km3")
+m_clickArea = NodePath("../Sprite2D/Area2D")
+metadata/_custom_type_script = "uid://q401bcjsgqij"
 
 [connection signal="input_event" from="Sprite2D/Area2D" to="." method="OnClick"]
 [connection signal="input_event" from="Sprite2D/Area2D" to="AudioStreamPlayer2D" method="Trigger"]

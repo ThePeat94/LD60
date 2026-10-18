@@ -23,6 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://bvnwc7kiu3vng" path="res://assets/sfx/400 Sounds Pack/Retro/coin_3.wav" id="20_n7s0f"]
 [ext_resource type="AudioStream" uid="uid://51vqx5tif0f" path="res://assets/sfx/400 Sounds Pack/Retro/coin_4.wav" id="21_fcb6e"]
 [ext_resource type="PackedScene" uid="uid://b833rmqexim81" path="res://scenes/gnomes/patent_gnome.tscn" id="23_n7s0f"]
+[ext_resource type="Script" uid="uid://q401bcjsgqij" path="res://scripts/GameFeel/CursorChanger.cs" id="24_fcb6e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
 size = Vector2(65, 135)
@@ -129,6 +130,11 @@ position = Vector2(-2, 9)
 
 [node name="PatentGnome4" parent="Gnomes" unique_id=122202072 instance=ExtResource("23_n7s0f")]
 position = Vector2(-24, -11)
+
+[node name="CursorChanger" type="Node2D" parent="." unique_id=970323945 node_paths=PackedStringArray("m_clickArea")]
+script = ExtResource("24_fcb6e")
+m_clickArea = NodePath("../Area2D")
+metadata/_custom_type_script = "uid://q401bcjsgqij"
 
 [connection signal="GeneratedReward" from="." to="GeneratedRewardSFX" method="Trigger"]
 [connection signal="input_event" from="Area2D" to="." method="OnClick"]

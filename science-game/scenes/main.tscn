@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://0tgd1yd4japm" path="res://scripts/PlayerStats/PlayerStatsContainer.cs" id="17_j8jky"]
 [ext_resource type="Resource" uid="uid://b0lmcslgtykk4" path="res://resources/base_player_stats.tres" id="18_kmb1v"]
 [ext_resource type="PackedScene" uid="uid://dmvasq8mrr7ks" path="res://scenes/employees/employee_controller.tscn" id="19_fuf3a"]
+[ext_resource type="Script" uid="uid://bv0nr4cjm43w8" path="res://scripts/GameFeel/CursorInstaller.cs" id="21_yc10j"]
 
 [node name="Node2D2" type="Node2D" unique_id=1462648990]
 
@@ -236,6 +237,10 @@ m_employeesPerGnome = 1
 m_thinkerGnomes = [NodePath("../ScienceGenerator/Board/ThinkerGnome"), NodePath("../ScienceGenerator/Board/ThinkerGnome2"), NodePath("../ScienceGenerator/Board/ThinkerGnome4"), NodePath("../ScienceGenerator/Stool/ThinkerGnome3")]
 m_inventorGnomes = [NodePath("../PatentGenerator/Gnomes/PatentGnome"), NodePath("../PatentGenerator/Gnomes/PatentGnome2"), NodePath("../PatentGenerator/Gnomes/PatentGnome3"), NodePath("../PatentGenerator/Gnomes/PatentGnome4")]
 m_scribeGnomes = [NodePath("../SkillPointGenerator/Sprite2D/ScribeGnome"), NodePath("../SkillPointGenerator/Sprite2D/ScribeGnome2"), NodePath("../SkillPointGenerator/Sprite2D/ScribeGnome3"), NodePath("../SkillPointGenerator/Sprite2D/ScribeGnome4")]
+
+[node name="CursorInstaller" type="Node" parent="." unique_id=281278508]
+script = ExtResource("21_yc10j")
+metadata/_custom_type_script = "uid://bv0nr4cjm43w8"
 
 [editable path="Room/Science Display"]
 [editable path="Room/Skillpoints Displa"]
