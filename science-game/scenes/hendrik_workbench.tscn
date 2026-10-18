@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://hwa32mecg030" path="res://assets/art/room_recolored.png" id="1_5ali7"]
 [ext_resource type="PackedScene" uid="uid://b07fw6hiuhj2u" path="res://scenes/generators/science_generator.tscn" id="1_mlknq"]
 [ext_resource type="PackedScene" uid="uid://dcuw26e2ppgd3" path="res://scenes/generators/patent_generator.tscn" id="2_edqit"]
-[ext_resource type="Script" uid="uid://dcjym3cy33l6t" path="res://scripts/SkillTree/UI/SkillTreeUI.cs" id="2_vq575"]
 [ext_resource type="Script" uid="uid://dmywt6vc0vtok" path="res://scripts/ResourceControllerNode.cs" id="3_mlknq"]
 [ext_resource type="PackedScene" uid="uid://cop5xu6120mg3" path="res://scenes/generators/skill_point_generator.tscn" id="3_yvvbm"]
 [ext_resource type="Script" uid="uid://0tgd1yd4japm" path="res://scripts/PlayerStats/PlayerStatsContainer.cs" id="4_vmktp"]
@@ -52,107 +51,6 @@ m_skillTreeController = NodePath("../../../../../../SkilltreeController")
 [node name="SkillTreeNodeUI" parent="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" index="0" unique_id=878878694]
 offset_right = 300.0
 offset_bottom = 100.0
-
-[node name="Skill Tree" type="Control" parent="GameHUD/Skill Tree" parent_id_path=PackedInt32Array(1847261213, 1222491598) index="1" unique_id=1368355347]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" parent="GameHUD/Skill Tree/Skill Tree" index="0"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -700.0
-offset_top = -400.0
-offset_right = 700.0
-offset_bottom = 400.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(700, 400)
-
-[node name="Close Button" parent="GameHUD/Skill Tree/Skill Tree/Panel" index="0"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -329.0
-offset_top = -105.0
-offset_right = -29.0
-offset_bottom = -25.0
-grow_horizontal = 0
-grow_vertical = 0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_font_sizes/font_size = 42
-text = "Close"
-
-[node name="VBoxContainer" parent="GameHUD/Skill Tree/Skill Tree/Panel" index="1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -125.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_constants/separation = 20
-
-[node name="Label" parent="GameHUD/Skill Tree/Skill Tree/Panel/VBoxContainer" index="0"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 42
-text = "Skill Tree"
-horizontal_alignment = 1
-
-[node name="ScrollContainer" parent="GameHUD/Skill Tree/Skill Tree/Panel/VBoxContainer" index="1"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Container" parent="GameHUD/Skill Tree/Skill Tree/Panel/VBoxContainer/ScrollContainer" index="0" node_paths=PackedStringArray("m_rootNode", "m_skillTreeController")]
-custom_minimum_size = Vector2(3000, 3000)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = ExtResource("2_vq575")
-m_rootNode = NodePath("../../../..")
-m_skillTreeController = NodePath("../../../../../../../SkilltreeController")
-
-[node name="SkillTreeNodeUI" parent="GameHUD/Skill Tree/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" index="0" unique_id=878878694]
-layout_mode = 0
-offset_left = 520.0
-offset_top = 66.0
-offset_right = 300.0
-offset_bottom = 100.0
-
-[node name="SkillTreeNodeUI2" parent="GameHUD/Skill Tree/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" index="1" unique_id=878878694]
-layout_mode = 0
-offset_left = 523.0
-offset_top = 312.0
-offset_right = 923.0
-offset_bottom = 480.0
-m_data = ExtResource("14_fep4v")
-
-[node name="SkillTreeNodeUI3" parent="GameHUD/Skill Tree/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" index="2" unique_id=878878694]
-layout_mode = 0
-offset_left = 300.0
-offset_top = 573.0
-offset_right = 700.0
-offset_bottom = 741.0
-m_data = ExtResource("18_vq575")
-
-[node name="SkillTreeNodeUI4" parent="GameHUD/Skill Tree/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" index="3" unique_id=878878694]
-layout_mode = 0
-offset_left = 774.0
-offset_top = 573.0
-offset_right = 1174.0
-offset_bottom = 741.0
-m_data = ExtResource("17_5ali7")
 
 [node name="Room" type="Node2D" parent="." unique_id=709882698]
 
@@ -250,7 +148,6 @@ m_scienceGenerator = NodePath("../ScienceGenerator")
 script = ExtResource("15_sm0ys")
 m_employeeController = NodePath("../EmployeeController")
 
-[connection signal="pressed" from="GameHUD/Skill Tree/Skill Tree/Panel/Close Button" to="GameHUD/Skill Tree/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" method="Close"]
 [connection signal="input_event" from="Shop/Sprite2D/Area2D" to="Shop" method="OnClick"]
 [connection signal="input_event" from="SkilltreeController/Sprite2D/Area2D" to="SkilltreeController" method="OnClick"]
 
@@ -260,10 +157,6 @@ m_employeeController = NodePath("../EmployeeController")
 [editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI2"]
 [editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI3"]
 [editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI4"]
-[editable path="GameHUD/Skill Tree/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI"]
-[editable path="GameHUD/Skill Tree/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI2"]
-[editable path="GameHUD/Skill Tree/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI3"]
-[editable path="GameHUD/Skill Tree/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI4"]
 [editable path="ScienceGenerator"]
 [editable path="PatentGenerator"]
 [editable path="SkillPointGenerator"]
