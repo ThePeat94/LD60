@@ -54,6 +54,7 @@ m_toShake = NodePath("../Sprite2D")
 
 [node name="AudioFX" type="AudioStreamPlayer2D" parent="." unique_id=304791276]
 stream = SubResource("AudioStreamRandomizer_bklno")
+max_polyphony = 8
 script = ExtResource("12_thcd7")
 
 [node name="ParticleSpawner" type="Node" parent="." unique_id=253483539 node_paths=PackedStringArray("m_origin")]

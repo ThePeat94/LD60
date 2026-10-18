@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bntuvd3a5igwm" path="res://scenes/feel/board_particles.tscn" id="11_nsibk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
-size = Vector2(72, 101)
+size = Vector2(72, 53)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rep15"]
 streams_count = 2
@@ -25,7 +25,7 @@ script = ExtResource("2_w5mg2")
 [node name="Area2D" type="Area2D" parent="." unique_id=317168343]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1882448020]
-position = Vector2(1, 4.5)
+position = Vector2(1, -16.5)
 shape = SubResource("RectangleShape2D_bklno")
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1094893019]

@@ -7,9 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://brlj063h1nsya" path="res://assets/art/desk/desk-utensils.png" id="5_ojs2r"]
 [ext_resource type="Script" uid="uid://d1fhk0b1fsuov" path="res://scripts/Upgrades/UpgradeController.cs" id="6_ojs2r"]
 [ext_resource type="Script" uid="uid://bcgflj1nii0sh" path="res://scripts/GameFeature/ShopUnlocker.cs" id="7_oltln"]
+[ext_resource type="AudioStream" uid="uid://yev6ay8s2psm" path="res://assets/sfx/400 Sounds Pack/Items/book_open.wav" id="8_5vpls"]
+[ext_resource type="Script" uid="uid://bglusmjfbdqlj" path="res://scripts/GameFeel/FeelSfxPlayer.cs" id="9_d1p4o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5vd1"]
 size = Vector2(64, 25)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_d1p4o"]
+streams_count = 1
+stream_0/stream = ExtResource("8_5vpls")
 
 [node name="ShopController" type="Node2D" unique_id=524025840 node_paths=PackedStringArray("m_upgradeController")]
 script = ExtResource("1_ye267")
@@ -35,4 +41,10 @@ script = ExtResource("7_oltln")
 m_shopSprite = NodePath("../Sprite2D")
 m_shopArea = NodePath("../Sprite2D/Area2D")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1675722831]
+stream = SubResource("AudioStreamRandomizer_d1p4o")
+max_polyphony = 8
+script = ExtResource("9_d1p4o")
+
 [connection signal="input_event" from="Sprite2D/Area2D" to="." method="OnClick"]
+[connection signal="input_event" from="Sprite2D/Area2D" to="AudioStreamPlayer2D" method="Trigger"]

@@ -73,6 +73,7 @@ m_clickArea = NodePath("../Area2D")
 
 [node name="AudioFX" type="AudioStreamPlayer2D" parent="." unique_id=118490050]
 stream = SubResource("AudioStreamRandomizer_bklno")
+max_polyphony = 8
 script = ExtResource("14_wp5iy")
 
 [node name="ParticleSpawner" type="Node" parent="." unique_id=944262688 node_paths=PackedStringArray("m_origin")]
