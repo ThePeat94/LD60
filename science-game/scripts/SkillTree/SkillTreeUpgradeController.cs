@@ -1,34 +1,49 @@
 using System.Collections.Generic;
 using Godot;
+using Godot.Collections;
+using Nidavellir.Automation;
 using Nidavellir.GDResource.SkillTree;
 using Nidavellir.GDResource.SkillTree.FeatureUnlockUpgrades;
 using Nidavellir.PlayerStats;
+using Nidavellir.Shop;
 
 namespace Nidavellir.SkillTree;
 
 public partial class SkillTreeUpgradeController : Node
 {
     [Export] private PlayerStatsContainer m_playerStats;
+    [Export] private EmployeeController m_employeeController;
+    [Export] private ShopController m_shopController;
 
-    public void ApplyPlayerStatUpgrade(EntityStatUpgradeData u)
+    public void ApplyPlayerStatUpgrade(PlayerUpgradeData u)
     {
-        if (u.ClickStrengthUpgrade is not null)
+        foreach (var upgrade in u.Upgrades)
         {
-            this.m_playerStats.ClickStrength.AddEntityStatUpgrade(u, u.ClickStrengthUpgrade.ToIdleNumber());
-        }
-
-        if (u.MoneyConversionIncrease is not null)
-        {
-            this.m_playerStats.MoneyConversion.AddEntityStatUpgrade(u, u.MoneyConversionIncrease.ToIdleNumber());
-        }
-
-        if (u.SkillPointConversionIncrease is not null)
-        {
-            this.m_playerStats.SkillPointConversion.AddEntityStatUpgrade(u, u.SkillPointConversionIncrease.ToIdleNumber());
+            switch (upgrade.Target)
+            {
+                case PlayerStatTarget.ClickStrength:
+                    this.m_playerStats.ClickStrength.AddEntityStatUpgrade(upgrade);
+                    break;
+                case PlayerStatTarget.MoneyConversion:
+                    this.m_playerStats.MoneyConversion.AddEntityStatUpgrade(upgrade);
+                    break;
+                case PlayerStatTarget.SkillPointConversion:
+                    this.m_playerStats.SkillPointConversion.AddEntityStatUpgrade(upgrade);
+                    break;
+            }
         }
     }
 
-    public void UnlockFeature(FeatureUnlockData featureUnlockData)
+    public void ApplyEmployeeStatUpgrade(EmployeeUpgradeData u)
     {
+        foreach (var upgrade in u.Upgrades)
+        {
+            this.m_employeeController.ApplyEmployeeUpgrades(upgrade);
+        }
+    }
+
+    public void UnlockShopFeature(UnlockShopFeatureData unlockShopFeatureData)
+    {
+        this.m_shopController.UnlockFeature(unlockShopFeatureData);
     }
 }

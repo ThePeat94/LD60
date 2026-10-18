@@ -5,7 +5,8 @@
 [ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.cs" id="1_s5uov"]
 [ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="2_mp72y"]
 [ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="4_mni4f"]
-[ext_resource type="Script" uid="uid://c2s3kelfm6cb1" path="res://scripts/GDResource/SkillTree/PlayerStatUpgrades/MultiplicativeEntityStatUpgradeData.cs" id="5_ntsii"]
+[ext_resource type="Script" uid="uid://b1ayjcrr35te0" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/Player/PlayerStatUpgradeData.cs" id="5_mp72y"]
+[ext_resource type="Script" uid="uid://b0h2rn416ikw4" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/Player/PlayerUpgradeData.cs" id="6_mni4f"]
 
 [sub_resource type="Resource" id="Resource_3k14s"]
 script = ExtResource("4_mni4f")
@@ -23,15 +24,21 @@ Base = SubResource("Resource_3k14s")
 Slope = SubResource("Resource_5ali7")
 metadata/_custom_type_script = "uid://ddxwa8yrpoypp"
 
-[sub_resource type="Resource" id="Resource_cai0h"]
+[sub_resource type="Resource" id="Resource_jve2n"]
 script = ExtResource("4_mni4f")
 Value = 1.05
 metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
 
-[sub_resource type="Resource" id="Resource_olodv"]
-script = ExtResource("5_ntsii")
-ClickStrengthUpgrade = SubResource("Resource_cai0h")
-metadata/_custom_type_script = "uid://c2s3kelfm6cb1"
+[sub_resource type="Resource" id="Resource_sm0ys"]
+script = ExtResource("5_mp72y")
+Operation = 1
+Amount = SubResource("Resource_jve2n")
+metadata/_custom_type_script = "uid://b1ayjcrr35te0"
+
+[sub_resource type="Resource" id="Resource_yvvbm"]
+script = ExtResource("6_mni4f")
+Upgrades = Array[Object]([SubResource("Resource_sm0ys")])
+metadata/_custom_type_script = "uid://b0h2rn416ikw4"
 
 [resource]
 script = ExtResource("1_rhhgp")
@@ -39,7 +46,7 @@ SkillName = "Discover your inner beings"
 Description = "Blablabla"
 Icon = ExtResource("2_mp72y")
 CostModel = SubResource("Resource_i7dyb")
-Upgrade = SubResource("Resource_olodv")
+Upgrade = SubResource("Resource_yvvbm")
 PreRequisites = Array[Object]([ExtResource("1_e0igi")])
 MaximumAmount = 5
 metadata/_custom_type_script = "uid://ccdf3herk8v4r"

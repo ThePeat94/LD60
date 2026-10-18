@@ -15,5 +15,8 @@ public partial class EmployeeData : Resource
     public IdleNumberResource BaseWorkForce { get; set; }
     
     [Export]
-    public double BaseTickSpeed { get; set; }
+    public IdleNumberResource BaseTickSpeed { get; set; }
+    
+    [Export]
+    public EmployeeType EmployeeType { get; set; }
 }

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EmployeeDataContainer" format=3 uid="uid://cncajely83dwk"]
+
+[ext_resource type="Script" uid="uid://l2vqsgk7bosc" path="res://scripts/GDResource/Employee/EmployeeDataContainer.cs" id="1_awhdu"]
+[ext_resource type="Resource" uid="uid://dsswpexp7xtvm" path="res://resources/employees/inventor.tres" id="1_wyhk6"]
+[ext_resource type="Resource" uid="uid://chdeqx4qgw2h0" path="res://resources/employees/scribe.tres" id="2_e4mof"]
+[ext_resource type="Resource" uid="uid://c77eepetb3eb7" path="res://resources/employees/thinker.tres" id="3_c35ry"]
+
+[resource]
+script = ExtResource("1_awhdu")
+ThinkerData = ExtResource("3_c35ry")
+InventorData = ExtResource("1_wyhk6")
+ScribeData = ExtResource("2_e4mof")
+metadata/_custom_type_script = "uid://l2vqsgk7bosc"

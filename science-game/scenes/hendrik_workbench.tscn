@@ -51,7 +51,7 @@ ShopController = NodePath("../../ShopController")
 [node name="Container" parent="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer" parent_id_path=PackedInt32Array(1847261213, 2108983879) index="0" unique_id=1347082111 node_paths=PackedStringArray("m_skillTreeController")]
 m_skillTreeController = NodePath("../../../../../../SkilltreeController")
 
-[node name="SkillTreeNodeUI" parent="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" index="0" unique_id=878878694]
+[node name="Base Click Upgrade" parent="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" index="0" unique_id=878878694]
 offset_right = 300.0
 offset_bottom = 100.0
 
@@ -110,6 +110,7 @@ BaseStats = ExtResource("6_3k14s")
 
 [node name="ShopController" parent="." unique_id=524025840 node_paths=PackedStringArray("Money", "ShopUI") instance=ExtResource("10_rep15")]
 position = Vector2(-440, 420)
+ShopUpgrades = Array[Object]([])
 Money = NodePath("../ResourceControllers/GlobalMoneyController")
 ShopUI = NodePath("../GameHUD/ShopUI")
 
@@ -128,8 +129,10 @@ m_skillPoints = NodePath("../ResourceControllers/GlobalSkillPointsController")
 z_index = 5
 position = Vector2(0, 1)
 
-[node name="UpgradeController" parent="SkilltreeController" index="1" unique_id=1259699767 node_paths=PackedStringArray("m_playerStats")]
+[node name="UpgradeController" parent="SkilltreeController" index="1" unique_id=1259699767 node_paths=PackedStringArray("m_playerStats", "m_employeeController", "m_shopController")]
 m_playerStats = NodePath("../../PlayerStats")
+m_employeeController = NodePath("../../EmployeeController")
+m_shopController = NodePath("../../ShopController")
 
 [node name="EmployeeController" parent="." unique_id=130145111 node_paths=PackedStringArray("m_patentGenerator", "m_skillpointGenerator", "m_scienceGenerator") instance=ExtResource("16_sm0ys")]
 m_patentGenerator = NodePath("../PatentGenerator")
@@ -138,10 +141,19 @@ m_scienceGenerator = NodePath("../ScienceGenerator")
 
 [editable path="GameHUD"]
 [editable path="GameHUD/ShopUI"]
-[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI"]
-[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI2"]
-[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI3"]
-[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI4"]
+[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Base Click Upgrade"]
+[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Multiplicative Click Upgrade"]
+[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Potent Patents"]
+[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Skilled Skiller"]
+[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Unlock Thinkers"]
+[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Stronger Thinkers"]
+[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Faster Thinkers"]
+[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Unlock Inventors"]
+[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Stronger Inventors"]
+[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Faster Inventors"]
+[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Unlock Scribes"]
+[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Stronger Scribes"]
+[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Faster Scribes"]
 [editable path="ScienceGenerator"]
 [editable path="PatentGenerator"]
 [editable path="SkillPointGenerator"]
