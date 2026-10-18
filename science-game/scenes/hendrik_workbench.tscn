@@ -15,7 +15,9 @@
 [ext_resource type="Resource" uid="uid://qxyt52ihrtlg" path="res://resources/shop/scribe.tres" id="12_sm0ys"]
 [ext_resource type="Script" uid="uid://ddemuenp0lqtk" path="res://scripts/Automation/EmployeeController.cs" id="12_ubj5k"]
 [ext_resource type="PackedScene" uid="uid://4ux0ljfhtpgf" path="res://scenes/employees/thinker.tscn" id="13_2n7ax"]
+[ext_resource type="Script" uid="uid://bmfcsxh4xfi5n" path="res://scripts/SkillTree/SkillTreeController.cs" id="14_lmrt3"]
 [ext_resource type="PackedScene" uid="uid://cd3v04n6sk73t" path="res://scenes/employees/inventor.tscn" id="14_yvvbm"]
+[ext_resource type="Resource" uid="uid://cac8ru3omfski" path="res://resources/skillTree/items/click_upgrade_1.tres" id="15_k5vd1"]
 [ext_resource type="Script" uid="uid://d1fhk0b1fsuov" path="res://scripts/Upgrades/UpgradeController.cs" id="15_sm0ys"]
 [ext_resource type="PackedScene" uid="uid://801xtflpr5br" path="res://scenes/employees/scribe.tscn" id="17_jve2n"]
 
@@ -88,6 +90,10 @@ ResourceControllerNode = NodePath("../../../../ResourceControllers/GlobalSkillPo
 [node name="ShopUI" parent="GameHUD" index="1" unique_id=1511127767 node_paths=PackedStringArray("ShopController")]
 ShopController = NodePath("../../Shop")
 
+[node name="SkillTreeNodeUI" parent="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" parent_id_path=PackedInt32Array(1847261213, 1347082111) index="0" unique_id=878878694]
+offset_right = 300.0
+offset_bottom = 100.0
+
 [node name="Shop" type="Node2D" parent="." unique_id=85274226 node_paths=PackedStringArray("m_upgradeController", "Money", "ShopUI")]
 position = Vector2(-440, 420)
 script = ExtResource("8_8aw4k")
@@ -104,8 +110,11 @@ texture = ExtResource("8_edqit")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shop/Sprite2D/Area2D" unique_id=1423172229]
 shape = SubResource("RectangleShape2D_k5vd1")
 
-[node name="Skilltree" type="Node2D" parent="." unique_id=379888565]
+[node name="Skilltree" type="Node2D" parent="." unique_id=379888565 node_paths=PackedStringArray("m_skillTreeUi")]
 position = Vector2(597, 387)
+script = ExtResource("14_lmrt3")
+m_skillTreeUi = NodePath("../GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container")
+m_shopUpgrades = Array[Object]([ExtResource("15_k5vd1")])
 
 [node name="Sprite2D" type="Sprite2D" parent="Skilltree" unique_id=1143286315]
 texture = ExtResource("8_edqit")
@@ -136,3 +145,4 @@ m_employeeController = NodePath("../EmployeeController")
 [editable path="SkillPointGenerator"]
 [editable path="GameHUD"]
 [editable path="GameHUD/ShopUI"]
+[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI"]

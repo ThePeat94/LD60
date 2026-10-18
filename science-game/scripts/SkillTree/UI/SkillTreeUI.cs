@@ -2,11 +2,14 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using Nidavellir.GDResource.SkillTree;
+using Nidavellir.IdleNumbers;
 
 namespace Nidavellir.SkillTree.UI;
 
 public partial class SkillTreeUI : Control
 {
+    [Export] private Control m_rootNode;
+    
     private List<SkillTreeNodeUI> m_nodes = [];
     private Dictionary<SkillTreeItemData, SkillTreeNodeUI> m_uiForData = new();
 
@@ -16,6 +19,25 @@ public partial class SkillTreeUI : Control
         this.m_nodes = [.. this.GetChildren().OfType<SkillTreeNodeUI>()];
         this.m_uiForData = this.m_nodes.ToDictionary(x => x.Data);
         this.QueueRedraw();
+    }
+
+    public void Open(Dictionary<SkillTreeItemData, int> boughtUpgrades)
+    {
+        foreach (var skillItem in boughtUpgrades)
+        {
+            if (!this.m_uiForData.TryGetValue(skillItem.Key, out var ui))
+                continue;
+            
+            var boughtAmount = boughtUpgrades[skillItem.Key];
+            ui.Display(boughtAmount,skillItem.Key.MaximumAmount, skillItem.Key.CostModel.CalculateFor(new IdleNumber(boughtAmount)));
+        }
+
+        this.m_rootNode.Visible = true;
+    }
+
+    public void Close()
+    {
+        this.m_rootNode.Visible = false;
     }
 
     public override void _Draw()

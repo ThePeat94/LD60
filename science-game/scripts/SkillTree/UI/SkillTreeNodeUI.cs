@@ -4,7 +4,7 @@ using Nidavellir.IdleNumbers;
 
 namespace Nidavellir.SkillTree.UI;
 
-public partial class SkillTreeNodeUI : Control
+public partial class SkillTreeNodeUI : PanelContainer
 {
     [Export] private SkillTreeItemData m_data;
     [Export] private TextureRect m_icon;
@@ -14,11 +14,34 @@ public partial class SkillTreeNodeUI : Control
     
     public SkillTreeItemData Data => this.m_data;
 
+    public override void _EnterTree()
+    {
+        base._EnterTree();
+        this.MouseEntered += this.OnMouseEntered;
+    }
+
+    private void OnMouseEntered()
+    {
+        
+    }
+
+    public override void _GuiInput(InputEvent evt)
+    {
+        base._GuiInput(evt);
+        if (evt is not InputEventMouseButton { Pressed: true })
+        {
+            return;
+        }
+        
+        GD.Print("KLICK KLICK KLICK");
+        this.AcceptEvent();
+    }
+
     public void Display(int amount, int maxAmount, IdleNumber cost)
     {
         this.m_icon.Texture = this.m_data.Icon;
         this.m_name.Text = this.m_data.SkillName;
         this.m_cost.Text = cost.ToString();
-        this.m_amount.Text =  amount.ToString();
+        this.m_amount.Text = $"{amount}/{maxAmount}";
     }
 }
