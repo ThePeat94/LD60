@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b44cjm750ude"]
+
+[ext_resource type="Texture2D" uid="uid://cvfs36y1dbfa3" path="res://assets/art/gnomes.png" id="1_xtqlo"]
+
+[node name="ThinkerGnome" type="Sprite2D" unique_id=1745542875]
+texture = ExtResource("1_xtqlo")
+region_enabled = true
+region_rect = Rect2(167, 106, 11, 15)

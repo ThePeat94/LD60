@@ -13,10 +13,16 @@ public partial class ResourceDisplay : Label
     public override void _Ready()
     {
         this.ResourceControllerNode.ResourceController.ResourceValueChanged += this.OnValueChanged;
+        this.UpdateText(this.ResourceControllerNode.ResourceController.CurrentValue);
     }
     
     private void OnValueChanged(object sender, ResourceValueChangedEvent e)
     {
-        this.Text = $"{e.NewValue}";
+        this.UpdateText(e.NewValue);
+    }
+
+    private void UpdateText(IdleNumber value)
+    {
+        this.Text = $"{value}";
     }
 }

@@ -53,4 +53,12 @@ public class IdleNumberResourceController
         this.CurrentValue -= amount;
         this.m_resourceValueChanged?.Invoke(this, new ResourceValueChangedEvent(this.CurrentValue));
     }
+
+    public void SetValue(IdleNumber value)
+    {
+        if (value.Value < 0)
+            throw new ArgumentException($"{value} is less than 0");
+        this.CurrentValue = value;
+        this.m_resourceValueChanged?.Invoke(this, new ResourceValueChangedEvent(this.CurrentValue));
+    }
 }

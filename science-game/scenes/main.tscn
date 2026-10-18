@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://vbfiwdh1714m" path="res://scenes/skillTree/skilltree_controller.tscn" id="10_2f3dj"]
 [ext_resource type="PackedScene" uid="uid://cwor0siurx2e8" path="res://scenes/shop/shop_controller.tscn" id="11_yq6so"]
 [ext_resource type="PackedScene" uid="uid://wbj312y6wcdh" path="res://scenes/game_hud.tscn" id="12_fv21b"]
+[ext_resource type="Script" uid="uid://bs3yi2igmc0j6" path="res://scripts/UI/GeneratorRemainingDisplay.cs" id="12_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://b07fw6hiuhj2u" path="res://scenes/generators/science_generator.tscn" id="13_tel4y"]
 [ext_resource type="PackedScene" uid="uid://dcuw26e2ppgd3" path="res://scenes/generators/patent_generator.tscn" id="14_qkpxi"]
 [ext_resource type="PackedScene" uid="uid://cop5xu6120mg3" path="res://scenes/generators/skill_point_generator.tscn" id="15_5q0nq"]
@@ -46,7 +47,7 @@ position = Vector2(-12, -462)
 ResourceControllerNode = NodePath("../../../ResourceControllers/GlobalScienceController")
 
 [node name="Skillpoints Displa" parent="Room" unique_id=2058778312 instance=ExtResource("4_jscy8")]
-position = Vector2(565, -462)
+position = Vector2(565, -461)
 
 [node name="Plate" parent="Room/Skillpoints Displa" index="0" unique_id=2014709232]
 texture = ExtResource("5_pm3ni")
@@ -73,6 +74,10 @@ texture = ExtResource("8_2wyq8")
 region_rect = Rect2(58, 8, 7, 10)
 
 [node name="Label" parent="Room/Money Display" index="2" unique_id=69640884 node_paths=PackedStringArray("ResourceControllerNode")]
+offset_left = -93.0
+offset_top = -52.0
+offset_right = -61.65622
+offset_bottom = -38.041664
 scale = Vector2(7.105793, 7.1425014)
 ResourceControllerNode = NodePath("../../../ResourceControllers/GlobalMoneyController")
 
@@ -90,10 +95,12 @@ m_skillPoints = NodePath("../../../ResourceControllers/GlobalSkillPointsControll
 z_index = 5
 position = Vector2(0, 1)
 
-[node name="UpgradeController" parent="Room/Desk/SkilltreeController" index="1" unique_id=1259699767 node_paths=PackedStringArray("m_playerStats", "m_employeeController", "m_shopController")]
+[node name="UpgradeController" parent="Room/Desk/SkilltreeController" index="1" unique_id=1259699767 node_paths=PackedStringArray("m_playerStats", "m_employeeController", "m_shopController", "m_patentUnlocker", "m_shopUnlocker")]
 m_playerStats = NodePath("../../../../PlayerStats")
 m_employeeController = NodePath("../../../../EmployeeController")
 m_shopController = NodePath("../../ShopController")
+m_patentUnlocker = NodePath("../../../../PatentGenerator/Unlocker")
+m_shopUnlocker = NodePath("../../ShopController/Unlocker")
 
 [node name="ShopController" parent="Room/Desk" unique_id=524025840 node_paths=PackedStringArray("Money", "ShopUI") instance=ExtResource("11_yq6so")]
 position = Vector2(-100.216415, 47.44465)
@@ -107,6 +114,44 @@ position = Vector2(54.103542, 14.816047)
 
 [node name="UpgradeController" parent="Room/Desk/ShopController" index="1" unique_id=352711260 node_paths=PackedStringArray("m_employeeController")]
 m_employeeController = NodePath("../../../../EmployeeController")
+
+[node name="Remaining PatentProgress" type="Node2D" parent="Room" unique_id=1451759895]
+position = Vector2(-658, -431)
+
+[node name="GeneratorRemainingDisplay" type="Label" parent="Room/Remaining PatentProgress" unique_id=1722313072 node_paths=PackedStringArray("m_generator")]
+z_index = 10
+offset_right = 273.0
+offset_bottom = 44.666668
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 32
+text = "HALLO"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("12_gqmmt")
+m_generator = NodePath("../../../PatentGenerator")
+metadata/_custom_type_script = "uid://bs3yi2igmc0j6"
+
+[node name="Remaining Knowledge Progress" type="Node2D" parent="Room" unique_id=732359676]
+position = Vector2(459, -414)
+
+[node name="GeneratorRemainingDisplay" type="Label" parent="Room/Remaining Knowledge Progress" unique_id=1228366936 node_paths=PackedStringArray("m_generator")]
+z_index = 10
+offset_right = 273.0
+offset_bottom = 44.666668
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 32
+text = "HALLO"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("12_gqmmt")
+m_generator = NodePath("../../../SkillPointGenerator")
+metadata/_custom_type_script = "uid://bs3yi2igmc0j6"
 
 [node name="GameHUD" parent="." unique_id=1847261213 instance=ExtResource("12_fv21b")]
 
@@ -147,6 +192,15 @@ PlayerStatsContainer = NodePath("../PlayerStats")
 m_playerStats = NodePath("../../PlayerStats")
 m_generated = NodePath("../../ResourceControllers/GlobalMoneyController")
 
+[node name="Unlocker" parent="PatentGenerator" index="5" unique_id=938280753 node_paths=PackedStringArray("m_otherUnlocks")]
+m_otherUnlocks = [NodePath("../../Room/Remaining PatentProgress"), NodePath("../../Room/Money Display")]
+
+[node name="PatentGnome" parent="PatentGenerator/Gnomes" parent_id_path=PackedInt32Array(53403002, 1445201801) index="0" unique_id=1745542875]
+position = Vector2(6.658902, 46.445816)
+
+[node name="PatentGnome2" parent="PatentGenerator/Gnomes" parent_id_path=PackedInt32Array(53403002, 1445201801) index="1" unique_id=1713072139]
+position = Vector2(-10.487762, 45.613453)
+
 [node name="SkillPointGenerator" parent="." unique_id=948207944 node_paths=PackedStringArray("m_consumed", "PlayerStatsContainer") instance=ExtResource("15_5q0nq")]
 position = Vector2(563, 16)
 scale = Vector2(6.007, 6.007)
@@ -174,10 +228,13 @@ script = ExtResource("16_dgi5k")
 script = ExtResource("17_j8jky")
 BaseStats = ExtResource("18_kmb1v")
 
-[node name="EmployeeController" parent="." unique_id=130145111 node_paths=PackedStringArray("m_patentGenerator", "m_skillpointGenerator", "m_scienceGenerator") instance=ExtResource("19_fuf3a")]
+[node name="EmployeeController" parent="." unique_id=130145111 node_paths=PackedStringArray("m_patentGenerator", "m_skillpointGenerator", "m_scienceGenerator", "m_thinkerGnomes", "m_inventorGnomes", "m_scribeGnomes") instance=ExtResource("19_fuf3a")]
 m_patentGenerator = NodePath("../PatentGenerator")
 m_skillpointGenerator = NodePath("../SkillPointGenerator")
 m_scienceGenerator = NodePath("../ScienceGenerator")
+m_thinkerGnomes = [NodePath("../ScienceGenerator/Board/ThinkerGnome"), NodePath("../ScienceGenerator/Board/ThinkerGnome2"), NodePath("../ScienceGenerator/Board/ThinkerGnome4"), NodePath("../ScienceGenerator/Stool/ThinkerGnome3")]
+m_inventorGnomes = [NodePath("../PatentGenerator/Gnomes/PatentGnome"), NodePath("../PatentGenerator/Gnomes/PatentGnome2"), NodePath("../PatentGenerator/Gnomes/PatentGnome3"), NodePath("../PatentGenerator/Gnomes/PatentGnome4")]
+m_scribeGnomes = [NodePath("../SkillPointGenerator/Sprite2D/ScribeGnome"), NodePath("../SkillPointGenerator/Sprite2D/ScribeGnome2"), NodePath("../SkillPointGenerator/Sprite2D/ScribeGnome3"), NodePath("../SkillPointGenerator/Sprite2D/ScribeGnome4")]
 
 [editable path="Room/Science Display"]
 [editable path="Room/Skillpoints Displa"]

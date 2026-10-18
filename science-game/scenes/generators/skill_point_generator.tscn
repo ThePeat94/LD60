@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://nto14lja7dgm" path="res://scripts/Generator/SkillPointGeneratorRewardController.cs" id="6_8dt4t"]
 [ext_resource type="Script" uid="uid://ngvqkxdthk4f" path="res://scripts/GameFeel/FeelShaker.cs" id="6_8tly7"]
 [ext_resource type="Texture2D" uid="uid://b1fkc57o7ydbe" path="res://assets/art/right_section_bookshelf/bookshelf-right-section.png" id="6_iuxxb"]
+[ext_resource type="PackedScene" uid="uid://xpqdrsj1rm2i" path="res://scenes/gnomes/scribe_gnome.tscn" id="6_x3hhi"]
 [ext_resource type="AudioStream" uid="uid://de1h3us33ua15" path="res://assets/sfx/400 Sounds Pack/Materials/paper_move.wav" id="7_afykx"]
 [ext_resource type="AudioStream" uid="uid://cmqalmau6hix8" path="res://assets/sfx/400 Sounds Pack/Materials/paper_scrunch.wav" id="8_wdhrk"]
 [ext_resource type="AudioStream" uid="uid://gu8l3b8t6dym" path="res://assets/sfx/400 Sounds Pack/Materials/paper_sort.wav" id="9_x3hhi"]
@@ -47,6 +48,18 @@ script = ExtResource("6_8dt4t")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1480630932]
 position = Vector2(-94, -2)
 texture = ExtResource("6_iuxxb")
+
+[node name="ScribeGnome" parent="Sprite2D" unique_id=1745542875 instance=ExtResource("6_x3hhi")]
+position = Vector2(70, -35)
+
+[node name="ScribeGnome2" parent="Sprite2D" unique_id=1192106214 instance=ExtResource("6_x3hhi")]
+position = Vector2(76, 14)
+
+[node name="ScribeGnome3" parent="Sprite2D" unique_id=755636817 instance=ExtResource("6_x3hhi")]
+position = Vector2(114, 13)
+
+[node name="ScribeGnome4" parent="Sprite2D" unique_id=1749096945 instance=ExtResource("6_x3hhi")]
+position = Vector2(93, 36)
 
 [node name="Shaker" type="Node" parent="." unique_id=607128618 node_paths=PackedStringArray("m_toShake")]
 script = ExtResource("6_8tly7")

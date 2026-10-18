@@ -18,7 +18,11 @@ public static class IdleNumberFormatter
 
     public static string FormatIdleNumber(IdleNumber idleNumber)
     {
-        return (Math.Floor(idleNumber.Value * 100) / 100).ToString("0.##") + GetUnitForIdleNumber(idleNumber);
+        if (idleNumber.Exponent >= 0)
+            return (Math.Floor(idleNumber.Value * 100) / 100).ToString("0.##") + GetUnitForIdleNumber(idleNumber);
+        
+        var plain = idleNumber.Value * Math.Pow(10, idleNumber.Exponent);                                                                                            
+        return plain < 0.01 ? "0" : plain.ToString("0.##");
     }
 
     public static string GetUnitForIdleNumber(IdleNumber idleNumber)

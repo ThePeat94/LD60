@@ -13,13 +13,16 @@ public partial class GeneratorController : Node2D, IGenerator
 
     public ResourceControllerNode Generated => this.m_generatorRewardController.Generated;
     public ResourceControllerNode Required => this.m_required;
-    public IdleNumber Requirement => this.GetLevelRequirement();
+    public IdleNumber Requirement => this.GetLevelRequirement(this.m_currentLevel);
         
     [Export]
     public PlayerStatsContainer PlayerStatsContainer { get; set; }
     
     [Export]
     public ProgressionLevelData ProgressionLevelData { get; set; }
+    
+    [Signal]
+    public delegate void GeneratedRewardEventHandler();
     
 
     private int m_currentLevel = 0;
@@ -33,30 +36,38 @@ public partial class GeneratorController : Node2D, IGenerator
         
     }
     
-    public void Generate(IdleNumber power)
-    {
-        var strengthToApply = this.m_consumed.ResourceController.CurrentValue >= power
-            ? power
-            : this.m_consumed.ResourceController.CurrentValue;
-        
-        this.m_consumed.ResourceController.UseResource(strengthToApply);
-        this.m_required.ResourceController.Add(strengthToApply);
-        var valueToBeat = this.GetLevelRequirement();
-
-        if (this.m_required.ResourceController.CurrentValue < valueToBeat) return;
-        do
-        {
-            this.m_required.ResourceController.UseResource(valueToBeat);
-            this.m_generatorRewardController.ApplyReward();
-            this.m_currentLevel++;
-            valueToBeat = this.GetLevelRequirement();
-        } while (this.m_required.ResourceController.CurrentValue >= valueToBeat);
-    }
-    
-    private IdleNumber GetLevelRequirement()
-    {
-        return this.m_currentLevel < this.ProgressionLevelData.FixedLevels.Count ? 
-            this.ProgressionLevelData.FixedLevels[this.m_currentLevel].ToIdleNumber() : 
-            this.ProgressionLevelData.DynamicLevels.CalculateFor(new IdleNumber(this.m_currentLevel));
-    }
+     public void Generate(IdleNumber power)                                                                                                                               
+  {                                                                                                                                                                    
+      var available = this.m_consumed.ResourceController.CurrentValue;                                                                                                 
+      var strengthToApply = available >= power ? power : available;                                                                                                    
+      if (strengthToApply.Value <= 0) return;                                                                                                                          
+                                                                                                                                                                       
+      var pool = this.m_required.ResourceController.CurrentValue + strengthToApply;                                                                                    
+      var levelsGained = 0;                                                                                                                                            
+      var requirement = this.GetLevelRequirement(this.m_currentLevel);                                                                                                 
+                                                                                                                                                                       
+      while (requirement.Value > 0 && pool >= requirement)                                                                                                             
+      {                                                                                                                                                                
+          pool -= requirement;                                                                                                                                         
+          levelsGained++;                                                                                                                                              
+          requirement = this.GetLevelRequirement(this.m_currentLevel + levelsGained);                                                                                  
+      }                                                                                                                                                                
+                                                                                                                                                                       
+      this.m_currentLevel += levelsGained;                                                                                                                             
+      this.m_consumed.ResourceController.UseResource(strengthToApply);                                                                                                 
+      this.m_required.ResourceController.SetValue(pool);                                                                                                               
+                                                                                                                                                                       
+      for (var i = 0; i < levelsGained; i++)                                                                                                                           
+          this.m_generatorRewardController.ApplyReward();                                                                                                              
+                                                                                                                                                                       
+      if (levelsGained > 0)                                                                                                                                            
+          this.EmitSignalGeneratedReward();                                                                                                                            
+  }                                                                                                                                                                    
+                                                                                                                                                                       
+  private IdleNumber GetLevelRequirement(int level)                                                                                                                    
+  {                                                                                                                                                                    
+      return level < this.ProgressionLevelData.FixedLevels.Count                                                                                                       
+          ? this.ProgressionLevelData.FixedLevels[level].ToIdleNumber()                                                                                                
+          : this.ProgressionLevelData.DynamicLevels.CalculateFor(new IdleNumber(level));                                                                               
+  }  
 }

@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cw4soeir05tr6" path="res://assets/art/left_section_engineering-room/top-gear-left-section.png" id="9_0hrct"]
 [ext_resource type="Texture2D" uid="uid://d18jthb61uo3t" path="res://assets/art/curtains/research-curtain.png" id="10_2fnvo"]
 [ext_resource type="Texture2D" uid="uid://d0023g7ttxh2d" path="res://assets/art/left_section_engineering-room/bottom-gear-left-section.png" id="10_i5752"]
+[ext_resource type="Texture2D" uid="uid://cltpvu3wmbsk0" path="res://assets/art/curtains/closed-curtains.png" id="10_rn21a"]
 [ext_resource type="Script" uid="uid://drs0euodsbijl" path="res://scripts/GameFeature/GeneratorUnlocker.cs" id="11_pdsy3"]
 [ext_resource type="AudioStream" uid="uid://135s6dy07bqn" path="res://assets/sfx/400 Sounds Pack/Materials/metal_clang.wav" id="12_sd3r0"]
 [ext_resource type="AudioStream" uid="uid://02s35exnjljy" path="res://assets/sfx/400 Sounds Pack/Materials/metal_blunt_tap.wav" id="13_h832c"]
@@ -17,6 +18,11 @@
 [ext_resource type="Script" uid="uid://mod3uhf0e68j" path="res://scripts/GameFeel/FeelVfxIconSpawner.cs" id="15_m1k5i"]
 [ext_resource type="Script" uid="uid://ngvqkxdthk4f" path="res://scripts/GameFeel/FeelShaker.cs" id="16_1ebab"]
 [ext_resource type="PackedScene" uid="uid://bntuvd3a5igwm" path="res://scenes/feel/board_particles.tscn" id="16_h832c"]
+[ext_resource type="AudioStream" uid="uid://d4jrvk72fokw3" path="res://assets/sfx/400 Sounds Pack/Retro/coin.wav" id="18_bxcsh"]
+[ext_resource type="AudioStream" uid="uid://c248qjc3c7b7i" path="res://assets/sfx/400 Sounds Pack/Retro/coin_2.wav" id="19_rn21a"]
+[ext_resource type="AudioStream" uid="uid://bvnwc7kiu3vng" path="res://assets/sfx/400 Sounds Pack/Retro/coin_3.wav" id="20_n7s0f"]
+[ext_resource type="AudioStream" uid="uid://51vqx5tif0f" path="res://assets/sfx/400 Sounds Pack/Retro/coin_4.wav" id="21_fcb6e"]
+[ext_resource type="PackedScene" uid="uid://b833rmqexim81" path="res://scenes/gnomes/patent_gnome.tscn" id="23_n7s0f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
 size = Vector2(65, 135)
@@ -25,6 +31,13 @@ size = Vector2(65, 135)
 streams_count = 2
 stream_0/stream = ExtResource("12_sd3r0")
 stream_1/stream = ExtResource("13_h832c")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pv4st"]
+streams_count = 4
+stream_0/stream = ExtResource("18_bxcsh")
+stream_1/stream = ExtResource("19_rn21a")
+stream_2/stream = ExtResource("20_n7s0f")
+stream_3/stream = ExtResource("21_fcb6e")
 
 [node name="PatentGenerator" type="Node2D" unique_id=1033176365 node_paths=PackedStringArray("m_required", "m_generatorRewardController")]
 script = ExtResource("2_a4kuy")
@@ -44,32 +57,44 @@ script = ExtResource("4_3i7xt")
 [node name="RewardController" type="Node" parent="." unique_id=1303221621]
 script = ExtResource("6_wdtd2")
 
-[node name="PatentSprites" type="Node2D" parent="." unique_id=1654048151]
+[node name="InnerPatentSprites" type="Node2D" parent="." unique_id=1654048151]
 position = Vector2(88, 7)
 
-[node name="Sprite2D" type="Sprite2D" parent="PatentSprites" unique_id=400545932]
+[node name="Machinery" type="Sprite2D" parent="InnerPatentSprites" unique_id=400545932]
 texture = ExtResource("6_g8ayl")
 region_rect = Rect2(0, 0, 320, 180)
 
-[node name="Sprite2D2" type="Sprite2D" parent="PatentSprites" unique_id=1572660564]
+[node name="Bulb" type="Sprite2D" parent="InnerPatentSprites" unique_id=1572660564]
 texture = ExtResource("7_2fnvo")
 
-[node name="Sprite2D3" type="Sprite2D" parent="PatentSprites" unique_id=1583660717]
+[node name="Utils" type="Sprite2D" parent="InnerPatentSprites" unique_id=1583660717]
 texture = ExtResource("8_pdsy3")
 
-[node name="Sprite2D4" type="Sprite2D" parent="PatentSprites" unique_id=1768583159]
+[node name="MidRight Gear" type="Sprite2D" parent="InnerPatentSprites" unique_id=1768583159]
 texture = ExtResource("9_0hrct")
 
-[node name="Sprite2D5" type="Sprite2D" parent="PatentSprites" unique_id=2082845287]
+[node name="MidGear" type="Sprite2D" parent="InnerPatentSprites" unique_id=2082845287]
 texture = ExtResource("10_i5752")
 
-[node name="Sprite2D6" type="Sprite2D" parent="PatentSprites" unique_id=2033753420]
+[node name="Outer2DSprites" type="Node2D" parent="." unique_id=1124813126]
+
+[node name="SideCurtain" type="Sprite2D" parent="Outer2DSprites" unique_id=1622856250]
+z_index = 1
+position = Vector2(-30, 4)
+texture = ExtResource("10_rn21a")
+region_enabled = true
+region_rect = Rect2(37, 25, 14, 120)
+
+[node name="Curtain" type="Sprite2D" parent="Outer2DSprites" unique_id=2033753420]
+visible = false
+position = Vector2(88, 7)
 texture = ExtResource("10_2fnvo")
 
-[node name="Unlocker" type="Node" parent="." unique_id=938280753 node_paths=PackedStringArray("m_curtains", "m_clickArea")]
+[node name="Unlocker" type="Node" parent="." unique_id=938280753 node_paths=PackedStringArray("m_curtains", "m_clickArea", "m_otherUnlocks")]
 script = ExtResource("11_pdsy3")
-m_curtains = NodePath("../PatentSprites/Sprite2D6")
+m_curtains = NodePath("../Outer2DSprites/Curtain")
 m_clickArea = NodePath("../Area2D")
+m_otherUnlocks = []
 
 [node name="AudioFX" type="AudioStreamPlayer2D" parent="." unique_id=118490050]
 stream = SubResource("AudioStreamRandomizer_bklno")
@@ -83,8 +108,29 @@ m_particles = ExtResource("16_h832c")
 
 [node name="Shaker" type="Node" parent="." unique_id=556279007 node_paths=PackedStringArray("m_toShake")]
 script = ExtResource("16_1ebab")
-m_toShake = NodePath("../PatentSprites")
+m_toShake = NodePath("../InnerPatentSprites")
 
+[node name="GeneratedRewardSFX" type="AudioStreamPlayer2D" parent="." unique_id=714543919]
+stream = SubResource("AudioStreamRandomizer_pv4st")
+max_polyphony = 8
+script = ExtResource("14_wp5iy")
+metadata/_custom_type_script = "uid://bglusmjfbdqlj"
+
+[node name="Gnomes" type="Node2D" parent="." unique_id=1445201801]
+
+[node name="PatentGnome" parent="Gnomes" unique_id=1745542875 instance=ExtResource("23_n7s0f")]
+position = Vector2(-8, 57)
+
+[node name="PatentGnome2" parent="Gnomes" unique_id=1713072139 instance=ExtResource("23_n7s0f")]
+position = Vector2(6, 57)
+
+[node name="PatentGnome3" parent="Gnomes" unique_id=709156640 instance=ExtResource("23_n7s0f")]
+position = Vector2(-2, 9)
+
+[node name="PatentGnome4" parent="Gnomes" unique_id=122202072 instance=ExtResource("23_n7s0f")]
+position = Vector2(-24, -11)
+
+[connection signal="GeneratedReward" from="." to="GeneratedRewardSFX" method="Trigger"]
 [connection signal="input_event" from="Area2D" to="." method="OnClick"]
 [connection signal="input_event" from="Area2D" to="AudioFX" method="Trigger"]
 [connection signal="input_event" from="Area2D" to="ParticleSpawner" method="OnClick"]

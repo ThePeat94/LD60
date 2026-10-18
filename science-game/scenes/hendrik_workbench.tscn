@@ -175,10 +175,13 @@ script = ExtResource("3_mlknq")
 script = ExtResource("4_vmktp")
 BaseStats = ExtResource("6_3k14s")
 
-[node name="EmployeeController" parent="." unique_id=130145111 node_paths=PackedStringArray("m_patentGenerator", "m_skillpointGenerator", "m_scienceGenerator") instance=ExtResource("16_sm0ys")]
+[node name="EmployeeController" parent="." unique_id=130145111 node_paths=PackedStringArray("m_patentGenerator", "m_skillpointGenerator", "m_scienceGenerator", "m_thinkerGnomes", "m_inventorGnomes", "m_scribeGnomes") instance=ExtResource("16_sm0ys")]
 m_patentGenerator = NodePath("../PatentGenerator")
 m_skillpointGenerator = NodePath("../SkillPointGenerator")
 m_scienceGenerator = NodePath("../ScienceGenerator")
+m_thinkerGnomes = Array[Object]([])
+m_inventorGnomes = [NodePath("../PatentGenerator/Gnomes/PatentGnome"), NodePath("../PatentGenerator/Gnomes/PatentGnome2"), NodePath("../PatentGenerator/Gnomes/PatentGnome3"), NodePath("../PatentGenerator/Gnomes/PatentGnome4")]
+m_scribeGnomes = Array[Object]([])
 
 [editable path="Room/Science Display"]
 [editable path="Room/Skillpoints Displa"]

@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://ngvqkxdthk4f" path="res://scripts/GameFeel/FeelShaker.cs" id="7_ssgk1"]
 [ext_resource type="Texture2D" uid="uid://4my0w86cpv2p" path="res://assets/art/desk/table-standalone.png" id="7_tqpxg"]
 [ext_resource type="Texture2D" uid="uid://c1saok5efp1m5" path="res://assets/art/desk/stool-middle-section.png" id="8_5do4e"]
+[ext_resource type="PackedScene" uid="uid://b44cjm750ude" path="res://scenes/gnomes/thinker_gnomes.tscn" id="8_nsibk"]
 [ext_resource type="Script" uid="uid://mod3uhf0e68j" path="res://scripts/GameFeel/FeelVfxIconSpawner.cs" id="10_5do4e"]
 [ext_resource type="PackedScene" uid="uid://bntuvd3a5igwm" path="res://scenes/feel/board_particles.tscn" id="11_nsibk"]
 
@@ -43,13 +44,27 @@ texture = ExtResource("6_oh4or")
 [node name="Board" type="Sprite2D" parent="." unique_id=1909314594]
 texture = ExtResource("7_tqpxg")
 
+[node name="ThinkerGnome" parent="Board" unique_id=1745542875 instance=ExtResource("8_nsibk")]
+position = Vector2(-17, -3)
+
+[node name="ThinkerGnome2" parent="Board" unique_id=1563239476 instance=ExtResource("8_nsibk")]
+position = Vector2(21, -2)
+
+[node name="ThinkerGnome4" parent="Board" unique_id=872124450 instance=ExtResource("8_nsibk")]
+position = Vector2(0, -48)
+
 [node name="Stool" type="Sprite2D" parent="." unique_id=1770075103]
 texture = ExtResource("8_5do4e")
+
+[node name="ThinkerGnome3" parent="Stool" unique_id=616775337 instance=ExtResource("8_nsibk")]
+position = Vector2(-14, 22)
 
 [node name="VfxSpawner" type="Node" parent="." unique_id=438782268 node_paths=PackedStringArray("m_origin")]
 script = ExtResource("10_5do4e")
 m_origin = NodePath("../Board")
 m_particles = ExtResource("11_nsibk")
+
+[node name="GeneratedRewardSFX" type="AudioStreamPlayer2D" parent="." unique_id=1603542881]
 
 [connection signal="input_event" from="Area2D" to="." method="OnClick"]
 [connection signal="input_event" from="Area2D" to="AudioPlayer" method="Trigger"]

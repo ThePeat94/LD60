@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Godot;
+using Godot.Collections;
 using Nidavellir.GDResource;
 using Nidavellir.GDResource.Employee;
 using Nidavellir.GDResource.SkillTree;
@@ -20,10 +21,15 @@ public partial class EmployeeController : Node
     [Export] private ScienceGenerator m_scienceGenerator;
     [Export] private EmployeeDataContainer m_employeeDataContainer;
     
+    [Export] private int m_employeesPerGnome = 5;
+    [Export] private Array<Sprite2D> m_thinkerGnomes;
+    [Export] private Array<Sprite2D> m_inventorGnomes;
+    [Export] private Array<Sprite2D> m_scribeGnomes;
+    
     private readonly List<Employee> m_thinkers = [];
     private readonly List<Employee> m_inventors = [];
     private readonly List<Employee> m_scribes = [];
-    private Dictionary<EmployeeType, EmployeeStats> m_employeeStats = new();
+    private System.Collections.Generic.Dictionary<EmployeeType, EmployeeStats> m_employeeStats = new();
 
     public override void _EnterTree()
     {
@@ -34,6 +40,10 @@ public partial class EmployeeController : Node
             [EmployeeType.Thinker] = new(this.m_employeeDataContainer.ThinkerData),
             [EmployeeType.Inventor] = new(this.m_employeeDataContainer.InventorData),
         };
+
+        this.HideGnomes(this.m_thinkerGnomes);
+        this.HideGnomes(this.m_inventorGnomes);
+        this.HideGnomes(this.m_scribeGnomes);
     }
 
     public void AddThinker()
@@ -42,7 +52,8 @@ public partial class EmployeeController : Node
             this.m_thinkers,
             this.m_scienceGenerator,
             this.m_thinkerEmployeeScene,
-            this.m_employeeStats[EmployeeType.Thinker]
+            this.m_employeeStats[EmployeeType.Thinker],
+            this.m_thinkerGnomes
         );
     }
 
@@ -52,7 +63,8 @@ public partial class EmployeeController : Node
             this.m_inventors,
             this.m_patentGenerator,
             this.m_inventorEmployeeScene,
-            this.m_employeeStats[EmployeeType.Inventor]
+            this.m_employeeStats[EmployeeType.Inventor],
+            this.m_inventorGnomes
         );
     }
 
@@ -62,16 +74,31 @@ public partial class EmployeeController : Node
             this.m_scribes, 
             this.m_skillpointGenerator, 
             this.m_scribeEmployeeScene, 
-            this.m_employeeStats[EmployeeType.Scribe]
+            this.m_employeeStats[EmployeeType.Scribe],
+            this.m_scribeGnomes
         );
     }
 
-    private void AddEmployee(List<Employee> employees, IGenerator affected, PackedScene employeeScene, EmployeeStats stats)
+    private void AddEmployee(List<Employee> employees, IGenerator affected, PackedScene employeeScene, EmployeeStats stats, Array<Sprite2D> gnomes)
     {
         var created = employeeScene.Instantiate<Employee>();
         created.Initialize(affected, stats);
         this.AddChild(created);
         employees.Add(created);
+        
+        var max = Math.Min(employees.Count / this.m_employeesPerGnome, gnomes.Count);
+        for (var i = 0; i < max; i++)
+        {
+            gnomes[i].Visible = true;
+        }
+    }
+
+    private void HideGnomes(Array<Sprite2D> gnomes)
+    {
+        foreach (var gnome in gnomes)
+        {
+            gnome.Visible = false;
+        }
     }
 
     public void ApplyEmployeeUpgrades(EmployeeStatUpgradeData upgradeData)

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b833rmqexim81"]
+
+[ext_resource type="Texture2D" uid="uid://cvfs36y1dbfa3" path="res://assets/art/gnomes.png" id="1_h4md6"]
+
+[node name="PatentGnome" type="Sprite2D" unique_id=1745542875]
+texture = ExtResource("1_h4md6")
+region_enabled = true
+region_rect = Rect2(65, 85, 11, 15)

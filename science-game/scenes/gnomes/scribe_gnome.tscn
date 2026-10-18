@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://xpqdrsj1rm2i"]
+
+[ext_resource type="Texture2D" uid="uid://cvfs36y1dbfa3" path="res://assets/art/gnomes.png" id="1_jkyvh"]
+
+[node name="ScribeGnome" type="Sprite2D" unique_id=1745542875]
+texture = ExtResource("1_jkyvh")
+region_enabled = true
+region_rect = Rect2(245, 118, 11, 15)
