@@ -11,29 +11,30 @@ public partial class Employee : Node
     
     private IGenerator m_targetGenerator;
     private EmployeeStats m_employeeStats;
-
+    
     public override void _EnterTree()
     {
         base._EnterTree();
-        this.m_employeeStats = new EmployeeStats(this.m_data);
         this.m_timer.Autostart = false;
-        this.m_timer.WaitTime = this.m_employeeStats.TickSpeed;
-        this.m_timer.Timeout += this.OnTimerTick;
     }
 
     public override void _Ready()
     {
         base._Ready();
+        this.m_timer.WaitTime = this.m_employeeStats.TickSpeed.Value.Value;
+        this.m_timer.Timeout += this.OnTimerTick;
         this.m_timer.Start();
     }
 
-    public void Initialize(IGenerator patentGenerator)
+    public void Initialize(IGenerator patentGenerator, EmployeeStats stats)
     {
+        this.m_employeeStats = stats;
         this.m_targetGenerator = patentGenerator;
     }
 
     private void OnTimerTick()
     {
-        this.m_targetGenerator.Generate(this.m_employeeStats.WorkForce);
+        this.m_targetGenerator.Generate(this.m_employeeStats.WorkForce.Value);
+        this.m_timer.WaitTime = this.m_employeeStats.TickSpeed.Value.Value;
     }
 }

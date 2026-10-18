@@ -4,7 +4,8 @@
 [ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.cs" id="2_83rva"]
 [ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="3_evjuc"]
 [ext_resource type="Resource" uid="uid://c4dhm6i7m4tr" path="res://resources/skillTree/items/click_upgrade_2.tres" id="4_row4k"]
-[ext_resource type="Script" uid="uid://cujtkib78qvoo" path="res://scripts/GDResource/SkillTree/PlayerStatUpgrades/AdditiveEntityStatUpgradeData.cs" id="5_j25cx"]
+[ext_resource type="Script" uid="uid://b1ayjcrr35te0" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/Player/PlayerStatUpgradeData.cs" id="5_83rva"]
+[ext_resource type="Script" uid="uid://b0h2rn416ikw4" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/Player/PlayerUpgradeData.cs" id="6_evjuc"]
 [ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.cs" id="6_hmyhq"]
 
 [sub_resource type="Resource" id="Resource_4j54d"]
@@ -23,15 +24,20 @@ Base = SubResource("Resource_4j54d")
 Slope = SubResource("Resource_3157h")
 metadata/_custom_type_script = "uid://ddxwa8yrpoypp"
 
-[sub_resource type="Resource" id="Resource_ulga7"]
+[sub_resource type="Resource" id="Resource_k5vd1"]
 script = ExtResource("1_1g2j6")
-Value = 1.5
 metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
 
-[sub_resource type="Resource" id="Resource_o7jdt"]
-script = ExtResource("5_j25cx")
-MoneyConversionIncrease = SubResource("Resource_ulga7")
-metadata/_custom_type_script = "uid://cujtkib78qvoo"
+[sub_resource type="Resource" id="Resource_lmrt3"]
+script = ExtResource("5_83rva")
+Target = 1
+Amount = SubResource("Resource_k5vd1")
+metadata/_custom_type_script = "uid://b1ayjcrr35te0"
+
+[sub_resource type="Resource" id="Resource_fep4v"]
+script = ExtResource("6_evjuc")
+Upgrades = Array[Object]([SubResource("Resource_lmrt3")])
+metadata/_custom_type_script = "uid://b0h2rn416ikw4"
 
 [resource]
 script = ExtResource("6_hmyhq")
@@ -39,7 +45,7 @@ SkillName = "Potent Patents"
 Description = "Blablabla"
 Icon = ExtResource("3_evjuc")
 CostModel = SubResource("Resource_5lo75")
-Upgrade = SubResource("Resource_o7jdt")
+Upgrade = SubResource("Resource_fep4v")
 PreRequisites = Array[Object]([ExtResource("4_row4k")])
 MaximumAmount = 5
 metadata/_custom_type_script = "uid://ccdf3herk8v4r"

@@ -1,14 +1,15 @@
 using Godot;
+using Godot.Collections;
 using Nidavellir.SkillTree;
 
 namespace Nidavellir.GDResource.SkillTree;
 
 [GlobalClass]
-public partial class MultiplicativeEntityStatUpgradeData : EntityStatUpgradeData
+public partial class PlayerUpgradeData : SkillTreeUpgradeData
 {
+    [Export] public Array<PlayerStatUpgradeData> Upgrades { get; set; }
     public override void Apply(SkillTreeUpgradeController upgradeController)
     {
-        GD.Print("Apply MultiplicativeEntityStatUpgrade");
         upgradeController.ApplyPlayerStatUpgrade(this);
     }
 }

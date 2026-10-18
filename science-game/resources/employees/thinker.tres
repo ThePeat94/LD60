@@ -1,8 +1,13 @@
-[gd_resource type="Resource" script_class="EmployeeData" format=3 uid="uid://c77eepetb3eb7"]
+[gd_resource type="Resource" format=3 uid="uid://c77eepetb3eb7"]
 
-[ext_resource type="Script" uid="uid://dj4g1vjvrf4hn" path="res://scripts/GDResource/EmployeeData.cs" id="1_dwy0e"]
+[ext_resource type="Script" uid="uid://dj4g1vjvrf4hn" path="res://scripts/GDResource/Employee/EmployeeData.cs" id="1_dwy0e"]
 [ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_rqkjw"]
 [ext_resource type="Texture2D" uid="uid://bgmtak8uvk0s1" path="res://assets/external/Chole(F).png" id="2_rqkjw"]
+
+[sub_resource type="Resource" id="Resource_uxoma"]
+script = ExtResource("1_rqkjw")
+Value = 1.5
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
 
 [sub_resource type="Resource" id="Resource_fbcwu"]
 script = ExtResource("1_rqkjw")
@@ -13,5 +18,5 @@ script = ExtResource("1_dwy0e")
 EmployeeName = "Thinker"
 Icon = ExtResource("2_rqkjw")
 BaseWorkForce = SubResource("Resource_fbcwu")
-BaseTickSpeed = 1.5
+BaseTickSpeed = SubResource("Resource_uxoma")
 metadata/_custom_type_script = "uid://dj4g1vjvrf4hn"

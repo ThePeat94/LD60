@@ -1,6 +1,5 @@
 using Godot;
 using Nidavellir.GDResource;
-using Nidavellir.IdleNumbers;
 using Nidavellir.Stats;
 
 namespace Nidavellir.PlayerStats;
