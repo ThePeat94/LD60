@@ -232,6 +232,7 @@ BaseStats = ExtResource("18_kmb1v")
 m_patentGenerator = NodePath("../PatentGenerator")
 m_skillpointGenerator = NodePath("../SkillPointGenerator")
 m_scienceGenerator = NodePath("../ScienceGenerator")
+m_employeesPerGnome = 1
 m_thinkerGnomes = [NodePath("../ScienceGenerator/Board/ThinkerGnome"), NodePath("../ScienceGenerator/Board/ThinkerGnome2"), NodePath("../ScienceGenerator/Board/ThinkerGnome4"), NodePath("../ScienceGenerator/Stool/ThinkerGnome3")]
 m_inventorGnomes = [NodePath("../PatentGenerator/Gnomes/PatentGnome"), NodePath("../PatentGenerator/Gnomes/PatentGnome2"), NodePath("../PatentGenerator/Gnomes/PatentGnome3"), NodePath("../PatentGenerator/Gnomes/PatentGnome4")]
 m_scribeGnomes = [NodePath("../SkillPointGenerator/Sprite2D/ScribeGnome"), NodePath("../SkillPointGenerator/Sprite2D/ScribeGnome2"), NodePath("../SkillPointGenerator/Sprite2D/ScribeGnome3"), NodePath("../SkillPointGenerator/Sprite2D/ScribeGnome4")]

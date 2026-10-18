@@ -14,6 +14,7 @@ public partial class GeneratorController : Node2D, IGenerator
     public ResourceControllerNode Generated => this.m_generatorRewardController.Generated;
     public ResourceControllerNode Required => this.m_required;
     public IdleNumber Requirement => this.GetLevelRequirement(this.m_currentLevel);
+    public int CurrentLevel => this.m_currentLevel;
         
     [Export]
     public PlayerStatsContainer PlayerStatsContainer { get; set; }
