@@ -8,6 +8,8 @@
 [ext_resource type="Resource" uid="uid://f82dr3wb1xlu" path="res://resources/skillTree/items/potent_patents_1.tres" id="7_olodv"]
 [ext_resource type="Resource" uid="uid://btvasmfjvbxqn" path="res://resources/skillTree/items/skilled_skiller.tres" id="8_cai0h"]
 [ext_resource type="Resource" uid="uid://c4dhm6i7m4tr" path="res://resources/skillTree/items/click_upgrade_2.tres" id="8_qeyxp"]
+[ext_resource type="Resource" uid="uid://c6akm80vd8cev" path="res://resources/skillTree/items/employees/stronger_thinkers.tres" id="9_bthj5"]
+[ext_resource type="Resource" uid="uid://ckvi1f3dnb88n" path="res://resources/skillTree/items/employees/faster_thinkers.tres" id="10_qeyxp"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1847261213 node_paths=PackedStringArray("ShopUI", "SkillTreeUI")]
 script = ExtResource("1_gjmhc")
@@ -159,6 +161,22 @@ offset_right = 1174.0
 offset_bottom = 741.0
 m_data = ExtResource("8_cai0h")
 
+[node name="SkillTreeNodeUI5" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=1906036159 instance=ExtResource("5_b3s3x")]
+layout_mode = 0
+offset_left = 1326.0
+offset_top = 61.0
+offset_right = 1726.0
+offset_bottom = 229.0
+m_data = ExtResource("9_bthj5")
+
+[node name="SkillTreeNodeUI6" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=1213503214 instance=ExtResource("5_b3s3x")]
+layout_mode = 0
+offset_left = 1320.0
+offset_top = 328.0
+offset_right = 1720.0
+offset_bottom = 496.0
+m_data = ExtResource("10_qeyxp")
+
 [connection signal="pressed" from="Skill Tree/Panel/Close Button" to="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" method="Close"]
 
 [editable path="ShopUI"]
@@ -166,3 +184,5 @@ m_data = ExtResource("8_cai0h")
 [editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI2"]
 [editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI3"]
 [editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI4"]
+[editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI5"]
+[editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI6"]

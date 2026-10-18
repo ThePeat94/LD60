@@ -5,8 +5,10 @@
 [ext_resource type="Resource" uid="uid://c4dhm6i7m4tr" path="res://resources/skillTree/items/click_upgrade_2.tres" id="2_rtaxg"]
 [ext_resource type="Resource" uid="uid://f82dr3wb1xlu" path="res://resources/skillTree/items/potent_patents_1.tres" id="3_0af8t"]
 [ext_resource type="Resource" uid="uid://btvasmfjvbxqn" path="res://resources/skillTree/items/skilled_skiller.tres" id="4_k26h1"]
+[ext_resource type="Resource" uid="uid://ckvi1f3dnb88n" path="res://resources/skillTree/items/employees/faster_thinkers.tres" id="5_0af8t"]
+[ext_resource type="Resource" uid="uid://c6akm80vd8cev" path="res://resources/skillTree/items/employees/stronger_thinkers.tres" id="6_k26h1"]
 
 [resource]
 script = ExtResource("1_ijrdn")
-Upgrades = Array[Object]([ExtResource("1_68ubl"), ExtResource("2_rtaxg"), ExtResource("3_0af8t"), ExtResource("4_k26h1")])
+Upgrades = Array[Object]([ExtResource("1_68ubl"), ExtResource("2_rtaxg"), ExtResource("3_0af8t"), ExtResource("4_k26h1"), ExtResource("5_0af8t"), ExtResource("6_k26h1")])
 metadata/_custom_type_script = "uid://b4d1rxh2lehqs"

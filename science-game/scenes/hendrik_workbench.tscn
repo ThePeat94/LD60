@@ -128,8 +128,9 @@ m_skillPoints = NodePath("../ResourceControllers/GlobalSkillPointsController")
 z_index = 5
 position = Vector2(0, 1)
 
-[node name="UpgradeController" parent="SkilltreeController" index="1" unique_id=1259699767 node_paths=PackedStringArray("m_playerStats")]
+[node name="UpgradeController" parent="SkilltreeController" index="1" unique_id=1259699767 node_paths=PackedStringArray("m_playerStats", "m_employeeController")]
 m_playerStats = NodePath("../../PlayerStats")
+m_employeeController = NodePath("../../EmployeeController")
 
 [node name="EmployeeController" parent="." unique_id=130145111 node_paths=PackedStringArray("m_patentGenerator", "m_skillpointGenerator", "m_scienceGenerator") instance=ExtResource("16_sm0ys")]
 m_patentGenerator = NodePath("../PatentGenerator")
@@ -142,6 +143,8 @@ m_scienceGenerator = NodePath("../ScienceGenerator")
 [editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI2"]
 [editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI3"]
 [editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI4"]
+[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI5"]
+[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI6"]
 [editable path="ScienceGenerator"]
 [editable path="PatentGenerator"]
 [editable path="SkillPointGenerator"]

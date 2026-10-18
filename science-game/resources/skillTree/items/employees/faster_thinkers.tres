@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="SkillTreeItemData" format=3 uid="uid://ckvi1f3dnb88n"]
+
+[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_p0k7g"]
+[ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.cs" id="2_6hu5o"]
+[ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="3_dvmv3"]
+[ext_resource type="Resource" uid="uid://c6akm80vd8cev" path="res://resources/skillTree/items/employees/stronger_thinkers.tres" id="4_6hu5o"]
+[ext_resource type="Script" uid="uid://t2go5ui1sips" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/Employee/EmployeeStatUpgradeData.cs" id="4_nf6sb"]
+[ext_resource type="Script" uid="uid://dpajxbew4x3bl" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/Employee/EmployeeUpgradeData.cs" id="5_4e5v6"]
+[ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.cs" id="6_on14j"]
+
+[sub_resource type="Resource" id="Resource_5ai3e"]
+script = ExtResource("1_p0k7g")
+Value = 0.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_wny40"]
+script = ExtResource("1_p0k7g")
+Value = 0.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_rwwpb"]
+script = ExtResource("2_6hu5o")
+Base = SubResource("Resource_5ai3e")
+Slope = SubResource("Resource_wny40")
+metadata/_custom_type_script = "uid://ddxwa8yrpoypp"
+
+[sub_resource type="Resource" id="Resource_pbqmt"]
+script = ExtResource("1_p0k7g")
+Value = 0.05
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_nv0e2"]
+script = ExtResource("4_nf6sb")
+TargetStat = 1
+Operation = 2
+Amount = SubResource("Resource_pbqmt")
+metadata/_custom_type_script = "uid://t2go5ui1sips"
+
+[sub_resource type="Resource" id="Resource_28xl1"]
+script = ExtResource("5_4e5v6")
+Upgrades = Array[Object]([SubResource("Resource_nv0e2")])
+metadata/_custom_type_script = "uid://dpajxbew4x3bl"
+
+[resource]
+script = ExtResource("6_on14j")
+SkillName = "Faster Thinkers"
+Description = "Blablabla"
+Icon = ExtResource("3_dvmv3")
+CostModel = SubResource("Resource_rwwpb")
+Upgrade = SubResource("Resource_28xl1")
+PreRequisites = Array[Object]([ExtResource("4_6hu5o")])
+MaximumAmount = 3
+metadata/_custom_type_script = "uid://ccdf3herk8v4r"

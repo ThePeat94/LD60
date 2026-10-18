@@ -10,6 +10,7 @@ public partial class EmployeeUpgradeData : SkillTreeUpgradeData
     [Export] public Array<EmployeeStatUpgradeData> Upgrades { get; set; }
     public override void Apply(SkillTreeUpgradeController upgradeController)
     {
+        GD.Print("Apply EmployeeStatUpgrades");
         upgradeController.ApplyEmployeeStatUpgrade(this);
     }
 }
