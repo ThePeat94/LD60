@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="SkillTreeItemData" format=3 uid="uid://clcr81107edrj"]
+
+[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_ux4kv"]
+[ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.cs" id="2_fdljc"]
+[ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="3_ksbdo"]
+[ext_resource type="Resource" uid="uid://dhy1gqn20qbpp" path="res://resources/shop/inventor.tres" id="4_4kcfg"]
+[ext_resource type="Script" uid="uid://ma5ppe0wfeik" path="res://scripts/GDResource/SkillTree/FeatureUnlock/UnlockShopFeatureData.cs" id="5_hbjxm"]
+[ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.cs" id="6_c3fb6"]
+
+[sub_resource type="Resource" id="Resource_5ai3e"]
+script = ExtResource("1_ux4kv")
+Value = 0.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_wny40"]
+script = ExtResource("1_ux4kv")
+Value = 0.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_rwwpb"]
+script = ExtResource("2_fdljc")
+Base = SubResource("Resource_5ai3e")
+Slope = SubResource("Resource_wny40")
+metadata/_custom_type_script = "uid://ddxwa8yrpoypp"
+
+[sub_resource type="Resource" id="Resource_lyy28"]
+script = ExtResource("5_hbjxm")
+UnlockedShopItem = ExtResource("4_4kcfg")
+metadata/_custom_type_script = "uid://ma5ppe0wfeik"
+
+[resource]
+script = ExtResource("6_c3fb6")
+SkillName = "Unlock Inventors"
+Description = "Blablabla"
+Icon = ExtResource("3_ksbdo")
+CostModel = SubResource("Resource_rwwpb")
+Upgrade = SubResource("Resource_lyy28")
+PreRequisites = null
+MaximumAmount = 1
+metadata/_custom_type_script = "uid://ccdf3herk8v4r"
