@@ -10,10 +10,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
 size = Vector2(128, 128)
 
-[node name="SkillPointGenerator" type="Sprite2D" unique_id=948207944 node_paths=PackedStringArray("m_required")]
+[node name="SkillPointGenerator" type="Sprite2D" unique_id=948207944 node_paths=PackedStringArray("m_required", "m_generatorRewardController")]
 texture = ExtResource("1_vkgft")
 script = ExtResource("2_ep6bw")
 m_required = NodePath("Resource Controller")
+m_generatorRewardController = NodePath("Reward Controller")
 ProgressionLevelData = ExtResource("3_34ywl")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=501859260]
