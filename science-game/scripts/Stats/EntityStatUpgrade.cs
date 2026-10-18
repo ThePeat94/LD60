@@ -3,7 +3,7 @@ using Nidavellir.IdleNumbers;
 
 namespace Nidavellir.Stats;
 
-public class EntityStatUpgrade(EntityStatUpgradeData upgradeData)
+public class EntityStatUpgrade(IdleNumber value)
 {
-    public IdleNumber Value { get; private set; } = upgradeData.ClickStrengthUpgrade.ToIdleNumber();
+    public IdleNumber Value { get; private set; } = value;
 }

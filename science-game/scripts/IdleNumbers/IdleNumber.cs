@@ -1,108 +1,134 @@
+
 using System;
 
 namespace Nidavellir.IdleNumbers
 {
     /// <summary>
-    ///     This is an abstract representation of "big idle numbers" as in the scientific notification.
-    ///     The value is calculated by Value * 10^Exponent
+    /// Represents big idle numbers in engineering notation.
+    /// The value is calculated by Value * 10^Exponent.
     /// </summary>
-    public struct IdleNumber 
+    public readonly struct IdleNumber(double value, int exponent = 0)
     {
-        // Max exponent diff between idle numbers
         private const int MAX_MAGNITUDE = 12;
-
-        // 10^3
         private const int TEN_CUBED = 1000;
-        private double m_value;
-        private int m_exponent;
 
-        public IdleNumber(double value, int exponent)
+        private readonly (double Mantissa, int Exponent) m_normalized =
+            Normalize(value, exponent);
+
+        public double Value => this.m_normalized.Mantissa;
+        public int Exponent => this.m_normalized.Exponent;
+
+        private static (double Mantissa, int Exponent) Normalize(double value, int exponent)
         {
-            this.m_value = value;
-            this.m_exponent = exponent;
-        }
+            if (!double.IsFinite(value))
+                throw new ArgumentOutOfRangeException(
+                    nameof(value), "Value must be finite.");
 
-        public IdleNumber(double value)
-        {
-            this.m_value = value;
-            this.m_exponent = 0;
-        }
+            if (value == 0)
+                return (0, 0);
 
-        public double Value => this.m_value;
-        public int Exponent => this.m_exponent;
+            long exp = exponent;
+            var val = value;
 
-        public IdleNumber Align(int targetExponent)
-        {
-            var delta = targetExponent - this.Exponent;
-            if (delta > 0)
+            while (Math.Abs(val) >= TEN_CUBED)
             {
-                var value = delta <= MAX_MAGNITUDE ? this.Value / Math.Pow(10, delta) : 0;
-                var exponent = targetExponent;
-                return new IdleNumber(value, exponent);
+                val /= TEN_CUBED;
+                exp += 3;
             }
 
-            return this;
-        }
-
-        public IdleNumber Normalize()
-        {
-            if (this.Value < 1 && this.Exponent != 0)
+            while (Math.Abs(val) < 1)
             {
-                var calculatedNumber = this;
-                while(calculatedNumber.Value < 1 && calculatedNumber.Exponent != 0)
-                    calculatedNumber = new IdleNumber(calculatedNumber.Value * TEN_CUBED, calculatedNumber.Exponent - 3);
-
-                return calculatedNumber;
+                val *= TEN_CUBED;
+                exp -= 3;
             }
 
-            if (this.Value >= TEN_CUBED)
-            {
-                var value = this.Value;
-                var exponent = this.Exponent;
+            // Ensure exponent is a multiple of 3.
+            var remainder = (exp % 3 + 3) % 3;
 
-                while (Math.Abs(value) >= TEN_CUBED)
+            if (remainder != 0)
+            {
+                val *= Math.Pow(10, remainder);
+                exp -= remainder;
+
+                if (Math.Abs(val) >= TEN_CUBED)
                 {
-                    value /= TEN_CUBED;
-                    exponent += 3;
+                    val /= TEN_CUBED;
+                    exp += 3;
                 }
-
-                return new IdleNumber(value, exponent);
             }
 
-            return this;
+            if (exp is < int.MinValue or > int.MaxValue)
+                throw new OverflowException(
+                    "Exponent exceeds IdleNumber range.");
+
+            return (val, (int)exp);
+        }
+
+        // Returns the mantissa aligned to the target exponent.
+        // Does not construct a new IdleNumber, as that would
+        // immediately normalize the result again.
+        private double AlignValue(int targetExponent)
+        {
+            var delta = (long)targetExponent - this.Exponent;
+
+            return delta switch
+            {
+                < 0 => throw new ArgumentOutOfRangeException(nameof(targetExponent)),
+                > MAX_MAGNITUDE => 0,
+                _ => this.Value / Math.Pow(10, delta)
+            };
+        }
+
+        private int CompareTo(IdleNumber other)
+        {
+            var leftSign = Math.Sign(this.Value);
+            var rightSign = Math.Sign(other.Value);
+
+            if (leftSign != rightSign)
+                return leftSign.CompareTo(rightSign);
+
+            if (leftSign == 0)
+                return 0;
+
+            var exponentComparison = this.Exponent.CompareTo(other.Exponent);
+
+            if (exponentComparison != 0)
+                return exponentComparison * leftSign;
+
+            return this.Value.CompareTo(other.Value);
         }
 
         public IdleNumber Pow(IdleNumber exponent)
         {
             if (this.Value <= 0)
-                throw new ArgumentOutOfRangeException(nameof(this.Value),
+                throw new ArgumentOutOfRangeException(
+                    nameof(this.Value),
                     "Only positive bases are supported.");
 
             if (exponent.Value == 0)
                 return new IdleNumber(1);
 
-            // log10(base)
-            var logBase = Math.Log10(this.Value) + Exponent;
+            var logBase = Math.Log10(this.Value) + this.Exponent;
 
             if (logBase == 0)
                 return new IdleNumber(1);
 
-            // Convert exponent to double
-            var power = exponent.Value * Math.Pow(10, exponent.Exponent);
+            var power = exponent.Value *
+                        Math.Pow(10, exponent.Exponent);
 
-            // log10(base^power)
             var logResult = power * logBase;
 
             if (!double.IsFinite(logResult) ||
                 logResult <= int.MinValue + 1 ||
                 logResult >= int.MaxValue - 1)
-                throw new OverflowException("Exponent exceeds IdleNumber range.");
+                throw new OverflowException(
+                    "Exponent exceeds IdleNumber range.");
 
-            // Split into exponent and mantissa
             var resultExponent = (int)Math.Floor(logResult);
-            var mantissa = Math.Pow(10, logResult - resultExponent);
+            var mantissa = Math.Pow(
+                10, logResult - resultExponent);
 
-            return new IdleNumber(mantissa, resultExponent).Normalize();
+            return new IdleNumber(mantissa, resultExponent);
         }
 
         public double GetRelativeAmountTo(IdleNumber other)
@@ -110,88 +136,90 @@ namespace Nidavellir.IdleNumbers
             if (other.Value == 0)
                 throw new DivideByZeroException();
 
-            var exponentDifference = (long)this.Exponent - other.Exponent;
+            var exponentDifference =
+                (long)this.Exponent - other.Exponent;
 
-            return (this.Value / other.Value)
-                   * Math.Pow(10, exponentDifference);
+            return (this.Value / other.Value) *
+                   Math.Pow(10, exponentDifference);
         }
 
-        public static IdleNumber operator +(IdleNumber left, IdleNumber right)
+        public static IdleNumber operator +(
+            IdleNumber left, IdleNumber right)
         {
-            var bigger = left.Exponent >= right.Exponent ? left : right;
-            var smaller = left.Exponent >= right.Exponent ? right : left;
+            if (left.Value == 0) return right;
+            if (right.Value == 0) return left;
 
-            var value = smaller.Align(bigger.Exponent).Value + bigger.Value;
-            return new IdleNumber(value, bigger.Exponent).Normalize();
+            var exp = Math.Max(left.Exponent, right.Exponent);
+            var val = left.AlignValue(exp) +
+                      right.AlignValue(exp);
+
+            return new IdleNumber(val, exp);
         }
 
-        public static IdleNumber operator /(IdleNumber number, double divisor)
+        public static IdleNumber operator -(
+            IdleNumber left, IdleNumber right)
         {
-            if (divisor == 0)
-                throw new DivideByZeroException();
+            if (right.Value == 0) return left;
 
-            if (divisor < 0)
-                throw new ArithmeticException();
+            if (left.Value == 0)
+                return new IdleNumber(
+                    -right.Value, right.Exponent);
 
-            var value = number.Value / divisor;
-            return new IdleNumber(value, number.Exponent).Normalize();
+            var exp = Math.Max(left.Exponent, right.Exponent);
+            var val = left.AlignValue(exp) -
+                      right.AlignValue(exp);
+
+            return new IdleNumber(val, exp);
         }
 
-        public static bool operator >(IdleNumber left, IdleNumber right)
+        public static IdleNumber operator /(
+            IdleNumber number, double divisor)
         {
-            var alignedLeft = left.Exponent > right.Exponent ? left : left.Align(right.Exponent);
-            var alignedRight = left.Exponent > right.Exponent ? right.Align(left.Exponent) : right;
-
-            return alignedLeft.Value > alignedRight.Value;
+            return divisor switch
+            {
+                0 => throw new DivideByZeroException(),
+                < 0 => throw new ArithmeticException(),
+                _ => new IdleNumber(number.Value / divisor, number.Exponent)
+            };
         }
 
-        public static bool operator >=(IdleNumber left, IdleNumber right)
-        {
-            var alignedLeft = left.Exponent > right.Exponent ? left : left.Align(right.Exponent);
-            var alignedRight = left.Exponent > right.Exponent ? right.Align(left.Exponent) : right;
+        public static bool operator >(
+            IdleNumber left, IdleNumber right)
+            => left.CompareTo(right) > 0;
 
-            return alignedLeft.Value >= alignedRight.Value;
-        }
+        public static bool operator >=(
+            IdleNumber left, IdleNumber right)
+            => left.CompareTo(right) >= 0;
 
-        public static bool operator <(IdleNumber left, IdleNumber right)
-        {
-            var alignedLeft = left.Exponent > right.Exponent ? left : left.Align(right.Exponent);
-            var alignedRight = left.Exponent > right.Exponent ? right.Align(left.Exponent) : right;
+        public static bool operator <(
+            IdleNumber left, IdleNumber right)
+            => left.CompareTo(right) < 0;
 
-            return alignedLeft.Value < alignedRight.Value;
-        }
+        public static bool operator <=(
+            IdleNumber left, IdleNumber right)
+            => left.CompareTo(right) <= 0;
 
-        public static bool operator <=(IdleNumber left, IdleNumber right)
-        {
-            var alignedLeft = left.Exponent > right.Exponent ? left : left.Align(right.Exponent);
-            var alignedRight = left.Exponent > right.Exponent ? right.Align(left.Exponent) : right;
-
-            return alignedLeft.Value <= alignedRight.Value;
-        }
-
-        public static IdleNumber operator *(IdleNumber number, double factor)
+        public static IdleNumber operator *(
+            IdleNumber number, double factor)
         {
             if (factor <= 0)
                 throw new ArithmeticException();
 
-            var value = number.Value * factor;
-            return new IdleNumber(value, number.Exponent).Normalize();
+            return new IdleNumber(
+                number.Value * factor,
+                number.Exponent);
         }
 
-        public static IdleNumber operator *(double factor, IdleNumber number) => number * factor;
+        public static IdleNumber operator *(
+            double factor, IdleNumber number)
+            => number * factor;
 
-        public static IdleNumber operator *(IdleNumber left, IdleNumber right)
+        public static IdleNumber operator *(
+            IdleNumber left, IdleNumber right)
         {
-            return new IdleNumber(left.Value * right.Value, left.Exponent + right.Exponent).Normalize();
-        }
-        
-        public static IdleNumber operator -(IdleNumber left, IdleNumber right)
-        {
-            var alignedLeft = left.Exponent > right.Exponent ? left : left.Align(right.Exponent);
-            var alignedRight = left.Exponent > right.Exponent ? right.Align(left.Exponent) : right;
-
-            var value = alignedLeft.Value - alignedRight.Value;
-            return new IdleNumber(value, alignedLeft.Exponent).Normalize();
+            return new IdleNumber(
+                left.Value * right.Value,
+                left.Exponent + right.Exponent);
         }
 
         public override string ToString()

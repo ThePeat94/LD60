@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://ci5iouq4lh2y5"]
 
+[ext_resource type="Texture2D" uid="uid://hwa32mecg030" path="res://assets/art/room_recolored.png" id="1_5ali7"]
 [ext_resource type="PackedScene" uid="uid://b07fw6hiuhj2u" path="res://scenes/generators/science_generator.tscn" id="1_mlknq"]
 [ext_resource type="PackedScene" uid="uid://dcuw26e2ppgd3" path="res://scenes/generators/patent_generator.tscn" id="2_edqit"]
 [ext_resource type="Script" uid="uid://dmywt6vc0vtok" path="res://scripts/ResourceControllerNode.cs" id="3_mlknq"]
 [ext_resource type="PackedScene" uid="uid://cop5xu6120mg3" path="res://scenes/generators/skill_point_generator.tscn" id="3_yvvbm"]
 [ext_resource type="Script" uid="uid://0tgd1yd4japm" path="res://scripts/PlayerStats/PlayerStatsContainer.cs" id="4_vmktp"]
-[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="5_ru7pr"]
-[ext_resource type="Script" uid="uid://dl8x2275tt5qn" path="res://scripts/GDResource/PlayerStatsData.cs" id="6_rep15"]
+[ext_resource type="Resource" uid="uid://b0lmcslgtykk4" path="res://resources/base_player_stats.tres" id="6_3k14s"]
 [ext_resource type="PackedScene" uid="uid://wbj312y6wcdh" path="res://scenes/game_hud.tscn" id="7_6t4bp"]
 [ext_resource type="Script" uid="uid://b1ekel20d43cr" path="res://scripts/Shop/ShopController.cs" id="8_8aw4k"]
 [ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="8_edqit"]
@@ -20,62 +20,15 @@
 [ext_resource type="PackedScene" uid="uid://cd3v04n6sk73t" path="res://scenes/employees/inventor.tscn" id="14_yvvbm"]
 [ext_resource type="Resource" uid="uid://cac8ru3omfski" path="res://resources/skillTree/items/click_upgrade_1.tres" id="15_k5vd1"]
 [ext_resource type="Script" uid="uid://d1fhk0b1fsuov" path="res://scripts/Upgrades/UpgradeController.cs" id="15_sm0ys"]
+[ext_resource type="Resource" uid="uid://btvasmfjvbxqn" path="res://resources/skillTree/items/skilled_skiller.tres" id="17_5ali7"]
 [ext_resource type="PackedScene" uid="uid://801xtflpr5br" path="res://scenes/employees/scribe.tscn" id="17_jve2n"]
 [ext_resource type="Script" uid="uid://cvgx6wrfovxjg" path="res://scripts/SkillTree/SkillTreeUpgradeController.cs" id="17_o7jdt"]
-
-[sub_resource type="Resource" id="Resource_h34mm"]
-script = ExtResource("5_ru7pr")
-metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
-
-[sub_resource type="Resource" id="Resource_mclas"]
-script = ExtResource("5_ru7pr")
-Value = 4.0
-metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
-
-[sub_resource type="Resource" id="Resource_bklno"]
-script = ExtResource("6_rep15")
-InitialClickStrength = SubResource("Resource_h34mm")
-InitialMoneyPerPatent = SubResource("Resource_mclas")
-metadata/_custom_type_script = "uid://dl8x2275tt5qn"
+[ext_resource type="Resource" uid="uid://f82dr3wb1xlu" path="res://resources/skillTree/items/potent_patents_1.tres" id="18_vq575"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5vd1"]
 size = Vector2(128, 128)
 
 [node name="Node2D" type="Node2D" unique_id=1462648990]
-
-[node name="ScienceGenerator" parent="." unique_id=147243357 node_paths=PackedStringArray("Generated", "PlayerStatsContainer") instance=ExtResource("1_mlknq")]
-position = Vector2(9, -253)
-Generated = NodePath("../ResourceControllers/GlobalScienceController")
-PlayerStatsContainer = NodePath("../PlayerStats")
-
-[node name="PatentGenerator" parent="." unique_id=53403002 node_paths=PackedStringArray("m_generated", "m_consumed", "PlayerStatsContainer") instance=ExtResource("2_edqit")]
-position = Vector2(-635, -270)
-m_generated = NodePath("../ResourceControllers/GlobalMoneyController")
-m_consumed = NodePath("../ResourceControllers/GlobalScienceController")
-PlayerStatsContainer = NodePath("../PlayerStats")
-
-[node name="SkillPointGenerator" parent="." unique_id=948207944 node_paths=PackedStringArray("m_generated", "m_consumed", "PlayerStatsContainer") instance=ExtResource("3_yvvbm")]
-position = Vector2(651, -264)
-m_generated = NodePath("../ResourceControllers/GlobalSkillPointsController")
-m_consumed = NodePath("../ResourceControllers/GlobalScienceController")
-PlayerStatsContainer = NodePath("../PlayerStats")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1384018772]
-
-[node name="ResourceControllers" type="Node" parent="." unique_id=1918748057]
-
-[node name="GlobalScienceController" type="Node" parent="ResourceControllers" unique_id=1118969209]
-script = ExtResource("3_mlknq")
-
-[node name="GlobalMoneyController" type="Node" parent="ResourceControllers" unique_id=1808124561]
-script = ExtResource("3_mlknq")
-
-[node name="GlobalSkillPointsController" type="Node" parent="ResourceControllers" unique_id=512772517]
-script = ExtResource("3_mlknq")
-
-[node name="PlayerStats" type="Node" parent="." unique_id=1361375017]
-script = ExtResource("4_vmktp")
-BaseStats = SubResource("Resource_bklno")
 
 [node name="GameHUD" parent="." unique_id=1847261213 instance=ExtResource("7_6t4bp")]
 
@@ -92,12 +45,65 @@ ResourceControllerNode = NodePath("../../../../ResourceControllers/GlobalSkillPo
 [node name="ShopUI" parent="GameHUD" index="1" unique_id=1511127767 node_paths=PackedStringArray("ShopController")]
 ShopController = NodePath("../../Shop")
 
+[node name="Skill Tree" parent="GameHUD" index="2" unique_id=1222491598]
+offset_left = 1196.0
+offset_top = 1093.0
+offset_right = 1196.0
+offset_bottom = 1093.0
+
 [node name="Container" parent="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer" parent_id_path=PackedInt32Array(1847261213, 2108983879) index="0" unique_id=1347082111 node_paths=PackedStringArray("m_skillTreeController")]
 m_skillTreeController = NodePath("../../../../../../SkilltreeController")
 
 [node name="SkillTreeNodeUI" parent="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" index="0" unique_id=878878694]
 offset_right = 300.0
 offset_bottom = 100.0
+
+[node name="Room" type="Node2D" parent="." unique_id=709882698]
+
+[node name="Sprite2D" type="Sprite2D" parent="Room" unique_id=983687004]
+scale = Vector2(6.0065217, 6.0065217)
+texture = ExtResource("1_5ali7")
+
+[node name="ScienceGenerator" parent="." unique_id=147243357 node_paths=PackedStringArray("Generated", "PlayerStatsContainer") instance=ExtResource("1_mlknq")]
+position = Vector2(9, 46.999996)
+scale = Vector2(4.9620667, 4.971782)
+Generated = NodePath("../ResourceControllers/GlobalScienceController")
+PlayerStatsContainer = NodePath("../PlayerStats")
+
+[node name="PatentGenerator" parent="." unique_id=53403002 node_paths=PackedStringArray("m_consumed", "PlayerStatsContainer") instance=ExtResource("2_edqit")]
+position = Vector2(-532, -40)
+m_consumed = NodePath("../ResourceControllers/GlobalScienceController")
+PlayerStatsContainer = NodePath("../PlayerStats")
+
+[node name="RewardController" parent="PatentGenerator" index="3" unique_id=1303221621 node_paths=PackedStringArray("m_playerStats", "m_generated")]
+m_playerStats = NodePath("../../PlayerStats")
+m_generated = NodePath("../../ResourceControllers/GlobalMoneyController")
+
+[node name="SkillPointGenerator" parent="." unique_id=948207944 node_paths=PackedStringArray("m_consumed", "PlayerStatsContainer") instance=ExtResource("3_yvvbm")]
+position = Vector2(595, 24)
+m_consumed = NodePath("../ResourceControllers/GlobalScienceController")
+PlayerStatsContainer = NodePath("../PlayerStats")
+
+[node name="Reward Controller" parent="SkillPointGenerator" index="3" unique_id=2039802272 node_paths=PackedStringArray("m_playerStats", "m_generated")]
+m_playerStats = NodePath("../../PlayerStats")
+m_generated = NodePath("../../ResourceControllers/GlobalSkillPointsController")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1384018772]
+
+[node name="ResourceControllers" type="Node" parent="." unique_id=1918748057]
+
+[node name="GlobalScienceController" type="Node" parent="ResourceControllers" unique_id=1118969209]
+script = ExtResource("3_mlknq")
+
+[node name="GlobalMoneyController" type="Node" parent="ResourceControllers" unique_id=1808124561]
+script = ExtResource("3_mlknq")
+
+[node name="GlobalSkillPointsController" type="Node" parent="ResourceControllers" unique_id=512772517]
+script = ExtResource("3_mlknq")
+
+[node name="PlayerStats" type="Node" parent="." unique_id=1361375017]
+script = ExtResource("4_vmktp")
+BaseStats = ExtResource("6_3k14s")
 
 [node name="Shop" type="Node2D" parent="." unique_id=85274226 node_paths=PackedStringArray("m_upgradeController", "Money", "ShopUI")]
 position = Vector2(-440, 420)
@@ -116,10 +122,10 @@ texture = ExtResource("8_edqit")
 shape = SubResource("RectangleShape2D_k5vd1")
 
 [node name="SkilltreeController" type="Node2D" parent="." unique_id=379888565 node_paths=PackedStringArray("m_skillTreeUi", "m_skillPoints", "m_upgradeController")]
-position = Vector2(597, 387)
+position = Vector2(596, 227)
 script = ExtResource("14_lmrt3")
 m_skillTreeUi = NodePath("../GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container")
-m_shopUpgrades = Array[Object]([ExtResource("15_k5vd1"), ExtResource("14_fep4v")])
+m_shopUpgrades = Array[Object]([ExtResource("15_k5vd1"), ExtResource("14_fep4v"), ExtResource("17_5ali7"), ExtResource("18_vq575")])
 m_skillPoints = NodePath("../ResourceControllers/GlobalSkillPointsController")
 m_upgradeController = NodePath("UpgradeController")
 
@@ -151,10 +157,12 @@ m_employeeController = NodePath("../EmployeeController")
 [connection signal="input_event" from="Shop/Sprite2D/Area2D" to="Shop" method="OnClick"]
 [connection signal="input_event" from="SkilltreeController/Sprite2D/Area2D" to="SkilltreeController" method="OnClick"]
 
-[editable path="ScienceGenerator"]
-[editable path="PatentGenerator"]
-[editable path="SkillPointGenerator"]
 [editable path="GameHUD"]
 [editable path="GameHUD/ShopUI"]
 [editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI"]
 [editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI2"]
+[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI3"]
+[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI4"]
+[editable path="ScienceGenerator"]
+[editable path="PatentGenerator"]
+[editable path="SkillPointGenerator"]

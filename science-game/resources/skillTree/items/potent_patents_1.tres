@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="SkillTreeItemData" format=3 uid="uid://f82dr3wb1xlu"]
+
+[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_1g2j6"]
+[ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.cs" id="2_83rva"]
+[ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="3_evjuc"]
+[ext_resource type="Resource" uid="uid://c4dhm6i7m4tr" path="res://resources/skillTree/items/click_upgrade_2.tres" id="4_row4k"]
+[ext_resource type="Script" uid="uid://cujtkib78qvoo" path="res://scripts/GDResource/SkillTree/PlayerStatUpgrades/AdditiveEntityStatUpgradeData.cs" id="5_j25cx"]
+[ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.cs" id="6_hmyhq"]
+
+[sub_resource type="Resource" id="Resource_4j54d"]
+script = ExtResource("1_1g2j6")
+Value = 0.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_3157h"]
+script = ExtResource("1_1g2j6")
+Value = 0.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_5lo75"]
+script = ExtResource("2_83rva")
+Base = SubResource("Resource_4j54d")
+Slope = SubResource("Resource_3157h")
+metadata/_custom_type_script = "uid://ddxwa8yrpoypp"
+
+[sub_resource type="Resource" id="Resource_ulga7"]
+script = ExtResource("1_1g2j6")
+Value = 1.5
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_o7jdt"]
+script = ExtResource("5_j25cx")
+MoneyConversionIncrease = SubResource("Resource_ulga7")
+metadata/_custom_type_script = "uid://cujtkib78qvoo"
+
+[resource]
+script = ExtResource("6_hmyhq")
+SkillName = "Potent Patents"
+Description = "Blablabla"
+Icon = ExtResource("3_evjuc")
+CostModel = SubResource("Resource_5lo75")
+Upgrade = SubResource("Resource_o7jdt")
+PreRequisites = Array[Object]([ExtResource("4_row4k")])
+metadata/_custom_type_script = "uid://ccdf3herk8v4r"

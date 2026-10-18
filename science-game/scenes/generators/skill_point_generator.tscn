@@ -5,14 +5,16 @@
 [ext_resource type="Resource" uid="uid://fk7grp2true3" path="res://resources/skill_point_level_data.tres" id="3_34ywl"]
 [ext_resource type="Script" uid="uid://1wv4xpg7yo4e" path="res://scripts/UI/GeneratorProgressDisplay.cs" id="4_0ko83"]
 [ext_resource type="Script" uid="uid://dmywt6vc0vtok" path="res://scripts/ResourceControllerNode.cs" id="5_s5ah5"]
+[ext_resource type="Script" uid="uid://nto14lja7dgm" path="res://scripts/Generator/SkillPointGeneratorRewardController.cs" id="6_8dt4t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
 size = Vector2(128, 128)
 
-[node name="SkillPointGenerator" type="Sprite2D" unique_id=948207944 node_paths=PackedStringArray("m_required")]
+[node name="SkillPointGenerator" type="Sprite2D" unique_id=948207944 node_paths=PackedStringArray("m_required", "m_generatorRewardController")]
 texture = ExtResource("1_vkgft")
 script = ExtResource("2_ep6bw")
 m_required = NodePath("Resource Controller")
+m_generatorRewardController = NodePath("Reward Controller")
 ProgressionLevelData = ExtResource("3_34ywl")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=501859260]
@@ -42,5 +44,8 @@ m_generator = NodePath("../..")
 
 [node name="Resource Controller" type="Node" parent="." unique_id=1319895949]
 script = ExtResource("5_s5ah5")
+
+[node name="Reward Controller" type="Node" parent="." unique_id=2039802272]
+script = ExtResource("6_8dt4t")
 
 [connection signal="input_event" from="Area2D" to="." method="OnClick"]

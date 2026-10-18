@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://fol8hisegv4k" path="res://scenes/shop/shop_ui.tscn" id="3_b3s3x"]
 [ext_resource type="Script" uid="uid://dcjym3cy33l6t" path="res://scripts/SkillTree/UI/SkillTreeUI.cs" id="4_i7dyb"]
 [ext_resource type="PackedScene" uid="uid://ncjh7nkhgwq8" path="res://scenes/skillTree/skill_tree_node_ui.tscn" id="5_b3s3x"]
+[ext_resource type="Resource" uid="uid://f82dr3wb1xlu" path="res://resources/skillTree/items/potent_patents_1.tres" id="7_olodv"]
+[ext_resource type="Resource" uid="uid://btvasmfjvbxqn" path="res://resources/skillTree/items/skilled_skiller.tres" id="8_cai0h"]
 [ext_resource type="Resource" uid="uid://c4dhm6i7m4tr" path="res://resources/skillTree/items/click_upgrade_2.tres" id="8_qeyxp"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1847261213 node_paths=PackedStringArray("ShopUI", "SkillTreeUI")]
@@ -140,8 +142,26 @@ offset_right = 923.0
 offset_bottom = 480.0
 m_data = ExtResource("8_qeyxp")
 
+[node name="SkillTreeNodeUI3" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=748500048 instance=ExtResource("5_b3s3x")]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 573.0
+offset_right = 700.0
+offset_bottom = 741.0
+m_data = ExtResource("7_olodv")
+
+[node name="SkillTreeNodeUI4" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=2012458393 instance=ExtResource("5_b3s3x")]
+layout_mode = 0
+offset_left = 774.0
+offset_top = 573.0
+offset_right = 1174.0
+offset_bottom = 741.0
+m_data = ExtResource("8_cai0h")
+
 [connection signal="pressed" from="Skill Tree/Panel/Close Button" to="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" method="Close"]
 
 [editable path="ShopUI"]
 [editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI"]
 [editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI2"]
+[editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI3"]
+[editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI4"]

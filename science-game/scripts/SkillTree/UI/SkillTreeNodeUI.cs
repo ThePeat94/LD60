@@ -37,12 +37,10 @@ public partial class SkillTreeNodeUI : PanelContainer
     public override void _GuiInput(InputEvent evt)
     {
         base._GuiInput(evt);
-        if (evt is not InputEventMouseButton { Pressed: true })
+        if (evt is not InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Left })
         {
             return;
         }
-        
-        GD.Print("KLICK KLICK KLICK");
         this.AcceptEvent();
         this.m_onClick?.Invoke(this.Data);
     }
