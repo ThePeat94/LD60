@@ -41,4 +41,5 @@ Icon = ExtResource("3_evjuc")
 CostModel = SubResource("Resource_5lo75")
 Upgrade = SubResource("Resource_o7jdt")
 PreRequisites = Array[Object]([ExtResource("4_row4k")])
+MaximumAmount = 5
 metadata/_custom_type_script = "uid://ccdf3herk8v4r"

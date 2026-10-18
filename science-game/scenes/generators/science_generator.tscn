@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cob6wc6acjns1" path="res://assets/art/table-middle-section.png" id="1_mp6ib"]
 [ext_resource type="Script" uid="uid://bj6kx41u5xkb2" path="res://scripts/Generator/ScienceGenerator.cs" id="2_w5mg2"]
+[ext_resource type="Texture2D" uid="uid://cqfrqfe17ecc1" path="res://assets/art/formulas.png" id="3_ao4x3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
 size = Vector2(72, 101)
@@ -15,5 +16,10 @@ script = ExtResource("2_w5mg2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1882448020]
 position = Vector2(1, 4.5)
 shape = SubResource("RectangleShape2D_bklno")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1430449463]
+position = Vector2(0, -15)
+scale = Vector2(0.29764944, 0.29764944)
+texture = ExtResource("3_ao4x3")
 
 [connection signal="input_event" from="Area2D" to="." method="OnClick"]

@@ -57,6 +57,7 @@ script = ExtResource("1_jna2d")
 TypeToDisplay = 1
 
 [node name="ShopUI" parent="." unique_id=1511127767 instance=ExtResource("3_b3s3x")]
+visible = true
 
 [node name="Skill Tree" type="Control" parent="." unique_id=1222491598]
 layout_mode = 3

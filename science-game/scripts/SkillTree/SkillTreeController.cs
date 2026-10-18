@@ -11,7 +11,7 @@ namespace Nidavellir.SkillTree;
 public partial class SkillTreeController : Node
 {
     [Export] private SkillTreeUI m_skillTreeUi;
-    [Export] private Array<SkillTreeItemData> m_shopUpgrades;
+    [Export] private SkillTreeData m_skillTreeData;
     [Export] private ResourceControllerNode m_skillPoints;
     [Export] private SkillTreeUpgradeController m_upgradeController;
     
@@ -20,14 +20,14 @@ public partial class SkillTreeController : Node
     public override void _EnterTree()
     {
         base._EnterTree();
-        this.m_boughtUpgrades = this.m_shopUpgrades.ToDictionary(x => x, x => 0);
+        this.m_boughtUpgrades = this.m_skillTreeData.Upgrades.ToDictionary(x => x, x => 0);
     }
 
     public void OnClick(Viewport viewport, InputEvent evt, int shapeIdx)
     {
-        if (evt is not InputEventMouseButton { Pressed: true })
+        if (evt is not InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Left })
             return;
-        
+        GD.Print("OPEN SKILLTREEE");
         this.m_skillTreeUi.Open(this.m_boughtUpgrades);
     }
 

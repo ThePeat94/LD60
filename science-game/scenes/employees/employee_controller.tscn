@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dmvasq8mrr7ks"]
+
+[ext_resource type="Script" uid="uid://ddemuenp0lqtk" path="res://scripts/Automation/EmployeeController.cs" id="1_kl4nu"]
+[ext_resource type="PackedScene" uid="uid://4ux0ljfhtpgf" path="res://scenes/employees/thinker.tscn" id="2_58e0d"]
+[ext_resource type="PackedScene" uid="uid://cd3v04n6sk73t" path="res://scenes/employees/inventor.tscn" id="3_a51w3"]
+[ext_resource type="PackedScene" uid="uid://801xtflpr5br" path="res://scenes/employees/scribe.tscn" id="4_m2o51"]
+
+[node name="EmployeeController" type="Node" unique_id=130145111 node_paths=PackedStringArray("m_patentGenerator", "m_skillpointGenerator", "m_scienceGenerator")]
+script = ExtResource("1_kl4nu")
+m_thinkerEmployeeScene = ExtResource("2_58e0d")
+m_inventorEmployeeScene = ExtResource("3_a51w3")
+m_scribeEmployeeScene = ExtResource("4_m2o51")
+m_patentGenerator = NodePath("")
+m_skillpointGenerator = NodePath("")
+m_scienceGenerator = NodePath("")

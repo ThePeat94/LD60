@@ -44,10 +44,13 @@ public partial class GeneratorController : Node, IGenerator
         var valueToBeat = this.GetLevelRequirement();
 
         if (this.m_required.ResourceController.CurrentValue < valueToBeat) return;
-        this.m_currentLevel++;
-        
-        this.m_generatorRewardController.ApplyReward();
-        this.m_required.ResourceController.ResetValues();
+        do
+        {
+            this.m_required.ResourceController.UseResource(valueToBeat);
+            this.m_generatorRewardController.ApplyReward();
+            this.m_currentLevel++;
+            valueToBeat = this.GetLevelRequirement();
+        } while (this.m_required.ResourceController.CurrentValue >= valueToBeat);
     }
     
     private IdleNumber GetLevelRequirement()

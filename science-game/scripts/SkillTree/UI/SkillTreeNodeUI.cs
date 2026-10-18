@@ -42,6 +42,7 @@ public partial class SkillTreeNodeUI : PanelContainer
             return;
         }
         this.AcceptEvent();
+        GD.Print("CLICK SKILL TREE NODE");
         this.m_onClick?.Invoke(this.Data);
     }
 
