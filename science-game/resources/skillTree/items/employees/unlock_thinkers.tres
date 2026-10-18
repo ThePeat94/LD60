@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="SkillTreeItemData" format=3 uid="uid://cpufjmdm5v4pq"]
+
+[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_m7ken"]
+[ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.cs" id="2_f1bv2"]
+[ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="3_lr1kr"]
+[ext_resource type="Resource" uid="uid://dweg1ryfmi1vw" path="res://resources/shop/thinker.tres" id="4_m7ken"]
+[ext_resource type="Script" uid="uid://ma5ppe0wfeik" path="res://scripts/GDResource/SkillTree/FeatureUnlock/UnlockShopFeatureData.cs" id="5_f1bv2"]
+[ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.cs" id="6_irlr3"]
+
+[sub_resource type="Resource" id="Resource_5ai3e"]
+script = ExtResource("1_m7ken")
+Value = 0.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_wny40"]
+script = ExtResource("1_m7ken")
+Value = 0.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_rwwpb"]
+script = ExtResource("2_f1bv2")
+Base = SubResource("Resource_5ai3e")
+Slope = SubResource("Resource_wny40")
+metadata/_custom_type_script = "uid://ddxwa8yrpoypp"
+
+[sub_resource type="Resource" id="Resource_lyy28"]
+script = ExtResource("5_f1bv2")
+UnlockedShopItem = ExtResource("4_m7ken")
+metadata/_custom_type_script = "uid://ma5ppe0wfeik"
+
+[resource]
+script = ExtResource("6_irlr3")
+SkillName = "Unlock Thinkers"
+Description = "Blablabla"
+Icon = ExtResource("3_lr1kr")
+CostModel = SubResource("Resource_rwwpb")
+Upgrade = SubResource("Resource_lyy28")
+PreRequisites = null
+MaximumAmount = 1
+metadata/_custom_type_script = "uid://ccdf3herk8v4r"

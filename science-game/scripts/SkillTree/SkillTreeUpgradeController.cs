@@ -5,6 +5,7 @@ using Nidavellir.Automation;
 using Nidavellir.GDResource.SkillTree;
 using Nidavellir.GDResource.SkillTree.FeatureUnlockUpgrades;
 using Nidavellir.PlayerStats;
+using Nidavellir.Shop;
 
 namespace Nidavellir.SkillTree;
 
@@ -12,6 +13,7 @@ public partial class SkillTreeUpgradeController : Node
 {
     [Export] private PlayerStatsContainer m_playerStats;
     [Export] private EmployeeController m_employeeController;
+    [Export] private ShopController m_shopController;
 
     public void ApplyPlayerStatUpgrade(PlayerUpgradeData u)
     {
@@ -40,7 +42,8 @@ public partial class SkillTreeUpgradeController : Node
         }
     }
 
-    public void UnlockFeature(FeatureUnlockData featureUnlockData)
+    public void UnlockShopFeature(UnlockShopFeatureData unlockShopFeatureData)
     {
+        this.m_shopController.UnlockFeature(unlockShopFeatureData);
     }
 }

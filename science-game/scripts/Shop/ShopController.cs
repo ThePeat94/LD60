@@ -2,6 +2,7 @@ using System.Linq;
 using Godot;
 using Godot.Collections;
 using Nidavellir.GDResource.Shop;
+using Nidavellir.GDResource.SkillTree.FeatureUnlockUpgrades;
 using Nidavellir.IdleNumbers;
 using Nidavellir.Upgrades;
 using ShopUI = Nidavellir.Shop.UI.ShopUI;
@@ -52,8 +53,15 @@ public partial class ShopController : Node2D
         {
             return;
         }
+
+        this.Money.ResourceController.UseResource(cost);
         this.m_boughtUpgrades[itemData]++;
         itemData.UpgradeData.Apply(this.m_upgradeController);
         this.ShopUI.Open(this.m_boughtUpgrades);
+    }
+
+    public void UnlockFeature(UnlockShopFeatureData unlockShopFeatureData)
+    {
+        this.m_boughtUpgrades.Add(unlockShopFeatureData.UnlockedShopItem, 0);
     }
 }

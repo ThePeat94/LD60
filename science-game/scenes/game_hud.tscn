@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://c4dhm6i7m4tr" path="res://resources/skillTree/items/click_upgrade_2.tres" id="8_qeyxp"]
 [ext_resource type="Resource" uid="uid://c6akm80vd8cev" path="res://resources/skillTree/items/employees/stronger_thinkers.tres" id="9_bthj5"]
 [ext_resource type="Resource" uid="uid://ckvi1f3dnb88n" path="res://resources/skillTree/items/employees/faster_thinkers.tres" id="10_qeyxp"]
+[ext_resource type="Resource" uid="uid://cpufjmdm5v4pq" path="res://resources/skillTree/items/employees/unlock_thinkers.tres" id="11_qeyxp"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1847261213 node_paths=PackedStringArray("ShopUI", "SkillTreeUI")]
 script = ExtResource("1_gjmhc")
@@ -130,14 +131,14 @@ size_flags_vertical = 3
 script = ExtResource("4_i7dyb")
 m_rootNode = NodePath("../../../..")
 
-[node name="SkillTreeNodeUI" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=878878694 instance=ExtResource("5_b3s3x")]
+[node name="Base Click Upgrade" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=878878694 instance=ExtResource("5_b3s3x")]
 layout_mode = 0
 offset_left = 520.0
 offset_top = 66.0
 offset_right = 920.0
 offset_bottom = 216.0
 
-[node name="SkillTreeNodeUI2" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=127105399 instance=ExtResource("5_b3s3x")]
+[node name="Multiplicative Click Upgrade" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=127105399 instance=ExtResource("5_b3s3x")]
 layout_mode = 0
 offset_left = 523.0
 offset_top = 312.0
@@ -145,7 +146,7 @@ offset_right = 923.0
 offset_bottom = 480.0
 m_data = ExtResource("8_qeyxp")
 
-[node name="SkillTreeNodeUI3" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=748500048 instance=ExtResource("5_b3s3x")]
+[node name="Potent Patents" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=748500048 instance=ExtResource("5_b3s3x")]
 layout_mode = 0
 offset_left = 300.0
 offset_top = 573.0
@@ -153,7 +154,7 @@ offset_right = 700.0
 offset_bottom = 741.0
 m_data = ExtResource("7_olodv")
 
-[node name="SkillTreeNodeUI4" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=2012458393 instance=ExtResource("5_b3s3x")]
+[node name="Skilled Skiller" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=2012458393 instance=ExtResource("5_b3s3x")]
 layout_mode = 0
 offset_left = 774.0
 offset_top = 573.0
@@ -161,28 +162,37 @@ offset_right = 1174.0
 offset_bottom = 741.0
 m_data = ExtResource("8_cai0h")
 
-[node name="SkillTreeNodeUI5" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=1906036159 instance=ExtResource("5_b3s3x")]
+[node name="Stronger Thinkers" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=1906036159 instance=ExtResource("5_b3s3x")]
 layout_mode = 0
 offset_left = 1326.0
-offset_top = 61.0
+offset_top = 419.0
 offset_right = 1726.0
-offset_bottom = 229.0
+offset_bottom = 587.0
 m_data = ExtResource("9_bthj5")
 
-[node name="SkillTreeNodeUI6" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=1213503214 instance=ExtResource("5_b3s3x")]
+[node name="Faster Thinkers" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=1213503214 instance=ExtResource("5_b3s3x")]
 layout_mode = 0
 offset_left = 1320.0
-offset_top = 328.0
+offset_top = 686.0
 offset_right = 1720.0
-offset_bottom = 496.0
+offset_bottom = 854.0
 m_data = ExtResource("10_qeyxp")
+
+[node name="Unlock Thinkers Node" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=1758735702 instance=ExtResource("5_b3s3x")]
+layout_mode = 0
+offset_left = 1320.0
+offset_top = 86.0
+offset_right = 1720.0
+offset_bottom = 254.0
+m_data = ExtResource("11_qeyxp")
 
 [connection signal="pressed" from="Skill Tree/Panel/Close Button" to="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" method="Close"]
 
 [editable path="ShopUI"]
-[editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI"]
-[editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI2"]
-[editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI3"]
-[editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI4"]
-[editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI5"]
-[editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI6"]
+[editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Base Click Upgrade"]
+[editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Multiplicative Click Upgrade"]
+[editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Potent Patents"]
+[editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Skilled Skiller"]
+[editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Stronger Thinkers"]
+[editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Faster Thinkers"]
+[editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Unlock Thinkers Node"]
