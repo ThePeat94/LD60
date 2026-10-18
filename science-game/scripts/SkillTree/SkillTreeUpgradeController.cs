@@ -1,6 +1,9 @@
+using System;
 using Godot;
 using Nidavellir.Automation;
+using Nidavellir.GDResource;
 using Nidavellir.GDResource.SkillTree.EntityStatUpgrades.Player;
+using Nidavellir.GDResource.SkillTree.FeatureUnlock;
 using Nidavellir.PlayerStats;
 using Nidavellir.Shop;
 using EmployeeUpgradeData = Nidavellir.GDResource.SkillTree.EntityStatUpgrades.Employee.EmployeeUpgradeData;
@@ -14,6 +17,8 @@ public partial class SkillTreeUpgradeController : Node
     [Export] private PlayerStatsContainer m_playerStats;
     [Export] private EmployeeController m_employeeController;
     [Export] private ShopController m_shopController;
+    [Export] private GeneratorUnlocker m_patentUnlocker;
+    [Export] private ShopUnlocker m_shopUnlocker;
 
     public void ApplyPlayerStatUpgrade(PlayerUpgradeData u)
     {
@@ -45,5 +50,24 @@ public partial class SkillTreeUpgradeController : Node
     public void UnlockShopFeature(UnlockShopFeatureData unlockShopFeatureData)
     {
         this.m_shopController.UnlockFeature(unlockShopFeatureData);
+    }
+
+    public void UnlockGameFeature(UnlockGameFeatureData unlockGameFeatureData)
+    {
+        GD.Print($"Unlocking Game Feature {unlockGameFeatureData.GameFeature}");
+        switch (unlockGameFeatureData.GameFeature)
+        {
+            case GameFeature.Money:
+                this.m_patentUnlocker.Unlock();
+                break;
+            case GameFeature.Shop:
+                this.m_shopUnlocker.Unlock();
+                break;
+            case GameFeature.Skillpoints:
+                break;
+            default:
+                GD.PrintErr("Unknown GameFeature to unlock");
+                throw new ArgumentOutOfRangeException();
+        }
     }
 }

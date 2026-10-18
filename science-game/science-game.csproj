@@ -5,4 +5,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>Nidavellir</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="scripts\GDResource\SkillTree\FeatureUnlock\GameFeature\UnlockGameFeatureData.cs.uid" />
+  </ItemGroup>
 </Project>

@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="SkillTreeItemData" format=3 uid="uid://cobnswixs3717"]
+
+[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_jbj35"]
+[ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.cs" id="2_rn70p"]
+[ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="3_u6n68"]
+[ext_resource type="Resource" uid="uid://d0hgx6eca0xng" path="res://resources/skillTree/items/gameFeatures/unlock_patents.tres" id="4_rn70p"]
+[ext_resource type="Script" uid="uid://dvbi6j25t5f7m" path="res://scripts/GDResource/SkillTree/FeatureUnlock/GameFeature/UnlockGameFeatureData.cs" id="4_vj6d3"]
+[ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.cs" id="5_gyn5y"]
+
+[sub_resource type="Resource" id="Resource_laxis"]
+script = ExtResource("1_jbj35")
+Value = 0.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_wyjd0"]
+script = ExtResource("1_jbj35")
+Value = 0.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_0ga6l"]
+script = ExtResource("2_rn70p")
+Base = SubResource("Resource_laxis")
+Slope = SubResource("Resource_wyjd0")
+metadata/_custom_type_script = "uid://ddxwa8yrpoypp"
+
+[sub_resource type="Resource" id="Resource_3d1fk"]
+script = ExtResource("4_vj6d3")
+metadata/_custom_type_script = "uid://dvbi6j25t5f7m"
+
+[resource]
+script = ExtResource("5_gyn5y")
+SkillName = "Unlock Patents"
+Description = "Make Money"
+Icon = ExtResource("3_u6n68")
+CostModel = SubResource("Resource_0ga6l")
+Upgrade = SubResource("Resource_3d1fk")
+PreRequisites = Array[Object]([ExtResource("4_rn70p")])
+MaximumAmount = 1
+metadata/_custom_type_script = "uid://ccdf3herk8v4r"

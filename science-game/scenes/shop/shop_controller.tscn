@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://qxyt52ihrtlg" path="res://resources/shop/scribe.tres" id="4_5vpls"]
 [ext_resource type="Texture2D" uid="uid://brlj063h1nsya" path="res://assets/art/desk/desk-utensils.png" id="5_ojs2r"]
 [ext_resource type="Script" uid="uid://d1fhk0b1fsuov" path="res://scripts/Upgrades/UpgradeController.cs" id="6_ojs2r"]
+[ext_resource type="Script" uid="uid://bcgflj1nii0sh" path="res://scripts/GameFeature/ShopUnlocker.cs" id="7_oltln"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5vd1"]
 size = Vector2(64, 25)
@@ -28,5 +29,10 @@ shape = SubResource("RectangleShape2D_k5vd1")
 
 [node name="UpgradeController" type="Node" parent="." unique_id=352711260]
 script = ExtResource("6_ojs2r")
+
+[node name="Unlocker" type="Node" parent="." unique_id=457857138 node_paths=PackedStringArray("m_shopSprite", "m_shopArea")]
+script = ExtResource("7_oltln")
+m_shopSprite = NodePath("../Sprite2D")
+m_shopArea = NodePath("../Sprite2D/Area2D")
 
 [connection signal="input_event" from="Sprite2D/Area2D" to="." method="OnClick"]

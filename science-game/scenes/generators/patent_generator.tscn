@@ -8,7 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://b30yub36xfftf" path="res://assets/art/left_section_engineering-room/light-bulb-left-section.png" id="7_2fnvo"]
 [ext_resource type="Texture2D" uid="uid://cq7tvjh70ndg4" path="res://assets/art/left_section_engineering-room/tools-left-section.png" id="8_pdsy3"]
 [ext_resource type="Texture2D" uid="uid://cw4soeir05tr6" path="res://assets/art/left_section_engineering-room/top-gear-left-section.png" id="9_0hrct"]
+[ext_resource type="Texture2D" uid="uid://d18jthb61uo3t" path="res://assets/art/curtains/research-curtain.png" id="10_2fnvo"]
 [ext_resource type="Texture2D" uid="uid://d0023g7ttxh2d" path="res://assets/art/left_section_engineering-room/bottom-gear-left-section.png" id="10_i5752"]
+[ext_resource type="Script" uid="uid://drs0euodsbijl" path="res://scripts/GameFeature/GeneratorUnlocker.cs" id="11_pdsy3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
 size = Vector2(65, 135)
@@ -49,5 +51,13 @@ texture = ExtResource("9_0hrct")
 
 [node name="Sprite2D5" type="Sprite2D" parent="PatentSprites" unique_id=2082845287]
 texture = ExtResource("10_i5752")
+
+[node name="Sprite2D6" type="Sprite2D" parent="PatentSprites" unique_id=2033753420]
+texture = ExtResource("10_2fnvo")
+
+[node name="Unlocker" type="Node" parent="." unique_id=938280753 node_paths=PackedStringArray("m_curtains", "m_clickArea")]
+script = ExtResource("11_pdsy3")
+m_curtains = NodePath("../PatentSprites/Sprite2D6")
+m_clickArea = NodePath("../Area2D")
 
 [connection signal="input_event" from="Area2D" to="." method="OnClick"]

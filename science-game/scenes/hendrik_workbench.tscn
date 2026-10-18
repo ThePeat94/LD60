@@ -90,10 +90,12 @@ m_skillPoints = NodePath("../../../ResourceControllers/GlobalSkillPointsControll
 z_index = 5
 position = Vector2(0, 1)
 
-[node name="UpgradeController" parent="Room/Desk/SkilltreeController" index="1" unique_id=1259699767 node_paths=PackedStringArray("m_playerStats", "m_employeeController", "m_shopController")]
+[node name="UpgradeController" parent="Room/Desk/SkilltreeController" index="1" unique_id=1259699767 node_paths=PackedStringArray("m_playerStats", "m_employeeController", "m_shopController", "m_patentUnlocker", "m_shopUnlocker")]
 m_playerStats = NodePath("../../../../PlayerStats")
 m_employeeController = NodePath("../../../../EmployeeController")
 m_shopController = NodePath("../../ShopController")
+m_patentUnlocker = NodePath("../../../../PatentGenerator/Unlocker")
+m_shopUnlocker = NodePath("../../ShopController/Unlocker")
 
 [node name="ShopController" parent="Room/Desk" unique_id=524025840 node_paths=PackedStringArray("Money", "ShopUI") instance=ExtResource("10_rep15")]
 position = Vector2(-108.04062, 44.78109)
@@ -142,7 +144,7 @@ scale = Vector2(6.007, 6.007)
 m_consumed = NodePath("../ResourceControllers/GlobalScienceController")
 PlayerStatsContainer = NodePath("../PlayerStats")
 
-[node name="RewardController" parent="PatentGenerator" index="3" unique_id=1303221621 node_paths=PackedStringArray("m_playerStats", "m_generated")]
+[node name="RewardController" parent="PatentGenerator" index="2" unique_id=1303221621 node_paths=PackedStringArray("m_playerStats", "m_generated")]
 m_playerStats = NodePath("../../PlayerStats")
 m_generated = NodePath("../../ResourceControllers/GlobalMoneyController")
 
@@ -152,7 +154,7 @@ scale = Vector2(6.007, 6.007)
 m_consumed = NodePath("../ResourceControllers/GlobalScienceController")
 PlayerStatsContainer = NodePath("../PlayerStats")
 
-[node name="Reward Controller" parent="SkillPointGenerator" index="3" unique_id=2039802272 node_paths=PackedStringArray("m_playerStats", "m_generated")]
+[node name="Reward Controller" parent="SkillPointGenerator" index="2" unique_id=2039802272 node_paths=PackedStringArray("m_playerStats", "m_generated")]
 m_playerStats = NodePath("../../PlayerStats")
 m_generated = NodePath("../../ResourceControllers/GlobalSkillPointsController")
 
@@ -198,6 +200,8 @@ m_scienceGenerator = NodePath("../ScienceGenerator")
 [editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Unlock Scribes"]
 [editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Stronger Scribes"]
 [editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Faster Scribes"]
+[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Unlock Patents"]
+[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Unlock Shop"]
 [editable path="ScienceGenerator"]
 [editable path="PatentGenerator"]
 [editable path="SkillPointGenerator"]

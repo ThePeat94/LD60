@@ -15,7 +15,9 @@
 [ext_resource type="Resource" uid="uid://clcr81107edrj" path="res://resources/skillTree/items/employees/inventor/unlock_inventors.tres" id="14_qan5h"]
 [ext_resource type="Resource" uid="uid://bajdkibfmy2lh" path="res://resources/skillTree/items/employees/scribes/unlock_scribes.tres" id="15_fri87"]
 [ext_resource type="Resource" uid="uid://bob7j5enkojt0" path="res://resources/skillTree/items/employees/scribes/stronger_scribes.tres" id="16_olu1u"]
+[ext_resource type="Resource" uid="uid://d0hgx6eca0xng" path="res://resources/skillTree/items/gameFeatures/unlock_patents.tres" id="17_fri87"]
 [ext_resource type="Resource" uid="uid://dndv536kpn5d" path="res://resources/skillTree/items/employees/scribes/faster_scribes.tres" id="17_wbv7f"]
+[ext_resource type="Resource" uid="uid://cobnswixs3717" path="res://resources/skillTree/items/gameFeatures/unlock_shop.tres" id="18_olu1u"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1847261213 node_paths=PackedStringArray("ShopUI", "SkillTreeUI")]
 script = ExtResource("1_gjmhc")
@@ -127,75 +129,91 @@ m_data = ExtResource("8_cai0h")
 
 [node name="Unlock Thinkers" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=1758735702 instance=ExtResource("5_b3s3x")]
 layout_mode = 0
-offset_left = 1320.0
-offset_top = 86.0
-offset_right = 1720.0
-offset_bottom = 254.0
+offset_left = 1445.0
+offset_top = 581.0
+offset_right = 1845.0
+offset_bottom = 752.0
 m_data = ExtResource("11_qeyxp")
 
 [node name="Stronger Thinkers" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=1906036159 instance=ExtResource("5_b3s3x")]
 layout_mode = 0
-offset_left = 1326.0
-offset_top = 419.0
-offset_right = 1726.0
-offset_bottom = 587.0
+offset_left = 1451.0
+offset_top = 914.0
+offset_right = 1851.0
+offset_bottom = 1085.0
 m_data = ExtResource("9_bthj5")
 
 [node name="Faster Thinkers" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=1213503214 instance=ExtResource("5_b3s3x")]
 layout_mode = 0
-offset_left = 1320.0
-offset_top = 686.0
-offset_right = 1720.0
-offset_bottom = 854.0
+offset_left = 1445.0
+offset_top = 1181.0
+offset_right = 1845.0
+offset_bottom = 1352.0
 m_data = ExtResource("10_qeyxp")
 
 [node name="Unlock Inventors" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=762651036 instance=ExtResource("5_b3s3x")]
 layout_mode = 0
-offset_left = 1938.0
-offset_top = 86.0
-offset_right = 2338.0
-offset_bottom = 254.0
+offset_left = 2063.0
+offset_top = 581.0
+offset_right = 2463.0
+offset_bottom = 752.0
 m_data = ExtResource("14_qan5h")
 
 [node name="Stronger Inventors" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=1063911208 instance=ExtResource("5_b3s3x")]
 layout_mode = 0
-offset_left = 1944.0
-offset_top = 419.0
-offset_right = 2344.0
-offset_bottom = 587.0
+offset_left = 2069.0
+offset_top = 914.0
+offset_right = 2469.0
+offset_bottom = 1085.0
 m_data = ExtResource("12_hwndf")
 
 [node name="Faster Inventors" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=1401414334 instance=ExtResource("5_b3s3x")]
 layout_mode = 0
-offset_left = 1938.0
-offset_top = 686.0
-offset_right = 2338.0
-offset_bottom = 854.0
+offset_left = 2063.0
+offset_top = 1181.0
+offset_right = 2463.0
+offset_bottom = 1352.0
 m_data = ExtResource("13_pv267")
 
 [node name="Unlock Scribes" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=1271646530 instance=ExtResource("5_b3s3x")]
 layout_mode = 0
-offset_left = 2559.0
-offset_top = 86.0
-offset_right = 2959.0
-offset_bottom = 254.0
+offset_left = 2684.0
+offset_top = 581.0
+offset_right = 3084.0
+offset_bottom = 752.0
 m_data = ExtResource("15_fri87")
 
 [node name="Stronger Scribes" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=319539269 instance=ExtResource("5_b3s3x")]
 layout_mode = 0
-offset_left = 2565.0
-offset_top = 419.0
-offset_right = 2965.0
-offset_bottom = 587.0
+offset_left = 2690.0
+offset_top = 914.0
+offset_right = 3090.0
+offset_bottom = 1085.0
 m_data = ExtResource("16_olu1u")
 
 [node name="Faster Scribes" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=1017472423 instance=ExtResource("5_b3s3x")]
 layout_mode = 0
-offset_left = 2559.0
-offset_top = 686.0
-offset_right = 2959.0
-offset_bottom = 854.0
+offset_left = 2684.0
+offset_top = 1181.0
+offset_right = 3084.0
+offset_bottom = 1352.0
 m_data = ExtResource("17_wbv7f")
+
+[node name="Unlock Patents" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=1938483727 instance=ExtResource("5_b3s3x")]
+layout_mode = 0
+offset_left = 2034.0
+offset_top = 94.0
+offset_right = 2434.0
+offset_bottom = 265.0
+m_data = ExtResource("17_fri87")
+
+[node name="Unlock Shop" parent="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" unique_id=1720834233 instance=ExtResource("5_b3s3x")]
+layout_mode = 0
+offset_left = 2034.0
+offset_top = 356.0
+offset_right = 2434.0
+offset_bottom = 527.0
+m_data = ExtResource("18_olu1u")
 
 [connection signal="pressed" from="Skill Tree/Panel/Close Button" to="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" method="Close"]
 
@@ -213,3 +231,5 @@ m_data = ExtResource("17_wbv7f")
 [editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Unlock Scribes"]
 [editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Stronger Scribes"]
 [editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Faster Scribes"]
+[editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Unlock Patents"]
+[editable path="Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Unlock Shop"]

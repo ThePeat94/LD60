@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.cs" id="2_f1bv2"]
 [ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="3_lr1kr"]
 [ext_resource type="Resource" uid="uid://dweg1ryfmi1vw" path="res://resources/shop/thinker.tres" id="4_m7ken"]
+[ext_resource type="Resource" uid="uid://cobnswixs3717" path="res://resources/skillTree/items/gameFeatures/unlock_shop.tres" id="4_syimh"]
 [ext_resource type="Script" uid="uid://ma5ppe0wfeik" path="res://scripts/GDResource/SkillTree/FeatureUnlock/UnlockShopFeatureData.cs" id="5_f1bv2"]
 [ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.cs" id="6_irlr3"]
 
@@ -35,6 +36,6 @@ Description = "Blablabla"
 Icon = ExtResource("3_lr1kr")
 CostModel = SubResource("Resource_rwwpb")
 Upgrade = SubResource("Resource_lyy28")
-PreRequisites = null
+PreRequisites = Array[Object]([ExtResource("4_syimh")])
 MaximumAmount = 1
 metadata/_custom_type_script = "uid://ccdf3herk8v4r"
