@@ -4,14 +4,16 @@
 [ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.cs" id="1_8bert"]
 [ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.cs" id="1_srffr"]
 [ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="2_5lo75"]
-[ext_resource type="Script" uid="uid://bjci6v6l56xdh" path="res://scripts/GDResource/SkillTree/NoopSkillTreeUpgrade.cs" id="3_4j54d"]
+[ext_resource type="Script" uid="uid://cujtkib78qvoo" path="res://scripts/GDResource/SkillTree/PlayerStatUpgrades/AdditiveEntityStatUpgradeData.cs" id="4_5lo75"]
 
 [sub_resource type="Resource" id="Resource_3157h"]
 script = ExtResource("1_5lo75")
+Value = 0.0
 metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
 
 [sub_resource type="Resource" id="Resource_304c0"]
 script = ExtResource("1_5lo75")
+Value = 0.0
 metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
 
 [sub_resource type="Resource" id="Resource_8bert"]
@@ -20,9 +22,14 @@ Base = SubResource("Resource_3157h")
 Slope = SubResource("Resource_304c0")
 metadata/_custom_type_script = "uid://ddxwa8yrpoypp"
 
-[sub_resource type="Resource" id="Resource_n6qkt"]
-script = ExtResource("3_4j54d")
-metadata/_custom_type_script = "uid://bjci6v6l56xdh"
+[sub_resource type="Resource" id="Resource_jlahc"]
+script = ExtResource("1_5lo75")
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_b3s3x"]
+script = ExtResource("4_5lo75")
+ClickStrengthUpgrade = SubResource("Resource_jlahc")
+metadata/_custom_type_script = "uid://cujtkib78qvoo"
 
 [resource]
 script = ExtResource("1_8bert")
@@ -30,7 +37,7 @@ SkillName = "Sharpen your mind"
 Description = "Blablabla"
 Icon = ExtResource("2_5lo75")
 CostModel = SubResource("Resource_8bert")
-Upgrade = SubResource("Resource_n6qkt")
+Upgrade = SubResource("Resource_b3s3x")
 PreRequisites = Array[Object]([])
-MaximumAmount = 3
+MaximumAmount = 5
 metadata/_custom_type_script = "uid://ccdf3herk8v4r"

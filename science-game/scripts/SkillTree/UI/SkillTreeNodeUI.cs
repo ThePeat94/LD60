@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using Nidavellir.GDResource.SkillTree;
 using Nidavellir.IdleNumbers;
@@ -11,6 +12,14 @@ public partial class SkillTreeNodeUI : PanelContainer
     [Export] private Label m_name;
     [Export] private Label m_amount;
     [Export] private Label m_cost;
+ 
+    private Action<SkillTreeItemData> m_onClick;
+    
+    public event Action<SkillTreeItemData> OnClick
+    {
+        add => this.m_onClick += value;
+        remove => this.m_onClick -= value;
+    }
     
     public SkillTreeItemData Data => this.m_data;
 
@@ -35,6 +44,7 @@ public partial class SkillTreeNodeUI : PanelContainer
         
         GD.Print("KLICK KLICK KLICK");
         this.AcceptEvent();
+        this.m_onClick?.Invoke(this.Data);
     }
 
     public void Display(int amount, int maxAmount, IdleNumber cost)

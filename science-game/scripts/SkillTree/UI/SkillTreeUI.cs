@@ -9,6 +9,7 @@ namespace Nidavellir.SkillTree.UI;
 public partial class SkillTreeUI : Control
 {
     [Export] private Control m_rootNode;
+    [Export] private SkillTreeController  m_skillTreeController;
     
     private List<SkillTreeNodeUI> m_nodes = [];
     private Dictionary<SkillTreeItemData, SkillTreeNodeUI> m_uiForData = new();
@@ -18,7 +19,18 @@ public partial class SkillTreeUI : Control
         base._Ready();
         this.m_nodes = [.. this.GetChildren().OfType<SkillTreeNodeUI>()];
         this.m_uiForData = this.m_nodes.ToDictionary(x => x.Data);
+
+        foreach (var skillNode in this.m_nodes)
+        {
+            skillNode.OnClick += this.OnSkillNodeClick;
+        }
+        
         this.QueueRedraw();
+    }
+
+    private void OnSkillNodeClick(SkillTreeItemData obj)
+    {
+        this.m_skillTreeController.AttemptPurchase(obj);
     }
 
     public void Open(Dictionary<SkillTreeItemData, int> boughtUpgrades)

@@ -15,13 +15,13 @@ public partial class ShopUI : Control
     [Export]
     public Node ItemsParent { private get; set; }
     
-    private Dictionary<ShopItemData, ShopItemUI> m_items = new();
+    private readonly Dictionary<ShopItemData, ShopItemUI> m_items = new();
     
     public void Open(Dictionary<ShopItemData, int> upgrades)
     {
         foreach (var keyValuePair in upgrades)
         {
-            if (!this.m_items.ContainsKey(keyValuePair.Key))
+            if (!this.m_items.TryGetValue(keyValuePair.Key, out var value))
             {
                 var initializedItem = this.ItemPrefab.Instantiate<ShopItemUI>();
                 this.ItemsParent.AddChild(initializedItem);
@@ -31,7 +31,7 @@ public partial class ShopUI : Control
             }
             else
             {
-                this.m_items[keyValuePair.Key].Show(keyValuePair.Key, keyValuePair.Value);
+                value.Show(keyValuePair.Key, keyValuePair.Value);
             }
         }
         this.Visible = true;

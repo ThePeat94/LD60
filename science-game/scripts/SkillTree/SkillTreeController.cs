@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using Godot.Collections;
@@ -35,6 +36,12 @@ public partial class SkillTreeController : Node
         var bought = this.m_boughtUpgrades[upgradeData];
         if (bought >= upgradeData.MaximumAmount)
             return;
+
+        if (upgradeData.PreRequisites is not null)
+        {
+            if (upgradeData.PreRequisites.Count > 0 && !upgradeData.PreRequisites.Any(this.HasBought))
+                return;
+        }
         
         var costToBuy = upgradeData.CostModel.CalculateFor(new IdleNumber(bought));
 
@@ -43,5 +50,9 @@ public partial class SkillTreeController : Node
         
         this.m_skillPoints.ResourceController.UseResource(costToBuy);
         upgradeData.Upgrade.Apply(this.m_upgradeController);
+        this.m_boughtUpgrades[upgradeData]++;
+        this.m_skillTreeUi.Open(this.m_boughtUpgrades);
     }
+    
+    private bool HasBought(SkillTreeItemData item) => this.m_boughtUpgrades.GetValueOrDefault(item) > 0;                                                                  
 }

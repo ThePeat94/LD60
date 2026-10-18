@@ -1,21 +1,23 @@
 using Godot;
 using Nidavellir.GDResource;
 using Nidavellir.IdleNumbers;
+using Nidavellir.Stats;
 
 namespace Nidavellir.PlayerStats;
 
 public partial class PlayerStatsContainer : Node
 {
+    
     [Export]
-    public PlayerStatsData PlayerStatsData { get; set;  }
+    public PlayerStatsData BaseStats { get; set;  }
     
-    public IdleNumber ClickStrength { get; private set; }
+    public EntityStat ClickStrength { get; private set; }
     
-    public IdleNumber MoneyPerPatent { get; private set; }
+    public EntityStat MoneyPerPatent { get; private set; }
 
     public override void _Ready()
     {
-        this.ClickStrength = this.PlayerStatsData.InitialClickStrength.ToIdleNumber();
-        this.MoneyPerPatent = this.PlayerStatsData.InitialMoneyPerPatent.ToIdleNumber();
+        this.ClickStrength = new (this.BaseStats.InitialClickStrength.ToIdleNumber());
+        this.MoneyPerPatent = new(this.BaseStats.InitialMoneyPerPatent.ToIdleNumber());
     }
 }

@@ -15,25 +15,27 @@
 [ext_resource type="Resource" uid="uid://qxyt52ihrtlg" path="res://resources/shop/scribe.tres" id="12_sm0ys"]
 [ext_resource type="Script" uid="uid://ddemuenp0lqtk" path="res://scripts/Automation/EmployeeController.cs" id="12_ubj5k"]
 [ext_resource type="PackedScene" uid="uid://4ux0ljfhtpgf" path="res://scenes/employees/thinker.tscn" id="13_2n7ax"]
+[ext_resource type="Resource" uid="uid://c4dhm6i7m4tr" path="res://resources/skillTree/items/click_upgrade_2.tres" id="14_fep4v"]
 [ext_resource type="Script" uid="uid://bmfcsxh4xfi5n" path="res://scripts/SkillTree/SkillTreeController.cs" id="14_lmrt3"]
 [ext_resource type="PackedScene" uid="uid://cd3v04n6sk73t" path="res://scenes/employees/inventor.tscn" id="14_yvvbm"]
 [ext_resource type="Resource" uid="uid://cac8ru3omfski" path="res://resources/skillTree/items/click_upgrade_1.tres" id="15_k5vd1"]
 [ext_resource type="Script" uid="uid://d1fhk0b1fsuov" path="res://scripts/Upgrades/UpgradeController.cs" id="15_sm0ys"]
 [ext_resource type="PackedScene" uid="uid://801xtflpr5br" path="res://scenes/employees/scribe.tscn" id="17_jve2n"]
+[ext_resource type="Script" uid="uid://cvgx6wrfovxjg" path="res://scripts/SkillTree/SkillTreeUpgradeController.cs" id="17_o7jdt"]
 
-[sub_resource type="Resource" id="Resource_6wevv"]
+[sub_resource type="Resource" id="Resource_h34mm"]
 script = ExtResource("5_ru7pr")
 metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
 
-[sub_resource type="Resource" id="Resource_e1cbu"]
+[sub_resource type="Resource" id="Resource_mclas"]
 script = ExtResource("5_ru7pr")
 Value = 4.0
 metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
 
-[sub_resource type="Resource" id="Resource_c16ls"]
+[sub_resource type="Resource" id="Resource_bklno"]
 script = ExtResource("6_rep15")
-InitialClickStrength = SubResource("Resource_6wevv")
-InitialMoneyPerPatent = SubResource("Resource_e1cbu")
+InitialClickStrength = SubResource("Resource_h34mm")
+InitialMoneyPerPatent = SubResource("Resource_mclas")
 metadata/_custom_type_script = "uid://dl8x2275tt5qn"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5vd1"]
@@ -73,7 +75,7 @@ script = ExtResource("3_mlknq")
 
 [node name="PlayerStats" type="Node" parent="." unique_id=1361375017]
 script = ExtResource("4_vmktp")
-PlayerStatsData = SubResource("Resource_c16ls")
+BaseStats = SubResource("Resource_bklno")
 
 [node name="GameHUD" parent="." unique_id=1847261213 instance=ExtResource("7_6t4bp")]
 
@@ -90,7 +92,10 @@ ResourceControllerNode = NodePath("../../../../ResourceControllers/GlobalSkillPo
 [node name="ShopUI" parent="GameHUD" index="1" unique_id=1511127767 node_paths=PackedStringArray("ShopController")]
 ShopController = NodePath("../../Shop")
 
-[node name="SkillTreeNodeUI" parent="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" parent_id_path=PackedInt32Array(1847261213, 1347082111) index="0" unique_id=878878694]
+[node name="Container" parent="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer" parent_id_path=PackedInt32Array(1847261213, 2108983879) index="0" unique_id=1347082111 node_paths=PackedStringArray("m_skillTreeController")]
+m_skillTreeController = NodePath("../../../../../../SkilltreeController")
+
+[node name="SkillTreeNodeUI" parent="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" index="0" unique_id=878878694]
 offset_right = 300.0
 offset_bottom = 100.0
 
@@ -110,19 +115,25 @@ texture = ExtResource("8_edqit")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shop/Sprite2D/Area2D" unique_id=1423172229]
 shape = SubResource("RectangleShape2D_k5vd1")
 
-[node name="Skilltree" type="Node2D" parent="." unique_id=379888565 node_paths=PackedStringArray("m_skillTreeUi")]
+[node name="SkilltreeController" type="Node2D" parent="." unique_id=379888565 node_paths=PackedStringArray("m_skillTreeUi", "m_skillPoints", "m_upgradeController")]
 position = Vector2(597, 387)
 script = ExtResource("14_lmrt3")
 m_skillTreeUi = NodePath("../GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container")
-m_shopUpgrades = Array[Object]([ExtResource("15_k5vd1")])
+m_shopUpgrades = Array[Object]([ExtResource("15_k5vd1"), ExtResource("14_fep4v")])
+m_skillPoints = NodePath("../ResourceControllers/GlobalSkillPointsController")
+m_upgradeController = NodePath("UpgradeController")
 
-[node name="Sprite2D" type="Sprite2D" parent="Skilltree" unique_id=1143286315]
+[node name="Sprite2D" type="Sprite2D" parent="SkilltreeController" unique_id=1143286315]
 texture = ExtResource("8_edqit")
 
-[node name="Area2D" type="Area2D" parent="Skilltree/Sprite2D" unique_id=1129997428]
+[node name="Area2D" type="Area2D" parent="SkilltreeController/Sprite2D" unique_id=1129997428]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skilltree/Sprite2D/Area2D" unique_id=104535738]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SkilltreeController/Sprite2D/Area2D" unique_id=104535738]
 shape = SubResource("RectangleShape2D_k5vd1")
+
+[node name="UpgradeController" type="Node" parent="SkilltreeController" unique_id=1398517642 node_paths=PackedStringArray("m_playerStats")]
+script = ExtResource("17_o7jdt")
+m_playerStats = NodePath("../../PlayerStats")
 
 [node name="EmployeeController" type="Node" parent="." unique_id=1468403037 node_paths=PackedStringArray("m_patentGenerator", "m_skillpointGenerator", "m_scienceGenerator")]
 script = ExtResource("12_ubj5k")
@@ -138,7 +149,7 @@ script = ExtResource("15_sm0ys")
 m_employeeController = NodePath("../EmployeeController")
 
 [connection signal="input_event" from="Shop/Sprite2D/Area2D" to="Shop" method="OnClick"]
-[connection signal="input_event" from="Skilltree/Sprite2D/Area2D" to="Skilltree" method="OnClick"]
+[connection signal="input_event" from="SkilltreeController/Sprite2D/Area2D" to="SkilltreeController" method="OnClick"]
 
 [editable path="ScienceGenerator"]
 [editable path="PatentGenerator"]
@@ -146,3 +157,4 @@ m_employeeController = NodePath("../EmployeeController")
 [editable path="GameHUD"]
 [editable path="GameHUD/ShopUI"]
 [editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI"]
+[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/SkillTreeNodeUI2"]

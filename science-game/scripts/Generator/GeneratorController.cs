@@ -29,7 +29,7 @@ public partial class GeneratorController : Node, IGenerator
         if (evt is not InputEventMouseButton mouseButton) return;
         if (!mouseButton.Pressed) return;
 
-        this.Generate(this.PlayerStatsContainer.ClickStrength);
+        this.Generate(this.PlayerStatsContainer.ClickStrength.Value);
         
     }
     
@@ -45,7 +45,7 @@ public partial class GeneratorController : Node, IGenerator
 
         if (this.m_required.ResourceController.CurrentValue < valueToBeat) return;
         
-        var moneyToAdd = this.PlayerStatsContainer.MoneyPerPatent;
+        var moneyToAdd = this.PlayerStatsContainer.MoneyPerPatent.Value;
         this.m_currentLevel++;
         this.m_generated.ResourceController.Add(moneyToAdd);
         this.m_required.ResourceController.ResetValues();

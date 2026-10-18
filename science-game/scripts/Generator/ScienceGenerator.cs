@@ -17,7 +17,7 @@ public partial class ScienceGenerator : Node2D, IGenerator
     {
         if (evt is not InputEventMouseButton { Pressed: true }) return;
         
-        this.Generate(new IdleNumber(1));
+        this.Generate(this.PlayerStatsContainer.ClickStrength.Value);
     }
 
     public void Generate(IdleNumber value)
