@@ -151,6 +151,15 @@ m_patentUnlocker = NodePath("../../../../PatentGenerator/Unlocker")
 m_shopUnlocker = NodePath("../../ShopController/Unlocker")
 m_gameWonUi = NodePath("../../../../GameHUD/GameWonUI")
 
+[node name="AudioStreamPlayer2D" parent="Room/Desk/SkilltreeController" index="2" unique_id=2103824053]
+volume_db = -10.0
+
+[node name="BoughtSound" parent="Room/Desk/SkilltreeController" index="4" unique_id=1884120511]
+volume_db = -10.0
+
+[node name="CannotBuySound" parent="Room/Desk/SkilltreeController" index="5" unique_id=1884120501]
+volume_db = -10.0
+
 [node name="ShopController" parent="Room/Desk" unique_id=524025840 node_paths=PackedStringArray("m_glow", "m_notEnoughPopup", "Money", "ShopUI") instance=ExtResource("11_yq6so")]
 position = Vector2(-100.216415, 47.44465)
 m_glow = NodePath("../ShopGlow")
@@ -166,6 +175,15 @@ position = Vector2(54.103542, 14.816047)
 [node name="UpgradeController" parent="Room/Desk/ShopController" index="1" unique_id=352711260 node_paths=PackedStringArray("m_employeeController")]
 m_employeeController = NodePath("../../../../EmployeeController")
 
+[node name="AudioStreamPlayer2D" parent="Room/Desk/ShopController" index="3" unique_id=1675722831]
+volume_db = -10.0
+
+[node name="BoughtSound" parent="Room/Desk/ShopController" index="5" unique_id=1884120512]
+volume_db = -10.0
+
+[node name="CannotBuySound" parent="Room/Desk/ShopController" index="6" unique_id=1884120502]
+volume_db = -10.0
+
 [node name="Patent Progress Bar" parent="Room" unique_id=1597530861 node_paths=PackedStringArray("m_generator") instance=ExtResource("23_pbar")]
 m_generator = NodePath("../../PatentGenerator")
 
@@ -179,6 +197,9 @@ ShopController = NodePath("../../Room/Desk/ShopController")
 
 [node name="ResourceDisplay" parent="GameHUD/ShopUI/Panel/HBoxContainer" parent_id_path=PackedInt32Array(1847261213, 1524514352) index="1" unique_id=1615407582 node_paths=PackedStringArray("ResourceControllerNode")]
 ResourceControllerNode = NodePath("../../../../../ResourceControllers/GlobalMoneyController")
+
+[node name="PaidInPatentsNote" parent="GameHUD/ShopUI" index="1" unique_id=1907315401]
+layout_mode = 2
 
 [node name="Skill Tree" parent="GameHUD" index="1" unique_id=1222491598]
 visible = true
@@ -310,6 +331,9 @@ scale = Vector2(6.007, 6.019)
 Generated = NodePath("../ResourceControllers/GlobalScienceController")
 PlayerStatsContainer = NodePath("../PlayerStats")
 
+[node name="AudioPlayer" parent="ScienceGenerator" index="1" unique_id=1094893019]
+volume_db = -10.0
+
 [node name="TableStand" parent="ScienceGenerator" index="3" unique_id=1132932598]
 z_index = 4
 
@@ -320,6 +344,9 @@ position = Vector2(0, 6.337759e-07)
 [node name="Stool" parent="ScienceGenerator" index="5" unique_id=1770075103]
 z_index = 4
 position = Vector2(0, 6.3133416)
+
+[node name="GeneratedRewardSFX" parent="ScienceGenerator" index="7" unique_id=1603542881]
+volume_db = -10.0
 
 [node name="PatentGenerator" parent="." unique_id=53403002 node_paths=PackedStringArray("m_consumed", "m_sourceSymbols", "m_payoutTarget", "PlayerStatsContainer") instance=ExtResource("14_qkpxi")]
 position = Vector2(-512, -27.000004)
@@ -349,11 +376,20 @@ region_rect = Rect2(28, 20.75, 84.5, 138.5)
 [node name="Unlocker" parent="PatentGenerator" index="5" unique_id=938280753 node_paths=PackedStringArray("m_otherUnlocks")]
 m_otherUnlocks = [NodePath("../../Room/Money Display"), NodePath("../../Room/Patent Progress Bar")]
 
+[node name="AudioFX" parent="PatentGenerator" index="6" unique_id=118490050]
+volume_db = -10.0
+
+[node name="GeneratedRewardSFX" parent="PatentGenerator" index="9" unique_id=714543919]
+volume_db = -10.0
+
 [node name="PatentGnome" parent="PatentGenerator/Gnomes" parent_id_path=PackedInt32Array(53403002, 1445201801) index="0" unique_id=1745542875]
 position = Vector2(6.658902, 46.445816)
 
 [node name="PatentGnome2" parent="PatentGenerator/Gnomes" parent_id_path=PackedInt32Array(53403002, 1445201801) index="1" unique_id=1713072139]
 position = Vector2(-10.487762, 45.613453)
+
+[node name="NotEnoughSFX" parent="PatentGenerator" index="13" unique_id=1873461103]
+volume_db = -10.0
 
 [node name="SkillPointGenerator" parent="." unique_id=948207944 node_paths=PackedStringArray("m_consumed", "m_sourceSymbols", "m_payoutTarget", "PlayerStatsContainer") instance=ExtResource("15_5q0nq")]
 position = Vector2(563, 16)
@@ -367,8 +403,14 @@ PlayerStatsContainer = NodePath("../PlayerStats")
 m_playerStats = NodePath("../../PlayerStats")
 m_generated = NodePath("../../ResourceControllers/GlobalSkillPointsController")
 
+[node name="AudioFX" parent="SkillPointGenerator" index="5" unique_id=304791276]
+volume_db = -10.0
+
 [node name="NotEnoughLabel" parent="SkillPointGenerator" index="8" unique_id=1873461102]
 m_text = "Think first."
+
+[node name="NotEnoughSFX" parent="SkillPointGenerator" index="9" unique_id=1873461103]
+volume_db = -10.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1384018772]
 
@@ -402,6 +444,7 @@ metadata/_custom_type_script = "uid://bv0nr4cjm43w8"
 
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1704003214]
 stream = SubResource("AudioStreamInteractive_x86fe")
+volume_db = 5.74
 autoplay = true
 script = ExtResource("25_2wyq8")
 
