@@ -21,7 +21,6 @@ public partial class ShopController : Node2D
     [Export]
     public ResourceControllerNode Money { get; set; }
     
-    
     [Export]
     public ShopUI ShopUI { get; set; }
 

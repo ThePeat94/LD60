@@ -9,7 +9,6 @@
 
 [sub_resource type="Resource" id="Resource_laxis"]
 script = ExtResource("1_jbj35")
-Value = 1.0
 metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
 
 [sub_resource type="Resource" id="Resource_wyjd0"]
