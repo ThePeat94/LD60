@@ -22,6 +22,7 @@ public partial class GameStateManager : Node
         if (this.m_employeeController.Inventors.Count > 0 && this.m_employeeController.Scribes.Count > 0 && this.m_employeeController.Thinkers.Count > 0)
         {
             this.m_musicPlayer.Advance();
+            this.m_currentProgressionState = GameProgressionState.Midgame;
         }
     }
 }

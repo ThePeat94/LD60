@@ -23,7 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://b1yc3bgcsiy6y" path="res://assets/music/Science Gamejam.mp3" id="22_jscy8"]
 [ext_resource type="PackedScene" uid="uid://xqq4tj53sw6c" path="res://scenes/ui/patent_progress_bar.tscn" id="23_pbar"]
 [ext_resource type="PackedScene" uid="uid://b5xjxs7xrwtig" path="res://scenes/ui/knowledge_progress_bar.tscn" id="24_kbar"]
-[ext_resource type="AudioStream" uid="uid://d2vtiaawbfrpi" path="res://assets/music/Science Gamejam 4 draft.mp3" id="24_og1vs"]
+[ext_resource type="AudioStream" uid="uid://d2vtiaawbfrpi" path="res://assets/music/Idle Academia Theme.mp3" id="24_og1vs"]
 [ext_resource type="Script" uid="uid://dmmh2a0h8mjf6" path="res://scripts/GameFeel/MusicPlayer.cs" id="25_2wyq8"]
 [ext_resource type="Script" uid="uid://4p1hd3s4ncgp" path="res://scripts/GameState/GameStateManager.cs" id="26_2wyq8"]
 
@@ -124,12 +124,13 @@ m_skillPoints = NodePath("../../../ResourceControllers/GlobalSkillPointsControll
 z_index = 5
 position = Vector2(0, 1)
 
-[node name="UpgradeController" parent="Room/Desk/SkilltreeController" index="1" unique_id=1259699767 node_paths=PackedStringArray("m_playerStats", "m_employeeController", "m_shopController", "m_patentUnlocker", "m_shopUnlocker")]
+[node name="UpgradeController" parent="Room/Desk/SkilltreeController" index="1" unique_id=1259699767 node_paths=PackedStringArray("m_playerStats", "m_employeeController", "m_shopController", "m_patentUnlocker", "m_shopUnlocker", "m_gameWonUi")]
 m_playerStats = NodePath("../../../../PlayerStats")
 m_employeeController = NodePath("../../../../EmployeeController")
 m_shopController = NodePath("../../ShopController")
 m_patentUnlocker = NodePath("../../../../PatentGenerator/Unlocker")
 m_shopUnlocker = NodePath("../../ShopController/Unlocker")
+m_gameWonUi = NodePath("../../../../GameHUD/GameWonUI")
 
 [node name="ShopController" parent="Room/Desk" unique_id=524025840 node_paths=PackedStringArray("Money", "ShopUI") instance=ExtResource("11_yq6so")]
 position = Vector2(-100.216415, 47.44465)
@@ -319,6 +320,7 @@ m_employeeController = NodePath("../EmployeeController")
 [editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Master Scribes"]
 [editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Inspired Scribes"]
 [editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Prolific Scribes"]
+[editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Nobel Prize"]
 [editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Unlock Patents"]
 [editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Unlock Shop"]
 [editable path="ScienceGenerator"]

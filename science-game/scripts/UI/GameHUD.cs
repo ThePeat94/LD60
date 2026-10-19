@@ -11,10 +11,14 @@ public partial class GameHUD : Node
     
     [Export]
     public SkillTreeUI SkillTreeUI { get; set; }
+    
+    [Export] 
+    private GameWonUI m_gameWonUi;
 
     public override void _Ready()
     {
         this.ShopUI.Close();
         this.SkillTreeUI.Close();
+        this.m_gameWonUi.Close();
     }
 }

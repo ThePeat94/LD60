@@ -6,6 +6,7 @@ using Nidavellir.GDResource.SkillTree.EntityStatUpgrades.Player;
 using Nidavellir.GDResource.SkillTree.FeatureUnlock;
 using Nidavellir.PlayerStats;
 using Nidavellir.Shop;
+using Nidavellir.UI;
 using EmployeeUpgradeData = Nidavellir.GDResource.SkillTree.EntityStatUpgrades.Employee.EmployeeUpgradeData;
 using PlayerUpgradeData = Nidavellir.GDResource.SkillTree.EntityStatUpgrades.Player.PlayerUpgradeData;
 using UnlockShopFeatureData = Nidavellir.GDResource.SkillTree.FeatureUnlock.UnlockShopFeatureData;
@@ -19,6 +20,7 @@ public partial class SkillTreeUpgradeController : Node
     [Export] private ShopController m_shopController;
     [Export] private GeneratorUnlocker m_patentUnlocker;
     [Export] private ShopUnlocker m_shopUnlocker;
+    [Export] private GameWonUI m_gameWonUi;
 
     public void ApplyPlayerStatUpgrade(PlayerUpgradeData u)
     {
@@ -69,5 +71,10 @@ public partial class SkillTreeUpgradeController : Node
                 GD.PrintErr("Unknown GameFeature to unlock");
                 throw new ArgumentOutOfRangeException();
         }
+    }
+
+    public void UnlockGameWon()
+    {
+        this.m_gameWonUi.Open();
     }
 }

@@ -27,6 +27,8 @@
 [ext_resource type="Resource" uid="uid://caj2dhxikemva" path="res://resources/skillTree/items/employees/scribes/master_scribes.tres" id="23_mastr"]
 [ext_resource type="Resource" uid="uid://dqxfaln4u1uod" path="res://resources/skillTree/items/employees/scribes/inspired_scribes.tres" id="24_inspr"]
 [ext_resource type="Resource" uid="uid://ya71iy6o0win" path="res://resources/skillTree/items/employees/scribes/prolific_scribes.tres" id="25_prolf"]
+[ext_resource type="Resource" uid="uid://htwgobpitiao" path="res://resources/skillTree/items/gameFeatures/game_won.tres" id="26_gwon"]
+[ext_resource type="Script" uid="uid://4sq4qako1fp2" path="res://scripts/UI/GameWonUI.cs" id="29_h0wil"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pv4st"]
 texture = ExtResource("3_a4fw5")
@@ -34,10 +36,14 @@ texture = ExtResource("3_a4fw5")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bklno"]
 texture = ExtResource("3_wbv7f")
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1847261213 node_paths=PackedStringArray("ShopUI", "SkillTreeUI")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h34mm"]
+bg_color = Color(0.35053253, 0.68790627, 0.3983833, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1847261213 node_paths=PackedStringArray("ShopUI", "SkillTreeUI", "m_gameWonUi")]
 script = ExtResource("1_gjmhc")
 ShopUI = NodePath("ShopUI")
 SkillTreeUI = NodePath("Skill Tree/Panel/ScrollContainer/Container")
+m_gameWonUi = NodePath("GameWonUI")
 
 [node name="ShopUI" parent="." unique_id=1511127767 instance=ExtResource("3_b3s3x")]
 visible = true
@@ -137,7 +143,7 @@ grow_vertical = 2
 size_flags_vertical = 3
 
 [node name="Container" type="Control" parent="Skill Tree/Panel/ScrollContainer" unique_id=1347082111 node_paths=PackedStringArray("m_rootNode", "m_scrollContainer")]
-custom_minimum_size = Vector2(3340, 2700)
+custom_minimum_size = Vector2(3340, 3020)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -280,6 +286,14 @@ offset_right = 2380.0
 offset_bottom = 2568.0
 m_data = ExtResource("25_prolf")
 
+[node name="Nobel Prize" parent="Skill Tree/Panel/ScrollContainer/Container" unique_id=1779978527 instance=ExtResource("5_b3s3x")]
+layout_mode = 0
+offset_left = 1980.0
+offset_top = 2680.0
+offset_right = 2380.0
+offset_bottom = 2898.0
+m_data = ExtResource("26_gwon")
+
 [node name="Unlock Patents" parent="Skill Tree/Panel/ScrollContainer/Container" unique_id=1938483727 instance=ExtResource("5_b3s3x")]
 layout_mode = 0
 offset_left = 600.0
@@ -318,7 +332,59 @@ vertical_alignment = 1
 script = ExtResource("21_a4fw5")
 metadata/_custom_type_script = "uid://0c6plthlac1x"
 
+[node name="GameWonUI" type="AspectRatioContainer" parent="." unique_id=3674605]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 1.7778
+script = ExtResource("29_h0wil")
+
+[node name="Panel" type="Panel" parent="GameWonUI" unique_id=2133379543]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h34mm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameWonUI/Panel" unique_id=1440737648]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="GameWonUI/Panel/VBoxContainer" unique_id=1587357693]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Game Won!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="GameWonUI/Panel/VBoxContainer" unique_id=2139351613]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 52
+text = "You've made it. You are the smartest person ever living. You won the first nobel prize.
+
+Thanks for playing. Comment \"Academia is nuts!\" to let us know you made it :)"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GameWonUI/Panel/VBoxContainer" unique_id=1352141174]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/margin_left = 500
+theme_override_constants/margin_right = 500
+theme_override_constants/margin_bottom = 20
+
+[node name="Button" type="Button" parent="GameWonUI/Panel/VBoxContainer/MarginContainer" unique_id=1868283472]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Continue"
+
 [connection signal="pressed" from="Skill Tree/Panel/Close Button" to="Skill Tree/Panel/ScrollContainer/Container" method="Close"]
+[connection signal="pressed" from="GameWonUI/Panel/VBoxContainer/MarginContainer/Button" to="GameWonUI" method="Close"]
 
 [editable path="ShopUI"]
 [editable path="Skill Tree/Panel/ScrollContainer/Container/Base Click Upgrade"]
@@ -338,5 +404,6 @@ metadata/_custom_type_script = "uid://0c6plthlac1x"
 [editable path="Skill Tree/Panel/ScrollContainer/Container/Master Scribes"]
 [editable path="Skill Tree/Panel/ScrollContainer/Container/Inspired Scribes"]
 [editable path="Skill Tree/Panel/ScrollContainer/Container/Prolific Scribes"]
+[editable path="Skill Tree/Panel/ScrollContainer/Container/Nobel Prize"]
 [editable path="Skill Tree/Panel/ScrollContainer/Container/Unlock Patents"]
 [editable path="Skill Tree/Panel/ScrollContainer/Container/Unlock Shop"]
