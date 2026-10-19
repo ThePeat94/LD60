@@ -143,6 +143,11 @@ namespace Nidavellir.IdleNumbers
                    Math.Pow(10, exponentDifference);
         }
 
+        public double ToDouble()
+        {
+            return this.Value * Math.Pow(10, this.Exponent);
+        }
+
         public static IdleNumber operator +(
             IdleNumber left, IdleNumber right)
         {
