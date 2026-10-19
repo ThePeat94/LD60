@@ -32,7 +32,7 @@ metadata/_custom_type_script = "uid://ma5ppe0wfeik"
 [resource]
 script = ExtResource("6_bkafn")
 SkillName = "Unlock Scribes"
-Description = "Blablabla"
+Description = "Scribes for hire. They earn Skill Points for you."
 Icon = ExtResource("3_jeaen")
 CostModel = SubResource("Resource_rwwpb")
 Upgrade = SubResource("Resource_lyy28")

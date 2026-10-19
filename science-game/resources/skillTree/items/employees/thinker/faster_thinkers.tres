@@ -44,7 +44,7 @@ metadata/_custom_type_script = "uid://dpajxbew4x3bl"
 [resource]
 script = ExtResource("7_dhtrr")
 SkillName = "Faster Thinkers"
-Description = "Blablabla"
+Description = "Thinkers work 25% faster."
 Icon = ExtResource("3_u8ekr")
 CostModel = SubResource("Resource_rwwpb")
 Upgrade = SubResource("Resource_28xl1")

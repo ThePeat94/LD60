@@ -38,7 +38,7 @@ metadata/_custom_type_script = "uid://b0h2rn416ikw4"
 [resource]
 script = ExtResource("1_8bert")
 SkillName = "Sharpen your mind"
-Description = "Blablabla"
+Description = "Every click is worth +1 more."
 Icon = ExtResource("2_5lo75")
 CostModel = SubResource("Resource_8bert")
 Upgrade = SubResource("Resource_6t4bp")

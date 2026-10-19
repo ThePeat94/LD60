@@ -32,7 +32,7 @@ metadata/_custom_type_script = "uid://ma5ppe0wfeik"
 [resource]
 script = ExtResource("6_c3fb6")
 SkillName = "Unlock Inventors"
-Description = "Blablabla"
+Description = "Inventors for hire. They work on patents for you."
 Icon = ExtResource("3_ksbdo")
 CostModel = SubResource("Resource_rwwpb")
 Upgrade = SubResource("Resource_lyy28")

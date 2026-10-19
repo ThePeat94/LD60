@@ -43,7 +43,7 @@ metadata/_custom_type_script = "uid://b0h2rn416ikw4"
 [resource]
 script = ExtResource("1_rhhgp")
 SkillName = "Discover your inner beings"
-Description = "Blablabla"
+Description = "All your clicks hit 15% harder."
 Icon = ExtResource("2_mp72y")
 CostModel = SubResource("Resource_i7dyb")
 Upgrade = SubResource("Resource_yvvbm")
