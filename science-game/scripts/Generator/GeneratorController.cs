@@ -24,17 +24,28 @@ public partial class GeneratorController : Node2D, IGenerator
     
     [Signal]
     public delegate void GeneratedRewardEventHandler();
-    
+
+    [Signal]
+    public delegate void ClickedEventHandler();
+
+    [Signal]
+    public delegate void ClickRejectedEventHandler();
+
 
     private int m_currentLevel = 0;
-        
+
     public void OnClick(Node viewport, InputEvent evt, int shapeIdx)
     {
-        if (evt is not InputEventMouseButton mouseButton) return;
-        if (!mouseButton.Pressed) return;
+        if (evt is not InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Left }) return;
 
+        if (this.m_consumed.ResourceController.CurrentValue.Value <= 0)
+        {
+            this.EmitSignalClickRejected();
+            return;
+        }
+
+        this.EmitSignalClicked();
         this.Generate(this.PlayerStatsContainer.ClickStrength.Value);
-        
     }
     
      public void Generate(IdleNumber power)                                                                                                                               

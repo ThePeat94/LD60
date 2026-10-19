@@ -16,6 +16,17 @@
 [ext_resource type="Script" uid="uid://mod3uhf0e68j" path="res://scripts/GameFeel/FeelVfxIconSpawner.cs" id="13_wdhrk"]
 [ext_resource type="PackedScene" uid="uid://bntuvd3a5igwm" path="res://scenes/feel/board_particles.tscn" id="14_x3hhi"]
 [ext_resource type="Script" uid="uid://q401bcjsgqij" path="res://scripts/GameFeel/CursorChanger.cs" id="16_g507v"]
+[ext_resource type="Script" uid="uid://mvl7oeixktlca" path="res://scripts/GameFeel/FeelPopupLabel.cs" id="30_popup"]
+[ext_resource type="AudioStream" uid="uid://o1d5i20lub8" path="res://assets/sfx/own/books_01.wav" id="31_books01"]
+[ext_resource type="AudioStream" uid="uid://jtr1jqw5xjai" path="res://assets/sfx/own/books_02.wav" id="31_books02"]
+[ext_resource type="AudioStream" uid="uid://bwa1gb5836p8d" path="res://assets/sfx/own/books_03.wav" id="31_books03"]
+[ext_resource type="AudioStream" uid="uid://c4bap0e0mwjmy" path="res://assets/sfx/own/books_04.wav" id="31_books04"]
+[ext_resource type="AudioStream" uid="uid://de7ioy4481q74" path="res://assets/sfx/own/books_05.wav" id="31_books05"]
+[ext_resource type="AudioStream" uid="uid://cs6wbbajsca6j" path="res://assets/sfx/own/books_06.wav" id="31_books06"]
+[ext_resource type="AudioStream" uid="uid://cug513mldfeu7" path="res://assets/sfx/own/books_07.wav" id="31_books07"]
+[ext_resource type="AudioStream" uid="uid://bb3o63pmtvx3u" path="res://assets/sfx/own/books_08.wav" id="31_books08"]
+[ext_resource type="AudioStream" uid="uid://bcliv6y3kut1m" path="res://assets/sfx/own/books_09.wav" id="31_books09"]
+[ext_resource type="AudioStream" uid="uid://bo16ie022eb7" path="res://assets/sfx/own/books_10.wav" id="31_books10"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
 size = Vector2(66, 115)
@@ -27,6 +38,19 @@ stream_1/stream = ExtResource("8_wdhrk")
 stream_2/stream = ExtResource("9_x3hhi")
 stream_3/stream = ExtResource("10_g507v")
 stream_4/stream = ExtResource("11_oudt5")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_notenough"]
+streams_count = 10
+stream_0/stream = ExtResource("31_books01")
+stream_1/stream = ExtResource("31_books02")
+stream_2/stream = ExtResource("31_books03")
+stream_3/stream = ExtResource("31_books04")
+stream_4/stream = ExtResource("31_books05")
+stream_5/stream = ExtResource("31_books06")
+stream_6/stream = ExtResource("31_books07")
+stream_7/stream = ExtResource("31_books08")
+stream_8/stream = ExtResource("31_books09")
+stream_9/stream = ExtResource("31_books10")
 
 [node name="SkillPointGenerator" type="Node2D" unique_id=553754768 node_paths=PackedStringArray("m_required", "m_generatorRewardController")]
 script = ExtResource("2_ep6bw")
@@ -81,7 +105,20 @@ script = ExtResource("16_g507v")
 m_clickArea = NodePath("../Area2D")
 metadata/_custom_type_script = "uid://q401bcjsgqij"
 
+[node name="NotEnoughLabel" type="Node" parent="." unique_id=1873461102 node_paths=PackedStringArray("m_origin")]
+script = ExtResource("30_popup")
+m_origin = NodePath("..")
+metadata/_custom_type_script = "uid://mvl7oeixktlca"
+
+[node name="NotEnoughSFX" type="AudioStreamPlayer2D" parent="." unique_id=1873461103]
+stream = SubResource("AudioStreamRandomizer_notenough")
+max_polyphony = 4
+script = ExtResource("12_thcd7")
+metadata/_custom_type_script = "uid://bglusmjfbdqlj"
+
 [connection signal="input_event" from="Area2D" to="." method="OnClick"]
-[connection signal="input_event" from="Area2D" to="Shaker" method="OnClick"]
-[connection signal="input_event" from="Area2D" to="AudioFX" method="Trigger"]
-[connection signal="input_event" from="Area2D" to="ParticleSpawner" method="OnClick"]
+[connection signal="Clicked" from="." to="Shaker" method="Shake"]
+[connection signal="Clicked" from="." to="AudioFX" method="Trigger"]
+[connection signal="Clicked" from="." to="ParticleSpawner" method="Spawn"]
+[connection signal="ClickRejected" from="." to="NotEnoughLabel" method="Trigger"]
+[connection signal="ClickRejected" from="." to="NotEnoughSFX" method="Trigger"]

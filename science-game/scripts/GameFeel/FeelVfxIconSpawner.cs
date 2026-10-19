@@ -13,6 +13,11 @@ public partial class FeelVfxIconSpawner : Node
         if (evt is not InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Left })
             return;
 
+        this.Spawn();
+    }
+
+    public void Spawn()
+    {
         var mousePos = this.m_origin.GetGlobalMousePosition();
         var instantiated = this.m_particles.Instantiate<GpuParticles2D>();
         this.GetTree().CurrentScene.AddChild(instantiated);

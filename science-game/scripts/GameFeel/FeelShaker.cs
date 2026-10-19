@@ -22,7 +22,7 @@ public partial class FeelShaker : Node
             this.Shake();
     }
 
-    private void Shake()
+    public void Shake()
     {
         this.m_activeTween?.Kill();
         this.m_toShake.Position = this.m_originalPosition;
