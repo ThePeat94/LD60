@@ -193,6 +193,19 @@ PlayerStatsContainer = NodePath("../PlayerStats")
 m_playerStats = NodePath("../../PlayerStats")
 m_generated = NodePath("../../ResourceControllers/GlobalMoneyController")
 
+[node name="Outer2DSprites" parent="PatentGenerator" index="4" unique_id=1124813126]
+position = Vector2(0, -10.32129)
+
+[node name="SideCurtain" parent="PatentGenerator/Outer2DSprites" index="0" unique_id=1622856250]
+position = Vector2(-28.79974, 4.494755)
+
+[node name="Curtain" parent="PatentGenerator/Outer2DSprites" index="1" unique_id=2033753420]
+visible = true
+z_index = 1
+position = Vector2(-3.9953232, 3.9953396)
+region_enabled = true
+region_rect = Rect2(28, 20.75, 84.5, 138.5)
+
 [node name="Unlocker" parent="PatentGenerator" index="5" unique_id=938280753 node_paths=PackedStringArray("m_otherUnlocks")]
 m_otherUnlocks = [NodePath("../../Room/Remaining PatentProgress"), NodePath("../../Room/Money Display")]
 
