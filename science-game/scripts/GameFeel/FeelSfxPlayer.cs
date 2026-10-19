@@ -6,6 +6,11 @@ namespace Nidavellir.GameFeel;
 [GlobalClass]
 public partial class FeelSfxPlayer : AudioStreamPlayer2D
 {
+    public override void _Ready()
+    {
+        base._Ready();
+        this.VolumeDb = -10f;
+    }
 
     public void Trigger(Node viewport, InputEvent evt, int shapeIdx)
     {
