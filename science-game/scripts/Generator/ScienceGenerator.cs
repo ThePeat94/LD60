@@ -17,12 +17,18 @@ public partial class ScienceGenerator : Node2D, IGenerator
     [Export]
     public SymbolStore Symbols { get; set; }
 
+    /// <summary>A click produced <paramref name="amount"/> science.</summary>
+    [Signal]
+    public delegate void ProducedEventHandler(double amount);
+
     public void OnClick(Node viewport, InputEvent evt, int shapeIdx)
     {
-        if (evt is not InputEventMouseButton { Pressed: true }) return;
+        if (evt is not InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Left }) return;
 
-        this.Generated.ResourceController.Add(this.PlayerStatsContainer.ClickStrength.Value);
+        var produced = this.PlayerStatsContainer.ClickStrength.Value;
+        this.Generated.ResourceController.Add(produced);
         this.Symbols?.AddAt(this.GetGlobalMousePosition());
+        this.EmitSignalProduced(produced.ToDouble());
     }
 
     public void Generate(IdleNumber value)

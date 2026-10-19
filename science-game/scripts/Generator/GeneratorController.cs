@@ -35,6 +35,10 @@ public partial class GeneratorController : Node2D, IGenerator
     [Signal]
     public delegate void ClickRejectedEventHandler();
 
+    /// <summary>A click added <paramref name="amount"/> to the current batch.</summary>
+    [Signal]
+    public delegate void ProducedEventHandler(double amount);
+
 
     private int m_currentLevel = 0;
 
@@ -82,6 +86,9 @@ public partial class GeneratorController : Node2D, IGenerator
             this.m_generatorRewardController.ApplyReward();
 
         this.MoveSymbols(clickPosition, levelsGained > 0, pool.Value > 0);
+
+        if (clickPosition.HasValue)
+            this.EmitSignalProduced(strengthToApply.ToDouble());
 
         if (levelsGained > 0)
             this.EmitSignalGeneratedReward();

@@ -84,4 +84,4 @@ m_texture = ExtResource("41_formulas")
 [connection signal="input_event" from="Area2D" to="." method="OnClick"]
 [connection signal="input_event" from="Area2D" to="AudioPlayer" method="Trigger"]
 [connection signal="input_event" from="Area2D" to="Shaker" method="OnClick"]
-[connection signal="input_event" from="Area2D" to="VfxSpawner" method="OnClick"]
+[connection signal="Produced" from="." to="VfxSpawner" method="SpawnAmount"]

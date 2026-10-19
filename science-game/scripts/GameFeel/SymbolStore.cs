@@ -15,7 +15,7 @@ public partial class SymbolStore : Node2D
     [Export] private int m_hFrames = 5;
     [Export] private int m_vFrames = 4;
     [Export] private int m_maxSymbols = 100;
-    [Export] private float m_symbolScale = 2.4f;
+    [Export] private float m_symbolScale = 1.8f;
     [Export] private float m_flightDuration = 0.45f;
     [Export] private float m_arcHeight = 80f;
     [Export] private float m_landingSpread = 220f;

@@ -129,6 +129,6 @@ m_texture = ExtResource("41_formulas")
 [connection signal="input_event" from="Area2D" to="." method="OnClick"]
 [connection signal="Clicked" from="." to="Shaker" method="Shake"]
 [connection signal="Clicked" from="." to="AudioFX" method="Trigger"]
-[connection signal="Clicked" from="." to="ParticleSpawner" method="Spawn"]
+[connection signal="Produced" from="." to="ParticleSpawner" method="SpawnAmount"]
 [connection signal="ClickRejected" from="." to="NotEnoughLabel" method="Trigger"]
 [connection signal="ClickRejected" from="." to="NotEnoughSFX" method="Trigger"]
