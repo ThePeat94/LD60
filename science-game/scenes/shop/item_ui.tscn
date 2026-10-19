@@ -12,8 +12,10 @@ texture = ExtResource("1_7mpib")
 
 [node name="ItemUI" type="Panel" unique_id=1546233583 node_paths=PackedStringArray("m_quantity", "ItemName", "Icon", "Description", "Purchase", "m_cost")]
 custom_minimum_size = Vector2(600, 600)
-offset_right = 300.0
+offset_right = 600.0
 offset_bottom = 600.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_412ru")
 script = ExtResource("1_v7xym")
 m_quantity = NodePath("Quantity")

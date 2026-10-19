@@ -4,7 +4,7 @@ using Nidavellir.GDResource.Shop;
 
 namespace Nidavellir.Shop.UI;
 
-public partial class ShopUI : Control
+public partial class ShopUI : AspectRatioContainer
 {
     [Export]
     public PackedScene ItemPrefab { private get; set; }

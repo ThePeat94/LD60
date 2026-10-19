@@ -33,10 +33,12 @@
 [ext_resource type="PackedScene" uid="uid://b5age3g28nuf" path="res://scenes/mainMenu.tscn" id="30_cmj1t"]
 [ext_resource type="Texture2D" uid="uid://2fi5tg863h5q" path="res://assets/art/winning-screen/cropped-nobel-prize.png" id="30_l38ix"]
 [ext_resource type="Texture2D" uid="uid://ck3itr5buooip" path="res://assets/art/winning-screen/cropped-back-to-game-button.png" id="31_412ru"]
-[ext_resource type="Script" path="res://scripts/UI/DragScrollContainer.cs" id="40_dragscroll"]
+[ext_resource type="Script" uid="uid://b1tjt81tc3kys" path="res://scripts/UI/DragScrollContainer.cs" id="40_dragscroll"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pv4st"]
 texture = ExtResource("3_a4fw5")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7mpib"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bklno"]
 texture = ExtResource("3_wbv7f")
@@ -52,17 +54,10 @@ m_gameWonUi = NodePath("GameWonUI")
 
 [node name="ShopUI" parent="." unique_id=1511127767 instance=ExtResource("3_b3s3x")]
 visible = true
+offset_left = 1.0
+offset_right = 1.0
 
 [node name="Panel" parent="ShopUI" index="0" unique_id=349754956]
-anchors_preset = 15
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_pv4st")
 
 [node name="ItemPanel" parent="ShopUI/Panel" index="0" unique_id=1995151554]
@@ -70,21 +65,22 @@ offset_left = -902.0
 offset_top = -440.0
 offset_right = 601.0
 offset_bottom = 469.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7mpib")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ShopUI" unique_id=1524514352]
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopUI/Panel" index="2" unique_id=1524514352]
 layout_mode = 0
 offset_left = 21.0
 offset_top = 26.0
 offset_right = 257.0
 offset_bottom = 85.0
 
-[node name="TextureRect" type="TextureRect" parent="ShopUI/HBoxContainer" unique_id=853075478]
+[node name="TextureRect" type="TextureRect" parent="ShopUI/Panel/HBoxContainer" unique_id=853075478]
 layout_mode = 2
 texture = ExtResource("4_e0bpu")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="ResourceDisplay" type="Label" parent="ShopUI/HBoxContainer" unique_id=1615407582]
+[node name="ResourceDisplay" type="Label" parent="ShopUI/Panel/HBoxContainer" unique_id=1615407582]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
