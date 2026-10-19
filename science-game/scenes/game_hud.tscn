@@ -330,6 +330,33 @@ offset_right = 1240.0
 offset_bottom = 560.0
 m_data = ExtResource("18_olu1u")
 
+[node name="ControlsHint" type="VBoxContainer" parent="Skill Tree/Panel" unique_id=1912606401]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 470.0
+offset_right = 320.0
+offset_bottom = 590.0
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="DragHint" type="Label" parent="Skill Tree/Panel/ControlsHint" unique_id=1912606402]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.9)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 28
+text = "Drag to pan"
+horizontal_alignment = 1
+
+[node name="ZoomHint" type="Label" parent="Skill Tree/Panel/ControlsHint" unique_id=1912606403]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.9)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 28
+text = "Scroll to zoom"
+horizontal_alignment = 1
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Skill Tree/Panel" unique_id=1263066267]
 layout_mode = 0
 offset_left = 38.0
