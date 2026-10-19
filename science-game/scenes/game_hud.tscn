@@ -29,6 +29,7 @@
 [ext_resource type="Resource" uid="uid://ya71iy6o0win" path="res://resources/skillTree/items/employees/scribes/prolific_scribes.tres" id="25_prolf"]
 [ext_resource type="Resource" uid="uid://htwgobpitiao" path="res://resources/skillTree/items/gameFeatures/game_won.tres" id="26_gwon"]
 [ext_resource type="Script" uid="uid://4sq4qako1fp2" path="res://scripts/UI/GameWonUI.cs" id="29_h0wil"]
+[ext_resource type="Script" path="res://scripts/UI/DragScrollContainer.cs" id="40_dragscroll"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pv4st"]
 texture = ExtResource("3_a4fw5")
@@ -141,6 +142,7 @@ anchor_bottom = 0.87
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+script = ExtResource("40_dragscroll")
 
 [node name="Container" type="Control" parent="Skill Tree/Panel/ScrollContainer" unique_id=1347082111 node_paths=PackedStringArray("m_rootNode", "m_scrollContainer")]
 custom_minimum_size = Vector2(3340, 3020)

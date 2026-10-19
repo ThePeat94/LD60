@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cw66s6x3klg6l" path="res://scripts/Shop/UI/ShopUI.cs" id="1_gk7bq"]
 [ext_resource type="PackedScene" uid="uid://b74twwfigbo50" path="res://scenes/shop/item_ui.tscn" id="2_8cucq"]
+[ext_resource type="Script" path="res://scripts/UI/DragScrollContainer.cs" id="40_dragscroll"]
 
 [node name="ShopUI" type="Control" unique_id=1511127767 node_paths=PackedStringArray("ItemsParent")]
 visible = false
@@ -53,6 +54,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 vertical_scroll_mode = 0
+script = ExtResource("40_dragscroll")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/ItemPanel/ScrollView" unique_id=96181048]
 layout_mode = 2

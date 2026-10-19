@@ -2,6 +2,7 @@ using System;
 using Godot;
 using Nidavellir.GDResource.SkillTree;
 using Nidavellir.IdleNumbers;
+using Nidavellir.UI;
 
 namespace Nidavellir.SkillTree.UI;
 
@@ -53,10 +54,14 @@ public partial class SkillTreeNodeUI : PanelContainer
     public override void _GuiInput(InputEvent evt)
     {
         base._GuiInput(evt);
-        if (evt is not InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Left })
+        // act on release, so pressing a node to drag the tree around doesn't buy it
+        if (evt is not InputEventMouseButton { Pressed: false, ButtonIndex: MouseButton.Left } button)
         {
             return;
         }
+
+        // released outside the node, or the press turned into dragging the tree
+        if (!new Rect2(Vector2.Zero, this.Size).HasPoint(button.Position) || DragScrollContainer.IsDragClick(this)) return;
 
         // unaffordable clicks still go through, the controller refuses them with feedback
         if (!this.m_isUnlocked) return;

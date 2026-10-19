@@ -2,6 +2,7 @@ using System;
 using Godot;
 using Nidavellir.GDResource.Shop;
 using Nidavellir.IdleNumbers;
+using Nidavellir.UI;
 
 namespace Nidavellir.Shop.UI;
 
@@ -49,6 +50,8 @@ public partial class ShopItemUI : Node
     
     private void HandlePurchaseClick()
     {
+        if (DragScrollContainer.IsDragClick(this)) return;
+
         this.m_onClick?.Invoke(this.m_itemData);
     }
 }
