@@ -10,10 +10,13 @@ config_version=5
 
 [application]
 
-config/name="science-game"
+config/name="Idle Akademia"
+config/description="An incremental scientific game"
+config/version="0.1.0"
 run/main_scene="uid://kskc1m64jkxh"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 run/max_fps=60
+boot_splash/image="uid://cm1ha6qgyha3e"
 config/icon="res://icon.svg"
 
 [autoload]
