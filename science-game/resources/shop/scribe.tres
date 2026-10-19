@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_0e0w2"]
 [ext_resource type="Script" uid="uid://x8p1lmq5yrwt" path="res://scripts/GDResource/MathModels/ExponentialModelResource.cs" id="2_mi487"]
-[ext_resource type="Texture2D" uid="uid://cd0g0vppcsu1n" path="res://assets/external/Clara(F).png" id="3_0e0w2"]
+[ext_resource type="Texture2D" uid="uid://s1wbvyniephp" path="res://assets/art/icons and plates/employees/scribe_gnome.png" id="3_0e0w2"]
 [ext_resource type="Script" uid="uid://lb6nom0h7dur" path="res://scripts/GDResource/Shop/ScribeUpgradeData.cs" id="4_mi487"]
 [ext_resource type="Script" uid="uid://bm5tdny5chcwa" path="res://scripts/GDResource/Shop/ShopItemData.cs" id="5_eobo4"]
 

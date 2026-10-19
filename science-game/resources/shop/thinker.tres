@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bm5tdny5chcwa" path="res://scripts/GDResource/Shop/ShopItemData.cs" id="1_s8lh6"]
 [ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_xu0xv"]
 [ext_resource type="Script" uid="uid://x8p1lmq5yrwt" path="res://scripts/GDResource/MathModels/ExponentialModelResource.cs" id="2_fa7om"]
-[ext_resource type="Texture2D" uid="uid://0varc61h6log" path="res://assets/external/Knight(F).png" id="3_b4hb2"]
+[ext_resource type="Texture2D" uid="uid://3341dyfgqcp8" path="res://assets/art/icons and plates/employees/thinker_gnome.png" id="3_b4hb2"]
 [ext_resource type="Script" uid="uid://dhye4roeii8xm" path="res://scripts/GDResource/Shop/ThinkerUpgradeData.cs" id="4_b4hb2"]
 
 [sub_resource type="Resource" id="Resource_dxvlt"]

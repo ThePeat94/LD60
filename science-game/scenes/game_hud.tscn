@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dm7s72tc54qre" path="res://assets/art/desk/desk-shop.png" id="3_a4fw5"]
 [ext_resource type="PackedScene" uid="uid://fol8hisegv4k" path="res://scenes/shop/shop_ui.tscn" id="3_b3s3x"]
 [ext_resource type="Texture2D" uid="uid://1mqp01oel8n0" path="res://assets/art/desk/skilltree-bg.png" id="3_wbv7f"]
+[ext_resource type="Texture2D" uid="uid://yjivdkjkeort" path="res://assets/art/icons and plates/cropped-money.png" id="4_e0bpu"]
 [ext_resource type="Script" uid="uid://dcjym3cy33l6t" path="res://scripts/SkillTree/UI/SkillTreeUI.cs" id="4_i7dyb"]
 [ext_resource type="PackedScene" uid="uid://ncjh7nkhgwq8" path="res://scenes/skillTree/skill_tree_node_ui.tscn" id="5_b3s3x"]
 [ext_resource type="Resource" uid="uid://f82dr3wb1xlu" path="res://resources/skillTree/items/potent_patents_1.tres" id="7_olodv"]
@@ -54,10 +55,35 @@ offset_bottom = 0.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_pv4st")
 
 [node name="ItemPanel" parent="ShopUI/Panel" index="0" unique_id=1995151554]
-offset_left = -900.0
-offset_top = -487.0
+offset_left = -902.0
+offset_top = -440.0
 offset_right = 601.0
 offset_bottom = 469.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopUI" unique_id=1524514352]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 26.0
+offset_right = 257.0
+offset_bottom = 85.0
+
+[node name="TextureRect" type="TextureRect" parent="ShopUI/HBoxContainer" unique_id=853075478]
+layout_mode = 2
+texture = ExtResource("4_e0bpu")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="ResourceDisplay" type="Label" parent="ShopUI/HBoxContainer" unique_id=1615407582]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 42
+text = "1,08K"
+vertical_alignment = 1
+script = ExtResource("21_a4fw5")
+metadata/_custom_type_script = "uid://0c6plthlac1x"
 
 [node name="Skill Tree" type="AspectRatioContainer" parent="." unique_id=1222491598]
 visible = false
