@@ -23,7 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://b1yc3bgcsiy6y" path="res://assets/music/Science Gamejam.mp3" id="22_jscy8"]
 [ext_resource type="PackedScene" uid="uid://xqq4tj53sw6c" path="res://scenes/ui/patent_progress_bar.tscn" id="23_pbar"]
 [ext_resource type="PackedScene" uid="uid://b5xjxs7xrwtig" path="res://scenes/ui/knowledge_progress_bar.tscn" id="24_kbar"]
-[ext_resource type="AudioStream" uid="uid://d2vtiaawbfrpi" path="res://assets/music/Idle Academia Theme.mp3" id="24_og1vs"]
+[ext_resource type="AudioStream" uid="uid://b72ixchox5uo6" path="res://assets/music/Idle Academia Theme.mp3" id="24_og1vs"]
 [ext_resource type="Script" uid="uid://dmmh2a0h8mjf6" path="res://scripts/GameFeel/MusicPlayer.cs" id="25_2wyq8"]
 [ext_resource type="Script" uid="uid://4p1hd3s4ncgp" path="res://scripts/GameState/GameStateManager.cs" id="26_2wyq8"]
 [ext_resource type="Script" uid="uid://div4ko4tu80ln" path="res://scripts/GameFeel/FeelGlow.cs" id="30_glow"]
@@ -32,10 +32,10 @@
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_x86fe"]
 clip_count = 2
-clip_0/name = &"Science Gamejam"
+clip_0/name = &"Phase 1"
 clip_0/stream = ExtResource("22_jscy8")
 clip_0/auto_advance = 0
-clip_1/name = &"Science Gamejam 4 Draft"
+clip_1/name = &"Phase 2"
 clip_1/stream = ExtResource("24_og1vs")
 clip_1/auto_advance = 0
 _transitions = {
