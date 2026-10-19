@@ -123,7 +123,7 @@ public partial class SkillTreeController : Node
             costToBuy,
             this.HasUnlocked(item),
             true,
-            this.m_skillPoints.ResourceController.CanAfford(costToBuy),
+            this.m_skillPoints.ResourceController.CanAfford(costToBuy) && amount < item.MaximumAmount,
             amount
         );
     }

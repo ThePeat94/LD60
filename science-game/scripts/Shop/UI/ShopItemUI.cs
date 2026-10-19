@@ -22,7 +22,9 @@ public partial class ShopItemUI : Node
     public Label Description { private get; set; }
 
     [Export]
-    public Button Purchase { private get; set; }
+    public TextureButton Purchase { private get; set; }
+
+    [Export] private Label m_cost;
 
     private ShopItemData m_itemData;
 
@@ -43,7 +45,7 @@ public partial class ShopItemUI : Node
         this.ItemName.Text = itemData.UpgradeName;
         this.Description.Text = itemData.Description;
         this.Icon.Texture = itemData.Icon;
-        this.Purchase.Text = itemData.CostModel.CalculateFor(new IdleNumber(upgradeAmount)).ToString();
+        this.m_cost.Text = itemData.CostModel.CalculateFor(new IdleNumber(upgradeAmount)).ToString();
         this.m_itemData = itemData;
         this.m_quantity.Text = itemData.MaximumAmount > 0 ? $"{upgradeAmount}/{itemData.MaximumAmount}" : $"{upgradeAmount}";
     }
