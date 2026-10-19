@@ -29,6 +29,10 @@
 [ext_resource type="Resource" uid="uid://ya71iy6o0win" path="res://resources/skillTree/items/employees/scribes/prolific_scribes.tres" id="25_prolf"]
 [ext_resource type="Resource" uid="uid://htwgobpitiao" path="res://resources/skillTree/items/gameFeatures/game_won.tres" id="26_gwon"]
 [ext_resource type="Script" uid="uid://4sq4qako1fp2" path="res://scripts/UI/GameWonUI.cs" id="29_h0wil"]
+[ext_resource type="Texture2D" uid="uid://bnhhk6s76xnsm" path="res://assets/art/startscreen/screen-bg.jpg" id="30_412ru"]
+[ext_resource type="PackedScene" uid="uid://b5age3g28nuf" path="res://scenes/mainMenu.tscn" id="30_cmj1t"]
+[ext_resource type="Texture2D" uid="uid://2fi5tg863h5q" path="res://assets/art/winning-screen/cropped-nobel-prize.png" id="30_l38ix"]
+[ext_resource type="Texture2D" uid="uid://ck3itr5buooip" path="res://assets/art/winning-screen/cropped-back-to-game-button.png" id="31_412ru"]
 [ext_resource type="Script" path="res://scripts/UI/DragScrollContainer.cs" id="40_dragscroll"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pv4st"]
@@ -37,8 +41,8 @@ texture = ExtResource("3_a4fw5")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bklno"]
 texture = ExtResource("3_wbv7f")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h34mm"]
-bg_color = Color(0.35053253, 0.68790627, 0.3983833, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l38ix"]
+texture = ExtResource("30_412ru")
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1847261213 node_paths=PackedStringArray("ShopUI", "SkillTreeUI", "m_gameWonUi")]
 script = ExtResource("1_gjmhc")
@@ -345,7 +349,7 @@ script = ExtResource("29_h0wil")
 
 [node name="Panel" type="Panel" parent="GameWonUI" unique_id=2133379543]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_h34mm")
+theme_override_styles/panel = SubResource("StyleBoxTexture_l38ix")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameWonUI/Panel" unique_id=1440737648]
 layout_mode = 1
@@ -357,14 +361,24 @@ grow_vertical = 2
 
 [node name="Title" type="Label" parent="GameWonUI/Panel/VBoxContainer" unique_id=1587357693]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 18
 theme_override_font_sizes/font_size = 64
 text = "Game Won!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TextureRect" type="TextureRect" parent="GameWonUI/Panel/VBoxContainer" unique_id=1254978610]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("30_l38ix")
+stretch_mode = 5
+
 [node name="Description" type="Label" parent="GameWonUI/Panel/VBoxContainer" unique_id=2139351613]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 18
 theme_override_font_sizes/font_size = 52
 text = "You've made it. You are the smartest person ever living. You won the first nobel prize.
 
@@ -380,10 +394,13 @@ theme_override_constants/margin_left = 500
 theme_override_constants/margin_right = 500
 theme_override_constants/margin_bottom = 20
 
-[node name="Button" type="Button" parent="GameWonUI/Panel/VBoxContainer/MarginContainer" unique_id=1868283472]
+[node name="Button" type="TextureButton" parent="GameWonUI/Panel/VBoxContainer/MarginContainer" unique_id=1071250335]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Continue"
+texture_normal = ExtResource("31_412ru")
+stretch_mode = 5
+
+[node name="MainMenu" parent="." unique_id=956236428 instance=ExtResource("30_cmj1t")]
+visible = false
 
 [connection signal="pressed" from="Skill Tree/Panel/Close Button" to="Skill Tree/Panel/ScrollContainer/Container" method="Close"]
 [connection signal="pressed" from="GameWonUI/Panel/VBoxContainer/MarginContainer/Button" to="GameWonUI" method="Close"]
