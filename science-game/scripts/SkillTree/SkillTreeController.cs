@@ -21,6 +21,16 @@ public partial class SkillTreeController : Node
     {
         base._EnterTree();
         this.m_boughtUpgrades = this.m_skillTreeData.Upgrades.ToDictionary(x => x, x => 0);
+        this.m_skillPoints.ResourceController.ResourceValueChanged += this.HandleSkillPointsChange;
+    }
+
+    private void HandleSkillPointsChange(object sender, ResourceValueChangedEvent e)
+    {
+        var viewData = this.m_boughtUpgrades.ToDictionary(
+            x => x.Key,
+            x => this.GetViewDataForItem(x.Key)
+        );
+        this.m_skillTreeUi.SetData(viewData);
     }
 
     public void OnClick(Viewport viewport, InputEvent evt, int shapeIdx)
@@ -28,7 +38,7 @@ public partial class SkillTreeController : Node
         if (evt is not InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Left })
             return;
         GD.Print("OPEN SKILLTREEE");
-        this.m_skillTreeUi.Open(this.m_boughtUpgrades);
+        this.OpenSkillTree();
     }
 
     public void AttemptPurchase(SkillTreeItemData upgradeData)
@@ -37,13 +47,10 @@ public partial class SkillTreeController : Node
         if (bought >= upgradeData.MaximumAmount)
             return;
 
-        if (upgradeData.PreRequisites is not null)
-        {
-            if (upgradeData.PreRequisites.Count > 0 && !upgradeData.PreRequisites.Any(this.HasBought))
-                return;
-        }
+        if (!this.HasUnlocked(upgradeData))
+            return;
         
-        var costToBuy = upgradeData.CostModel.CalculateFor(new IdleNumber(bought));
+        var costToBuy = upgradeData.CostModel.CalculateFor(new IdleNumber(bought + 1));
 
         if (!this.m_skillPoints.ResourceController.CanAfford(costToBuy))
             return;
@@ -51,8 +58,36 @@ public partial class SkillTreeController : Node
         this.m_skillPoints.ResourceController.UseResource(costToBuy);
         upgradeData.Upgrade.Apply(this.m_upgradeController);
         this.m_boughtUpgrades[upgradeData]++;
-        this.m_skillTreeUi.Open(this.m_boughtUpgrades);
+        this.OpenSkillTree();
+    }
+
+    private void OpenSkillTree()
+    {
+        var viewData = this.m_boughtUpgrades.ToDictionary(
+            x => x.Key,
+            x => this.GetViewDataForItem(x.Key)
+        );
+        this.m_skillTreeUi.Open(viewData);
+    }
+
+    private bool HasUnlocked(SkillTreeItemData item)
+    {
+        if (item.PreRequisites is null) return true;
+        return item.PreRequisites.Count <= 0 || item.PreRequisites.Any(this.HasBought);
     }
     
-    private bool HasBought(SkillTreeItemData item) => this.m_boughtUpgrades.GetValueOrDefault(item) > 0;                                                                  
+    private bool HasBought(SkillTreeItemData item) => this.m_boughtUpgrades.GetValueOrDefault(item) > 0;
+    
+    private SkillTreeNodeViewData GetViewDataForItem(SkillTreeItemData item)
+    {
+        var costToBuy = item.CostModel.CalculateFor(new IdleNumber(this.m_boughtUpgrades[item] + 1));
+        var amount = this.m_boughtUpgrades[item];
+        return new SkillTreeNodeViewData(
+            costToBuy,
+            this.HasUnlocked(item),
+            true,
+            this.m_skillPoints.ResourceController.CanAfford(costToBuy),
+            amount
+        );
+    }
 }

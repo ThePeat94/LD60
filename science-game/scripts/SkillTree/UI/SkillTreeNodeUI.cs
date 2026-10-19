@@ -12,6 +12,10 @@ public partial class SkillTreeNodeUI : PanelContainer
     [Export] private Label m_name;
     [Export] private Label m_amount;
     [Export] private Label m_cost;
+    
+    private bool m_canBePurchased;
+    private bool m_isUnlocked;
+    private Color m_originalColor;
  
     private Action<SkillTreeItemData> m_onClick;
     
@@ -25,6 +29,7 @@ public partial class SkillTreeNodeUI : PanelContainer
 
     public override void _EnterTree()
     {
+        this.m_originalColor = this.SelfModulate;
         base._EnterTree();
         this.MouseEntered += this.OnMouseEntered;
     }
@@ -41,16 +46,22 @@ public partial class SkillTreeNodeUI : PanelContainer
         {
             return;
         }
+
+        if (!this.m_canBePurchased || !this.m_isUnlocked) return;
+        
         this.AcceptEvent();
         GD.Print("CLICK SKILL TREE NODE");
         this.m_onClick?.Invoke(this.Data);
     }
 
-    public void Display(int amount, int maxAmount, IdleNumber cost)
+    public void Display(SkillTreeNodeViewData viewData)
     {
         this.m_icon.Texture = this.m_data.Icon;
         this.m_name.Text = this.m_data.SkillName;
-        this.m_cost.Text = cost.ToString();
-        this.m_amount.Text = $"{amount}/{maxAmount}";
+        this.m_cost.Text = viewData.Cost.ToString();
+        this.m_amount.Text = $"{viewData.CurrentAmount}/{this.m_data.MaximumAmount}";
+        this.m_canBePurchased = viewData.CanBePurchased;
+        this.m_isUnlocked = viewData.IsUnlocked;
+        this.SelfModulate = this.m_canBePurchased && this.m_isUnlocked ? this.m_originalColor : Colors.DimGray;
     }
 }

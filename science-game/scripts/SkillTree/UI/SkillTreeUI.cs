@@ -33,18 +33,22 @@ public partial class SkillTreeUI : Control
         this.m_skillTreeController.AttemptPurchase(obj);
     }
 
-    public void Open(Dictionary<SkillTreeItemData, int> boughtUpgrades)
+    public void Open(Dictionary<SkillTreeItemData, SkillTreeNodeViewData> boughtUpgrades)
+    {
+        this.SetData(boughtUpgrades);
+        this.m_rootNode.Visible = true;
+    }
+
+    public void SetData(Dictionary<SkillTreeItemData, SkillTreeNodeViewData> boughtUpgrades)
     {
         foreach (var skillItem in boughtUpgrades)
         {
             if (!this.m_uiForData.TryGetValue(skillItem.Key, out var ui))
                 continue;
             
-            var boughtAmount = boughtUpgrades[skillItem.Key];
-            ui.Display(boughtAmount,skillItem.Key.MaximumAmount, skillItem.Key.CostModel.CalculateFor(new IdleNumber(boughtAmount)));
+            var viewData = boughtUpgrades[skillItem.Key];
+            ui.Display(viewData);
         }
-
-        this.m_rootNode.Visible = true;
     }
 
     public void Close()

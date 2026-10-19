@@ -10,7 +10,6 @@
 
 [sub_resource type="Resource" id="Resource_5ai3e"]
 script = ExtResource("1_m7ken")
-Value = 1.0
 metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
 
 [sub_resource type="Resource" id="Resource_wny40"]
