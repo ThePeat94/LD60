@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://vbfiwdh1714m" path="res://scenes/skillTree/skilltree_controller.tscn" id="10_2f3dj"]
 [ext_resource type="PackedScene" uid="uid://cwor0siurx2e8" path="res://scenes/shop/shop_controller.tscn" id="11_yq6so"]
 [ext_resource type="PackedScene" uid="uid://wbj312y6wcdh" path="res://scenes/game_hud.tscn" id="12_fv21b"]
-[ext_resource type="Script" uid="uid://bs3yi2igmc0j6" path="res://scripts/UI/GeneratorRemainingDisplay.cs" id="12_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://b07fw6hiuhj2u" path="res://scenes/generators/science_generator.tscn" id="13_tel4y"]
 [ext_resource type="PackedScene" uid="uid://dcuw26e2ppgd3" path="res://scenes/generators/patent_generator.tscn" id="14_qkpxi"]
 [ext_resource type="PackedScene" uid="uid://cop5xu6120mg3" path="res://scenes/generators/skill_point_generator.tscn" id="15_5q0nq"]
@@ -119,44 +118,6 @@ position = Vector2(54.103542, 14.816047)
 [node name="UpgradeController" parent="Room/Desk/ShopController" index="1" unique_id=352711260 node_paths=PackedStringArray("m_employeeController")]
 m_employeeController = NodePath("../../../../EmployeeController")
 
-[node name="Remaining PatentProgress" type="Node2D" parent="Room" unique_id=1451759895]
-position = Vector2(-658, -431)
-
-[node name="GeneratorRemainingDisplay" type="Label" parent="Room/Remaining PatentProgress" unique_id=1722313072 node_paths=PackedStringArray("m_generator")]
-z_index = 10
-offset_right = 273.0
-offset_bottom = 44.666668
-pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 7
-theme_override_font_sizes/font_size = 32
-text = "HALLO"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("12_gqmmt")
-m_generator = NodePath("../../../PatentGenerator")
-metadata/_custom_type_script = "uid://bs3yi2igmc0j6"
-
-[node name="Remaining Knowledge Progress" type="Node2D" parent="Room" unique_id=732359676]
-position = Vector2(459, -414)
-
-[node name="GeneratorRemainingDisplay" type="Label" parent="Room/Remaining Knowledge Progress" unique_id=1228366936 node_paths=PackedStringArray("m_generator")]
-z_index = 10
-offset_right = 273.0
-offset_bottom = 44.666668
-pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 7
-theme_override_font_sizes/font_size = 32
-text = "HALLO"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("12_gqmmt")
-m_generator = NodePath("../../../SkillPointGenerator")
-metadata/_custom_type_script = "uid://bs3yi2igmc0j6"
-
 [node name="Patent Progress Bar" parent="Room" unique_id=1597530861 node_paths=PackedStringArray("m_generator") instance=ExtResource("23_pbar")]
 m_generator = NodePath("../../PatentGenerator")
 
@@ -219,7 +180,7 @@ region_enabled = true
 region_rect = Rect2(28, 20.75, 84.5, 138.5)
 
 [node name="Unlocker" parent="PatentGenerator" index="5" unique_id=938280753 node_paths=PackedStringArray("m_otherUnlocks")]
-m_otherUnlocks = [NodePath("../../Room/Remaining PatentProgress"), NodePath("../../Room/Money Display"), NodePath("../../Room/Patent Progress Bar")]
+m_otherUnlocks = [NodePath("../../Room/Money Display"), NodePath("../../Room/Patent Progress Bar")]
 
 [node name="PatentGnome" parent="PatentGenerator/Gnomes" parent_id_path=PackedInt32Array(53403002, 1445201801) index="0" unique_id=1745542875]
 position = Vector2(6.658902, 46.445816)
@@ -236,6 +197,9 @@ PlayerStatsContainer = NodePath("../PlayerStats")
 [node name="Reward Controller" parent="SkillPointGenerator" index="2" unique_id=2039802272 node_paths=PackedStringArray("m_playerStats", "m_generated")]
 m_playerStats = NodePath("../../PlayerStats")
 m_generated = NodePath("../../ResourceControllers/GlobalSkillPointsController")
+
+[node name="NotEnoughLabel" parent="SkillPointGenerator" index="8" unique_id=1873461102]
+m_text = "Think first."
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1384018772]
 

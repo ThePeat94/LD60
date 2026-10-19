@@ -153,6 +153,7 @@ metadata/_custom_type_script = "uid://q401bcjsgqij"
 [node name="NotEnoughLabel" type="Node" parent="." unique_id=1873461102 node_paths=PackedStringArray("m_origin")]
 script = ExtResource("30_popup")
 m_origin = NodePath("..")
+m_text = "Think more."
 metadata/_custom_type_script = "uid://mvl7oeixktlca"
 
 [node name="NotEnoughSFX" type="AudioStreamPlayer2D" parent="." unique_id=1873461103]

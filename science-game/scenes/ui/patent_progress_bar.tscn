@@ -11,12 +11,13 @@
 atlas = ExtResource("3_fill")
 region = Rect2(32, 25, 14, 111)
 
-[node name="PatentProgressBar" type="Node2D" unique_id=1038980259 node_paths=PackedStringArray("m_bar", "m_filledPopup")]
+[node name="PatentProgressBar" type="Node2D" unique_id=1038980259 node_paths=PackedStringArray("m_bar", "m_filledPopup", "m_countLabel")]
 z_index = 10
 scale = Vector2(6.0065217, 6.0065217)
 script = ExtResource("1_script")
 m_bar = NodePath("Fill")
 m_filledPopup = NodePath("FilledPopup")
+m_countLabel = NodePath("CountAnchor/CountLabel")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=840600928]
 texture = ExtResource("2_bg")
@@ -50,3 +51,20 @@ m_riseDistance = 60.0
 m_duration = 2.0
 m_followMouse = false
 metadata/_custom_type_script = "uid://mvl7oeixktlca"
+
+[node name="CountAnchor" type="Node2D" parent="." unique_id=1730224601]
+position = Vector2(-121, -9.5)
+scale = Vector2(0.16648, 0.16648)
+
+[node name="CountLabel" type="Label" parent="CountAnchor" unique_id=1730224602]
+offset_left = -136.5
+offset_top = -22.333334
+offset_right = 136.5
+offset_bottom = 22.333334
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 32
+text = "0/0"
+horizontal_alignment = 1
+vertical_alignment = 1
