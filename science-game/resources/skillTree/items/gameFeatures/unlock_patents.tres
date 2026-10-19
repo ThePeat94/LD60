@@ -29,7 +29,7 @@ metadata/_custom_type_script = "uid://dvbi6j25t5f7m"
 [resource]
 script = ExtResource("5_erxa7")
 SkillName = "Unlock Patents"
-Description = "Unlocks patents. Turn Science into Money."
+Description = "Unlocks patents. Turn Thinking into Patents."
 Icon = ExtResource("3_av1m2")
 CostModel = SubResource("Resource_0ga6l")
 Upgrade = SubResource("Resource_3d1fk")

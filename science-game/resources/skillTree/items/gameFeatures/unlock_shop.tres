@@ -29,7 +29,7 @@ metadata/_custom_type_script = "uid://dvbi6j25t5f7m"
 [resource]
 script = ExtResource("5_gyn5y")
 SkillName = "Unlock Shop"
-Description = "Unlocks the shop. Hire staff with Money."
+Description = "Unlocks the shop. Hire staff with Patents."
 Icon = ExtResource("3_u6n68")
 CostModel = SubResource("Resource_0ga6l")
 Upgrade = SubResource("Resource_3d1fk")

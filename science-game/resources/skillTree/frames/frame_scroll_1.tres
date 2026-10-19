@@ -1,0 +1,15 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://yssnlqmqa6l3"]
+
+[ext_resource type="Texture2D" uid="uid://jbugqsdg7w0e" path="res://assets/art/desk/skilltree/frame_scroll_1.png" id="1_frame"]
+
+[resource]
+content_margin_left = 60.0
+content_margin_top = 42.0
+content_margin_right = 42.0
+content_margin_bottom = 46.0
+texture = ExtResource("1_frame")
+texture_margin_left = 36.0
+texture_margin_top = 36.0
+texture_margin_right = 30.0
+texture_margin_bottom = 36.0
+draw_center = false

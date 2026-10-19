@@ -7,7 +7,7 @@ namespace Nidavellir.UI;
 /// including when the drag starts on top of a child (like a skill node or a buy button).
 /// </summary>
 [GlobalClass]
-public partial class DragScrollContainer : ScrollContainer
+public partial class DragScrollContainer : ScrollContainer, IDragSurface
 {
     [Export] private float m_dragThreshold = 8f;
 
@@ -22,12 +22,12 @@ public partial class DragScrollContainer : ScrollContainer
     /// </summary>
     public bool WasDragged => this.m_dragged;
 
-    /// <summary>True if <paramref name="node"/> sits in a drag container whose current click was a drag.</summary>
+    /// <summary>True if <paramref name="node"/> sits in a drag surface whose current click was a drag.</summary>
     public static bool IsDragClick(Node node)
     {
         for (var parent = node.GetParent(); parent != null; parent = parent.GetParent())
-            if (parent is DragScrollContainer container)
-                return container.WasDragged;
+            if (parent is IDragSurface surface)
+                return surface.WasDragged;
         return false;
     }
 

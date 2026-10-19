@@ -42,7 +42,7 @@ metadata/_custom_type_script = "uid://b0h2rn416ikw4"
 [resource]
 script = ExtResource("5_t6ywl")
 SkillName = "Skilled Skiller"
-Description = "Every filled Skill Point bar grants +1 extra."
+Description = "Every filled Degree bar grants +1 extra."
 Icon = ExtResource("3_8wrus")
 CostModel = SubResource("Resource_tekeu")
 Upgrade = SubResource("Resource_o7jdt")

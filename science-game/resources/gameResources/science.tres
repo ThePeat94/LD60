@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_ar7ta")
-Name = "Science"
+Name = "Thinking"
 Description = "Knowledge is Power!"
 metadata/_custom_type_script = "uid://bkjn0afk8yxow"

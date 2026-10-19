@@ -30,7 +30,7 @@ metadata/_custom_type_script = "uid://d4fsqqap04gnj"
 [resource]
 script = ExtResource("6_item")
 SkillName = "Nobel Prize"
-Description = "All that science pays off. Wins the game."
+Description = "All that thinking pays off. Wins the game."
 Icon = ExtResource("3_icon")
 CostModel = SubResource("Resource_cost")
 Upgrade = SubResource("Resource_upgrade")

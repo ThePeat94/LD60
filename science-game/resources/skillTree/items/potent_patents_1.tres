@@ -42,7 +42,7 @@ metadata/_custom_type_script = "uid://b0h2rn416ikw4"
 [resource]
 script = ExtResource("6_hmyhq")
 SkillName = "Potent Patents"
-Description = "Every finished patent pays +1 more Money."
+Description = "Every finished invention earns +1 more Patent."
 Icon = ExtResource("3_evjuc")
 CostModel = SubResource("Resource_5lo75")
 Upgrade = SubResource("Resource_fep4v")

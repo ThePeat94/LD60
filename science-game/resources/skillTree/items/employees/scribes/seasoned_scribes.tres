@@ -43,7 +43,7 @@ metadata/_custom_type_script = "uid://dpajxbew4x3bl"
 [resource]
 script = ExtResource("7_item")
 SkillName = "Seasoned Scribes"
-Description = "Each Scribe puts +2 into Skill Points per cycle."
+Description = "Each Scribe puts +2 into Degrees per cycle."
 Icon = ExtResource("3_icon")
 CostModel = SubResource("Resource_cost")
 Upgrade = SubResource("Resource_upgrade")

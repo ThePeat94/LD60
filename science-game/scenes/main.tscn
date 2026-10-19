@@ -180,6 +180,9 @@ ShopController = NodePath("../../Room/Desk/ShopController")
 [node name="ResourceDisplay" parent="GameHUD/ShopUI/HBoxContainer" parent_id_path=PackedInt32Array(1847261213, 1524514352) index="1" unique_id=1615407582 node_paths=PackedStringArray("ResourceControllerNode")]
 ResourceControllerNode = NodePath("../../../../ResourceControllers/GlobalMoneyController")
 
+[node name="Skill Tree" parent="GameHUD" index="1" unique_id=1222491598]
+visible = true
+
 [node name="Label" parent="GameHUD/Skill Tree/Panel" parent_id_path=PackedInt32Array(1847261213, 372858125) index="1" unique_id=1299036100]
 layout_mode = 0
 anchors_preset = 0
@@ -202,11 +205,88 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="Container" parent="GameHUD/Skill Tree/Panel/ScrollContainer" index="0" unique_id=1347082111 node_paths=PackedStringArray("m_skillTreeController")]
+anchors_preset = 0
 m_skillTreeController = NodePath("../../../../../Room/Desk/SkilltreeController")
 
 [node name="Base Click Upgrade" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="0" unique_id=878878694]
-offset_right = 300.0
-offset_bottom = 100.0
+custom_minimum_size = Vector2(300, 120)
+offset_bottom = 343.0
+
+[node name="Multiplicative Click Upgrade" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="1" unique_id=127105399]
+custom_minimum_size = Vector2(300, 120)
+offset_bottom = 683.0
+
+[node name="Potent Patents" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="2" unique_id=748500048]
+custom_minimum_size = Vector2(300, 120)
+offset_bottom = 1703.0
+
+[node name="Skilled Skiller" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="3" unique_id=2012458393]
+custom_minimum_size = Vector2(300, 120)
+offset_bottom = 1703.0
+
+[node name="Unlock Thinkers" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="4" unique_id=1758735702]
+custom_minimum_size = Vector2(300, 120)
+offset_bottom = 1023.0
+
+[node name="Stronger Thinkers" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="5" unique_id=1906036159]
+custom_minimum_size = Vector2(300, 120)
+offset_bottom = 1363.0
+
+[node name="Faster Thinkers" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="6" unique_id=1213503214]
+custom_minimum_size = Vector2(300, 120)
+offset_bottom = 1703.0
+
+[node name="Unlock Inventors" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="7" unique_id=762651036]
+custom_minimum_size = Vector2(300, 120)
+offset_bottom = 1363.0
+
+[node name="Stronger Inventors" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="8" unique_id=1063911208]
+custom_minimum_size = Vector2(300, 120)
+offset_bottom = 1703.0
+
+[node name="Faster Inventors" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="9" unique_id=1401414334]
+custom_minimum_size = Vector2(300, 120)
+offset_bottom = 2043.0
+
+[node name="Unlock Scribes" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="10" unique_id=1271646530]
+custom_minimum_size = Vector2(300, 120)
+offset_bottom = 1363.0
+
+[node name="Stronger Scribes" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="11" unique_id=319539269]
+custom_minimum_size = Vector2(300, 120)
+offset_bottom = 1703.0
+
+[node name="Faster Scribes" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="12" unique_id=1017472423]
+custom_minimum_size = Vector2(300, 120)
+offset_bottom = 2043.0
+
+[node name="Seasoned Scribes" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="13" unique_id=22205539]
+custom_minimum_size = Vector2(300, 120)
+offset_bottom = 2043.0
+
+[node name="Master Scribes" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="14" unique_id=1274510839]
+custom_minimum_size = Vector2(300, 120)
+offset_bottom = 2383.0
+
+[node name="Inspired Scribes" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="15" unique_id=228330183]
+custom_minimum_size = Vector2(300, 120)
+offset_bottom = 2383.0
+
+[node name="Prolific Scribes" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="16" unique_id=543587678]
+custom_minimum_size = Vector2(300, 120)
+offset_bottom = 2723.0
+
+[node name="Nobel Prize" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="17" unique_id=1779978527]
+custom_minimum_size = Vector2(300, 120)
+offset_bottom = 3063.0
+
+[node name="Unlock Patents" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="18" unique_id=1938483727]
+custom_minimum_size = Vector2(300, 120)
+offset_bottom = 343.0
+
+[node name="Unlock Shop" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="19" unique_id=1720834233]
+custom_minimum_size = Vector2(300, 120)
+offset_bottom = 683.0
 
 [node name="ResourceDisplay" parent="GameHUD/Skill Tree/Panel/HBoxContainer" parent_id_path=PackedInt32Array(1847261213, 1263066267) index="1" unique_id=591431659 node_paths=PackedStringArray("ResourceControllerNode")]
 ResourceControllerNode = NodePath("../../../../../ResourceControllers/GlobalSkillPointsController")
@@ -218,7 +298,7 @@ m_labelParent = NodePath("..")
 
 [node name="NotEnoughMoneyPopup" type="Node" parent="GameHUD" unique_id=1893771202 node_paths=PackedStringArray("m_labelParent")]
 script = ExtResource("33_popup")
-m_text = "Not enough money."
+m_text = "Not enough patents."
 m_labelParent = NodePath("..")
 
 [node name="ScienceGenerator" parent="." unique_id=147243357 node_paths=PackedStringArray("Generated", "PlayerStatsContainer") instance=ExtResource("13_tel4y")]
