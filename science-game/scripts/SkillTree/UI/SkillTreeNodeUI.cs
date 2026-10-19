@@ -58,7 +58,8 @@ public partial class SkillTreeNodeUI : PanelContainer
             return;
         }
 
-        if (!this.m_canBePurchased || !this.m_isUnlocked) return;
+        // unaffordable clicks still go through, the controller refuses them with feedback
+        if (!this.m_isUnlocked) return;
         
         this.AcceptEvent();
         GD.Print("CLICK SKILL TREE NODE");

@@ -10,6 +10,8 @@
 [ext_resource type="AudioStream" uid="uid://yev6ay8s2psm" path="res://assets/sfx/400 Sounds Pack/Items/book_open.wav" id="8_5vpls"]
 [ext_resource type="Script" uid="uid://bglusmjfbdqlj" path="res://scripts/GameFeel/FeelSfxPlayer.cs" id="9_d1p4o"]
 [ext_resource type="Script" uid="uid://q401bcjsgqij" path="res://scripts/GameFeel/CursorChanger.cs" id="10_3dv6o"]
+[ext_resource type="AudioStream" path="res://resources/sfx/knock.tres" id="20_knock"]
+[ext_resource type="AudioStream" path="res://resources/sfx/paper.tres" id="21_paper"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5vd1"]
 size = Vector2(64, 25)
@@ -18,9 +20,11 @@ size = Vector2(64, 25)
 streams_count = 1
 stream_0/stream = ExtResource("8_5vpls")
 
-[node name="ShopController" type="Node2D" unique_id=524025840 node_paths=PackedStringArray("m_upgradeController", "m_shopSprite")]
+[node name="ShopController" type="Node2D" unique_id=524025840 node_paths=PackedStringArray("m_upgradeController", "m_cannotBuySound", "m_boughtSound", "m_shopSprite")]
 script = ExtResource("1_ye267")
 m_upgradeController = NodePath("UpgradeController")
+m_cannotBuySound = NodePath("CannotBuySound")
+m_boughtSound = NodePath("BoughtSound")
 m_shopSprite = NodePath("Sprite2D")
 ShopUpgrades = Array[Object]([ExtResource("2_ojs2r"), ExtResource("3_oltln"), ExtResource("4_5vpls")])
 
@@ -52,6 +56,14 @@ script = ExtResource("9_d1p4o")
 script = ExtResource("10_3dv6o")
 m_clickArea = NodePath("../Sprite2D/Area2D")
 metadata/_custom_type_script = "uid://q401bcjsgqij"
+
+[node name="BoughtSound" type="AudioStreamPlayer" parent="." unique_id=1884120512]
+stream = ExtResource("21_paper")
+max_polyphony = 3
+
+[node name="CannotBuySound" type="AudioStreamPlayer" parent="." unique_id=1884120502]
+stream = ExtResource("20_knock")
+max_polyphony = 3
 
 [connection signal="input_event" from="Sprite2D/Area2D" to="." method="OnClick"]
 [connection signal="input_event" from="Sprite2D/Area2D" to="AudioStreamPlayer2D" method="Trigger"]

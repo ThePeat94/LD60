@@ -1,0 +1,22 @@
+[gd_resource type="AudioStreamRandomizer" format=3]
+
+[ext_resource type="AudioStream" path="res://assets/sfx/own/knock_01.wav" id="1_knock"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/knock_02.wav" id="2_knock"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/knock_03.wav" id="3_knock"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/knock_04.wav" id="4_knock"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/knock_05.wav" id="5_knock"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/knock_06.wav" id="6_knock"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/knock_07.wav" id="7_knock"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/knock_08.wav" id="8_knock"]
+
+[resource]
+random_pitch = 1.08
+streams_count = 8
+stream_0/stream = ExtResource("1_knock")
+stream_1/stream = ExtResource("2_knock")
+stream_2/stream = ExtResource("3_knock")
+stream_3/stream = ExtResource("4_knock")
+stream_4/stream = ExtResource("5_knock")
+stream_5/stream = ExtResource("6_knock")
+stream_6/stream = ExtResource("7_knock")
+stream_7/stream = ExtResource("8_knock")

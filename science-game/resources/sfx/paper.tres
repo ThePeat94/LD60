@@ -1,0 +1,30 @@
+[gd_resource type="AudioStreamRandomizer" format=3]
+
+[ext_resource type="AudioStream" path="res://assets/sfx/own/paper_01.wav" id="1_paper"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/paper_02.wav" id="2_paper"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/paper_03.wav" id="3_paper"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/paper_04.wav" id="4_paper"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/paper_05.wav" id="5_paper"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/paper_06.wav" id="6_paper"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/paper_07.wav" id="7_paper"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/paper_08.wav" id="8_paper"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/paper_09.wav" id="9_paper"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/paper_10.wav" id="10_paper"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/paper_11.wav" id="11_paper"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/paper_12.wav" id="12_paper"]
+
+[resource]
+random_pitch = 1.1
+streams_count = 12
+stream_0/stream = ExtResource("1_paper")
+stream_1/stream = ExtResource("2_paper")
+stream_2/stream = ExtResource("3_paper")
+stream_3/stream = ExtResource("4_paper")
+stream_4/stream = ExtResource("5_paper")
+stream_5/stream = ExtResource("6_paper")
+stream_6/stream = ExtResource("7_paper")
+stream_7/stream = ExtResource("8_paper")
+stream_8/stream = ExtResource("9_paper")
+stream_9/stream = ExtResource("10_paper")
+stream_10/stream = ExtResource("11_paper")
+stream_11/stream = ExtResource("12_paper")

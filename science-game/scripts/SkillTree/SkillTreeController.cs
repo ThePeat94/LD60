@@ -16,6 +16,9 @@ public partial class SkillTreeController : Node
     [Export] private ResourceControllerNode m_skillPoints;
     [Export] private SkillTreeUpgradeController m_upgradeController;
     [Export] private FeelGlow m_glow;
+    [Export] private AudioStreamPlayer m_cannotBuySound;
+    [Export] private AudioStreamPlayer m_boughtSound;
+    [Export] private FeelPopupLabel m_notEnoughPopup;
     
     private System.Collections.Generic.Dictionary<SkillTreeItemData, int> m_boughtUpgrades = new();
 
@@ -53,17 +56,28 @@ public partial class SkillTreeController : Node
     {
         var bought = this.m_boughtUpgrades[upgradeData];
         if (bought >= upgradeData.MaximumAmount)
+        {
+            this.m_cannotBuySound?.Play();
             return;
+        }
 
         if (!this.HasUnlocked(upgradeData))
+        {
+            this.m_cannotBuySound?.Play();
             return;
+        }
         
         var costToBuy = upgradeData.CostModel.CalculateFor(new IdleNumber(bought + 1));
 
         if (!this.m_skillPoints.ResourceController.CanAfford(costToBuy))
+        {
+            this.m_cannotBuySound?.Play();
+            this.m_notEnoughPopup?.Trigger();
             return;
+        }
         
         this.m_skillPoints.ResourceController.UseResource(costToBuy);
+        this.m_boughtSound?.Play();
         upgradeData.Upgrade.Apply(this.m_upgradeController);
         this.m_boughtUpgrades[upgradeData]++;
         this.OpenSkillTree();

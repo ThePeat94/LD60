@@ -15,6 +15,9 @@ public partial class ShopController : Node2D
     [Export] private UpgradeController m_upgradeController;
     [Export] private CanvasItem m_shopSprite;
     [Export] private FeelGlow m_glow;
+    [Export] private AudioStreamPlayer m_cannotBuySound;
+    [Export] private AudioStreamPlayer m_boughtSound;
+    [Export] private FeelPopupLabel m_notEnoughPopup;
     
     private System.Collections.Generic.Dictionary<ShopItemData, int> m_boughtUpgrades = new();
     
@@ -51,17 +54,23 @@ public partial class ShopController : Node2D
         var currentAmount = this.m_boughtUpgrades[itemData];
 
         if (currentAmount >= itemData.MaximumAmount)
+        {
+            this.m_cannotBuySound?.Play();
             return;
+        }
         
         
         var cost = itemData.CostModel.CalculateFor(new IdleNumber(currentAmount));
         GD.Print($"Cost to buy {itemData.UpgradeName}: {cost}");
         if (!this.Money.ResourceController.CanAfford(cost))
         {
+            this.m_cannotBuySound?.Play();
+            this.m_notEnoughPopup?.Trigger();
             return;
         }
 
         this.Money.ResourceController.UseResource(cost);
+        this.m_boughtSound?.Play();
         this.m_boughtUpgrades[itemData]++;
         itemData.UpgradeData.Apply(this.m_upgradeController);
         this.ShopUI.Open(this.m_boughtUpgrades);

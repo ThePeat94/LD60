@@ -11,6 +11,8 @@ public partial class FeelPopupLabel : Node
     [Export] private float m_riseDistance = 40f;
     [Export] private float m_duration = 1.2f;
     [Export] private bool m_followMouse = true;
+    // e.g. a HUD CanvasLayer, so the label shows above UI; defaults to the current scene
+    [Export] private Node m_labelParent;
 
     private Label m_label;
     private Tween m_activeTween;
@@ -21,7 +23,8 @@ public partial class FeelPopupLabel : Node
 
         this.m_activeTween?.Kill();
         label.Size = label.GetCombinedMinimumSize();
-        var center = this.m_followMouse ? this.m_origin.GetGlobalMousePosition() : this.m_origin.GlobalPosition;
+        // asking the label itself gives the mouse in the label's own canvas (world or HUD layer)
+        var center = this.m_followMouse ? label.GetGlobalMousePosition() : this.m_origin.GlobalPosition;
         label.GlobalPosition = center - label.Size / 2;
         label.Modulate = Colors.White;
         label.Visible = true;
@@ -49,7 +52,7 @@ public partial class FeelPopupLabel : Node
         this.m_label.AddThemeColorOverride("font_color", Colors.White);
         this.m_label.AddThemeColorOverride("font_outline_color", Colors.Black);
         this.m_label.AddThemeConstantOverride("outline_size", 7);
-        this.GetTree().CurrentScene.AddChild(this.m_label);
+        (this.m_labelParent ?? this.GetTree().CurrentScene).AddChild(this.m_label);
         return this.m_label;
     }
 }
