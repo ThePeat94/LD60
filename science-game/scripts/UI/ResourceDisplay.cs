@@ -5,6 +5,7 @@ using Nidavellir.ResourceInfo;
 
 namespace Nidavellir.UI;
 
+[GlobalClass]
 public partial class ResourceDisplay : Label
 {
     [Export]

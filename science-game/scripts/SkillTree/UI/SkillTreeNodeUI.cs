@@ -14,6 +14,7 @@ public partial class SkillTreeNodeUI : PanelContainer
     [Export] private Label m_cost;
     [Export] private Color m_hoverColor = Colors.LawnGreen;
     [Export] private Color m_lockedColor = Colors.DimGray;
+    [Export] private PackedScene m_infoDialog;
     
     private bool m_canBePurchased;
     private bool m_isUnlocked;

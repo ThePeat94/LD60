@@ -90,7 +90,7 @@ texture = ExtResource("9_vxglm")
 
 [node name="SkilltreeController" parent="Room/Desk" unique_id=85181344 node_paths=PackedStringArray("m_skillTreeUi", "m_skillPoints") instance=ExtResource("10_2f3dj")]
 position = Vector2(44.947563, 56.434162)
-m_skillTreeUi = NodePath("../../../GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container")
+m_skillTreeUi = NodePath("../../../GameHUD/Skill Tree/Panel/ScrollContainer/Container")
 m_skillPoints = NodePath("../../../ResourceControllers/GlobalSkillPointsController")
 
 [node name="Sprite2D" parent="Room/Desk/SkilltreeController" index="0" unique_id=875432051]
@@ -160,12 +160,15 @@ metadata/_custom_type_script = "uid://bs3yi2igmc0j6"
 [node name="ShopUI" parent="GameHUD" index="0" unique_id=1511127767 node_paths=PackedStringArray("ShopController")]
 ShopController = NodePath("../../Room/Desk/ShopController")
 
-[node name="Container" parent="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer" parent_id_path=PackedInt32Array(1847261213, 2108983879) index="0" unique_id=1347082111 node_paths=PackedStringArray("m_skillTreeController")]
-m_skillTreeController = NodePath("../../../../../../Room/Desk/SkilltreeController")
+[node name="Container" parent="GameHUD/Skill Tree/Panel/ScrollContainer" parent_id_path=PackedInt32Array(1847261213, 2108983879) index="0" unique_id=1347082111 node_paths=PackedStringArray("m_skillTreeController")]
+m_skillTreeController = NodePath("../../../../../Room/Desk/SkilltreeController")
 
-[node name="Base Click Upgrade" parent="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container" index="0" unique_id=878878694]
+[node name="Base Click Upgrade" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="0" unique_id=878878694]
 offset_right = 300.0
 offset_bottom = 100.0
+
+[node name="ResourceDisplay" parent="GameHUD/Skill Tree/Panel/HBoxContainer" parent_id_path=PackedInt32Array(1847261213, 1263066267) index="1" unique_id=591431659 node_paths=PackedStringArray("ResourceControllerNode")]
+ResourceControllerNode = NodePath("../../../../../ResourceControllers/GlobalSkillPointsController")
 
 [node name="ScienceGenerator" parent="." unique_id=147243357 node_paths=PackedStringArray("Generated", "PlayerStatsContainer") instance=ExtResource("13_tel4y")]
 position = Vector2(5, -27.000004)
@@ -267,21 +270,21 @@ autoplay = true
 [editable path="Room/Desk/ShopController"]
 [editable path="GameHUD"]
 [editable path="GameHUD/ShopUI"]
-[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Base Click Upgrade"]
-[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Multiplicative Click Upgrade"]
-[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Potent Patents"]
-[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Skilled Skiller"]
-[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Unlock Thinkers"]
-[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Stronger Thinkers"]
-[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Faster Thinkers"]
-[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Unlock Inventors"]
-[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Stronger Inventors"]
-[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Faster Inventors"]
-[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Unlock Scribes"]
-[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Stronger Scribes"]
-[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Faster Scribes"]
-[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Unlock Patents"]
-[editable path="GameHUD/Skill Tree/Panel/VBoxContainer/ScrollContainer/Container/Unlock Shop"]
+[editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Base Click Upgrade"]
+[editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Multiplicative Click Upgrade"]
+[editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Potent Patents"]
+[editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Skilled Skiller"]
+[editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Unlock Thinkers"]
+[editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Stronger Thinkers"]
+[editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Faster Thinkers"]
+[editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Unlock Inventors"]
+[editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Stronger Inventors"]
+[editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Faster Inventors"]
+[editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Unlock Scribes"]
+[editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Stronger Scribes"]
+[editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Faster Scribes"]
+[editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Unlock Patents"]
+[editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Unlock Shop"]
 [editable path="ScienceGenerator"]
 [editable path="PatentGenerator"]
 [editable path="SkillPointGenerator"]
