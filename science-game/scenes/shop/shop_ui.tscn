@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://cw66s6x3klg6l" path="res://scripts/Shop/UI/ShopUI.cs" id="1_gk7bq"]
 [ext_resource type="PackedScene" uid="uid://b74twwfigbo50" path="res://scenes/shop/item_ui.tscn" id="2_8cucq"]
 [ext_resource type="Script" path="res://scripts/UI/DragScrollContainer.cs" id="40_dragscroll"]
+[ext_resource type="Texture2D" path="res://resources/icons/back_button.tres" id="43_back"]
+[ext_resource type="Script" path="res://scripts/GameFeel/FeelHoverScale.cs" id="44_hover"]
+
 
 [node name="ShopUI" type="AspectRatioContainer" unique_id=1511127767 node_paths=PackedStringArray("ItemsParent")]
 visible = false
@@ -50,21 +53,22 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 20
 
-[node name="Close Button" type="Button" parent="Panel" unique_id=276772348]
+[node name="Close Button" type="TextureButton" parent="Panel" unique_id=276772348]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -329.0
-offset_top = -105.0
+offset_left = -377.0
+offset_top = -97.0
 offset_right = -29.0
 offset_bottom = -25.0
 grow_horizontal = 0
 grow_vertical = 0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_font_sizes/font_size = 42
-text = "Close"
+texture_normal = ExtResource("43_back")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("44_hover")
 
 [connection signal="pressed" from="Panel/Close Button" to="." method="Close"]

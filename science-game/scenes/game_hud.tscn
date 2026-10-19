@@ -36,6 +36,9 @@
 [ext_resource type="Script" uid="uid://b1tjt81tc3kys" path="res://scripts/UI/DragScrollContainer.cs" id="40_dragscroll"]
 [ext_resource type="Script" path="res://scripts/UI/PanZoomView.cs" id="42_panzoom"]
 [ext_resource type="Texture2D" uid="uid://clyqs7g7pg1do" path="res://assets/art/desk/skilltree-elements.png" id="41_arrows"]
+[ext_resource type="Texture2D" path="res://resources/icons/back_button.tres" id="43_back"]
+[ext_resource type="Script" path="res://scripts/GameFeel/FeelHoverScale.cs" id="44_hover"]
+
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pv4st"]
 texture = ExtResource("3_a4fw5")
@@ -94,7 +97,7 @@ vertical_alignment = 1
 script = ExtResource("21_a4fw5")
 metadata/_custom_type_script = "uid://0c6plthlac1x"
 
-[node name="PaidInPatentsNote" type="Label" parent="ShopUI" unique_id=1907315401]
+[node name="PaidInPatentsNote" type="Label" parent="ShopUI/Panel" unique_id=1907315401]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 88.0
@@ -120,22 +123,23 @@ ratio = 1.7777778
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_bklno")
 
-[node name="Close Button" type="Button" parent="Skill Tree/Panel" unique_id=819960803]
+[node name="Close Button" type="TextureButton" parent="Skill Tree/Panel" unique_id=819960803]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -329.0
-offset_top = -105.0
+offset_left = -377.0
+offset_top = -97.0
 offset_right = -29.0
 offset_bottom = -25.0
 grow_horizontal = 0
 grow_vertical = 0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_font_sizes/font_size = 42
-text = "Close"
+texture_normal = ExtResource("43_back")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("44_hover")
 
 [node name="Label" type="Label" parent="Skill Tree/Panel" unique_id=1299036100]
 layout_mode = 1
