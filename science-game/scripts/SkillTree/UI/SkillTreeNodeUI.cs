@@ -12,6 +12,7 @@ public partial class SkillTreeNodeUI : PanelContainer
     [Export] private Label m_name;
     [Export] private Label m_amount;
     [Export] private Label m_cost;
+    [Export] private Label m_description;
     [Export] private Color m_hoverColor = Colors.LawnGreen;
     [Export] private Color m_lockedColor = Colors.DimGray;
     [Export] private PackedScene m_infoDialog;
@@ -69,6 +70,8 @@ public partial class SkillTreeNodeUI : PanelContainer
         this.m_icon.Texture = this.m_data.Icon;
         this.m_name.Text = this.m_data.SkillName;
         this.m_cost.Text = viewData.Cost.ToString();
+        this.m_description.Text = this.m_data.Description;
+        this.m_description.Visible = !string.IsNullOrEmpty(this.m_data.Description);
         this.m_amount.Text = $"{viewData.CurrentAmount}/{this.m_data.MaximumAmount}";
         this.m_canBePurchased = viewData.CanBePurchased;
         this.m_isUnlocked = viewData.IsUnlocked;

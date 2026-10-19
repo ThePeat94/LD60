@@ -31,7 +31,7 @@ metadata/_custom_type_script = "uid://ma5ppe0wfeik"
 [resource]
 script = ExtResource("6_irlr3")
 SkillName = "Unlock Thinkers"
-Description = "Blablabla"
+Description = "Thinkers for hire. They produce Science on their own."
 Icon = ExtResource("3_lr1kr")
 CostModel = SubResource("Resource_rwwpb")
 Upgrade = SubResource("Resource_lyy28")

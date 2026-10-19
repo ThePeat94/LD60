@@ -8,7 +8,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qeyxp"]
 bg_color = Color(0.30121267, 0.33398592, 0.30768323, 1)
 
-[node name="SkillTreeNodeUI" type="PanelContainer" unique_id=878878694 node_paths=PackedStringArray("m_icon", "m_name", "m_amount", "m_cost")]
+[node name="SkillTreeNodeUI" type="PanelContainer" unique_id=878878694 node_paths=PackedStringArray("m_icon", "m_name", "m_amount", "m_cost", "m_description")]
 custom_minimum_size = Vector2(400, 150)
 offset_left = 572.0
 offset_top = 105.0
@@ -21,6 +21,7 @@ m_icon = NodePath("HBoxContainer/MarginContainer/Icon")
 m_name = NodePath("HBoxContainer/MarginContainer2/VBoxContainer/Name")
 m_amount = NodePath("HBoxContainer/MarginContainer2/VBoxContainer/Amount")
 m_cost = NodePath("HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/Cost")
+m_description = NodePath("HBoxContainer/MarginContainer2/VBoxContainer/Description")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1978577292]
 layout_mode = 2
@@ -62,6 +63,14 @@ theme_override_font_sizes/font_size = 26
 text = "%AMOUNT%"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Description" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer" unique_id=128469045]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "%DESCRIPTION WHICH CAN GET SUPER LONG AND DO FUNNY STUFF HAHAHAHAHA%"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer" unique_id=2003765757]
 layout_mode = 2

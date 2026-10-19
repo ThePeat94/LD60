@@ -41,7 +41,7 @@ metadata/_custom_type_script = "uid://dpajxbew4x3bl"
 [resource]
 script = ExtResource("7_8jth3")
 SkillName = "Stronger Inventors"
-Description = "Blablabla"
+Description = "Each Inventor puts +1 into patents per cycle."
 Icon = ExtResource("3_7y3jr")
 CostModel = SubResource("Resource_rwwpb")
 Upgrade = SubResource("Resource_28xl1")

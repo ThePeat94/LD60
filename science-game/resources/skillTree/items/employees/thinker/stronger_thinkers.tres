@@ -40,7 +40,7 @@ metadata/_custom_type_script = "uid://dpajxbew4x3bl"
 [resource]
 script = ExtResource("1_kf6a8")
 SkillName = "Stronger Thinkers"
-Description = "Blablabla"
+Description = "Each Thinker produces +1 Science per cycle."
 Icon = ExtResource("3_iyqql")
 CostModel = SubResource("Resource_rwwpb")
 Upgrade = SubResource("Resource_28xl1")
