@@ -129,7 +129,35 @@ m_generator = NodePath("../../SkillPointGenerator")
 [node name="ShopUI" parent="GameHUD" index="0" unique_id=1511127767 node_paths=PackedStringArray("ShopController")]
 ShopController = NodePath("../../Room/Desk/ShopController")
 
-[node name="Container" parent="GameHUD/Skill Tree/Panel/ScrollContainer" parent_id_path=PackedInt32Array(1847261213, 2108983879) index="0" unique_id=1347082111 node_paths=PackedStringArray("m_skillTreeController")]
+[node name="Panel" parent="GameHUD/Skill Tree" parent_id_path=PackedInt32Array(1847261213, 1222491598) index="0" unique_id=372858125]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" parent="GameHUD/Skill Tree/Panel" index="1" unique_id=1299036100]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_right = 1920.0
+grow_horizontal = 1
+
+[node name="ScrollContainer" parent="GameHUD/Skill Tree/Panel" index="2" unique_id=2108983879]
+layout_mode = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 350.0
+offset_top = 80.0
+offset_right = 1500.0
+offset_bottom = 940.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Container" parent="GameHUD/Skill Tree/Panel/ScrollContainer" index="0" unique_id=1347082111 node_paths=PackedStringArray("m_skillTreeController")]
 m_skillTreeController = NodePath("../../../../../Room/Desk/SkilltreeController")
 
 [node name="Base Click Upgrade" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="0" unique_id=878878694]
@@ -156,13 +184,13 @@ position = Vector2(0, 6.337759e-07)
 z_index = 4
 position = Vector2(0, 6.3133416)
 
-[node name="PatentGenerator" parent="." unique_id=53403002 node_paths=PackedStringArray("m_consumed", "PlayerStatsContainer", "m_sourceSymbols", "m_payoutTarget") instance=ExtResource("14_qkpxi")]
+[node name="PatentGenerator" parent="." unique_id=53403002 node_paths=PackedStringArray("m_consumed", "m_sourceSymbols", "m_payoutTarget", "PlayerStatsContainer") instance=ExtResource("14_qkpxi")]
 position = Vector2(-512, -27.000004)
 scale = Vector2(6.007, 6.007)
 m_consumed = NodePath("../ResourceControllers/GlobalScienceController")
-PlayerStatsContainer = NodePath("../PlayerStats")
 m_sourceSymbols = NodePath("../ScienceGenerator/Symbols")
 m_payoutTarget = NodePath("../Room/Money Display/Label")
+PlayerStatsContainer = NodePath("../PlayerStats")
 
 [node name="RewardController" parent="PatentGenerator" index="2" unique_id=1303221621 node_paths=PackedStringArray("m_playerStats", "m_generated")]
 m_playerStats = NodePath("../../PlayerStats")
@@ -190,13 +218,13 @@ position = Vector2(6.658902, 46.445816)
 [node name="PatentGnome2" parent="PatentGenerator/Gnomes" parent_id_path=PackedInt32Array(53403002, 1445201801) index="1" unique_id=1713072139]
 position = Vector2(-10.487762, 45.613453)
 
-[node name="SkillPointGenerator" parent="." unique_id=948207944 node_paths=PackedStringArray("m_consumed", "PlayerStatsContainer", "m_sourceSymbols", "m_payoutTarget") instance=ExtResource("15_5q0nq")]
+[node name="SkillPointGenerator" parent="." unique_id=948207944 node_paths=PackedStringArray("m_consumed", "m_sourceSymbols", "m_payoutTarget", "PlayerStatsContainer") instance=ExtResource("15_5q0nq")]
 position = Vector2(563, 16)
 scale = Vector2(6.007, 6.007)
 m_consumed = NodePath("../ResourceControllers/GlobalScienceController")
-PlayerStatsContainer = NodePath("../PlayerStats")
 m_sourceSymbols = NodePath("../ScienceGenerator/Symbols")
 m_payoutTarget = NodePath("../Room/Skillpoints Displa/Label")
+PlayerStatsContainer = NodePath("../PlayerStats")
 
 [node name="Reward Controller" parent="SkillPointGenerator" index="2" unique_id=2039802272 node_paths=PackedStringArray("m_playerStats", "m_generated")]
 m_playerStats = NodePath("../../PlayerStats")

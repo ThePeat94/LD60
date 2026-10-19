@@ -33,21 +33,17 @@ SkillTreeUI = NodePath("Skill Tree/Panel/ScrollContainer/Container")
 [node name="ShopUI" parent="." unique_id=1511127767 instance=ExtResource("3_b3s3x")]
 visible = true
 
-[node name="Skill Tree" type="Control" parent="." unique_id=1222491598]
+[node name="Skill Tree" type="AspectRatioContainer" parent="." unique_id=1222491598]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+ratio = 1.7777778
 
 [node name="Panel" type="Panel" parent="Skill Tree" unique_id=372858125]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 pivot_offset = Vector2(700, 400)
 theme_override_styles/panel = SubResource("StyleBoxTexture_bklno")
 
@@ -69,28 +65,33 @@ theme_override_font_sizes/font_size = 42
 text = "Close"
 
 [node name="Label" type="Label" parent="Skill Tree/Panel" unique_id=1299036100]
-layout_mode = 0
-offset_right = 1920.0
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
 offset_bottom = 58.625
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 42
 text = "Skill Tree"
 horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Skill Tree/Panel" unique_id=2108983879]
-layout_mode = 0
-offset_left = 350.0
-offset_top = 80.0
-offset_right = 1500.0
-offset_bottom = 940.0
+layout_mode = 1
+anchor_left = 0.185
+anchor_top = 0.08
+anchor_right = 0.795
+anchor_bottom = 0.87
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
 
-[node name="Container" type="Control" parent="Skill Tree/Panel/ScrollContainer" unique_id=1347082111 node_paths=PackedStringArray("m_rootNode")]
+[node name="Container" type="Control" parent="Skill Tree/Panel/ScrollContainer" unique_id=1347082111 node_paths=PackedStringArray("m_rootNode", "m_scrollContainer")]
 custom_minimum_size = Vector2(2880, 2040)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("4_i7dyb")
 m_rootNode = NodePath("../../..")
+m_scrollContainer = NodePath("..")
 
 [node name="Base Click Upgrade" parent="Skill Tree/Panel/ScrollContainer/Container" unique_id=878878694 instance=ExtResource("5_b3s3x")]
 layout_mode = 0

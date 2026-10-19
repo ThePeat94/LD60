@@ -9,6 +9,7 @@ namespace Nidavellir.SkillTree.UI;
 public partial class SkillTreeUI : Control
 {
     [Export] private Control m_rootNode;
+    [Export] private ScrollContainer m_scrollContainer;
     [Export] private SkillTreeController  m_skillTreeController;
     
     private List<SkillTreeNodeUI> m_nodes = [];
@@ -23,8 +24,9 @@ public partial class SkillTreeUI : Control
         foreach (var skillNode in this.m_nodes)
         {
             skillNode.OnClick += this.OnSkillNodeClick;
+            skillNode.Resized += this.QueueRedraw;
         }
-        
+
         this.QueueRedraw();
     }
 
@@ -35,6 +37,12 @@ public partial class SkillTreeUI : Control
 
     public void Open(Dictionary<SkillTreeItemData, SkillTreeNodeViewData> boughtUpgrades)
     {
+        if (!this.m_rootNode.Visible)
+        {
+            this.m_scrollContainer.ScrollHorizontal = 0;
+            this.m_scrollContainer.ScrollVertical = 0;
+        }
+
         this.SetData(boughtUpgrades);
         this.m_rootNode.Visible = true;
     }
