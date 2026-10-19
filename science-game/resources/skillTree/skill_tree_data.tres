@@ -16,8 +16,12 @@
 [ext_resource type="Resource" uid="uid://bajdkibfmy2lh" path="res://resources/skillTree/items/employees/scribes/unlock_scribes.tres" id="13_st8db"]
 [ext_resource type="Resource" uid="uid://d0hgx6eca0xng" path="res://resources/skillTree/items/gameFeatures/unlock_patents.tres" id="14_n7tn3"]
 [ext_resource type="Resource" uid="uid://cobnswixs3717" path="res://resources/skillTree/items/gameFeatures/unlock_shop.tres" id="15_st8db"]
+[ext_resource type="Resource" uid="uid://dc7u4tatjkrje" path="res://resources/skillTree/items/employees/scribes/seasoned_scribes.tres" id="16_seasn"]
+[ext_resource type="Resource" uid="uid://caj2dhxikemva" path="res://resources/skillTree/items/employees/scribes/master_scribes.tres" id="17_mastr"]
+[ext_resource type="Resource" uid="uid://dqxfaln4u1uod" path="res://resources/skillTree/items/employees/scribes/inspired_scribes.tres" id="18_inspr"]
+[ext_resource type="Resource" uid="uid://ya71iy6o0win" path="res://resources/skillTree/items/employees/scribes/prolific_scribes.tres" id="19_prolf"]
 
 [resource]
 script = ExtResource("1_ijrdn")
-Upgrades = Array[Object]([ExtResource("1_68ubl"), ExtResource("2_rtaxg"), ExtResource("3_0af8t"), ExtResource("4_k26h1"), ExtResource("5_lhk3i"), ExtResource("6_2view"), ExtResource("7_cadfl"), ExtResource("8_lopct"), ExtResource("9_n7tn3"), ExtResource("10_st8db"), ExtResource("11_lopct"), ExtResource("12_n7tn3"), ExtResource("13_st8db"), ExtResource("14_n7tn3"), ExtResource("15_st8db")])
+Upgrades = Array[Object]([ExtResource("1_68ubl"), ExtResource("2_rtaxg"), ExtResource("3_0af8t"), ExtResource("4_k26h1"), ExtResource("5_lhk3i"), ExtResource("6_2view"), ExtResource("7_cadfl"), ExtResource("8_lopct"), ExtResource("9_n7tn3"), ExtResource("10_st8db"), ExtResource("11_lopct"), ExtResource("12_n7tn3"), ExtResource("13_st8db"), ExtResource("14_n7tn3"), ExtResource("15_st8db"), ExtResource("16_seasn"), ExtResource("17_mastr"), ExtResource("18_inspr"), ExtResource("19_prolf")])
 metadata/_custom_type_script = "uid://b4d1rxh2lehqs"

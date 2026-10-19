@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://wbj312y6wcdh"]
 
 [ext_resource type="Script" uid="uid://dkyhgeqereo0f" path="res://scripts/UI/GameHUD.cs" id="1_gjmhc"]
+[ext_resource type="Texture2D" uid="uid://dm7s72tc54qre" path="res://assets/art/desk/desk-shop.png" id="3_a4fw5"]
 [ext_resource type="PackedScene" uid="uid://fol8hisegv4k" path="res://scenes/shop/shop_ui.tscn" id="3_b3s3x"]
 [ext_resource type="Texture2D" uid="uid://1mqp01oel8n0" path="res://assets/art/desk/skilltree-bg.png" id="3_wbv7f"]
 [ext_resource type="Script" uid="uid://dcjym3cy33l6t" path="res://scripts/SkillTree/UI/SkillTreeUI.cs" id="4_i7dyb"]
@@ -21,6 +22,13 @@
 [ext_resource type="Resource" uid="uid://cobnswixs3717" path="res://resources/skillTree/items/gameFeatures/unlock_shop.tres" id="18_olu1u"]
 [ext_resource type="Texture2D" uid="uid://dat5xehycidrc" path="res://assets/art/icons and plates/cropped-knowledge-icon.png" id="20_5od4p"]
 [ext_resource type="Script" uid="uid://0c6plthlac1x" path="res://scripts/UI/ResourceDisplay.cs" id="21_a4fw5"]
+[ext_resource type="Resource" uid="uid://dc7u4tatjkrje" path="res://resources/skillTree/items/employees/scribes/seasoned_scribes.tres" id="22_seasn"]
+[ext_resource type="Resource" uid="uid://caj2dhxikemva" path="res://resources/skillTree/items/employees/scribes/master_scribes.tres" id="23_mastr"]
+[ext_resource type="Resource" uid="uid://dqxfaln4u1uod" path="res://resources/skillTree/items/employees/scribes/inspired_scribes.tres" id="24_inspr"]
+[ext_resource type="Resource" uid="uid://ya71iy6o0win" path="res://resources/skillTree/items/employees/scribes/prolific_scribes.tres" id="25_prolf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pv4st"]
+texture = ExtResource("3_a4fw5")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bklno"]
 texture = ExtResource("3_wbv7f")
@@ -33,8 +41,26 @@ SkillTreeUI = NodePath("Skill Tree/Panel/ScrollContainer/Container")
 [node name="ShopUI" parent="." unique_id=1511127767 instance=ExtResource("3_b3s3x")]
 visible = true
 
+[node name="Panel" parent="ShopUI" index="0" unique_id=349754956]
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_pv4st")
+
+[node name="ItemPanel" parent="ShopUI/Panel" index="0" unique_id=1995151554]
+offset_left = -900.0
+offset_top = -487.0
+offset_right = 601.0
+offset_bottom = 469.0
+
 [node name="Skill Tree" type="AspectRatioContainer" parent="." unique_id=1222491598]
-layout_mode = 3
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -44,7 +70,6 @@ ratio = 1.7777778
 
 [node name="Panel" type="Panel" parent="Skill Tree" unique_id=372858125]
 layout_mode = 2
-pivot_offset = Vector2(700, 400)
 theme_override_styles/panel = SubResource("StyleBoxTexture_bklno")
 
 [node name="Close Button" type="Button" parent="Skill Tree/Panel" unique_id=819960803]
@@ -76,6 +101,7 @@ horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Skill Tree/Panel" unique_id=2108983879]
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.185
 anchor_top = 0.08
 anchor_right = 0.795
@@ -85,7 +111,7 @@ grow_vertical = 2
 size_flags_vertical = 3
 
 [node name="Container" type="Control" parent="Skill Tree/Panel/ScrollContainer" unique_id=1347082111 node_paths=PackedStringArray("m_rootNode", "m_scrollContainer")]
-custom_minimum_size = Vector2(2880, 2040)
+custom_minimum_size = Vector2(3340, 2700)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -118,9 +144,9 @@ m_data = ExtResource("7_olodv")
 
 [node name="Skilled Skiller" parent="Skill Tree/Panel/ScrollContainer/Container" unique_id=2012458393 instance=ExtResource("5_b3s3x")]
 layout_mode = 0
-offset_left = 2440.0
+offset_left = 2900.0
 offset_top = 1360.0
-offset_right = 2840.0
+offset_right = 3300.0
 offset_bottom = 1578.0
 m_data = ExtResource("8_cai0h")
 
@@ -174,9 +200,9 @@ m_data = ExtResource("13_pv267")
 
 [node name="Unlock Scribes" parent="Skill Tree/Panel/ScrollContainer/Container" unique_id=1271646530 instance=ExtResource("5_b3s3x")]
 layout_mode = 0
-offset_left = 2210.0
+offset_left = 2440.0
 offset_top = 1030.0
-offset_right = 2610.0
+offset_right = 2840.0
 offset_bottom = 1248.0
 m_data = ExtResource("15_fri87")
 
@@ -195,6 +221,38 @@ offset_top = 1690.0
 offset_right = 2380.0
 offset_bottom = 1908.0
 m_data = ExtResource("17_wbv7f")
+
+[node name="Seasoned Scribes" parent="Skill Tree/Panel/ScrollContainer/Container" unique_id=22205539 instance=ExtResource("5_b3s3x")]
+layout_mode = 0
+offset_left = 2440.0
+offset_top = 1690.0
+offset_right = 2840.0
+offset_bottom = 1908.0
+m_data = ExtResource("22_seasn")
+
+[node name="Master Scribes" parent="Skill Tree/Panel/ScrollContainer/Container" unique_id=1274510839 instance=ExtResource("5_b3s3x")]
+layout_mode = 0
+offset_left = 2440.0
+offset_top = 2020.0
+offset_right = 2840.0
+offset_bottom = 2238.0
+m_data = ExtResource("23_mastr")
+
+[node name="Inspired Scribes" parent="Skill Tree/Panel/ScrollContainer/Container" unique_id=228330183 instance=ExtResource("5_b3s3x")]
+layout_mode = 0
+offset_left = 1980.0
+offset_top = 2020.0
+offset_right = 2380.0
+offset_bottom = 2238.0
+m_data = ExtResource("24_inspr")
+
+[node name="Prolific Scribes" parent="Skill Tree/Panel/ScrollContainer/Container" unique_id=543587678 instance=ExtResource("5_b3s3x")]
+layout_mode = 0
+offset_left = 1980.0
+offset_top = 2350.0
+offset_right = 2380.0
+offset_bottom = 2568.0
+m_data = ExtResource("25_prolf")
 
 [node name="Unlock Patents" parent="Skill Tree/Panel/ScrollContainer/Container" unique_id=1938483727 instance=ExtResource("5_b3s3x")]
 layout_mode = 0
@@ -250,5 +308,9 @@ metadata/_custom_type_script = "uid://0c6plthlac1x"
 [editable path="Skill Tree/Panel/ScrollContainer/Container/Unlock Scribes"]
 [editable path="Skill Tree/Panel/ScrollContainer/Container/Stronger Scribes"]
 [editable path="Skill Tree/Panel/ScrollContainer/Container/Faster Scribes"]
+[editable path="Skill Tree/Panel/ScrollContainer/Container/Seasoned Scribes"]
+[editable path="Skill Tree/Panel/ScrollContainer/Container/Master Scribes"]
+[editable path="Skill Tree/Panel/ScrollContainer/Container/Inspired Scribes"]
+[editable path="Skill Tree/Panel/ScrollContainer/Container/Prolific Scribes"]
 [editable path="Skill Tree/Panel/ScrollContainer/Container/Unlock Patents"]
 [editable path="Skill Tree/Panel/ScrollContainer/Container/Unlock Shop"]
