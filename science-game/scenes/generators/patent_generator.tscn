@@ -30,6 +30,8 @@
 [ext_resource type="AudioStream" uid="uid://ijoc0alvqkg3" path="res://assets/sfx/own/glass_03.wav" id="31_glass03"]
 [ext_resource type="AudioStream" uid="uid://bqjcq1553fwax" path="res://assets/sfx/own/glass_04.wav" id="31_glass04"]
 [ext_resource type="AudioStream" uid="uid://bd845vwpxoa8r" path="res://assets/sfx/own/glass_05.wav" id="31_glass05"]
+[ext_resource type="Script" path="res://scripts/GameFeel/SymbolStore.cs" id="40_symbols"]
+[ext_resource type="Texture2D" uid="uid://cqfrqfe17ecc1" path="res://assets/art/formulas.png" id="41_formulas"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
 size = Vector2(65, 135)
@@ -54,8 +56,9 @@ stream_2/stream = ExtResource("31_glass03")
 stream_3/stream = ExtResource("31_glass04")
 stream_4/stream = ExtResource("31_glass05")
 
-[node name="PatentGenerator" type="Node2D" unique_id=1033176365 node_paths=PackedStringArray("m_required", "m_generatorRewardController")]
+[node name="PatentGenerator" type="Node2D" unique_id=1033176365 node_paths=PackedStringArray("m_required", "m_generatorRewardController", "m_symbols")]
 script = ExtResource("2_a4kuy")
+m_symbols = NodePath("Symbols")
 m_required = NodePath("Resource Controller")
 m_generatorRewardController = NodePath("RewardController")
 ProgressionLevelData = ExtResource("3_a4kuy")
@@ -161,6 +164,12 @@ stream = SubResource("AudioStreamRandomizer_notenough")
 max_polyphony = 4
 script = ExtResource("14_wp5iy")
 metadata/_custom_type_script = "uid://bglusmjfbdqlj"
+
+[node name="Symbols" type="Node2D" parent="." unique_id=1840273302 node_paths=PackedStringArray("m_area")]
+z_index = 5
+script = ExtResource("40_symbols")
+m_area = NodePath("../Area2D/CollisionShape2D")
+m_texture = ExtResource("41_formulas")
 
 [connection signal="GeneratedReward" from="." to="GeneratedRewardSFX" method="Trigger"]
 [connection signal="input_event" from="Area2D" to="." method="OnClick"]

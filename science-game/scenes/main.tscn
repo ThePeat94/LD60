@@ -156,11 +156,13 @@ position = Vector2(0, 6.337759e-07)
 z_index = 4
 position = Vector2(0, 6.3133416)
 
-[node name="PatentGenerator" parent="." unique_id=53403002 node_paths=PackedStringArray("m_consumed", "PlayerStatsContainer") instance=ExtResource("14_qkpxi")]
+[node name="PatentGenerator" parent="." unique_id=53403002 node_paths=PackedStringArray("m_consumed", "PlayerStatsContainer", "m_sourceSymbols", "m_payoutTarget") instance=ExtResource("14_qkpxi")]
 position = Vector2(-512, -27.000004)
 scale = Vector2(6.007, 6.007)
 m_consumed = NodePath("../ResourceControllers/GlobalScienceController")
 PlayerStatsContainer = NodePath("../PlayerStats")
+m_sourceSymbols = NodePath("../ScienceGenerator/Symbols")
+m_payoutTarget = NodePath("../Room/Money Display/Label")
 
 [node name="RewardController" parent="PatentGenerator" index="2" unique_id=1303221621 node_paths=PackedStringArray("m_playerStats", "m_generated")]
 m_playerStats = NodePath("../../PlayerStats")
@@ -188,11 +190,13 @@ position = Vector2(6.658902, 46.445816)
 [node name="PatentGnome2" parent="PatentGenerator/Gnomes" parent_id_path=PackedInt32Array(53403002, 1445201801) index="1" unique_id=1713072139]
 position = Vector2(-10.487762, 45.613453)
 
-[node name="SkillPointGenerator" parent="." unique_id=948207944 node_paths=PackedStringArray("m_consumed", "PlayerStatsContainer") instance=ExtResource("15_5q0nq")]
+[node name="SkillPointGenerator" parent="." unique_id=948207944 node_paths=PackedStringArray("m_consumed", "PlayerStatsContainer", "m_sourceSymbols", "m_payoutTarget") instance=ExtResource("15_5q0nq")]
 position = Vector2(563, 16)
 scale = Vector2(6.007, 6.007)
 m_consumed = NodePath("../ResourceControllers/GlobalScienceController")
 PlayerStatsContainer = NodePath("../PlayerStats")
+m_sourceSymbols = NodePath("../ScienceGenerator/Symbols")
+m_payoutTarget = NodePath("../Room/Skillpoints Displa/Label")
 
 [node name="Reward Controller" parent="SkillPointGenerator" index="2" unique_id=2039802272 node_paths=PackedStringArray("m_playerStats", "m_generated")]
 m_playerStats = NodePath("../../PlayerStats")

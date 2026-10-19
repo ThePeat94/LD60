@@ -27,6 +27,8 @@
 [ext_resource type="AudioStream" uid="uid://bb3o63pmtvx3u" path="res://assets/sfx/own/books_08.wav" id="31_books08"]
 [ext_resource type="AudioStream" uid="uid://bcliv6y3kut1m" path="res://assets/sfx/own/books_09.wav" id="31_books09"]
 [ext_resource type="AudioStream" uid="uid://bo16ie022eb7" path="res://assets/sfx/own/books_10.wav" id="31_books10"]
+[ext_resource type="Script" path="res://scripts/GameFeel/SymbolStore.cs" id="40_symbols"]
+[ext_resource type="Texture2D" uid="uid://cqfrqfe17ecc1" path="res://assets/art/formulas.png" id="41_formulas"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
 size = Vector2(66, 115)
@@ -52,8 +54,9 @@ stream_7/stream = ExtResource("31_books08")
 stream_8/stream = ExtResource("31_books09")
 stream_9/stream = ExtResource("31_books10")
 
-[node name="SkillPointGenerator" type="Node2D" unique_id=553754768 node_paths=PackedStringArray("m_required", "m_generatorRewardController")]
+[node name="SkillPointGenerator" type="Node2D" unique_id=553754768 node_paths=PackedStringArray("m_required", "m_generatorRewardController", "m_symbols")]
 script = ExtResource("2_ep6bw")
+m_symbols = NodePath("Symbols")
 m_required = NodePath("Resource Controller")
 m_generatorRewardController = NodePath("Reward Controller")
 ProgressionLevelData = ExtResource("3_34ywl")
@@ -116,6 +119,12 @@ stream = SubResource("AudioStreamRandomizer_notenough")
 max_polyphony = 4
 script = ExtResource("12_thcd7")
 metadata/_custom_type_script = "uid://bglusmjfbdqlj"
+
+[node name="Symbols" type="Node2D" parent="." unique_id=1840273303 node_paths=PackedStringArray("m_area")]
+z_index = 5
+script = ExtResource("40_symbols")
+m_area = NodePath("../Area2D/CollisionShape2D")
+m_texture = ExtResource("41_formulas")
 
 [connection signal="input_event" from="Area2D" to="." method="OnClick"]
 [connection signal="Clicked" from="." to="Shaker" method="Shake"]

@@ -12,6 +12,8 @@
 [ext_resource type="Script" uid="uid://mod3uhf0e68j" path="res://scripts/GameFeel/FeelVfxIconSpawner.cs" id="10_5do4e"]
 [ext_resource type="PackedScene" uid="uid://bntuvd3a5igwm" path="res://scenes/feel/board_particles.tscn" id="11_nsibk"]
 [ext_resource type="Script" uid="uid://q401bcjsgqij" path="res://scripts/GameFeel/CursorChanger.cs" id="12_nsibk"]
+[ext_resource type="Script" path="res://scripts/GameFeel/SymbolStore.cs" id="40_symbols"]
+[ext_resource type="Texture2D" uid="uid://cqfrqfe17ecc1" path="res://assets/art/formulas.png" id="41_formulas"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
 size = Vector2(72, 53)
@@ -21,8 +23,9 @@ streams_count = 2
 stream_0/stream = ExtResource("4_4djqy")
 stream_1/stream = ExtResource("5_vfhpw")
 
-[node name="ScienceGenerator" type="Node2D" unique_id=2092047668]
+[node name="ScienceGenerator" type="Node2D" unique_id=2092047668 node_paths=PackedStringArray("Symbols")]
 script = ExtResource("2_w5mg2")
+Symbols = NodePath("Symbols")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=317168343]
 
@@ -71,6 +74,12 @@ m_particles = ExtResource("11_nsibk")
 script = ExtResource("12_nsibk")
 m_clickArea = NodePath("../Area2D")
 metadata/_custom_type_script = "uid://q401bcjsgqij"
+
+[node name="Symbols" type="Node2D" parent="." unique_id=1840273301 node_paths=PackedStringArray("m_area")]
+z_index = 5
+script = ExtResource("40_symbols")
+m_area = NodePath("../Area2D/CollisionShape2D")
+m_texture = ExtResource("41_formulas")
 
 [connection signal="input_event" from="Area2D" to="." method="OnClick"]
 [connection signal="input_event" from="Area2D" to="AudioPlayer" method="Trigger"]
