@@ -29,6 +29,7 @@
 [ext_resource type="Resource" uid="uid://ya71iy6o0win" path="res://resources/skillTree/items/employees/scribes/prolific_scribes.tres" id="25_prolf"]
 [ext_resource type="Resource" uid="uid://htwgobpitiao" path="res://resources/skillTree/items/gameFeatures/game_won.tres" id="26_gwon"]
 [ext_resource type="Script" uid="uid://4sq4qako1fp2" path="res://scripts/UI/GameWonUI.cs" id="29_h0wil"]
+[ext_resource type="PackedScene" uid="uid://b5age3g28nuf" path="res://scenes/mainMenu.tscn" id="30_cmj1t"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pv4st"]
 texture = ExtResource("3_a4fw5")
@@ -382,6 +383,8 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Continue"
+
+[node name="MainMenu" parent="." unique_id=956236428 instance=ExtResource("30_cmj1t")]
 
 [connection signal="pressed" from="Skill Tree/Panel/Close Button" to="Skill Tree/Panel/ScrollContainer/Container" method="Close"]
 [connection signal="pressed" from="GameWonUI/Panel/VBoxContainer/MarginContainer/Button" to="GameWonUI" method="Close"]
