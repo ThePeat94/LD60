@@ -10,6 +10,7 @@ public partial class FeelPopupLabel : Node
     [Export] private int m_fontSize = 32;
     [Export] private float m_riseDistance = 40f;
     [Export] private float m_duration = 1.2f;
+    [Export] private bool m_followMouse = true;
 
     private Label m_label;
     private Tween m_activeTween;
@@ -20,7 +21,8 @@ public partial class FeelPopupLabel : Node
 
         this.m_activeTween?.Kill();
         label.Size = label.GetCombinedMinimumSize();
-        label.GlobalPosition = this.m_origin.GetGlobalMousePosition() - label.Size / 2;
+        var center = this.m_followMouse ? this.m_origin.GetGlobalMousePosition() : this.m_origin.GlobalPosition;
+        label.GlobalPosition = center - label.Size / 2;
         label.Modulate = Colors.White;
         label.Visible = true;
 

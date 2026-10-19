@@ -22,8 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://dmvasq8mrr7ks" path="res://scenes/employees/employee_controller.tscn" id="19_fuf3a"]
 [ext_resource type="Script" uid="uid://bv0nr4cjm43w8" path="res://scripts/GameFeel/CursorInstaller.cs" id="21_yc10j"]
 [ext_resource type="AudioStream" uid="uid://b1yc3bgcsiy6y" path="res://assets/music/Science Gamejam.mp3" id="22_jscy8"]
-[ext_resource type="PackedScene" uid="uid://20lt87yw172ho" path="res://scenes/ui/patent_progress_bar.tscn" id="23_pbar"]
-[ext_resource type="PackedScene" uid="uid://zderh5qg54211" path="res://scenes/ui/knowledge_progress_bar.tscn" id="24_kbar"]
+[ext_resource type="PackedScene" uid="uid://xqq4tj53sw6c" path="res://scenes/ui/patent_progress_bar.tscn" id="23_pbar"]
+[ext_resource type="PackedScene" uid="uid://b5xjxs7xrwtig" path="res://scenes/ui/knowledge_progress_bar.tscn" id="24_kbar"]
 
 [node name="Node2D2" type="Node2D" unique_id=1462648990]
 
