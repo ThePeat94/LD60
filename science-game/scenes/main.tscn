@@ -23,6 +23,9 @@
 [ext_resource type="AudioStream" uid="uid://b1yc3bgcsiy6y" path="res://assets/music/Science Gamejam.mp3" id="22_jscy8"]
 [ext_resource type="PackedScene" uid="uid://xqq4tj53sw6c" path="res://scenes/ui/patent_progress_bar.tscn" id="23_pbar"]
 [ext_resource type="PackedScene" uid="uid://b5xjxs7xrwtig" path="res://scenes/ui/knowledge_progress_bar.tscn" id="24_kbar"]
+[ext_resource type="Script" uid="uid://div4ko4tu80ln" path="res://scripts/GameFeel/FeelGlow.cs" id="30_glow"]
+[ext_resource type="Texture2D" uid="uid://bwearclyoiu7h" path="res://assets/art/glow_shop.png" id="31_glowskill"]
+[ext_resource type="Texture2D" uid="uid://bti5vei1w2y8q" path="res://assets/art/glow_skilltree.png" id="32_glowshop"]
 
 [node name="Node2D2" type="Node2D" unique_id=1462648990]
 
@@ -89,10 +92,23 @@ z_index = 10
 scale = Vector2(6.007, 6.007)
 texture = ExtResource("9_vxglm")
 
-[node name="SkilltreeController" parent="Room/Desk" unique_id=85181344 node_paths=PackedStringArray("m_skillTreeUi", "m_skillPoints") instance=ExtResource("10_2f3dj")]
+[node name="SkillTreeGlow" type="Sprite2D" parent="Room/Desk" unique_id=1873304401]
+z_index = 2
+position = Vector2(7.324787, 0.16647243)
+texture = ExtResource("32_glowshop")
+script = ExtResource("30_glow")
+
+[node name="ShopGlow" type="Sprite2D" parent="Room/Desk" unique_id=1873304402]
+z_index = 2
+position = Vector2(0.6658907, 0.33294493)
+texture = ExtResource("31_glowskill")
+script = ExtResource("30_glow")
+
+[node name="SkilltreeController" parent="Room/Desk" unique_id=85181344 node_paths=PackedStringArray("m_skillTreeUi", "m_skillPoints", "m_glow") instance=ExtResource("10_2f3dj")]
 position = Vector2(44.947563, 56.434162)
 m_skillTreeUi = NodePath("../../../GameHUD/Skill Tree/Panel/ScrollContainer/Container")
 m_skillPoints = NodePath("../../../ResourceControllers/GlobalSkillPointsController")
+m_glow = NodePath("../SkillTreeGlow")
 
 [node name="Sprite2D" parent="Room/Desk/SkilltreeController" index="0" unique_id=875432051]
 z_index = 5
@@ -105,8 +121,9 @@ m_shopController = NodePath("../../ShopController")
 m_patentUnlocker = NodePath("../../../../PatentGenerator/Unlocker")
 m_shopUnlocker = NodePath("../../ShopController/Unlocker")
 
-[node name="ShopController" parent="Room/Desk" unique_id=524025840 node_paths=PackedStringArray("Money", "ShopUI") instance=ExtResource("11_yq6so")]
+[node name="ShopController" parent="Room/Desk" unique_id=524025840 node_paths=PackedStringArray("m_glow", "Money", "ShopUI") instance=ExtResource("11_yq6so")]
 position = Vector2(-100.216415, 47.44465)
+m_glow = NodePath("../ShopGlow")
 ShopUpgrades = Array[Object]([])
 Money = NodePath("../../../ResourceControllers/GlobalMoneyController")
 ShopUI = NodePath("../../../GameHUD/ShopUI")
@@ -129,22 +146,14 @@ m_generator = NodePath("../../SkillPointGenerator")
 [node name="ShopUI" parent="GameHUD" index="0" unique_id=1511127767 node_paths=PackedStringArray("ShopController")]
 ShopController = NodePath("../../Room/Desk/ShopController")
 
-[node name="Panel" parent="GameHUD/Skill Tree" parent_id_path=PackedInt32Array(1847261213, 1222491598) index="0" unique_id=372858125]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" parent="GameHUD/Skill Tree/Panel" index="1" unique_id=1299036100]
+[node name="Label" parent="GameHUD/Skill Tree/Panel" parent_id_path=PackedInt32Array(1847261213, 372858125) index="1" unique_id=1299036100]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 offset_right = 1920.0
 grow_horizontal = 1
 
-[node name="ScrollContainer" parent="GameHUD/Skill Tree/Panel" index="2" unique_id=2108983879]
+[node name="ScrollContainer" parent="GameHUD/Skill Tree/Panel" parent_id_path=PackedInt32Array(1847261213, 372858125) index="2" unique_id=2108983879]
 layout_mode = 0
 anchor_left = 0.0
 anchor_top = 0.0

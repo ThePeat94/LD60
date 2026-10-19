@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using Godot.Collections;
+using Nidavellir.GameFeel;
 using Nidavellir.GDResource.SkillTree;
 using Nidavellir.IdleNumbers;
 using Nidavellir.SkillTree.UI;
@@ -14,6 +15,7 @@ public partial class SkillTreeController : Node
     [Export] private SkillTreeData m_skillTreeData;
     [Export] private ResourceControllerNode m_skillPoints;
     [Export] private SkillTreeUpgradeController m_upgradeController;
+    [Export] private FeelGlow m_glow;
     
     private System.Collections.Generic.Dictionary<SkillTreeItemData, int> m_boughtUpgrades = new();
 
@@ -24,6 +26,11 @@ public partial class SkillTreeController : Node
         this.m_skillPoints.ResourceController.ResourceValueChanged += this.HandleSkillPointsChange;
     }
 
+    public override void _Ready()
+    {
+        this.UpdateGlow();
+    }
+
     private void HandleSkillPointsChange(object sender, ResourceValueChangedEvent e)
     {
         var viewData = this.m_boughtUpgrades.ToDictionary(
@@ -31,6 +38,7 @@ public partial class SkillTreeController : Node
             x => this.GetViewDataForItem(x.Key)
         );
         this.m_skillTreeUi.SetData(viewData);
+        this.UpdateGlow();
     }
 
     public void OnClick(Viewport viewport, InputEvent evt, int shapeIdx)
@@ -59,6 +67,21 @@ public partial class SkillTreeController : Node
         upgradeData.Upgrade.Apply(this.m_upgradeController);
         this.m_boughtUpgrades[upgradeData]++;
         this.OpenSkillTree();
+        this.UpdateGlow();
+    }
+
+    private void UpdateGlow()
+    {
+        this.m_glow?.SetActive(this.m_boughtUpgrades.Keys.Any(this.CanBuy));
+    }
+
+    private bool CanBuy(SkillTreeItemData item)
+    {
+        var bought = this.m_boughtUpgrades[item];
+        if (bought >= item.MaximumAmount || !this.HasUnlocked(item)) return false;
+
+        var costToBuy = item.CostModel.CalculateFor(new IdleNumber(bought + 1));
+        return this.m_skillPoints.ResourceController.CanAfford(costToBuy);
     }
 
     private void OpenSkillTree()

@@ -18,9 +18,10 @@ size = Vector2(64, 25)
 streams_count = 1
 stream_0/stream = ExtResource("8_5vpls")
 
-[node name="ShopController" type="Node2D" unique_id=524025840 node_paths=PackedStringArray("m_upgradeController")]
+[node name="ShopController" type="Node2D" unique_id=524025840 node_paths=PackedStringArray("m_upgradeController", "m_shopSprite")]
 script = ExtResource("1_ye267")
 m_upgradeController = NodePath("UpgradeController")
+m_shopSprite = NodePath("Sprite2D")
 ShopUpgrades = Array[Object]([ExtResource("2_ojs2r"), ExtResource("3_oltln"), ExtResource("4_5vpls")])
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=394533374]
