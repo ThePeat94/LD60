@@ -177,8 +177,8 @@ m_generator = NodePath("../../SkillPointGenerator")
 [node name="ShopUI" parent="GameHUD" index="0" unique_id=1511127767 node_paths=PackedStringArray("ShopController")]
 ShopController = NodePath("../../Room/Desk/ShopController")
 
-[node name="ResourceDisplay" parent="GameHUD/ShopUI/HBoxContainer" parent_id_path=PackedInt32Array(1847261213, 1524514352) index="1" unique_id=1615407582 node_paths=PackedStringArray("ResourceControllerNode")]
-ResourceControllerNode = NodePath("../../../../ResourceControllers/GlobalMoneyController")
+[node name="ResourceDisplay" parent="GameHUD/ShopUI/Panel/HBoxContainer" parent_id_path=PackedInt32Array(1847261213, 1524514352) index="1" unique_id=1615407582 node_paths=PackedStringArray("ResourceControllerNode")]
+ResourceControllerNode = NodePath("../../../../../ResourceControllers/GlobalMoneyController")
 
 [node name="Label" parent="GameHUD/Skill Tree/Panel" parent_id_path=PackedInt32Array(1847261213, 372858125) index="1" unique_id=1299036100]
 layout_mode = 0
@@ -210,6 +210,9 @@ offset_bottom = 100.0
 
 [node name="ResourceDisplay" parent="GameHUD/Skill Tree/Panel/HBoxContainer" parent_id_path=PackedInt32Array(1847261213, 1263066267) index="1" unique_id=591431659 node_paths=PackedStringArray("ResourceControllerNode")]
 ResourceControllerNode = NodePath("../../../../../ResourceControllers/GlobalSkillPointsController")
+
+[node name="MainMenu" parent="GameHUD" index="3" unique_id=956236428]
+visible = true
 
 [node name="NotEnoughDegreesPopup" type="Node" parent="GameHUD" unique_id=1893771201 node_paths=PackedStringArray("m_labelParent")]
 script = ExtResource("33_popup")
