@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://b0lmcslgtykk4" path="res://resources/base_player_stats.tres" id="18_kmb1v"]
 [ext_resource type="PackedScene" uid="uid://dmvasq8mrr7ks" path="res://scenes/employees/employee_controller.tscn" id="19_fuf3a"]
 [ext_resource type="Script" uid="uid://bv0nr4cjm43w8" path="res://scripts/GameFeel/CursorInstaller.cs" id="21_yc10j"]
+[ext_resource type="AudioStream" uid="uid://b1yc3bgcsiy6y" path="res://assets/music/Science Gamejam.mp3" id="22_jscy8"]
 
 [node name="Node2D2" type="Node2D" unique_id=1462648990]
 
@@ -254,6 +255,10 @@ m_scribeGnomes = [NodePath("../SkillPointGenerator/Sprite2D/ScribeGnome"), NodeP
 [node name="CursorInstaller" type="Node" parent="." unique_id=281278508]
 script = ExtResource("21_yc10j")
 metadata/_custom_type_script = "uid://bv0nr4cjm43w8"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1704003214]
+stream = ExtResource("22_jscy8")
+autoplay = true
 
 [editable path="Room/Science Display"]
 [editable path="Room/Skillpoints Displa"]

@@ -45,10 +45,12 @@ public partial class SkillTreeUI : Control
         {
             if (!this.m_uiForData.TryGetValue(skillItem.Key, out var ui))
                 continue;
-            
+
+            ui.Visible = skillItem.Value.IsUnlocked;
             var viewData = boughtUpgrades[skillItem.Key];
             ui.Display(viewData);
         }
+        this.QueueRedraw();
     }
 
     public void Close()
@@ -64,6 +66,9 @@ public partial class SkillTreeUI : Control
 
         foreach (var skillNode in this.m_nodes)
         {
+            if (!skillNode.Visible)
+                continue;
+            
             var prerequisites = skillNode.Data.PreRequisites;
 
             if (prerequisites is null || prerequisites.Count == 0)

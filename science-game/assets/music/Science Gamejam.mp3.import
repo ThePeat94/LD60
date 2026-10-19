@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b1yc3bgcsiy6y"
+path="res://.godot/imported/Science Gamejam.mp3-e46bd5943a1f409ac38f9fb59a227f2e.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Science Gamejam.mp3"
+dest_files=["res://.godot/imported/Science Gamejam.mp3-e46bd5943a1f409ac38f9fb59a227f2e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
