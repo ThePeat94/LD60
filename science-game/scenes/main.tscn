@@ -22,6 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://dmvasq8mrr7ks" path="res://scenes/employees/employee_controller.tscn" id="19_fuf3a"]
 [ext_resource type="Script" uid="uid://bv0nr4cjm43w8" path="res://scripts/GameFeel/CursorInstaller.cs" id="21_yc10j"]
 [ext_resource type="AudioStream" uid="uid://b1yc3bgcsiy6y" path="res://assets/music/Science Gamejam.mp3" id="22_jscy8"]
+[ext_resource type="PackedScene" uid="uid://20lt87yw172ho" path="res://scenes/ui/patent_progress_bar.tscn" id="23_pbar"]
+[ext_resource type="PackedScene" uid="uid://zderh5qg54211" path="res://scenes/ui/knowledge_progress_bar.tscn" id="24_kbar"]
 
 [node name="Node2D2" type="Node2D" unique_id=1462648990]
 
@@ -155,6 +157,12 @@ script = ExtResource("12_gqmmt")
 m_generator = NodePath("../../../SkillPointGenerator")
 metadata/_custom_type_script = "uid://bs3yi2igmc0j6"
 
+[node name="Patent Progress Bar" parent="Room" unique_id=1597530861 node_paths=PackedStringArray("m_generator") instance=ExtResource("23_pbar")]
+m_generator = NodePath("../../PatentGenerator")
+
+[node name="Knowledge Progress Bar" parent="Room" unique_id=1597530862 node_paths=PackedStringArray("m_generator") instance=ExtResource("24_kbar")]
+m_generator = NodePath("../../SkillPointGenerator")
+
 [node name="GameHUD" parent="." unique_id=1847261213 instance=ExtResource("12_fv21b")]
 
 [node name="ShopUI" parent="GameHUD" index="0" unique_id=1511127767 node_paths=PackedStringArray("ShopController")]
@@ -208,7 +216,7 @@ region_enabled = true
 region_rect = Rect2(28, 20.75, 84.5, 138.5)
 
 [node name="Unlocker" parent="PatentGenerator" index="5" unique_id=938280753 node_paths=PackedStringArray("m_otherUnlocks")]
-m_otherUnlocks = [NodePath("../../Room/Remaining PatentProgress"), NodePath("../../Room/Money Display")]
+m_otherUnlocks = [NodePath("../../Room/Remaining PatentProgress"), NodePath("../../Room/Money Display"), NodePath("../../Room/Patent Progress Bar")]
 
 [node name="PatentGnome" parent="PatentGenerator/Gnomes" parent_id_path=PackedInt32Array(53403002, 1445201801) index="0" unique_id=1745542875]
 position = Vector2(6.658902, 46.445816)

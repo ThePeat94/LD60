@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://b5xjxs7xrwtig"]
+
+[ext_resource type="Script" uid="uid://85zt6ebl0m7yw" path="res://scripts/UI/GeneratorProgressBar.cs" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://b31jd44ubxwsf" path="res://assets/art/progressbars-icons/progressbar_right_background.png" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://c58fhr1k1k42f" path="res://assets/art/progressbars-icons/progressbar_rightfilled.png" id="3_fill"]
+[ext_resource type="Texture2D" uid="uid://07cl5w1xaah" path="res://assets/art/progressbars-icons/progressbar_right_foreground.png" id="4_outline"]
+[ext_resource type="Texture2D" uid="uid://brx7gntnccs20" path="res://assets/art/progressbars-icons/symbol_right_knowledge.png" id="5_icon"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fill"]
+atlas = ExtResource("3_fill")
+region = Rect2(281, 27, 14, 111)
+
+[node name="KnowledgeProgressBar" type="Node2D" unique_id=260685459 node_paths=PackedStringArray("m_bar")]
+z_index = 10
+scale = Vector2(6.0065217, 6.0065217)
+script = ExtResource("1_script")
+m_bar = NodePath("Fill")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=622216362]
+texture = ExtResource("2_bg")
+
+[node name="Fill" type="TextureProgressBar" parent="." unique_id=85843759]
+offset_left = 121.0
+offset_top = -63.0
+offset_right = 135.0
+offset_bottom = 48.0
+mouse_filter = 2
+max_value = 1.0
+step = 0.0
+fill_mode = 3
+texture_progress = SubResource("AtlasTexture_fill")
+
+[node name="Outline" type="Sprite2D" parent="." unique_id=404179707]
+texture = ExtResource("4_outline")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=443944471]
+texture = ExtResource("5_icon")
