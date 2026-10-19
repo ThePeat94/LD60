@@ -12,6 +12,8 @@ public partial class SkillTreeNodeUI : PanelContainer
     [Export] private Label m_name;
     [Export] private Label m_amount;
     [Export] private Label m_cost;
+    [Export] private Color m_hoverColor = Colors.LawnGreen;
+    [Export] private Color m_lockedColor = Colors.DimGray;
     
     private bool m_canBePurchased;
     private bool m_isUnlocked;
@@ -32,12 +34,19 @@ public partial class SkillTreeNodeUI : PanelContainer
         this.m_originalColor = this.SelfModulate;
         base._EnterTree();
         this.MouseEntered += this.OnMouseEntered;
+        this.MouseExited += this.OnMouseExited;
     }
 
     private void OnMouseEntered()
     {
-        
+        this.SelfModulate = this.m_hoverColor;
     }
+
+    private void OnMouseExited()
+    {
+        this.SelfModulate = this.m_canBePurchased ? this.m_originalColor : this.m_lockedColor;
+    }
+    
 
     public override void _GuiInput(InputEvent evt)
     {
@@ -62,6 +71,6 @@ public partial class SkillTreeNodeUI : PanelContainer
         this.m_amount.Text = $"{viewData.CurrentAmount}/{this.m_data.MaximumAmount}";
         this.m_canBePurchased = viewData.CanBePurchased;
         this.m_isUnlocked = viewData.IsUnlocked;
-        this.SelfModulate = this.m_canBePurchased && this.m_isUnlocked ? this.m_originalColor : Colors.DimGray;
+        this.SelfModulate = this.m_canBePurchased && this.m_isUnlocked ? this.m_originalColor : this.m_lockedColor;
     }
 }

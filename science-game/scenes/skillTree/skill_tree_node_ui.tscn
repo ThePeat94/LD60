@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c1py2mbhl1pc6" path="res://scripts/SkillTree/UI/SkillTreeNodeUI.cs" id="1_8awuu"]
 [ext_resource type="Resource" uid="uid://cac8ru3omfski" path="res://resources/skillTree/items/click_upgrade_1.tres" id="2_lbct0"]
 [ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="3_m0i05"]
+[ext_resource type="Texture2D" uid="uid://dat5xehycidrc" path="res://assets/art/icons and plates/cropped-knowledge-icon.png" id="4_lbct0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qeyxp"]
 bg_color = Color(0.30121267, 0.33398592, 0.30768323, 1)
@@ -19,7 +20,7 @@ m_data = ExtResource("2_lbct0")
 m_icon = NodePath("HBoxContainer/MarginContainer/Icon")
 m_name = NodePath("HBoxContainer/MarginContainer2/VBoxContainer/Name")
 m_amount = NodePath("HBoxContainer/MarginContainer2/VBoxContainer/Amount")
-m_cost = NodePath("HBoxContainer/MarginContainer2/VBoxContainer/Cost")
+m_cost = NodePath("HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/Cost")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1978577292]
 layout_mode = 2
@@ -62,9 +63,18 @@ text = "%AMOUNT%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Cost" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer" unique_id=1669977148]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer" unique_id=2003765757]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=984294169]
+layout_mode = 2
+texture = ExtResource("4_lbct0")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Cost" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=1669977148]
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
 text = "%COST%"
-horizontal_alignment = 1
 vertical_alignment = 1
