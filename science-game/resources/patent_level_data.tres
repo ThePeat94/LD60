@@ -1,41 +1,67 @@
 [gd_resource type="Resource" script_class="ProgressionLevelData" format=3 uid="uid://uhjlsasuo436"]
 
-[ext_resource type="Script" uid="uid://x8p1lmq5yrwt" path="res://scripts/GDResource/MathModels/ExponentialModelResource.cs" id="1_1q3j5"]
+[ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.cs" id="1_1q3j5"]
 [ext_resource type="Script" uid="uid://wu8xbw30275l" path="res://scripts/GDResource/ProgressionLevelData.cs" id="1_ntrxa"]
 [ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_pkl2k"]
 
 [sub_resource type="Resource" id="Resource_e4smp"]
 script = ExtResource("1_pkl2k")
+Value = 15.0
 metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
 
 [sub_resource type="Resource" id="Resource_xdh1b"]
 script = ExtResource("1_pkl2k")
-Value = 1.15
+Value = 0.01
 metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
 
 [sub_resource type="Resource" id="Resource_c3xnl"]
 script = ExtResource("1_1q3j5")
 Base = SubResource("Resource_e4smp")
 Slope = SubResource("Resource_xdh1b")
-metadata/_custom_type_script = "uid://x8p1lmq5yrwt"
+metadata/_custom_type_script = "uid://ddxwa8yrpoypp"
 
-[sub_resource type="Resource" id="Resource_pkl2k"]
-script = ExtResource("1_pkl2k")
-Value = 2.0
-metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
-
-[sub_resource type="Resource" id="Resource_1q3j5"]
+[sub_resource type="Resource" id="Resource_lvl01"]
 script = ExtResource("1_pkl2k")
 Value = 4.0
 metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
 
-[sub_resource type="Resource" id="Resource_jg0an"]
+[sub_resource type="Resource" id="Resource_lvl02"]
 script = ExtResource("1_pkl2k")
-Value = 40.0
+Value = 6.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_lvl03"]
+script = ExtResource("1_pkl2k")
+Value = 8.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_lvl04"]
+script = ExtResource("1_pkl2k")
+Value = 10.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_lvl05"]
+script = ExtResource("1_pkl2k")
+Value = 12.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_lvl06"]
+script = ExtResource("1_pkl2k")
+Value = 13.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_lvl07"]
+script = ExtResource("1_pkl2k")
+Value = 14.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_lvl08"]
+script = ExtResource("1_pkl2k")
+Value = 15.0
 metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
 
 [resource]
 script = ExtResource("1_ntrxa")
-FixedLevels = Array[Object]([SubResource("Resource_pkl2k"), SubResource("Resource_1q3j5"), SubResource("Resource_jg0an")])
+FixedLevels = Array[Object]([SubResource("Resource_lvl01"), SubResource("Resource_lvl02"), SubResource("Resource_lvl03"), SubResource("Resource_lvl04"), SubResource("Resource_lvl05"), SubResource("Resource_lvl06"), SubResource("Resource_lvl07"), SubResource("Resource_lvl08")])
 DynamicLevels = SubResource("Resource_c3xnl")
 metadata/_custom_type_script = "uid://wu8xbw30275l"

@@ -3,19 +3,19 @@
 [ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_1g2j6"]
 [ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.cs" id="2_83rva"]
 [ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="3_evjuc"]
-[ext_resource type="Resource" uid="uid://c4dhm6i7m4tr" path="res://resources/skillTree/items/click_upgrade_2.tres" id="4_row4k"]
+[ext_resource type="Resource" uid="uid://clcr81107edrj" path="res://resources/skillTree/items/employees/inventor/unlock_inventors.tres" id="4_row4k"]
 [ext_resource type="Script" uid="uid://b1ayjcrr35te0" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/Player/PlayerStatUpgradeData.cs" id="5_83rva"]
 [ext_resource type="Script" uid="uid://b0h2rn416ikw4" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/Player/PlayerUpgradeData.cs" id="6_evjuc"]
 [ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.cs" id="6_hmyhq"]
 
 [sub_resource type="Resource" id="Resource_4j54d"]
 script = ExtResource("1_1g2j6")
-Value = 0.0
+Value = 3.0
 metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
 
 [sub_resource type="Resource" id="Resource_3157h"]
 script = ExtResource("1_1g2j6")
-Value = 0.0
+Value = 4.0
 metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
 
 [sub_resource type="Resource" id="Resource_5lo75"]

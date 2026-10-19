@@ -1,24 +1,26 @@
 [gd_resource type="Resource" script_class="ShopItemData" format=3 uid="uid://dhy1gqn20qbpp"]
 
 [ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_nmyqq"]
-[ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.cs" id="2_fbcwu"]
+[ext_resource type="Script" uid="uid://x8p1lmq5yrwt" path="res://scripts/GDResource/MathModels/ExponentialModelResource.cs" id="2_fbcwu"]
 [ext_resource type="Texture2D" uid="uid://bgmtak8uvk0s1" path="res://assets/external/Chole(F).png" id="3_nmyqq"]
 [ext_resource type="Script" uid="uid://ccafmo7dhkbnm" path="res://scripts/GDResource/Shop/InventorUpgradeData.cs" id="4_nmyqq"]
 [ext_resource type="Script" uid="uid://bm5tdny5chcwa" path="res://scripts/GDResource/Shop/ShopItemData.cs" id="5_kadwq"]
 
 [sub_resource type="Resource" id="Resource_dxvlt"]
 script = ExtResource("1_nmyqq")
+Value = 15.0
 metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
 
 [sub_resource type="Resource" id="Resource_whmdq"]
 script = ExtResource("1_nmyqq")
+Value = 1.6
 metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
 
 [sub_resource type="Resource" id="Resource_okqxr"]
 script = ExtResource("2_fbcwu")
 Base = SubResource("Resource_dxvlt")
 Slope = SubResource("Resource_whmdq")
-metadata/_custom_type_script = "uid://ddxwa8yrpoypp"
+metadata/_custom_type_script = "uid://x8p1lmq5yrwt"
 
 [sub_resource type="Resource" id="Resource_7mpib"]
 script = ExtResource("4_nmyqq")
@@ -30,6 +32,6 @@ CostModel = SubResource("Resource_okqxr")
 UpgradeName = "Inventor"
 Description = "Thinks, they are the genius here. But you know they aren't. That's why they work for you."
 Icon = ExtResource("3_nmyqq")
-MaximumAmount = 5
+MaximumAmount = 10
 UpgradeData = SubResource("Resource_7mpib")
 metadata/_custom_type_script = "uid://bm5tdny5chcwa"
