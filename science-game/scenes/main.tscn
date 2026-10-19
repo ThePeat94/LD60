@@ -23,9 +23,35 @@
 [ext_resource type="AudioStream" uid="uid://b1yc3bgcsiy6y" path="res://assets/music/Science Gamejam.mp3" id="22_jscy8"]
 [ext_resource type="PackedScene" uid="uid://xqq4tj53sw6c" path="res://scenes/ui/patent_progress_bar.tscn" id="23_pbar"]
 [ext_resource type="PackedScene" uid="uid://b5xjxs7xrwtig" path="res://scenes/ui/knowledge_progress_bar.tscn" id="24_kbar"]
+[ext_resource type="AudioStream" uid="uid://d2vtiaawbfrpi" path="res://assets/music/Idle Academia Theme.mp3" id="24_og1vs"]
+[ext_resource type="Script" uid="uid://dmmh2a0h8mjf6" path="res://scripts/GameFeel/MusicPlayer.cs" id="25_2wyq8"]
+[ext_resource type="Script" uid="uid://4p1hd3s4ncgp" path="res://scripts/GameState/GameStateManager.cs" id="26_2wyq8"]
 [ext_resource type="Script" uid="uid://div4ko4tu80ln" path="res://scripts/GameFeel/FeelGlow.cs" id="30_glow"]
 [ext_resource type="Texture2D" uid="uid://bwearclyoiu7h" path="res://assets/art/glow_shop.png" id="31_glowskill"]
 [ext_resource type="Texture2D" uid="uid://bti5vei1w2y8q" path="res://assets/art/glow_skilltree.png" id="32_glowshop"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_x86fe"]
+clip_count = 2
+clip_0/name = &"Science Gamejam"
+clip_0/stream = ExtResource("22_jscy8")
+clip_0/auto_advance = 0
+clip_1/name = &"Science Gamejam 4 Draft"
+clip_1/stream = ExtResource("24_og1vs")
+clip_1/auto_advance = 0
+_transitions = {
+Vector2i(0, 1): {
+"fade_beats": 1.5,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(1, 0): {
+"fade_beats": 2.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+}
+}
 
 [node name="Node2D2" type="Node2D" unique_id=1462648990]
 
@@ -114,12 +140,13 @@ m_glow = NodePath("../SkillTreeGlow")
 z_index = 5
 position = Vector2(0, 1)
 
-[node name="UpgradeController" parent="Room/Desk/SkilltreeController" index="1" unique_id=1259699767 node_paths=PackedStringArray("m_playerStats", "m_employeeController", "m_shopController", "m_patentUnlocker", "m_shopUnlocker")]
+[node name="UpgradeController" parent="Room/Desk/SkilltreeController" index="1" unique_id=1259699767 node_paths=PackedStringArray("m_playerStats", "m_employeeController", "m_shopController", "m_patentUnlocker", "m_shopUnlocker", "m_gameWonUi")]
 m_playerStats = NodePath("../../../../PlayerStats")
 m_employeeController = NodePath("../../../../EmployeeController")
 m_shopController = NodePath("../../ShopController")
 m_patentUnlocker = NodePath("../../../../PatentGenerator/Unlocker")
 m_shopUnlocker = NodePath("../../ShopController/Unlocker")
+m_gameWonUi = NodePath("../../../../GameHUD/GameWonUI")
 
 [node name="ShopController" parent="Room/Desk" unique_id=524025840 node_paths=PackedStringArray("m_glow", "Money", "ShopUI") instance=ExtResource("11_yq6so")]
 position = Vector2(-100.216415, 47.44465)
@@ -146,6 +173,9 @@ m_generator = NodePath("../../SkillPointGenerator")
 [node name="ShopUI" parent="GameHUD" index="0" unique_id=1511127767 node_paths=PackedStringArray("ShopController")]
 ShopController = NodePath("../../Room/Desk/ShopController")
 
+[node name="ResourceDisplay" parent="GameHUD/ShopUI/HBoxContainer" parent_id_path=PackedInt32Array(1847261213, 1524514352) index="1" unique_id=1615407582 node_paths=PackedStringArray("ResourceControllerNode")]
+ResourceControllerNode = NodePath("../../../../ResourceControllers/GlobalMoneyController")
+
 [node name="Label" parent="GameHUD/Skill Tree/Panel" parent_id_path=PackedInt32Array(1847261213, 372858125) index="1" unique_id=1299036100]
 layout_mode = 0
 anchors_preset = 0
@@ -155,6 +185,7 @@ grow_horizontal = 1
 
 [node name="ScrollContainer" parent="GameHUD/Skill Tree/Panel" parent_id_path=PackedInt32Array(1847261213, 372858125) index="2" unique_id=2108983879]
 layout_mode = 0
+anchors_preset = 0
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -273,8 +304,14 @@ script = ExtResource("21_yc10j")
 metadata/_custom_type_script = "uid://bv0nr4cjm43w8"
 
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1704003214]
-stream = ExtResource("22_jscy8")
+stream = SubResource("AudioStreamInteractive_x86fe")
 autoplay = true
+script = ExtResource("25_2wyq8")
+
+[node name="GameStateManager" type="Node" parent="." unique_id=1879523095 node_paths=PackedStringArray("m_musicPlayer", "m_employeeController")]
+script = ExtResource("26_2wyq8")
+m_musicPlayer = NodePath("../Music")
+m_employeeController = NodePath("../EmployeeController")
 
 [editable path="Room/Science Display"]
 [editable path="Room/Skillpoints Displa"]
@@ -296,6 +333,11 @@ autoplay = true
 [editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Unlock Scribes"]
 [editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Stronger Scribes"]
 [editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Faster Scribes"]
+[editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Seasoned Scribes"]
+[editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Master Scribes"]
+[editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Inspired Scribes"]
+[editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Prolific Scribes"]
+[editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Nobel Prize"]
 [editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Unlock Patents"]
 [editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Unlock Shop"]
 [editable path="ScienceGenerator"]

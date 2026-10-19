@@ -13,6 +13,8 @@ namespace Nidavellir.Automation;
 
 public partial class EmployeeController : Node
 {
+    private Action m_employeeBought;
+    
     [Export] private PackedScene m_thinkerEmployeeScene;
     [Export] private PackedScene m_inventorEmployeeScene;
     [Export] private PackedScene m_scribeEmployeeScene;
@@ -30,6 +32,16 @@ public partial class EmployeeController : Node
     private readonly List<Employee> m_inventors = [];
     private readonly List<Employee> m_scribes = [];
     private System.Collections.Generic.Dictionary<EmployeeType, EmployeeStats> m_employeeStats = new();
+    
+    public IReadOnlyList<Employee> Thinkers => this.m_thinkers;
+    public IReadOnlyList<Employee> Inventors => this.m_inventors;
+    public IReadOnlyList<Employee> Scribes => this.m_scribes;
+    
+    public event Action EmployeeBought
+    {
+        add => this.m_employeeBought += value;
+        remove => this.m_employeeBought -= value;
+    }
 
     public override void _EnterTree()
     {
@@ -93,6 +105,8 @@ public partial class EmployeeController : Node
         {
             gnomes[i].Visible = true;
         }
+        
+        this.m_employeeBought?.Invoke();
     }
 
     /// <summary>Employees beyond the visible gnomes share them.</summary>

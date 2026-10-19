@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dsijuynwbkqbf" path="res://scripts/Shop/UI/ShopItemUI.cs" id="1_v7xym"]
 [ext_resource type="Texture2D" uid="uid://c7ky34ik03o52" path="res://assets/external/Mark(F).png" id="2_okqxr"]
+[ext_resource type="Texture2D" uid="uid://yjivdkjkeort" path="res://assets/art/icons and plates/cropped-money.png" id="3_dxvlt"]
 
 [node name="ItemUI" type="Panel" unique_id=1546233583 node_paths=PackedStringArray("m_quantity", "ItemName", "Icon", "Description", "Purchase")]
-custom_minimum_size = Vector2(300, 600)
+custom_minimum_size = Vector2(600, 600)
 offset_right = 300.0
 offset_bottom = 600.0
 script = ExtResource("1_v7xym")
@@ -24,12 +25,14 @@ grow_vertical = 2
 
 [node name="Name" type="Label" parent="VBoxContainer" unique_id=356341106]
 layout_mode = 2
+theme_override_font_sizes/font_size = 54
 text = "%NAME%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Quantity" type="Label" parent="VBoxContainer" unique_id=1988372780]
 layout_mode = 2
+theme_override_font_sizes/font_size = 42
 text = "%QUANTITY%"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -49,12 +52,15 @@ theme_override_constants/margin_right = 20
 
 [node name="Descripton" type="Label" parent="VBoxContainer/MarginContainer" unique_id=1274753079]
 layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 32
 text = "%DESCRIPTION%"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer" unique_id=779100476]
+custom_minimum_size = Vector2(100, 80)
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 20
@@ -62,5 +68,8 @@ theme_override_constants/margin_bottom = 20
 
 [node name="Button" type="Button" parent="VBoxContainer/MarginContainer2" unique_id=2087379402]
 layout_mode = 2
-size_flags_vertical = 8
+theme_override_font_sizes/font_size = 24
 text = "Buy"
+icon = ExtResource("3_dxvlt")
+icon_alignment = 2
+expand_icon = true
