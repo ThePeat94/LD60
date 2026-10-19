@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c1py2mbhl1pc6" path="res://scripts/SkillTree/UI/SkillTreeNodeUI.cs" id="1_8awuu"]
 [ext_resource type="Resource" uid="uid://cac8ru3omfski" path="res://resources/skillTree/items/click_upgrade_1.tres" id="2_lbct0"]
 [ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="3_m0i05"]
-[ext_resource type="Texture2D" uid="uid://dat5xehycidrc" path="res://assets/art/icons and plates/cropped-knowledge-icon.png" id="4_lbct0"]
+[ext_resource type="Texture2D" path="res://resources/icons/knowledge_icon.tres" id="4_lbct0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qeyxp"]
 bg_color = Color(0.30121267, 0.33398592, 0.30768323, 1)

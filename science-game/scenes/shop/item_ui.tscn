@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dsijuynwbkqbf" path="res://scripts/Shop/UI/ShopItemUI.cs" id="1_v7xym"]
 [ext_resource type="Texture2D" uid="uid://c7ky34ik03o52" path="res://assets/external/Mark(F).png" id="2_okqxr"]
-[ext_resource type="Texture2D" uid="uid://yjivdkjkeort" path="res://assets/art/icons and plates/cropped-money.png" id="3_dxvlt"]
+[ext_resource type="Texture2D" path="res://resources/icons/money_icon.tres" id="3_dxvlt"]
 
 [node name="ItemUI" type="Panel" unique_id=1546233583 node_paths=PackedStringArray("m_quantity", "ItemName", "Icon", "Description", "Purchase")]
 custom_minimum_size = Vector2(600, 600)

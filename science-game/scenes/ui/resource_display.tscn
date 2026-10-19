@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bhipn7hbuwba5"]
 
 [ext_resource type="Texture2D" uid="uid://2adk1jsitgvd" path="res://assets/art/icons and plates/science-plate-filled.png" id="1_3a1rf"]
-[ext_resource type="Texture2D" uid="uid://bn7a5ua43ciwa" path="res://assets/art/icons and plates/science-icon.png" id="2_gar0h"]
+[ext_resource type="Texture2D" uid="uid://b2tv4e3k0ih55" path="res://assets/art/progressbars-icons/thinking-icon.png" id="2_gar0h"]
 [ext_resource type="Script" uid="uid://0c6plthlac1x" path="res://scripts/UI/ResourceDisplay.cs" id="3_rlfi3"]
 
 [node name="Resource Display" type="Node2D" unique_id=1726028393]
@@ -16,10 +16,10 @@ region_rect = Rect2(139, 6, 40, 16)
 [node name="Icon" type="Sprite2D" parent="." unique_id=605890247]
 z_index = 10
 position = Vector2(-103, -0.99999994)
-scale = Vector2(7.0469985, 7.0469985)
+scale = Vector2(2.2799, 2.2799)
 texture = ExtResource("2_gar0h")
 region_enabled = true
-region_rect = Rect2(145, 8, 8, 11)
+region_rect = Rect2(72, 6, 21, 34)
 
 [node name="Label" type="Label" parent="." unique_id=69640884 node_paths=PackedStringArray("ResourceControllerNode")]
 z_index = 100

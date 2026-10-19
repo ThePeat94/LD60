@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://dac0bk76lfpwp" path="res://assets/art/room/animals.png" id="3_yc10j"]
 [ext_resource type="PackedScene" uid="uid://bhipn7hbuwba5" path="res://scenes/ui/resource_display.tscn" id="4_jscy8"]
 [ext_resource type="Texture2D" uid="uid://386fpde1x5rj" path="res://assets/art/icons and plates/knowledge-plate-filled.png" id="5_pm3ni"]
-[ext_resource type="Texture2D" uid="uid://cj66xpguevb3g" path="res://assets/art/icons and plates/knowledge-icon.png" id="6_y6deb"]
+[ext_resource type="Texture2D" uid="uid://brx7gntnccs20" path="res://assets/art/progressbars-icons/symbol_right_knowledge.png" id="6_y6deb"]
 [ext_resource type="Texture2D" uid="uid://dvhmtohgfvgc1" path="res://assets/art/icons and plates/money-plate-filled.png" id="7_og1vs"]
-[ext_resource type="Texture2D" uid="uid://p7e0ismvxame" path="res://assets/art/icons and plates/money-icon.png" id="8_2wyq8"]
+[ext_resource type="Texture2D" uid="uid://dq32kwewidpw4" path="res://assets/art/progressbars-icons/symbol_left_patent.png" id="8_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://w26hqmndlb71" path="res://assets/art/desk/desk.png" id="9_vxglm"]
 [ext_resource type="PackedScene" uid="uid://vbfiwdh1714m" path="res://scenes/skillTree/skilltree_controller.tscn" id="10_2f3dj"]
 [ext_resource type="PackedScene" uid="uid://cwor0siurx2e8" path="res://scenes/shop/shop_controller.tscn" id="11_yq6so"]
@@ -27,9 +27,9 @@
 [ext_resource type="Script" uid="uid://dmmh2a0h8mjf6" path="res://scripts/GameFeel/MusicPlayer.cs" id="25_2wyq8"]
 [ext_resource type="Script" uid="uid://4p1hd3s4ncgp" path="res://scripts/GameState/GameStateManager.cs" id="26_2wyq8"]
 [ext_resource type="Script" uid="uid://div4ko4tu80ln" path="res://scripts/GameFeel/FeelGlow.cs" id="30_glow"]
-[ext_resource type="Script" uid="uid://mvl7oeixktlca" path="res://scripts/GameFeel/FeelPopupLabel.cs" id="33_popup"]
 [ext_resource type="Texture2D" uid="uid://bwearclyoiu7h" path="res://assets/art/glow_shop.png" id="31_glowskill"]
 [ext_resource type="Texture2D" uid="uid://bti5vei1w2y8q" path="res://assets/art/glow_skilltree.png" id="32_glowshop"]
+[ext_resource type="Script" uid="uid://c3y7xih1m0t7l" path="res://scripts/GameFeel/FeelPopupLabel.cs" id="33_popup"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_x86fe"]
 clip_count = 2
@@ -87,9 +87,9 @@ texture = ExtResource("5_pm3ni")
 region_rect = Rect2(230, 7, 40, 16)
 
 [node name="Icon" parent="Room/Skillpoints Displa" index="1" unique_id=605890247]
-scale = Vector2(8.461024, 8.461024)
+scale = Vector2(2.9176, 2.9176)
 texture = ExtResource("6_y6deb")
-region_rect = Rect2(237, 10, 10, 10)
+region_rect = Rect2(276, 7, 28, 29)
 
 [node name="Label" parent="Room/Skillpoints Displa" index="2" unique_id=69640884 node_paths=PackedStringArray("ResourceControllerNode")]
 ResourceControllerNode = NodePath("../../../ResourceControllers/GlobalSkillPointsController")
@@ -102,9 +102,10 @@ texture = ExtResource("7_og1vs")
 region_rect = Rect2(52, 5, 40, 16)
 
 [node name="Icon" parent="Room/Money Display" index="1" unique_id=605890247]
-scale = Vector2(10.406994, 10.438085)
+visible = false
+scale = Vector2(3.07, 3.07)
 texture = ExtResource("8_2wyq8")
-region_rect = Rect2(58, 8, 7, 10)
+region_rect = Rect2(26, 1, 28, 34)
 
 [node name="Label" parent="Room/Money Display" index="2" unique_id=69640884 node_paths=PackedStringArray("ResourceControllerNode")]
 offset_left = -93.0
@@ -131,12 +132,12 @@ position = Vector2(0.6658907, 0.33294493)
 texture = ExtResource("31_glowskill")
 script = ExtResource("30_glow")
 
-[node name="SkilltreeController" parent="Room/Desk" unique_id=85181344 node_paths=PackedStringArray("m_notEnoughPopup", "m_skillTreeUi", "m_skillPoints", "m_glow") instance=ExtResource("10_2f3dj")]
-m_notEnoughPopup = NodePath("../../../GameHUD/NotEnoughDegreesPopup")
+[node name="SkilltreeController" parent="Room/Desk" unique_id=85181344 node_paths=PackedStringArray("m_skillTreeUi", "m_skillPoints", "m_glow", "m_notEnoughPopup") instance=ExtResource("10_2f3dj")]
 position = Vector2(44.947563, 56.434162)
 m_skillTreeUi = NodePath("../../../GameHUD/Skill Tree/Panel/ScrollContainer/Container")
 m_skillPoints = NodePath("../../../ResourceControllers/GlobalSkillPointsController")
 m_glow = NodePath("../SkillTreeGlow")
+m_notEnoughPopup = NodePath("../../../GameHUD/NotEnoughDegreesPopup")
 
 [node name="Sprite2D" parent="Room/Desk/SkilltreeController" index="0" unique_id=875432051]
 z_index = 5
@@ -150,10 +151,10 @@ m_patentUnlocker = NodePath("../../../../PatentGenerator/Unlocker")
 m_shopUnlocker = NodePath("../../ShopController/Unlocker")
 m_gameWonUi = NodePath("../../../../GameHUD/GameWonUI")
 
-[node name="ShopController" parent="Room/Desk" unique_id=524025840 node_paths=PackedStringArray("m_notEnoughPopup", "m_glow", "Money", "ShopUI") instance=ExtResource("11_yq6so")]
-m_notEnoughPopup = NodePath("../../../GameHUD/NotEnoughMoneyPopup")
+[node name="ShopController" parent="Room/Desk" unique_id=524025840 node_paths=PackedStringArray("m_glow", "m_notEnoughPopup", "Money", "ShopUI") instance=ExtResource("11_yq6so")]
 position = Vector2(-100.216415, 47.44465)
 m_glow = NodePath("../ShopGlow")
+m_notEnoughPopup = NodePath("../../../GameHUD/NotEnoughMoneyPopup")
 ShopUpgrades = Array[Object]([])
 Money = NodePath("../../../ResourceControllers/GlobalMoneyController")
 ShopUI = NodePath("../../../GameHUD/ShopUI")
@@ -172,18 +173,6 @@ m_generator = NodePath("../../PatentGenerator")
 m_generator = NodePath("../../SkillPointGenerator")
 
 [node name="GameHUD" parent="." unique_id=1847261213 instance=ExtResource("12_fv21b")]
-
-[node name="NotEnoughDegreesPopup" type="Node" parent="GameHUD" unique_id=1893771201 node_paths=PackedStringArray("m_labelParent")]
-script = ExtResource("33_popup")
-m_text = "Not enough degrees."
-m_labelParent = NodePath("..")
-metadata/_custom_type_script = "uid://mvl7oeixktlca"
-
-[node name="NotEnoughMoneyPopup" type="Node" parent="GameHUD" unique_id=1893771202 node_paths=PackedStringArray("m_labelParent")]
-script = ExtResource("33_popup")
-m_text = "Not enough money."
-m_labelParent = NodePath("..")
-metadata/_custom_type_script = "uid://mvl7oeixktlca"
 
 [node name="ShopUI" parent="GameHUD" index="0" unique_id=1511127767 node_paths=PackedStringArray("ShopController")]
 ShopController = NodePath("../../Room/Desk/ShopController")
@@ -221,6 +210,16 @@ offset_bottom = 100.0
 
 [node name="ResourceDisplay" parent="GameHUD/Skill Tree/Panel/HBoxContainer" parent_id_path=PackedInt32Array(1847261213, 1263066267) index="1" unique_id=591431659 node_paths=PackedStringArray("ResourceControllerNode")]
 ResourceControllerNode = NodePath("../../../../../ResourceControllers/GlobalSkillPointsController")
+
+[node name="NotEnoughDegreesPopup" type="Node" parent="GameHUD" unique_id=1893771201 node_paths=PackedStringArray("m_labelParent")]
+script = ExtResource("33_popup")
+m_text = "Not enough degrees."
+m_labelParent = NodePath("..")
+
+[node name="NotEnoughMoneyPopup" type="Node" parent="GameHUD" unique_id=1893771202 node_paths=PackedStringArray("m_labelParent")]
+script = ExtResource("33_popup")
+m_text = "Not enough money."
+m_labelParent = NodePath("..")
 
 [node name="ScienceGenerator" parent="." unique_id=147243357 node_paths=PackedStringArray("Generated", "PlayerStatsContainer") instance=ExtResource("13_tel4y")]
 position = Vector2(5, -27.000004)
