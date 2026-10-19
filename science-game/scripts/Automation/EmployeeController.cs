@@ -84,13 +84,24 @@ public partial class EmployeeController : Node
         var created = employeeScene.Instantiate<Employee>();
         created.Initialize(affected, stats);
         this.AddChild(created);
+        var employeeIndex = employees.Count;
         employees.Add(created);
+        created.GnomeProvider = () => this.GetGnome(employees, employeeIndex, gnomes);
         
         var max = Math.Min(employees.Count / this.m_employeesPerGnome, gnomes.Count);
         for (var i = 0; i < max; i++)
         {
             gnomes[i].Visible = true;
         }
+    }
+
+    /// <summary>Employees beyond the visible gnomes share them.</summary>
+    private GnomeJumper GetGnome(List<Employee> employees, int employeeIndex, Array<Sprite2D> gnomes)
+    {
+        var visibleGnomes = Math.Min(employees.Count / this.m_employeesPerGnome, gnomes.Count);
+        if (visibleGnomes == 0) return null;
+
+        return gnomes[employeeIndex / this.m_employeesPerGnome % visibleGnomes] as GnomeJumper;
     }
 
     private void HideGnomes(Array<Sprite2D> gnomes)

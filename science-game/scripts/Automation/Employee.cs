@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using Nidavellir.GDResource;
 using Nidavellir.Generator;
@@ -11,6 +12,9 @@ public partial class Employee : Node
     [Export] private Timer m_timer;
     
     private IGenerator m_targetGenerator;
+
+    /// <summary>The gnome doing this employee's work right now, if one is visible.</summary>
+    public Func<GnomeJumper> GnomeProvider { get; set; }
     private EmployeeStats m_employeeStats;
     
     public override void _EnterTree()
@@ -35,7 +39,10 @@ public partial class Employee : Node
 
     private void OnTimerTick()
     {
-        this.m_targetGenerator.Generate(this.m_employeeStats.WorkForce.Value);
+        // one action = one jump, and the action's symbols start at the gnome
+        var gnome = this.GnomeProvider?.Invoke();
+        if (this.m_targetGenerator.Generate(this.m_employeeStats.WorkForce.Value, gnome?.GlobalPosition))
+            gnome?.Jump();
         this.m_timer.WaitTime = this.m_employeeStats.TickSpeed.Value.ToDouble();
     }
 }

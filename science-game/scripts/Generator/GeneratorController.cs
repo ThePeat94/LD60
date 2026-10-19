@@ -53,19 +53,19 @@ public partial class GeneratorController : Node2D, IGenerator
         }
 
         this.EmitSignalClicked();
-        this.Generate(this.PlayerStatsContainer.ClickStrength.Value, this.GetGlobalMousePosition());
+        this.Generate(this.PlayerStatsContainer.ClickStrength.Value, this.GetGlobalMousePosition(), true);
     }
     
-    public void Generate(IdleNumber power)
+    public bool Generate(IdleNumber power, Vector2? origin = null)
     {
-        this.Generate(power, null);
+        return this.Generate(power, origin, false);
     }
 
-    private void Generate(IdleNumber power, Vector2? clickPosition)
+    private bool Generate(IdleNumber power, Vector2? origin, bool isClick)
     {
         var available = this.m_consumed.ResourceController.CurrentValue;
         var strengthToApply = available >= power ? power : available;
-        if (strengthToApply.Value <= 0) return;
+        if (strengthToApply.Value <= 0) return false;
 
         var pool = this.m_required.ResourceController.CurrentValue + strengthToApply;
         var levelsGained = 0;
@@ -85,20 +85,22 @@ public partial class GeneratorController : Node2D, IGenerator
         for (var i = 0; i < levelsGained; i++)
             this.m_generatorRewardController.ApplyReward();
 
-        this.MoveSymbols(clickPosition, levelsGained > 0, pool.Value > 0);
+        this.MoveSymbols(origin, levelsGained > 0, pool.Value > 0);
 
-        if (clickPosition.HasValue)
+        if (isClick)
             this.EmitSignalProduced(strengthToApply.ToDouble());
 
         if (levelsGained > 0)
             this.EmitSignalGeneratedReward();
+
+        return true;
     }
 
-    private void MoveSymbols(Vector2? clickPosition, bool batchFilled, bool hasRemainder)
+    private void MoveSymbols(Vector2? origin, bool batchFilled, bool hasRemainder)
     {
         if (this.m_symbols == null) return;
 
-        var landing = clickPosition ?? this.m_symbols.RandomPoint();
+        var landing = origin ?? this.m_symbols.RandomPoint();
         var payoutPosition = GetCenter(this.m_payoutTarget);
 
         if (batchFilled && payoutPosition.HasValue)

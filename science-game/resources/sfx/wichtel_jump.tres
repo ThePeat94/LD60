@@ -1,0 +1,40 @@
+[gd_resource type="AudioStreamRandomizer" format=3]
+
+[ext_resource type="AudioStream" path="res://assets/sfx/own/wichtel_01.wav" id="1_wichtel"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/wichtel_02.wav" id="2_wichtel"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/wichtel_03.wav" id="3_wichtel"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/wichtel_04.wav" id="4_wichtel"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/wichtel_05.wav" id="5_wichtel"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/wichtel_06.wav" id="6_wichtel"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/wichtel_07.wav" id="7_wichtel"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/wichtel_08.wav" id="8_wichtel"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/wichtel_09.wav" id="9_wichtel"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/wichtel_10.wav" id="10_wichtel"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/wichtel_11.wav" id="11_wichtel"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/wichtel_12.wav" id="12_wichtel"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/wichtel_13.wav" id="13_wichtel"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/wichtel_14.wav" id="14_wichtel"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/wichtel_15.wav" id="15_wichtel"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/wichtel_16.wav" id="16_wichtel"]
+[ext_resource type="AudioStream" path="res://assets/sfx/own/wichtel_17.wav" id="17_wichtel"]
+
+[resource]
+random_pitch = 1.15
+streams_count = 17
+stream_0/stream = ExtResource("1_wichtel")
+stream_1/stream = ExtResource("2_wichtel")
+stream_2/stream = ExtResource("3_wichtel")
+stream_3/stream = ExtResource("4_wichtel")
+stream_4/stream = ExtResource("5_wichtel")
+stream_5/stream = ExtResource("6_wichtel")
+stream_6/stream = ExtResource("7_wichtel")
+stream_7/stream = ExtResource("8_wichtel")
+stream_8/stream = ExtResource("9_wichtel")
+stream_9/stream = ExtResource("10_wichtel")
+stream_10/stream = ExtResource("11_wichtel")
+stream_11/stream = ExtResource("12_wichtel")
+stream_12/stream = ExtResource("13_wichtel")
+stream_13/stream = ExtResource("14_wichtel")
+stream_14/stream = ExtResource("15_wichtel")
+stream_15/stream = ExtResource("16_wichtel")
+stream_16/stream = ExtResource("17_wichtel")

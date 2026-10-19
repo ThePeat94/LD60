@@ -31,9 +31,10 @@ public partial class ScienceGenerator : Node2D, IGenerator
         this.EmitSignalProduced(produced.ToDouble());
     }
 
-    public void Generate(IdleNumber value)
+    public bool Generate(IdleNumber value, Vector2? origin = null)
     {
         this.Generated.ResourceController.Add(value);
-        this.Symbols?.AddRandom();
+        this.Symbols?.AddAt(origin ?? this.Symbols.RandomPoint());
+        return true;
     }
 }
