@@ -22,7 +22,7 @@ public partial class Employee : Node
     public override void _Ready()
     {
         base._Ready();
-        this.m_timer.WaitTime = this.m_employeeStats.TickSpeed.Value.Value;
+        this.m_timer.WaitTime = this.m_employeeStats.TickSpeed.Value.ToDouble();
         this.m_timer.Timeout += this.OnTimerTick;
         this.m_timer.Start();
     }
@@ -36,6 +36,6 @@ public partial class Employee : Node
     private void OnTimerTick()
     {
         this.m_targetGenerator.Generate(this.m_employeeStats.WorkForce.Value);
-        this.m_timer.WaitTime = this.m_employeeStats.TickSpeed.Value.Value;
+        this.m_timer.WaitTime = this.m_employeeStats.TickSpeed.Value.ToDouble();
     }
 }
