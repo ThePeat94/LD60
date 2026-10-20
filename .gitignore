@@ -25,3 +25,7 @@ mono_crash.*.json
 # *.pck
 
 Builds/
+
+# JetBrains Rider
+.idea/
+*.DotSettings.user
