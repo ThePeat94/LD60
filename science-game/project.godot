@@ -14,7 +14,7 @@ config/name="Idle Akademia"
 config/description="An incremental scientific game"
 config/version="0.1.0"
 run/main_scene="uid://kskc1m64jkxh"
-config/features=PackedStringArray("4.7", "C#", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 run/max_fps=60
 boot_splash/image="uid://cm1ha6qgyha3e"
 config/icon="res://icon.svg"
@@ -31,9 +31,6 @@ window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 mouse_cursor/custom_image="uid://c4xug3npl82w"
-
-[dotnet]
-
 project/assembly_name="science-game"
 
 [gui]

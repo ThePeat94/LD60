@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="ProgressionLevelData" format=3 uid="uid://uhjlsasuo436"]
 
-[ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.cs" id="1_1q3j5"]
-[ext_resource type="Script" uid="uid://wu8xbw30275l" path="res://scripts/GDResource/ProgressionLevelData.cs" id="1_ntrxa"]
-[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_pkl2k"]
+[ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.gd" id="1_1q3j5"]
+[ext_resource type="Script" uid="uid://wu8xbw30275l" path="res://scripts/GDResource/ProgressionLevelData.gd" id="1_ntrxa"]
+[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.gd" id="1_pkl2k"]
 
 [sub_resource type="Resource" id="Resource_e4smp"]
 script = ExtResource("1_pkl2k")

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ncjh7nkhgwq8"]
 
-[ext_resource type="Script" uid="uid://c1py2mbhl1pc6" path="res://scripts/SkillTree/UI/SkillTreeNodeUI.cs" id="1_8awuu"]
+[ext_resource type="Script" uid="uid://c1py2mbhl1pc6" path="res://scripts/SkillTree/UI/SkillTreeNodeUI.gd" id="1_8awuu"]
 [ext_resource type="Resource" uid="uid://cac8ru3omfski" path="res://resources/skillTree/items/click_upgrade_1.tres" id="2_lbct0"]
 [ext_resource type="Texture2D" path="res://resources/icons/knowledge_icon.tres" id="4_lbct0"]
 [ext_resource type="StyleBox" path="res://resources/skillTree/frames/frame_box_1.tres" id="10_box1"]

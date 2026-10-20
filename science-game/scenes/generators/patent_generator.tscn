@@ -1,36 +1,36 @@
 [gd_scene format=3 uid="uid://dcuw26e2ppgd3"]
 
-[ext_resource type="Script" uid="uid://rqesxtjjsjl4" path="res://scripts/Generator/GeneratorController.cs" id="2_a4kuy"]
+[ext_resource type="Script" uid="uid://rqesxtjjsjl4" path="res://scripts/Generator/GeneratorController.gd" id="2_a4kuy"]
 [ext_resource type="Resource" uid="uid://uhjlsasuo436" path="res://resources/patent_level_data.tres" id="3_a4kuy"]
-[ext_resource type="Script" uid="uid://dmywt6vc0vtok" path="res://scripts/ResourceControllerNode.cs" id="4_3i7xt"]
+[ext_resource type="Script" uid="uid://dmywt6vc0vtok" path="res://scripts/ResourceControllerNode.gd" id="4_3i7xt"]
 [ext_resource type="Texture2D" uid="uid://d3g105rod4v0p" path="res://assets/art/left_section_engineering-room/machinery-back-left-section.png" id="6_g8ayl"]
-[ext_resource type="Script" uid="uid://xs0wijy71dm1" path="res://scripts/Generator/PatentGeneratorRewardController.cs" id="6_wdtd2"]
+[ext_resource type="Script" uid="uid://xs0wijy71dm1" path="res://scripts/Generator/PatentGeneratorRewardController.gd" id="6_wdtd2"]
 [ext_resource type="Texture2D" uid="uid://b30yub36xfftf" path="res://assets/art/left_section_engineering-room/light-bulb-left-section.png" id="7_2fnvo"]
 [ext_resource type="Texture2D" uid="uid://cq7tvjh70ndg4" path="res://assets/art/left_section_engineering-room/tools-left-section.png" id="8_pdsy3"]
 [ext_resource type="Texture2D" uid="uid://cw4soeir05tr6" path="res://assets/art/left_section_engineering-room/top-gear-left-section.png" id="9_0hrct"]
 [ext_resource type="Texture2D" uid="uid://d18jthb61uo3t" path="res://assets/art/curtains/research-curtain.png" id="10_2fnvo"]
 [ext_resource type="Texture2D" uid="uid://d0023g7ttxh2d" path="res://assets/art/left_section_engineering-room/bottom-gear-left-section.png" id="10_i5752"]
 [ext_resource type="Texture2D" uid="uid://cltpvu3wmbsk0" path="res://assets/art/curtains/closed-curtains.png" id="10_rn21a"]
-[ext_resource type="Script" uid="uid://drs0euodsbijl" path="res://scripts/GameFeature/GeneratorUnlocker.cs" id="11_pdsy3"]
+[ext_resource type="Script" uid="uid://drs0euodsbijl" path="res://scripts/GameFeature/GeneratorUnlocker.gd" id="11_pdsy3"]
 [ext_resource type="AudioStream" uid="uid://135s6dy07bqn" path="res://assets/sfx/400 Sounds Pack/Materials/metal_clang.wav" id="12_sd3r0"]
 [ext_resource type="AudioStream" uid="uid://02s35exnjljy" path="res://assets/sfx/400 Sounds Pack/Materials/metal_blunt_tap.wav" id="13_h832c"]
-[ext_resource type="Script" uid="uid://bglusmjfbdqlj" path="res://scripts/GameFeel/FeelSfxPlayer.cs" id="14_wp5iy"]
-[ext_resource type="Script" uid="uid://mod3uhf0e68j" path="res://scripts/GameFeel/FeelVfxIconSpawner.cs" id="15_m1k5i"]
-[ext_resource type="Script" uid="uid://ngvqkxdthk4f" path="res://scripts/GameFeel/FeelShaker.cs" id="16_1ebab"]
+[ext_resource type="Script" uid="uid://bglusmjfbdqlj" path="res://scripts/GameFeel/FeelSfxPlayer.gd" id="14_wp5iy"]
+[ext_resource type="Script" uid="uid://mod3uhf0e68j" path="res://scripts/GameFeel/FeelVfxIconSpawner.gd" id="15_m1k5i"]
+[ext_resource type="Script" uid="uid://ngvqkxdthk4f" path="res://scripts/GameFeel/FeelShaker.gd" id="16_1ebab"]
 [ext_resource type="PackedScene" uid="uid://bntuvd3a5igwm" path="res://scenes/feel/board_particles.tscn" id="16_h832c"]
 [ext_resource type="AudioStream" uid="uid://d4jrvk72fokw3" path="res://assets/sfx/400 Sounds Pack/Retro/coin.wav" id="18_bxcsh"]
 [ext_resource type="AudioStream" uid="uid://c248qjc3c7b7i" path="res://assets/sfx/400 Sounds Pack/Retro/coin_2.wav" id="19_rn21a"]
 [ext_resource type="AudioStream" uid="uid://bvnwc7kiu3vng" path="res://assets/sfx/400 Sounds Pack/Retro/coin_3.wav" id="20_n7s0f"]
 [ext_resource type="AudioStream" uid="uid://51vqx5tif0f" path="res://assets/sfx/400 Sounds Pack/Retro/coin_4.wav" id="21_fcb6e"]
 [ext_resource type="PackedScene" uid="uid://b833rmqexim81" path="res://scenes/gnomes/patent_gnome.tscn" id="23_n7s0f"]
-[ext_resource type="Script" uid="uid://q401bcjsgqij" path="res://scripts/GameFeel/CursorChanger.cs" id="24_fcb6e"]
-[ext_resource type="Script" uid="uid://mvl7oeixktlca" path="res://scripts/GameFeel/FeelPopupLabel.cs" id="30_popup"]
+[ext_resource type="Script" uid="uid://q401bcjsgqij" path="res://scripts/GameFeel/CursorChanger.gd" id="24_fcb6e"]
+[ext_resource type="Script" uid="uid://c3y7xih1m0t7l" path="res://scripts/GameFeel/FeelPopupLabel.gd" id="30_popup"]
 [ext_resource type="AudioStream" uid="uid://tfb58umaku77" path="res://assets/sfx/own/glass_01.wav" id="31_glass01"]
 [ext_resource type="AudioStream" uid="uid://dclrea6feer57" path="res://assets/sfx/own/glass_02.wav" id="31_glass02"]
 [ext_resource type="AudioStream" uid="uid://ijoc0alvqkg3" path="res://assets/sfx/own/glass_03.wav" id="31_glass03"]
 [ext_resource type="AudioStream" uid="uid://bqjcq1553fwax" path="res://assets/sfx/own/glass_04.wav" id="31_glass04"]
 [ext_resource type="AudioStream" uid="uid://bd845vwpxoa8r" path="res://assets/sfx/own/glass_05.wav" id="31_glass05"]
-[ext_resource type="Script" path="res://scripts/GameFeel/SymbolStore.cs" id="40_symbols"]
+[ext_resource type="Script" path="res://scripts/GameFeel/SymbolStore.gd" id="40_symbols"]
 [ext_resource type="Texture2D" uid="uid://cqfrqfe17ecc1" path="res://assets/art/formulas.png" id="41_formulas"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
@@ -157,7 +157,7 @@ metadata/_custom_type_script = "uid://q401bcjsgqij"
 script = ExtResource("30_popup")
 m_origin = NodePath("..")
 m_text = "Think more."
-metadata/_custom_type_script = "uid://mvl7oeixktlca"
+metadata/_custom_type_script = "uid://c3y7xih1m0t7l"
 
 [node name="NotEnoughSFX" type="AudioStreamPlayer2D" parent="." unique_id=1873461103]
 stream = SubResource("AudioStreamRandomizer_notenough")

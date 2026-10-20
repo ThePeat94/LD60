@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="SkillTreeItemData" format=3 uid="uid://c4dhm6i7m4tr"]
 
 [ext_resource type="Resource" uid="uid://cac8ru3omfski" path="res://resources/skillTree/items/click_upgrade_1.tres" id="1_e0igi"]
-[ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.cs" id="1_rhhgp"]
-[ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.cs" id="1_s5uov"]
+[ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.gd" id="1_rhhgp"]
+[ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.gd" id="1_s5uov"]
 [ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="2_mp72y"]
-[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="4_mni4f"]
-[ext_resource type="Script" uid="uid://b1ayjcrr35te0" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/Player/PlayerStatUpgradeData.cs" id="5_mp72y"]
-[ext_resource type="Script" uid="uid://b0h2rn416ikw4" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/Player/PlayerUpgradeData.cs" id="6_mni4f"]
+[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.gd" id="4_mni4f"]
+[ext_resource type="Script" uid="uid://b1ayjcrr35te0" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/Player/PlayerStatUpgradeData.gd" id="5_mp72y"]
+[ext_resource type="Script" uid="uid://b0h2rn416ikw4" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/Player/PlayerUpgradeData.gd" id="6_mni4f"]
 
 [sub_resource type="Resource" id="Resource_3k14s"]
 script = ExtResource("4_mni4f")

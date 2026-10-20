@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://vbfiwdh1714m"]
 
-[ext_resource type="Script" uid="uid://bmfcsxh4xfi5n" path="res://scripts/SkillTree/SkillTreeController.cs" id="1_u7klp"]
+[ext_resource type="Script" uid="uid://bmfcsxh4xfi5n" path="res://scripts/SkillTree/SkillTreeController.gd" id="1_u7klp"]
 [ext_resource type="Resource" uid="uid://li5dexrn8bes" path="res://resources/skillTree/skill_tree_data.tres" id="2_cy0jp"]
 [ext_resource type="Texture2D" uid="uid://brlj063h1nsya" path="res://assets/art/desk/desk-utensils.png" id="3_u7klp"]
-[ext_resource type="Script" uid="uid://cvgx6wrfovxjg" path="res://scripts/SkillTree/SkillTreeUpgradeController.cs" id="4_y5km3"]
+[ext_resource type="Script" uid="uid://cvgx6wrfovxjg" path="res://scripts/SkillTree/SkillTreeUpgradeController.gd" id="4_y5km3"]
 [ext_resource type="AudioStream" uid="uid://yev6ay8s2psm" path="res://assets/sfx/400 Sounds Pack/Items/book_open.wav" id="5_cy0jp"]
-[ext_resource type="Script" uid="uid://bglusmjfbdqlj" path="res://scripts/GameFeel/FeelSfxPlayer.cs" id="6_vkbgl"]
-[ext_resource type="Script" uid="uid://q401bcjsgqij" path="res://scripts/GameFeel/CursorChanger.cs" id="7_y5km3"]
+[ext_resource type="Script" uid="uid://bglusmjfbdqlj" path="res://scripts/GameFeel/FeelSfxPlayer.gd" id="6_vkbgl"]
+[ext_resource type="Script" uid="uid://q401bcjsgqij" path="res://scripts/GameFeel/CursorChanger.gd" id="7_y5km3"]
 [ext_resource type="AudioStream" path="res://resources/sfx/knock.tres" id="20_knock"]
 [ext_resource type="AudioStream" path="res://resources/sfx/paper.tres" id="21_paper"]
 

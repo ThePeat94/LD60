@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b44cjm750ude"]
 
 [ext_resource type="Texture2D" uid="uid://cvfs36y1dbfa3" path="res://assets/art/gnomes.png" id="1_xtqlo"]
-[ext_resource type="Script" path="res://scripts/Automation/GnomeJumper.cs" id="2_jumper"]
+[ext_resource type="Script" path="res://scripts/Automation/GnomeJumper.gd" id="2_jumper"]
 [ext_resource type="AudioStream" path="res://resources/sfx/wichtel_jump.tres" id="3_wichtel"]
 
 [node name="ThinkerGnome" type="Sprite2D" unique_id=1745542875 node_paths=PackedStringArray("m_jumpSound")]

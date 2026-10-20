@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="SkillTreeItemData" format=3 uid="uid://dndv536kpn5d"]
 
-[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_8cmom"]
-[ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.cs" id="2_122jg"]
+[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.gd" id="1_8cmom"]
+[ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.gd" id="2_122jg"]
 [ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="3_i3kly"]
 [ext_resource type="Resource" uid="uid://bob7j5enkojt0" path="res://resources/skillTree/items/employees/scribes/stronger_scribes.tres" id="4_oe482"]
-[ext_resource type="Script" uid="uid://t2go5ui1sips" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/Employee/EmployeeStatUpgradeData.cs" id="5_v7610"]
-[ext_resource type="Script" uid="uid://dpajxbew4x3bl" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/Employee/EmployeeUpgradeData.cs" id="6_qqun0"]
-[ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.cs" id="7_3ke3y"]
+[ext_resource type="Script" uid="uid://t2go5ui1sips" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/Employee/EmployeeStatUpgradeData.gd" id="5_v7610"]
+[ext_resource type="Script" uid="uid://dpajxbew4x3bl" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/Employee/EmployeeUpgradeData.gd" id="6_qqun0"]
+[ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.gd" id="7_3ke3y"]
 
 [sub_resource type="Resource" id="Resource_5ai3e"]
 script = ExtResource("1_8cmom")

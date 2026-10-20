@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SkillTreeData" format=3 uid="uid://li5dexrn8bes"]
 
 [ext_resource type="Resource" uid="uid://cac8ru3omfski" path="res://resources/skillTree/items/click_upgrade_1.tres" id="1_68ubl"]
-[ext_resource type="Script" uid="uid://b4d1rxh2lehqs" path="res://scripts/GDResource/SkillTree/SkillTreeData.cs" id="1_ijrdn"]
+[ext_resource type="Script" uid="uid://b4d1rxh2lehqs" path="res://scripts/GDResource/SkillTree/SkillTreeData.gd" id="1_ijrdn"]
 [ext_resource type="Resource" uid="uid://c4dhm6i7m4tr" path="res://resources/skillTree/items/click_upgrade_2.tres" id="2_rtaxg"]
 [ext_resource type="Resource" uid="uid://f82dr3wb1xlu" path="res://resources/skillTree/items/potent_patents_1.tres" id="3_0af8t"]
 [ext_resource type="Resource" uid="uid://btvasmfjvbxqn" path="res://resources/skillTree/items/skilled_skiller.tres" id="4_k26h1"]

@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="SkillTreeItemData" format=3 uid="uid://d0hgx6eca0xng"]
 
-[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_3d1fk"]
-[ext_resource type="Script" uid="uid://dvbi6j25t5f7m" path="res://scripts/GDResource/SkillTree/FeatureUnlock/GameFeature/UnlockGameFeatureData.cs" id="1_htgpc"]
-[ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.cs" id="2_j7mnr"]
+[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.gd" id="1_3d1fk"]
+[ext_resource type="Script" uid="uid://dvbi6j25t5f7m" path="res://scripts/GDResource/SkillTree/FeatureUnlock/GameFeature/UnlockGameFeatureData.gd" id="1_htgpc"]
+[ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.gd" id="2_j7mnr"]
 [ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="3_av1m2"]
-[ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.cs" id="5_erxa7"]
+[ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.gd" id="5_erxa7"]
 
 [sub_resource type="Resource" id="Resource_laxis"]
 script = ExtResource("1_3d1fk")

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EmployeeData" format=3 uid="uid://c77eepetb3eb7"]
 
-[ext_resource type="Script" uid="uid://dj4g1vjvrf4hn" path="res://scripts/GDResource/Employee/EmployeeData.cs" id="1_dwy0e"]
-[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_rqkjw"]
+[ext_resource type="Script" uid="uid://dj4g1vjvrf4hn" path="res://scripts/GDResource/Employee/EmployeeData.gd" id="1_dwy0e"]
+[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.gd" id="1_rqkjw"]
 [ext_resource type="Texture2D" uid="uid://3341dyfgqcp8" path="res://assets/art/icons and plates/employees/thinker_gnome.png" id="2_rqkjw"]
 
 [sub_resource type="Resource" id="Resource_uxoma"]

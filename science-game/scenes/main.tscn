@@ -15,21 +15,21 @@
 [ext_resource type="PackedScene" uid="uid://b07fw6hiuhj2u" path="res://scenes/generators/science_generator.tscn" id="13_tel4y"]
 [ext_resource type="PackedScene" uid="uid://dcuw26e2ppgd3" path="res://scenes/generators/patent_generator.tscn" id="14_qkpxi"]
 [ext_resource type="PackedScene" uid="uid://cop5xu6120mg3" path="res://scenes/generators/skill_point_generator.tscn" id="15_5q0nq"]
-[ext_resource type="Script" uid="uid://dmywt6vc0vtok" path="res://scripts/ResourceControllerNode.cs" id="16_dgi5k"]
-[ext_resource type="Script" uid="uid://0tgd1yd4japm" path="res://scripts/PlayerStats/PlayerStatsContainer.cs" id="17_j8jky"]
+[ext_resource type="Script" uid="uid://dmywt6vc0vtok" path="res://scripts/ResourceControllerNode.gd" id="16_dgi5k"]
+[ext_resource type="Script" uid="uid://0tgd1yd4japm" path="res://scripts/PlayerStats/PlayerStatsContainer.gd" id="17_j8jky"]
 [ext_resource type="Resource" uid="uid://b0lmcslgtykk4" path="res://resources/base_player_stats.tres" id="18_kmb1v"]
 [ext_resource type="PackedScene" uid="uid://dmvasq8mrr7ks" path="res://scenes/employees/employee_controller.tscn" id="19_fuf3a"]
-[ext_resource type="Script" uid="uid://bv0nr4cjm43w8" path="res://scripts/GameFeel/CursorInstaller.cs" id="21_yc10j"]
+[ext_resource type="Script" uid="uid://bv0nr4cjm43w8" path="res://scripts/GameFeel/CursorInstaller.gd" id="21_yc10j"]
 [ext_resource type="AudioStream" uid="uid://b1yc3bgcsiy6y" path="res://assets/music/Science Gamejam.mp3" id="22_jscy8"]
 [ext_resource type="PackedScene" uid="uid://xqq4tj53sw6c" path="res://scenes/ui/patent_progress_bar.tscn" id="23_pbar"]
 [ext_resource type="PackedScene" uid="uid://b5xjxs7xrwtig" path="res://scenes/ui/knowledge_progress_bar.tscn" id="24_kbar"]
 [ext_resource type="AudioStream" uid="uid://b72ixchox5uo6" path="res://assets/music/Idle Academia Theme.mp3" id="24_og1vs"]
-[ext_resource type="Script" uid="uid://dmmh2a0h8mjf6" path="res://scripts/GameFeel/MusicPlayer.cs" id="25_2wyq8"]
-[ext_resource type="Script" uid="uid://4p1hd3s4ncgp" path="res://scripts/GameState/GameStateManager.cs" id="26_2wyq8"]
-[ext_resource type="Script" uid="uid://div4ko4tu80ln" path="res://scripts/GameFeel/FeelGlow.cs" id="30_glow"]
+[ext_resource type="Script" uid="uid://dmmh2a0h8mjf6" path="res://scripts/GameFeel/MusicPlayer.gd" id="25_2wyq8"]
+[ext_resource type="Script" uid="uid://4p1hd3s4ncgp" path="res://scripts/GameState/GameStateManager.gd" id="26_2wyq8"]
+[ext_resource type="Script" uid="uid://div4ko4tu80ln" path="res://scripts/GameFeel/FeelGlow.gd" id="30_glow"]
 [ext_resource type="Texture2D" uid="uid://bwearclyoiu7h" path="res://assets/art/glow_shop.png" id="31_glowskill"]
 [ext_resource type="Texture2D" uid="uid://bti5vei1w2y8q" path="res://assets/art/glow_skilltree.png" id="32_glowshop"]
-[ext_resource type="Script" uid="uid://c3y7xih1m0t7l" path="res://scripts/GameFeel/FeelPopupLabel.cs" id="33_popup"]
+[ext_resource type="Script" uid="uid://c3y7xih1m0t7l" path="res://scripts/GameFeel/FeelPopupLabel.gd" id="33_popup"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_x86fe"]
 clip_count = 2
@@ -446,6 +446,7 @@ metadata/_custom_type_script = "uid://bv0nr4cjm43w8"
 stream = SubResource("AudioStreamInteractive_x86fe")
 volume_db = 5.74
 autoplay = true
+playback_type = 1
 script = ExtResource("25_2wyq8")
 
 [node name="GameStateManager" type="Node" parent="." unique_id=1879523095 node_paths=PackedStringArray("m_musicPlayer", "m_employeeController")]

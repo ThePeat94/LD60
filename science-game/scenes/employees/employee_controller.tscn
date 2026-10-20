@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dmvasq8mrr7ks"]
 
-[ext_resource type="Script" uid="uid://ddemuenp0lqtk" path="res://scripts/Automation/EmployeeController.cs" id="1_kl4nu"]
+[ext_resource type="Script" uid="uid://ddemuenp0lqtk" path="res://scripts/Automation/EmployeeController.gd" id="1_kl4nu"]
 [ext_resource type="PackedScene" uid="uid://4ux0ljfhtpgf" path="res://scenes/employees/thinker.tscn" id="2_58e0d"]
 [ext_resource type="PackedScene" uid="uid://cd3v04n6sk73t" path="res://scenes/employees/inventor.tscn" id="3_a51w3"]
 [ext_resource type="PackedScene" uid="uid://801xtflpr5br" path="res://scenes/employees/scribe.tscn" id="4_m2o51"]

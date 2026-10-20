@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://xqq4tj53sw6c"]
 
-[ext_resource type="Script" uid="uid://85zt6ebl0m7yw" path="res://scripts/UI/GeneratorProgressBar.cs" id="1_script"]
+[ext_resource type="Script" uid="uid://85zt6ebl0m7yw" path="res://scripts/UI/GeneratorProgressBar.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://dfpomdldsnhhp" path="res://assets/art/progressbars-icons/progressbar_background_left.png" id="2_bg"]
 [ext_resource type="Texture2D" uid="uid://buivcm2y0nayn" path="res://assets/art/progressbars-icons/progressbar_left_filled.png" id="3_fill"]
 [ext_resource type="Texture2D" uid="uid://54x8v266m1s" path="res://assets/art/progressbars-icons/progressbar_left.png" id="4_outline"]
 [ext_resource type="Texture2D" uid="uid://dq32kwewidpw4" path="res://assets/art/progressbars-icons/symbol_left_patent.png" id="5_icon"]
-[ext_resource type="Script" uid="uid://mvl7oeixktlca" path="res://scripts/GameFeel/FeelPopupLabel.cs" id="6_popup"]
+[ext_resource type="Script" uid="uid://c3y7xih1m0t7l" path="res://scripts/GameFeel/FeelPopupLabel.gd" id="6_popup"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fill"]
 atlas = ExtResource("3_fill")
@@ -50,7 +50,7 @@ m_fontSize = 44
 m_riseDistance = 60.0
 m_duration = 2.0
 m_followMouse = false
-metadata/_custom_type_script = "uid://mvl7oeixktlca"
+metadata/_custom_type_script = "uid://c3y7xih1m0t7l"
 
 [node name="CountAnchor" type="Node2D" parent="." unique_id=1730224601]
 position = Vector2(-121, -9.5)

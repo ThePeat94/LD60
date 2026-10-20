@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cop5xu6120mg3"]
 
-[ext_resource type="Script" uid="uid://rqesxtjjsjl4" path="res://scripts/Generator/GeneratorController.cs" id="2_ep6bw"]
+[ext_resource type="Script" uid="uid://rqesxtjjsjl4" path="res://scripts/Generator/GeneratorController.gd" id="2_ep6bw"]
 [ext_resource type="Resource" uid="uid://fk7grp2true3" path="res://resources/skill_point_level_data.tres" id="3_34ywl"]
-[ext_resource type="Script" uid="uid://dmywt6vc0vtok" path="res://scripts/ResourceControllerNode.cs" id="5_s5ah5"]
-[ext_resource type="Script" uid="uid://nto14lja7dgm" path="res://scripts/Generator/SkillPointGeneratorRewardController.cs" id="6_8dt4t"]
-[ext_resource type="Script" uid="uid://ngvqkxdthk4f" path="res://scripts/GameFeel/FeelShaker.cs" id="6_8tly7"]
+[ext_resource type="Script" uid="uid://dmywt6vc0vtok" path="res://scripts/ResourceControllerNode.gd" id="5_s5ah5"]
+[ext_resource type="Script" uid="uid://nto14lja7dgm" path="res://scripts/Generator/SkillPointGeneratorRewardController.gd" id="6_8dt4t"]
+[ext_resource type="Script" uid="uid://ngvqkxdthk4f" path="res://scripts/GameFeel/FeelShaker.gd" id="6_8tly7"]
 [ext_resource type="Texture2D" uid="uid://b1fkc57o7ydbe" path="res://assets/art/right_section_bookshelf/bookshelf-right-section.png" id="6_iuxxb"]
 [ext_resource type="PackedScene" uid="uid://xpqdrsj1rm2i" path="res://scenes/gnomes/scribe_gnome.tscn" id="6_x3hhi"]
 [ext_resource type="AudioStream" uid="uid://de1h3us33ua15" path="res://assets/sfx/400 Sounds Pack/Materials/paper_move.wav" id="7_afykx"]
@@ -12,11 +12,11 @@
 [ext_resource type="AudioStream" uid="uid://gu8l3b8t6dym" path="res://assets/sfx/400 Sounds Pack/Materials/paper_sort.wav" id="9_x3hhi"]
 [ext_resource type="AudioStream" uid="uid://beethmyx1n0x8" path="res://assets/sfx/400 Sounds Pack/Materials/paper_tear_1.wav" id="10_g507v"]
 [ext_resource type="AudioStream" uid="uid://b245csu4a7y0i" path="res://assets/sfx/400 Sounds Pack/Materials/paper_tear_2.wav" id="11_oudt5"]
-[ext_resource type="Script" uid="uid://bglusmjfbdqlj" path="res://scripts/GameFeel/FeelSfxPlayer.cs" id="12_thcd7"]
-[ext_resource type="Script" uid="uid://mod3uhf0e68j" path="res://scripts/GameFeel/FeelVfxIconSpawner.cs" id="13_wdhrk"]
+[ext_resource type="Script" uid="uid://bglusmjfbdqlj" path="res://scripts/GameFeel/FeelSfxPlayer.gd" id="12_thcd7"]
+[ext_resource type="Script" uid="uid://mod3uhf0e68j" path="res://scripts/GameFeel/FeelVfxIconSpawner.gd" id="13_wdhrk"]
 [ext_resource type="PackedScene" uid="uid://bntuvd3a5igwm" path="res://scenes/feel/board_particles.tscn" id="14_x3hhi"]
-[ext_resource type="Script" uid="uid://q401bcjsgqij" path="res://scripts/GameFeel/CursorChanger.cs" id="16_g507v"]
-[ext_resource type="Script" uid="uid://mvl7oeixktlca" path="res://scripts/GameFeel/FeelPopupLabel.cs" id="30_popup"]
+[ext_resource type="Script" uid="uid://q401bcjsgqij" path="res://scripts/GameFeel/CursorChanger.gd" id="16_g507v"]
+[ext_resource type="Script" uid="uid://c3y7xih1m0t7l" path="res://scripts/GameFeel/FeelPopupLabel.gd" id="30_popup"]
 [ext_resource type="AudioStream" uid="uid://o1d5i20lub8" path="res://assets/sfx/own/books_01.wav" id="31_books01"]
 [ext_resource type="AudioStream" uid="uid://jtr1jqw5xjai" path="res://assets/sfx/own/books_02.wav" id="31_books02"]
 [ext_resource type="AudioStream" uid="uid://bwa1gb5836p8d" path="res://assets/sfx/own/books_03.wav" id="31_books03"]
@@ -27,7 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://bb3o63pmtvx3u" path="res://assets/sfx/own/books_08.wav" id="31_books08"]
 [ext_resource type="AudioStream" uid="uid://bcliv6y3kut1m" path="res://assets/sfx/own/books_09.wav" id="31_books09"]
 [ext_resource type="AudioStream" uid="uid://bo16ie022eb7" path="res://assets/sfx/own/books_10.wav" id="31_books10"]
-[ext_resource type="Script" path="res://scripts/GameFeel/SymbolStore.cs" id="40_symbols"]
+[ext_resource type="Script" path="res://scripts/GameFeel/SymbolStore.gd" id="40_symbols"]
 [ext_resource type="Texture2D" uid="uid://cqfrqfe17ecc1" path="res://assets/art/formulas.png" id="41_formulas"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bklno"]
@@ -112,7 +112,7 @@ metadata/_custom_type_script = "uid://q401bcjsgqij"
 script = ExtResource("30_popup")
 m_origin = NodePath("..")
 m_text = "Think more."
-metadata/_custom_type_script = "uid://mvl7oeixktlca"
+metadata/_custom_type_script = "uid://c3y7xih1m0t7l"
 
 [node name="NotEnoughSFX" type="AudioStreamPlayer2D" parent="." unique_id=1873461103]
 stream = SubResource("AudioStreamRandomizer_notenough")

@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="SkillTreeItemData" format=3 uid="uid://clcr81107edrj"]
 
-[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_ux4kv"]
-[ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.cs" id="2_fdljc"]
+[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.gd" id="1_ux4kv"]
+[ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.gd" id="2_fdljc"]
 [ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="3_ksbdo"]
 [ext_resource type="Resource" uid="uid://dhy1gqn20qbpp" path="res://resources/shop/inventor.tres" id="4_4kcfg"]
 [ext_resource type="Resource" uid="uid://cpufjmdm5v4pq" path="res://resources/skillTree/items/employees/thinker/unlock_thinkers.tres" id="4_fdljc"]
-[ext_resource type="Script" uid="uid://ma5ppe0wfeik" path="res://scripts/GDResource/SkillTree/FeatureUnlock/UnlockShopFeatureData.cs" id="5_hbjxm"]
-[ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.cs" id="6_c3fb6"]
+[ext_resource type="Script" uid="uid://ma5ppe0wfeik" path="res://scripts/GDResource/SkillTree/FeatureUnlock/UnlockShopFeatureData.gd" id="5_hbjxm"]
+[ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.gd" id="6_c3fb6"]
 
 [sub_resource type="Resource" id="Resource_5ai3e"]
 script = ExtResource("1_ux4kv")

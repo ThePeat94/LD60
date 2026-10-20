@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://fol8hisegv4k"]
 
-[ext_resource type="Script" uid="uid://cw66s6x3klg6l" path="res://scripts/Shop/UI/ShopUI.cs" id="1_gk7bq"]
+[ext_resource type="Script" uid="uid://cw66s6x3klg6l" path="res://scripts/Shop/UI/ShopUI.gd" id="1_gk7bq"]
 [ext_resource type="PackedScene" uid="uid://b74twwfigbo50" path="res://scenes/shop/item_ui.tscn" id="2_8cucq"]
-[ext_resource type="Script" path="res://scripts/UI/DragScrollContainer.cs" id="40_dragscroll"]
+[ext_resource type="Script" path="res://scripts/UI/DragScrollContainer.gd" id="40_dragscroll"]
 [ext_resource type="Texture2D" path="res://resources/icons/back_button.tres" id="43_back"]
-[ext_resource type="Script" path="res://scripts/GameFeel/FeelHoverScale.cs" id="44_hover"]
+[ext_resource type="Script" path="res://scripts/GameFeel/FeelHoverScale.gd" id="44_hover"]
 
 
 [node name="ShopUI" type="AspectRatioContainer" unique_id=1511127767 node_paths=PackedStringArray("ItemsParent")]

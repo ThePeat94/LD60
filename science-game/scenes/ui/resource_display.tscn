@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://2adk1jsitgvd" path="res://assets/art/icons and plates/science-plate-filled.png" id="1_3a1rf"]
 [ext_resource type="Texture2D" uid="uid://b2tv4e3k0ih55" path="res://assets/art/progressbars-icons/thinking-icon.png" id="2_gar0h"]
-[ext_resource type="Script" uid="uid://0c6plthlac1x" path="res://scripts/UI/ResourceDisplay.cs" id="3_rlfi3"]
+[ext_resource type="Script" uid="uid://0c6plthlac1x" path="res://scripts/UI/ResourceDisplay.gd" id="3_rlfi3"]
 
 [node name="Resource Display" type="Node2D" unique_id=1726028393]
 

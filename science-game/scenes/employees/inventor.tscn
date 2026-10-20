@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cd3v04n6sk73t"]
 
-[ext_resource type="Script" uid="uid://dak1fxj4acwyo" path="res://scripts/Automation/Employee.cs" id="1_niu21"]
+[ext_resource type="Script" uid="uid://dak1fxj4acwyo" path="res://scripts/Automation/Employee.gd" id="1_niu21"]
 [ext_resource type="Resource" uid="uid://dsswpexp7xtvm" path="res://resources/employees/inventor.tres" id="2_1gpoj"]
 
 [node name="Inventor" type="Node" unique_id=1502549513 node_paths=PackedStringArray("m_timer")]

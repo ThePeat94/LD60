@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="ShopItemData" format=3 uid="uid://dhy1gqn20qbpp"]
 
-[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_nmyqq"]
-[ext_resource type="Script" uid="uid://x8p1lmq5yrwt" path="res://scripts/GDResource/MathModels/ExponentialModelResource.cs" id="2_fbcwu"]
+[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.gd" id="1_nmyqq"]
+[ext_resource type="Script" uid="uid://x8p1lmq5yrwt" path="res://scripts/GDResource/MathModels/ExponentialModelResource.gd" id="2_fbcwu"]
 [ext_resource type="Texture2D" uid="uid://c5natnr68jm6o" path="res://assets/art/icons and plates/employees/inventor_gnome.png" id="3_nmyqq"]
-[ext_resource type="Script" uid="uid://ccafmo7dhkbnm" path="res://scripts/GDResource/Shop/InventorUpgradeData.cs" id="4_nmyqq"]
-[ext_resource type="Script" uid="uid://bm5tdny5chcwa" path="res://scripts/GDResource/Shop/ShopItemData.cs" id="5_kadwq"]
+[ext_resource type="Script" uid="uid://ccafmo7dhkbnm" path="res://scripts/GDResource/Shop/InventorUpgradeData.gd" id="4_nmyqq"]
+[ext_resource type="Script" uid="uid://bm5tdny5chcwa" path="res://scripts/GDResource/Shop/ShopItemData.gd" id="5_kadwq"]
 
 [sub_resource type="Resource" id="Resource_dxvlt"]
 script = ExtResource("1_nmyqq")

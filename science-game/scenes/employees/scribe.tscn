@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://801xtflpr5br"]
 
-[ext_resource type="Script" uid="uid://dak1fxj4acwyo" path="res://scripts/Automation/Employee.cs" id="1_d8077"]
+[ext_resource type="Script" uid="uid://dak1fxj4acwyo" path="res://scripts/Automation/Employee.gd" id="1_d8077"]
 [ext_resource type="Resource" uid="uid://chdeqx4qgw2h0" path="res://resources/employees/scribe.tres" id="2_d8077"]
 
 [node name="Scribe" type="Node" unique_id=1428137053 node_paths=PackedStringArray("m_timer")]

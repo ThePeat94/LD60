@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EmployeeData" format=3 uid="uid://dsswpexp7xtvm"]
 
-[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_480wg"]
-[ext_resource type="Script" uid="uid://dj4g1vjvrf4hn" path="res://scripts/GDResource/Employee/EmployeeData.cs" id="1_ba20h"]
+[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.gd" id="1_480wg"]
+[ext_resource type="Script" uid="uid://dj4g1vjvrf4hn" path="res://scripts/GDResource/Employee/EmployeeData.gd" id="1_ba20h"]
 [ext_resource type="Texture2D" uid="uid://c5natnr68jm6o" path="res://assets/art/icons and plates/employees/inventor_gnome.png" id="2_480wg"]
 
 [sub_resource type="Resource" id="Resource_t6ywl"]
