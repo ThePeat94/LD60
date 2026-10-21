@@ -21,8 +21,9 @@
 [ext_resource type="Resource" uid="uid://dqxfaln4u1uod" path="res://resources/skillTree/items/employees/scribes/inspired_scribes.tres" id="18_inspr"]
 [ext_resource type="Resource" uid="uid://ya71iy6o0win" path="res://resources/skillTree/items/employees/scribes/prolific_scribes.tres" id="19_prolf"]
 [ext_resource type="Resource" uid="uid://htwgobpitiao" path="res://resources/skillTree/items/gameFeatures/game_won.tres" id="20_gwon"]
+[ext_resource type="Resource" uid="uid://dnxoqrqqv7av1" path="res://resources/skillTree/items/employees/thinker/skilled_thinkers.tres" id="21_8028c"]
 
 [resource]
 script = ExtResource("1_ijrdn")
-Upgrades = Array[Object]([ExtResource("1_68ubl"), ExtResource("2_rtaxg"), ExtResource("3_0af8t"), ExtResource("4_k26h1"), ExtResource("5_lhk3i"), ExtResource("6_2view"), ExtResource("7_cadfl"), ExtResource("8_lopct"), ExtResource("9_n7tn3"), ExtResource("10_st8db"), ExtResource("11_lopct"), ExtResource("12_n7tn3"), ExtResource("13_st8db"), ExtResource("14_n7tn3"), ExtResource("15_st8db"), ExtResource("16_seasn"), ExtResource("17_mastr"), ExtResource("18_inspr"), ExtResource("19_prolf"), ExtResource("20_gwon")])
+Upgrades = Array[Object]([ExtResource("1_68ubl"), ExtResource("2_rtaxg"), ExtResource("3_0af8t"), ExtResource("4_k26h1"), ExtResource("5_lhk3i"), ExtResource("6_2view"), ExtResource("7_cadfl"), ExtResource("8_lopct"), ExtResource("9_n7tn3"), ExtResource("10_st8db"), ExtResource("11_lopct"), ExtResource("12_n7tn3"), ExtResource("13_st8db"), ExtResource("14_n7tn3"), ExtResource("15_st8db"), ExtResource("16_seasn"), ExtResource("17_mastr"), ExtResource("18_inspr"), ExtResource("19_prolf"), ExtResource("20_gwon"), ExtResource("21_8028c")])
 metadata/_custom_type_script = "uid://b4d1rxh2lehqs"

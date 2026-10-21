@@ -19,10 +19,13 @@ public partial class GameStateManager : Node
 
     private void OnEmployeeBought()
     {
-        if (this.m_employeeController.Inventors.Count > 0 && this.m_employeeController.Scribes.Count > 0 && this.m_employeeController.Thinkers.Count > 0)
+        if (this.m_currentProgressionState == GameProgressionState.Beginning)
         {
-            this.m_musicPlayer.Advance();
-            this.m_currentProgressionState = GameProgressionState.Midgame;
+            if (this.m_employeeController.Inventors.Count > 0 && this.m_employeeController.Scribes.Count > 0 && this.m_employeeController.Thinkers.Count > 0)
+            {
+                this.m_musicPlayer.Advance();
+                this.m_currentProgressionState = GameProgressionState.Midgame;
+            }
         }
     }
 }

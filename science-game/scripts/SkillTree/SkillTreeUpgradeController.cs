@@ -2,14 +2,14 @@ using System;
 using Godot;
 using Nidavellir.Automation;
 using Nidavellir.GDResource;
+using Nidavellir.GDResource.SkillTree.EntityStatUpgrades;
+using Nidavellir.GDResource.SkillTree.EntityStatUpgrades.Employee;
 using Nidavellir.GDResource.SkillTree.EntityStatUpgrades.Player;
 using Nidavellir.GDResource.SkillTree.FeatureUnlock;
 using Nidavellir.PlayerStats;
 using Nidavellir.Shop;
+using Nidavellir.Stats;
 using Nidavellir.UI;
-using EmployeeUpgradeData = Nidavellir.GDResource.SkillTree.EntityStatUpgrades.Employee.EmployeeUpgradeData;
-using PlayerUpgradeData = Nidavellir.GDResource.SkillTree.EntityStatUpgrades.Player.PlayerUpgradeData;
-using UnlockShopFeatureData = Nidavellir.GDResource.SkillTree.FeatureUnlock.UnlockShopFeatureData;
 
 namespace Nidavellir.SkillTree;
 
@@ -21,7 +21,8 @@ public partial class SkillTreeUpgradeController : Node
     [Export] private GeneratorUnlocker m_patentUnlocker;
     [Export] private ShopUnlocker m_shopUnlocker;
     [Export] private GameWonUI m_gameWonUi;
-
+    [Export] private EntityStatUpgradeFactory m_entityStatUpgradeFactory;
+    
     public void ApplyPlayerStatUpgrade(PlayerUpgradeData u)
     {
         foreach (var upgrade in u.Upgrades)
@@ -29,14 +30,17 @@ public partial class SkillTreeUpgradeController : Node
             switch (upgrade.Target)
             {
                 case PlayerStatTarget.ClickStrength:
-                    this.m_playerStats.ClickStrength.AddEntityStatUpgrade(upgrade);
+                    this.m_playerStats.ClickStrength.AddEntityStatUpgrade(this.m_entityStatUpgradeFactory.Create(upgrade));
                     break;
                 case PlayerStatTarget.MoneyConversion:
-                    this.m_playerStats.MoneyConversion.AddEntityStatUpgrade(upgrade);
+                    this.m_playerStats.MoneyConversion.AddEntityStatUpgrade(this.m_entityStatUpgradeFactory.Create(upgrade));
                     break;
                 case PlayerStatTarget.SkillPointConversion:
-                    this.m_playerStats.SkillPointConversion.AddEntityStatUpgrade(upgrade);
+                    this.m_playerStats.SkillPointConversion.AddEntityStatUpgrade(this.m_entityStatUpgradeFactory.Create(upgrade));
                     break;
+                default:
+                    GD.PrintErr($"Unknown PlayerStatTarget to upgrade: {upgrade.Target}");
+                    throw new ArgumentOutOfRangeException();
             }
         }
     }

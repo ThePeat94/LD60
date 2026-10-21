@@ -1,8 +1,11 @@
+using System;
+using Nidavellir.GDResource.SkillTree.EntityStatUpgrades;
 using Nidavellir.IdleNumbers;
 
 namespace Nidavellir.Stats;
 
-public class EntityStatUpgrade(IdleNumber value)
+public abstract class EntityStatUpgrade(IdleNumber value, StatOperation operation)
 {
-    public IdleNumber Value { get; private set; } = value;
+    public abstract IdleNumber Value { get; }
+    public StatOperation Operation { get; } = operation;
 }

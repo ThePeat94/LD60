@@ -1,55 +1,55 @@
 using System;
 using System.Collections.Generic;
-using Nidavellir.GDResource.SkillTree;
+using Godot;
 using Nidavellir.GDResource.SkillTree.EntityStatUpgrades;
 using Nidavellir.IdleNumbers;
-using EntityStatUpgradeData = Nidavellir.GDResource.SkillTree.EntityStatUpgrades.EntityStatUpgradeData;
 
 namespace Nidavellir.Stats;
 
 public class EntityStat(IdleNumber baseValue)
 {
-    public IdleNumber Value { get; private set; } = baseValue;
-    private readonly IdleNumber m_baseValue = baseValue;
+    public IdleNumber Value => this.Recalculate();
     private readonly List<EntityStatUpgrade> m_additivePlayerStatUpgrades = [];
     private readonly List<EntityStatUpgrade> m_multiplicativeEntityStatUpgrades = [];
     private readonly List<EntityStatUpgrade> m_subtractiveEntityStatUpgrades = [];
 
-    public void AddEntityStatUpgrade(EntityStatUpgradeData upgrade)
+    public void AddEntityStatUpgrade(EntityStatUpgrade upgrade)
     {
-        var increase = upgrade.Amount.ToIdleNumber();
         switch (upgrade.Operation)
         {
             case StatOperation.Add:
-                this.m_additivePlayerStatUpgrades.Add(new EntityStatUpgrade(increase));
+                this.m_additivePlayerStatUpgrades.Add(upgrade);
                 break;
             case StatOperation.Multiply:
-                this.m_multiplicativeEntityStatUpgrades.Add(new EntityStatUpgrade(increase));
+                this.m_multiplicativeEntityStatUpgrades.Add(upgrade);
                 break;
             case StatOperation.Subtract:
-                this.m_subtractiveEntityStatUpgrades.Add(new EntityStatUpgrade(increase));
+                this.m_subtractiveEntityStatUpgrades.Add(upgrade);
                 break;
+            default:
+                GD.PrintErr($"Unknown StatOperation: {upgrade.Operation}");
+                throw new ArgumentOutOfRangeException();
         }
-
-        this.Recalculate();
     }
 
-    private void Recalculate()
+    private IdleNumber Recalculate()
     {
-        this.Value = this.m_baseValue;
+        var baseVal = baseValue;
         foreach (var additive in this.m_additivePlayerStatUpgrades)
         {
-            this.Value += additive.Value;
+            baseVal += additive.Value;
         }
 
         foreach (var subtraction in this.m_subtractiveEntityStatUpgrades)
         {
-            this.Value -= subtraction.Value;
+            baseVal -= subtraction.Value;
         }
 
         foreach (var multiplicative in this.m_multiplicativeEntityStatUpgrades)
         {
-            this.Value *= multiplicative.Value;
+            baseVal *= multiplicative.Value;
         }
+
+        return baseVal;
     }
 }

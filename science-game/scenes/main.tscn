@@ -28,6 +28,7 @@
 [ext_resource type="Script" uid="uid://4p1hd3s4ncgp" path="res://scripts/GameState/GameStateManager.cs" id="26_2wyq8"]
 [ext_resource type="Script" uid="uid://div4ko4tu80ln" path="res://scripts/GameFeel/FeelGlow.cs" id="30_glow"]
 [ext_resource type="Texture2D" uid="uid://bwearclyoiu7h" path="res://assets/art/glow_shop.png" id="31_glowskill"]
+[ext_resource type="Script" uid="uid://cl7k1dxn5nx45" path="res://scripts/Stats/EntityStatUpgradeFactory.cs" id="31_tel4y"]
 [ext_resource type="Texture2D" uid="uid://bti5vei1w2y8q" path="res://assets/art/glow_skilltree.png" id="32_glowshop"]
 [ext_resource type="Script" uid="uid://c3y7xih1m0t7l" path="res://scripts/GameFeel/FeelPopupLabel.cs" id="33_popup"]
 
@@ -143,13 +144,14 @@ m_notEnoughPopup = NodePath("../../../GameHUD/NotEnoughDegreesPopup")
 z_index = 5
 position = Vector2(0, 1)
 
-[node name="UpgradeController" parent="Room/Desk/SkilltreeController" index="1" unique_id=1259699767 node_paths=PackedStringArray("m_playerStats", "m_employeeController", "m_shopController", "m_patentUnlocker", "m_shopUnlocker", "m_gameWonUi")]
+[node name="UpgradeController" parent="Room/Desk/SkilltreeController" index="1" unique_id=1259699767 node_paths=PackedStringArray("m_playerStats", "m_employeeController", "m_shopController", "m_patentUnlocker", "m_shopUnlocker", "m_gameWonUi", "m_entityStatUpgradeFactory")]
 m_playerStats = NodePath("../../../../PlayerStats")
 m_employeeController = NodePath("../../../../EmployeeController")
 m_shopController = NodePath("../../ShopController")
 m_patentUnlocker = NodePath("../../../../PatentGenerator/Unlocker")
 m_shopUnlocker = NodePath("../../ShopController/Unlocker")
 m_gameWonUi = NodePath("../../../../GameHUD/GameWonUI")
+m_entityStatUpgradeFactory = NodePath("../../../../StatUpgradeFactory")
 
 [node name="AudioStreamPlayer2D" parent="Room/Desk/SkilltreeController" index="2" unique_id=2103824053]
 volume_db = -10.0
@@ -198,12 +200,6 @@ ShopController = NodePath("../../Room/Desk/ShopController")
 [node name="ResourceDisplay" parent="GameHUD/ShopUI/Panel/HBoxContainer" parent_id_path=PackedInt32Array(1847261213, 1524514352) index="1" unique_id=1615407582 node_paths=PackedStringArray("ResourceControllerNode")]
 ResourceControllerNode = NodePath("../../../../../ResourceControllers/GlobalMoneyController")
 
-[node name="PaidInPatentsNote" parent="GameHUD/ShopUI" index="1" unique_id=1907315401]
-layout_mode = 2
-
-[node name="Skill Tree" parent="GameHUD" index="1" unique_id=1222491598]
-visible = true
-
 [node name="Label" parent="GameHUD/Skill Tree/Panel" parent_id_path=PackedInt32Array(1847261213, 372858125) index="1" unique_id=1299036100]
 layout_mode = 0
 anchors_preset = 0
@@ -226,86 +222,85 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="Container" parent="GameHUD/Skill Tree/Panel/ScrollContainer" index="0" unique_id=1347082111 node_paths=PackedStringArray("m_skillTreeController")]
-anchors_preset = 0
 m_skillTreeController = NodePath("../../../../../Room/Desk/SkilltreeController")
 
 [node name="Base Click Upgrade" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="0" unique_id=878878694]
 custom_minimum_size = Vector2(300, 120)
 offset_bottom = 343.0
 
-[node name="Multiplicative Click Upgrade" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="1" unique_id=127105399]
+[node name="Multiplicative Click Upgrade" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="2" unique_id=127105399]
 custom_minimum_size = Vector2(300, 120)
 offset_bottom = 683.0
 
-[node name="Potent Patents" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="2" unique_id=748500048]
+[node name="Potent Patents" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="3" unique_id=748500048]
 custom_minimum_size = Vector2(300, 120)
 offset_bottom = 1703.0
 
-[node name="Skilled Skiller" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="3" unique_id=2012458393]
+[node name="Skilled Skiller" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="4" unique_id=2012458393]
 custom_minimum_size = Vector2(300, 120)
 offset_bottom = 1703.0
 
-[node name="Unlock Thinkers" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="4" unique_id=1758735702]
+[node name="Unlock Thinkers" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="5" unique_id=1758735702]
 custom_minimum_size = Vector2(300, 120)
 offset_bottom = 1023.0
 
-[node name="Stronger Thinkers" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="5" unique_id=1906036159]
+[node name="Stronger Thinkers" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="6" unique_id=1906036159]
 custom_minimum_size = Vector2(300, 120)
 offset_bottom = 1363.0
 
-[node name="Faster Thinkers" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="6" unique_id=1213503214]
+[node name="Faster Thinkers" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="7" unique_id=1213503214]
 custom_minimum_size = Vector2(300, 120)
 offset_bottom = 1703.0
 
-[node name="Unlock Inventors" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="7" unique_id=762651036]
+[node name="Unlock Inventors" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="8" unique_id=762651036]
 custom_minimum_size = Vector2(300, 120)
 offset_bottom = 1363.0
 
-[node name="Stronger Inventors" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="8" unique_id=1063911208]
+[node name="Stronger Inventors" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="9" unique_id=1063911208]
 custom_minimum_size = Vector2(300, 120)
 offset_bottom = 1703.0
 
-[node name="Faster Inventors" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="9" unique_id=1401414334]
+[node name="Faster Inventors" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="10" unique_id=1401414334]
 custom_minimum_size = Vector2(300, 120)
 offset_bottom = 2043.0
 
-[node name="Unlock Scribes" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="10" unique_id=1271646530]
+[node name="Unlock Scribes" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="11" unique_id=1271646530]
 custom_minimum_size = Vector2(300, 120)
 offset_bottom = 1363.0
 
-[node name="Stronger Scribes" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="11" unique_id=319539269]
+[node name="Stronger Scribes" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="12" unique_id=319539269]
 custom_minimum_size = Vector2(300, 120)
 offset_bottom = 1703.0
 
-[node name="Faster Scribes" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="12" unique_id=1017472423]
+[node name="Faster Scribes" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="13" unique_id=1017472423]
 custom_minimum_size = Vector2(300, 120)
 offset_bottom = 2043.0
 
-[node name="Seasoned Scribes" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="13" unique_id=22205539]
+[node name="Seasoned Scribes" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="14" unique_id=22205539]
 custom_minimum_size = Vector2(300, 120)
 offset_bottom = 2043.0
 
-[node name="Master Scribes" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="14" unique_id=1274510839]
+[node name="Master Scribes" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="15" unique_id=1274510839]
 custom_minimum_size = Vector2(300, 120)
 offset_bottom = 2383.0
 
-[node name="Inspired Scribes" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="15" unique_id=228330183]
+[node name="Inspired Scribes" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="16" unique_id=228330183]
 custom_minimum_size = Vector2(300, 120)
 offset_bottom = 2383.0
 
-[node name="Prolific Scribes" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="16" unique_id=543587678]
+[node name="Prolific Scribes" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="17" unique_id=543587678]
 custom_minimum_size = Vector2(300, 120)
 offset_bottom = 2723.0
 
-[node name="Nobel Prize" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="17" unique_id=1779978527]
+[node name="Nobel Prize" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="18" unique_id=1779978527]
 custom_minimum_size = Vector2(300, 120)
 offset_bottom = 3063.0
 
-[node name="Unlock Patents" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="18" unique_id=1938483727]
+[node name="Unlock Patents" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="19" unique_id=1938483727]
 custom_minimum_size = Vector2(300, 120)
 offset_bottom = 343.0
 
-[node name="Unlock Shop" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="19" unique_id=1720834233]
+[node name="Unlock Shop" parent="GameHUD/Skill Tree/Panel/ScrollContainer/Container" index="20" unique_id=1720834233]
 custom_minimum_size = Vector2(300, 120)
 offset_bottom = 683.0
 
@@ -429,7 +424,7 @@ script = ExtResource("16_dgi5k")
 script = ExtResource("17_j8jky")
 BaseStats = ExtResource("18_kmb1v")
 
-[node name="EmployeeController" parent="." unique_id=130145111 node_paths=PackedStringArray("m_patentGenerator", "m_skillpointGenerator", "m_scienceGenerator", "m_thinkerGnomes", "m_inventorGnomes", "m_scribeGnomes") instance=ExtResource("19_fuf3a")]
+[node name="EmployeeController" parent="." unique_id=130145111 node_paths=PackedStringArray("m_patentGenerator", "m_skillpointGenerator", "m_scienceGenerator", "m_thinkerGnomes", "m_inventorGnomes", "m_scribeGnomes", "m_entityStatUpgradeFactory") instance=ExtResource("19_fuf3a")]
 m_patentGenerator = NodePath("../PatentGenerator")
 m_skillpointGenerator = NodePath("../SkillPointGenerator")
 m_scienceGenerator = NodePath("../ScienceGenerator")
@@ -437,6 +432,7 @@ m_employeesPerGnome = 1
 m_thinkerGnomes = [NodePath("../ScienceGenerator/Board/ThinkerGnome"), NodePath("../ScienceGenerator/Board/ThinkerGnome2"), NodePath("../ScienceGenerator/Board/ThinkerGnome4"), NodePath("../ScienceGenerator/Stool/ThinkerGnome3")]
 m_inventorGnomes = [NodePath("../PatentGenerator/Gnomes/PatentGnome"), NodePath("../PatentGenerator/Gnomes/PatentGnome2"), NodePath("../PatentGenerator/Gnomes/PatentGnome3"), NodePath("../PatentGenerator/Gnomes/PatentGnome4")]
 m_scribeGnomes = [NodePath("../SkillPointGenerator/Sprite2D/ScribeGnome"), NodePath("../SkillPointGenerator/Sprite2D/ScribeGnome2"), NodePath("../SkillPointGenerator/Sprite2D/ScribeGnome3"), NodePath("../SkillPointGenerator/Sprite2D/ScribeGnome4")]
+m_entityStatUpgradeFactory = NodePath("../StatUpgradeFactory")
 
 [node name="CursorInstaller" type="Node" parent="." unique_id=281278508]
 script = ExtResource("21_yc10j")
@@ -453,6 +449,12 @@ script = ExtResource("26_2wyq8")
 m_musicPlayer = NodePath("../Music")
 m_employeeController = NodePath("../EmployeeController")
 
+[node name="StatUpgradeFactory" type="Node" parent="." unique_id=1663807610 node_paths=PackedStringArray("m_patentGenerator", "m_skillPointGenerator", "m_employeeController")]
+script = ExtResource("31_tel4y")
+m_patentGenerator = NodePath("../PatentGenerator")
+m_skillPointGenerator = NodePath("../SkillPointGenerator")
+m_employeeController = NodePath("../EmployeeController")
+
 [editable path="Room/Science Display"]
 [editable path="Room/Skillpoints Displa"]
 [editable path="Room/Money Display"]
@@ -461,6 +463,7 @@ m_employeeController = NodePath("../EmployeeController")
 [editable path="GameHUD"]
 [editable path="GameHUD/ShopUI"]
 [editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Base Click Upgrade"]
+[editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Base Click Upgrade2"]
 [editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Multiplicative Click Upgrade"]
 [editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Potent Patents"]
 [editable path="GameHUD/Skill Tree/Panel/ScrollContainer/Container/Skilled Skiller"]

@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://ckvi1f3dnb88n" path="res://resources/skillTree/items/employees/thinker/faster_thinkers.tres" id="10_qeyxp"]
 [ext_resource type="Resource" uid="uid://cpufjmdm5v4pq" path="res://resources/skillTree/items/employees/thinker/unlock_thinkers.tres" id="11_qeyxp"]
 [ext_resource type="Resource" uid="uid://nyvuxy752fwc" path="res://resources/skillTree/items/employees/inventor/stronger_inventors.tres" id="12_hwndf"]
+[ext_resource type="Resource" uid="uid://dnxoqrqqv7av1" path="res://resources/skillTree/items/employees/thinker/skilled_thinkers.tres" id="13_kxwwr"]
 [ext_resource type="Resource" uid="uid://dk6kpqvnvb37n" path="res://resources/skillTree/items/employees/inventor/faster_inventors.tres" id="13_pv267"]
 [ext_resource type="Resource" uid="uid://clcr81107edrj" path="res://resources/skillTree/items/employees/inventor/unlock_inventors.tres" id="14_qan5h"]
 [ext_resource type="Resource" uid="uid://bajdkibfmy2lh" path="res://resources/skillTree/items/employees/scribes/unlock_scribes.tres" id="15_fri87"]
@@ -33,12 +34,10 @@
 [ext_resource type="PackedScene" uid="uid://b5age3g28nuf" path="res://scenes/mainMenu.tscn" id="30_cmj1t"]
 [ext_resource type="Texture2D" uid="uid://2fi5tg863h5q" path="res://assets/art/winning-screen/cropped-nobel-prize.png" id="30_l38ix"]
 [ext_resource type="Texture2D" uid="uid://ck3itr5buooip" path="res://assets/art/winning-screen/cropped-back-to-game-button.png" id="31_412ru"]
-[ext_resource type="Script" uid="uid://b1tjt81tc3kys" path="res://scripts/UI/DragScrollContainer.cs" id="40_dragscroll"]
-[ext_resource type="Script" path="res://scripts/UI/PanZoomView.cs" id="42_panzoom"]
 [ext_resource type="Texture2D" uid="uid://clyqs7g7pg1do" path="res://assets/art/desk/skilltree-elements.png" id="41_arrows"]
+[ext_resource type="Script" uid="uid://c74cusnxdkpg4" path="res://scripts/UI/PanZoomView.cs" id="42_panzoom"]
 [ext_resource type="Texture2D" path="res://resources/icons/back_button.tres" id="43_back"]
-[ext_resource type="Script" path="res://scripts/GameFeel/FeelHoverScale.cs" id="44_hover"]
-
+[ext_resource type="Script" uid="uid://68yhjhhgwmnp" path="res://scripts/GameFeel/FeelHoverScale.cs" id="44_hover"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pv4st"]
 texture = ExtResource("3_a4fw5")
@@ -58,7 +57,6 @@ SkillTreeUI = NodePath("Skill Tree/Panel/ScrollContainer/Container")
 m_gameWonUi = NodePath("GameWonUI")
 
 [node name="ShopUI" parent="." unique_id=1511127767 instance=ExtResource("3_b3s3x")]
-visible = true
 offset_left = 1.0
 offset_right = 1.0
 
@@ -97,7 +95,7 @@ vertical_alignment = 1
 script = ExtResource("21_a4fw5")
 metadata/_custom_type_script = "uid://0c6plthlac1x"
 
-[node name="PaidInPatentsNote" type="Label" parent="ShopUI/Panel" unique_id=1907315401]
+[node name="PaidInPatentsNote" type="Label" parent="ShopUI/Panel" index="3" unique_id=1907315401]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 88.0
@@ -111,7 +109,6 @@ text = "*yes, the gnomes -eh I mean STAFF- are paid in patents."
 vertical_alignment = 1
 
 [node name="Skill Tree" type="AspectRatioContainer" parent="." unique_id=1222491598]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -152,8 +149,8 @@ text = "Skill Tree"
 horizontal_alignment = 1
 
 [node name="ScrollContainer" type="Control" parent="Skill Tree/Panel" unique_id=2108983879 node_paths=PackedStringArray("m_content")]
+clip_contents = true
 layout_mode = 1
-anchors_preset = -1
 anchor_left = 0.185
 anchor_top = 0.08
 anchor_right = 0.795
@@ -161,13 +158,12 @@ anchor_bottom = 0.87
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-clip_contents = true
 script = ExtResource("42_panzoom")
 m_content = NodePath("Container")
 
 [node name="Container" type="Control" parent="Skill Tree/Panel/ScrollContainer" unique_id=1347082111 node_paths=PackedStringArray("m_rootNode", "m_view")]
 custom_minimum_size = Vector2(2860, 3080)
-layout_mode = 0
+anchors_preset = 0
 offset_right = 2860.0
 offset_bottom = 3080.0
 script = ExtResource("4_i7dyb")
@@ -181,6 +177,14 @@ offset_left = 300.0
 offset_top = 60.0
 offset_right = 640.0
 offset_bottom = 220.0
+
+[node name="Base Click Upgrade2" parent="Skill Tree/Panel/ScrollContainer/Container" unique_id=219582235 instance=ExtResource("5_b3s3x")]
+layout_mode = 0
+offset_left = 1568.8
+offset_top = 67.600006
+offset_right = 1908.8
+offset_bottom = 350.6
+m_data = ExtResource("13_kxwwr")
 
 [node name="Multiplicative Click Upgrade" parent="Skill Tree/Panel/ScrollContainer/Container" unique_id=127105399 instance=ExtResource("5_b3s3x")]
 layout_mode = 0
@@ -384,6 +388,7 @@ script = ExtResource("21_a4fw5")
 metadata/_custom_type_script = "uid://0c6plthlac1x"
 
 [node name="GameWonUI" type="AspectRatioContainer" parent="." unique_id=3674605]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -452,6 +457,7 @@ visible = false
 
 [editable path="ShopUI"]
 [editable path="Skill Tree/Panel/ScrollContainer/Container/Base Click Upgrade"]
+[editable path="Skill Tree/Panel/ScrollContainer/Container/Base Click Upgrade2"]
 [editable path="Skill Tree/Panel/ScrollContainer/Container/Multiplicative Click Upgrade"]
 [editable path="Skill Tree/Panel/ScrollContainer/Container/Potent Patents"]
 [editable path="Skill Tree/Panel/ScrollContainer/Container/Skilled Skiller"]

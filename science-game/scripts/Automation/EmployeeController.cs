@@ -2,10 +2,9 @@ using System;
 using System.Collections.Generic;
 using Godot;
 using Godot.Collections;
-using Nidavellir.GDResource;
 using Nidavellir.GDResource.Employee;
-using Nidavellir.GDResource.SkillTree;
 using Nidavellir.Generator;
+using Nidavellir.Stats;
 using EmployeeDataContainer = Nidavellir.GDResource.Employee.EmployeeDataContainer;
 using EmployeeStatUpgradeData = Nidavellir.GDResource.SkillTree.EntityStatUpgrades.Employee.EmployeeStatUpgradeData;
 
@@ -27,6 +26,7 @@ public partial class EmployeeController : Node
     [Export] private Array<Sprite2D> m_thinkerGnomes;
     [Export] private Array<Sprite2D> m_inventorGnomes;
     [Export] private Array<Sprite2D> m_scribeGnomes;
+    [Export] private EntityStatUpgradeFactory m_entityStatUpgradeFactory;
     
     private readonly List<Employee> m_thinkers = [];
     private readonly List<Employee> m_inventors = [];
@@ -129,6 +129,6 @@ public partial class EmployeeController : Node
     public void ApplyEmployeeUpgrades(EmployeeStatUpgradeData upgradeData)
     {
         var affectedEmployeeStats = this.m_employeeStats[upgradeData.TargetType];
-        affectedEmployeeStats[upgradeData.TargetStat].AddEntityStatUpgrade(upgradeData);
+        affectedEmployeeStats[upgradeData.TargetStat].AddEntityStatUpgrade(this.m_entityStatUpgradeFactory.Create(upgradeData));
     }
 }

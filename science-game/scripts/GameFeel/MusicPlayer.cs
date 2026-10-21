@@ -10,7 +10,6 @@ public partial class MusicPlayer : AudioStreamPlayer2D
     public void Advance()
     {
         var playback = (AudioStreamPlaybackInteractive)this.GetStreamPlayback();
-
         this.m_currentTrack++;
         playback.SwitchToClip(this.m_currentTrack);
     }

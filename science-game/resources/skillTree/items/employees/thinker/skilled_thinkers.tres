@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="SkillTreeItemData" format=3 uid="uid://dnxoqrqqv7av1"]
+
+[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_e3nto"]
+[ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.cs" id="1_q5v17"]
+[ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.cs" id="2_l4mfh"]
+[ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="3_5erg6"]
+[ext_resource type="Script" uid="uid://chgxineeeix0f" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/SynergyData.cs" id="4_31662"]
+[ext_resource type="Script" uid="uid://t2go5ui1sips" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/Employee/EmployeeStatUpgradeData.cs" id="5_gi8hn"]
+[ext_resource type="Script" uid="uid://dpajxbew4x3bl" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/Employee/EmployeeUpgradeData.cs" id="6_jeut1"]
+
+[sub_resource type="Resource" id="Resource_psu6l"]
+script = ExtResource("1_e3nto")
+Value = 0.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_ktkaf"]
+script = ExtResource("1_e3nto")
+Value = 0.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_rq2cg"]
+script = ExtResource("2_l4mfh")
+Base = SubResource("Resource_psu6l")
+Slope = SubResource("Resource_ktkaf")
+metadata/_custom_type_script = "uid://ddxwa8yrpoypp"
+
+[sub_resource type="Resource" id="Resource_l4mfh"]
+script = ExtResource("1_e3nto")
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_5erg6"]
+script = ExtResource("4_31662")
+Source = 1
+ForEach = 1
+metadata/_custom_type_script = "uid://chgxineeeix0f"
+
+[sub_resource type="Resource" id="Resource_e3nto"]
+script = ExtResource("5_gi8hn")
+Amount = SubResource("Resource_l4mfh")
+Synergy = SubResource("Resource_5erg6")
+metadata/_custom_type_script = "uid://t2go5ui1sips"
+
+[sub_resource type="Resource" id="Resource_jwklg"]
+script = ExtResource("6_jeut1")
+Upgrades = Array[Object]([SubResource("Resource_e3nto")])
+metadata/_custom_type_script = "uid://dpajxbew4x3bl"
+
+[resource]
+script = ExtResource("1_q5v17")
+SkillName = "Skilled Thinkers"
+Description = "Thinkers gain +1 Force per Skillpoint Level"
+Icon = ExtResource("3_5erg6")
+CostModel = SubResource("Resource_rq2cg")
+Upgrade = SubResource("Resource_jwklg")
+PreRequisites = null
+MaximumAmount = 5
+metadata/_custom_type_script = "uid://ccdf3herk8v4r"
