@@ -10,7 +10,7 @@ namespace Nidavellir.Stats;
 public class EntityStat(IdleNumber baseValue)
 {
     public IdleNumber Value => this.Recalculate();
-    private readonly List<EntityStatUpgrade> m_additivePlayerStatUpgrades = [];
+    private readonly List<EntityStatUpgrade> m_additiveEntityStatUpgrades = [];
     private readonly List<EntityStatUpgrade> m_multiplicativeEntityStatUpgrades = [];
     private readonly List<EntityStatUpgrade> m_subtractiveEntityStatUpgrades = [];
 
@@ -19,7 +19,7 @@ public class EntityStat(IdleNumber baseValue)
         switch (upgrade.Operation)
         {
             case StatOperation.Add:
-                this.m_additivePlayerStatUpgrades.Add(upgrade);
+                this.m_additiveEntityStatUpgrades.Add(upgrade);
                 break;
             case StatOperation.Multiply:
                 this.m_multiplicativeEntityStatUpgrades.Add(upgrade);
@@ -35,7 +35,7 @@ public class EntityStat(IdleNumber baseValue)
 
     private IdleNumber Recalculate()
     {
-        var baseVal = this.m_additivePlayerStatUpgrades.Aggregate(baseValue, (current, additive) => current + additive.Value);
+        var baseVal = this.m_additiveEntityStatUpgrades.Aggregate(baseValue, (current, additive) => current + additive.Value);
         baseVal = this.m_subtractiveEntityStatUpgrades.Aggregate(baseVal, (current, subtraction) => current - subtraction.Value);
         return this.m_multiplicativeEntityStatUpgrades.Aggregate(baseVal, (current, multiplicative) => current * multiplicative.Value);
     }

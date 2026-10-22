@@ -22,7 +22,8 @@ public partial class EntityStatUpgradeFactory : Node
                 upgradeData.Operation, 
                 this.GetDynamicCalcFunc(upgradeData), 
                 upgradeData.Synergy.Source, 
-                upgradeData.Synergy.ForEach
+                upgradeData.Synergy.ForEach, 
+                upgradeData.Synergy.ScalingMode
             );
         }
         return new FlatEntityStatUpgrade(upgradeData.Amount.ToIdleNumber(), upgradeData.Operation);
@@ -48,7 +49,26 @@ public partial class EntityStatUpgradeFactory : Node
                 return new IdleNumber(data.Operation == StatOperation.Multiply ? 1 : 0, 0);
             }
 
-            return quantity * data.Amount.ToIdleNumber();
+            return CalculateMagnitude(data.Amount.ToIdleNumber(), quantity, data.Synergy.ScalingMode, data.Operation);
+        };
+    }
+
+    private static IdleNumber CalculateMagnitude(
+        IdleNumber amount,
+        int quantity,
+        SynergyScalingMode scalingMode,
+        StatOperation operation)
+    {
+        var quantityNumber = new IdleNumber(quantity);
+        var one = new IdleNumber(1);
+
+        return scalingMode switch
+        {
+            SynergyScalingMode.Linear when operation == StatOperation.Multiply
+                => one + (amount - one) * quantityNumber,
+            SynergyScalingMode.Linear => amount * quantityNumber,
+            SynergyScalingMode.Compound => amount.Pow(quantityNumber),
+            _ => throw new ArgumentOutOfRangeException(nameof(scalingMode), scalingMode, null)
         };
     }
 }

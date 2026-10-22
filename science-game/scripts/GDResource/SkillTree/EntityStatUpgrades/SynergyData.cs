@@ -7,4 +7,5 @@ public partial class SynergyData : Resource
 {
     [Export] public SynergySource Source { get; set; }
     [Export] public int ForEach { get; set; }
+    [Export] public SynergyScalingMode ScalingMode { get; set; }
 }
