@@ -13,6 +13,7 @@ using Nidavellir.UI;
 
 namespace Nidavellir.SkillTree;
 
+[GlobalClass]
 public partial class SkillTreeUpgradeController : Node
 {
     [Export] private PlayerStatsContainer m_playerStats;
@@ -21,8 +22,14 @@ public partial class SkillTreeUpgradeController : Node
     [Export] private GeneratorUnlocker m_patentUnlocker;
     [Export] private ShopUnlocker m_shopUnlocker;
     [Export] private GameWonUI m_gameWonUi;
-    [Export] private EntityStatUpgradeFactory m_entityStatUpgradeFactory;
     [Export] private EmployeeStatsContainer m_employeeStatsContainer;
+
+    private EntityStatUpgradeFactory m_entityStatUpgradeFactory;
+    
+    public void Install(EntityStatUpgradeFactory entityUpgradeFactory)
+    {
+        this.m_entityStatUpgradeFactory = entityUpgradeFactory;
+    }
     
     public void ApplyPlayerStatUpgrade(PlayerUpgradeData u)
     {

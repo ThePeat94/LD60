@@ -9,6 +9,7 @@ using Nidavellir.SkillTree.UI;
 
 namespace Nidavellir.SkillTree;
 
+[GlobalClass]
 public partial class SkillTreeController : Node
 {
     [Export] private SkillTreeUI m_skillTreeUi;

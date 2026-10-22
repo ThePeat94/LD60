@@ -1,18 +1,14 @@
 using System;
-using Godot;
-using Nidavellir.Automation;
+using Nidavellir.GameState;
 using Nidavellir.GDResource.SkillTree.EntityStatUpgrades;
-using Nidavellir.Generator;
 using Nidavellir.IdleNumbers;
 
 namespace Nidavellir.Stats;
 
-public partial class EntityStatUpgradeFactory : Node
+public sealed class EntityStatUpgradeFactory(
+    ISynergySourceReader synergySourceReader
+)
 {
-    [Export] private GeneratorController m_patentGenerator;
-    [Export] private GeneratorController m_skillPointGenerator;
-    [Export] private EmployeeController m_employeeController;
-    
     public EntityStatUpgrade Create(EntityStatUpgradeData upgradeData)
     {
         if (upgradeData.Synergy is not null)
@@ -33,15 +29,7 @@ public partial class EntityStatUpgradeFactory : Node
     {
         return () =>
         {
-            var quantity = data.Synergy.Source switch
-            {
-                SynergySource.PatentLevel => this.m_patentGenerator.CurrentLevel,
-                SynergySource.KnowledgeLevel => this.m_skillPointGenerator.CurrentLevel,
-                SynergySource.ThinkerQuantity => this.m_employeeController.Thinkers.Count,
-                SynergySource.ScribeQuantity => this.m_employeeController.Scribes.Count,
-                SynergySource.InventorQuantity => this.m_employeeController.Inventors.Count,
-                _ => 0
-            };
+            var quantity = synergySourceReader.GetSynergyAmount(data.Synergy.Source);
 
             quantity /= Math.Max(data.Synergy.ForEach, 1);
             if (quantity == 0)

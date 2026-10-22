@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://kskc1m64jkxh"]
 
 [ext_resource type="Texture2D" uid="uid://867h8bdu6r77" path="res://assets/art/room/background-removedcurtainonright.png" id="1_0ld40"]
+[ext_resource type="Script" uid="uid://41oewn6wmgxt" path="res://scripts/Installer/GameInstaller.cs" id="1_dgi5k"]
 [ext_resource type="Texture2D" uid="uid://icusctrgg47r" path="res://assets/art/room/room_removedcurtainonright.png" id="2_gqmmt"]
 [ext_resource type="Texture2D" uid="uid://dac0bk76lfpwp" path="res://assets/art/room/animals.png" id="3_yc10j"]
 [ext_resource type="PackedScene" uid="uid://bhipn7hbuwba5" path="res://scenes/ui/resource_display.tscn" id="4_jscy8"]
@@ -28,7 +29,6 @@
 [ext_resource type="Script" uid="uid://4p1hd3s4ncgp" path="res://scripts/GameState/GameStateManager.cs" id="26_2wyq8"]
 [ext_resource type="Script" uid="uid://div4ko4tu80ln" path="res://scripts/GameFeel/FeelGlow.cs" id="30_glow"]
 [ext_resource type="Texture2D" uid="uid://bwearclyoiu7h" path="res://assets/art/glow_shop.png" id="31_glowskill"]
-[ext_resource type="Script" uid="uid://cl7k1dxn5nx45" path="res://scripts/Stats/EntityStatUpgradeFactory.cs" id="31_tel4y"]
 [ext_resource type="Script" uid="uid://0fn3e2nqy5ck" path="res://scripts/Stats/Employee/EmployeeStatsContainer.cs" id="32_5q0nq"]
 [ext_resource type="Texture2D" uid="uid://bti5vei1w2y8q" path="res://assets/art/glow_skilltree.png" id="32_glowshop"]
 [ext_resource type="Resource" uid="uid://cncajely83dwk" path="res://resources/employees/employee_data_container.tres" id="33_dgi5k"]
@@ -58,6 +58,14 @@ Vector2i(1, 0): {
 }
 
 [node name="Node2D2" type="Node2D" unique_id=1462648990]
+
+[node name="GameInstaller" type="Node" parent="." unique_id=779253355 node_paths=PackedStringArray("m_skillTreeUpgradeController", "m_employeeController", "m_skillpointGenerator", "m_patentGenerator")]
+script = ExtResource("1_dgi5k")
+m_skillTreeUpgradeController = NodePath("../Room/Desk/SkilltreeController/UpgradeController")
+m_employeeController = NodePath("../EmployeeController")
+m_skillpointGenerator = NodePath("../SkillPointGenerator")
+m_patentGenerator = NodePath("../PatentGenerator")
+metadata/_custom_type_script = "uid://41oewn6wmgxt"
 
 [node name="Room" type="Node2D" parent="." unique_id=709882698]
 
@@ -146,14 +154,13 @@ m_notEnoughPopup = NodePath("../../../GameHUD/NotEnoughDegreesPopup")
 z_index = 5
 position = Vector2(0, 1)
 
-[node name="UpgradeController" parent="Room/Desk/SkilltreeController" index="1" unique_id=1259699767 node_paths=PackedStringArray("m_playerStats", "m_employeeController", "m_shopController", "m_patentUnlocker", "m_shopUnlocker", "m_gameWonUi", "m_entityStatUpgradeFactory", "m_employeeStatsContainer")]
+[node name="UpgradeController" parent="Room/Desk/SkilltreeController" index="1" unique_id=1259699767 node_paths=PackedStringArray("m_playerStats", "m_employeeController", "m_shopController", "m_patentUnlocker", "m_shopUnlocker", "m_gameWonUi", "m_employeeStatsContainer")]
 m_playerStats = NodePath("../../../../Stats/PlayerStatsContainer")
 m_employeeController = NodePath("../../../../EmployeeController")
 m_shopController = NodePath("../../ShopController")
 m_patentUnlocker = NodePath("../../../../PatentGenerator/Unlocker")
 m_shopUnlocker = NodePath("../../ShopController/Unlocker")
 m_gameWonUi = NodePath("../../../../GameHUD/GameWonUI")
-m_entityStatUpgradeFactory = NodePath("../../../../StatUpgradeFactory")
 m_employeeStatsContainer = NodePath("../../../../Stats/EmployeeStatsContainer")
 
 [node name="AudioStreamPlayer2D" parent="Room/Desk/SkilltreeController" index="2" unique_id=2103824053]
@@ -457,12 +464,6 @@ script = ExtResource("25_2wyq8")
 [node name="GameStateManager" type="Node" parent="." unique_id=1879523095 node_paths=PackedStringArray("m_musicPlayer", "m_employeeController")]
 script = ExtResource("26_2wyq8")
 m_musicPlayer = NodePath("../Music")
-m_employeeController = NodePath("../EmployeeController")
-
-[node name="StatUpgradeFactory" type="Node" parent="." unique_id=1663807610 node_paths=PackedStringArray("m_patentGenerator", "m_skillPointGenerator", "m_employeeController")]
-script = ExtResource("31_tel4y")
-m_patentGenerator = NodePath("../PatentGenerator")
-m_skillPointGenerator = NodePath("../SkillPointGenerator")
 m_employeeController = NodePath("../EmployeeController")
 
 [editable path="Room/Science Display"]
