@@ -28,7 +28,7 @@ public partial class GeneratorController : Node2D, IGenerator
     public ProgressionLevelData ProgressionLevelData { get; set; }
     
     [Signal]
-    public delegate void GeneratedRewardEventHandler();
+    public delegate void GeneratedRewardEventHandler(int levels);
 
     [Signal]
     public delegate void ClickedEventHandler();
@@ -92,7 +92,7 @@ public partial class GeneratorController : Node2D, IGenerator
             this.EmitSignalProduced(strengthToApply.ToDouble());
 
         if (levelsGained > 0)
-            this.EmitSignalGeneratedReward();
+            this.EmitSignalGeneratedReward(levelsGained);
 
         return true;
     }

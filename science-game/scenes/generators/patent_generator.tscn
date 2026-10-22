@@ -171,7 +171,7 @@ script = ExtResource("40_symbols")
 m_area = NodePath("../Area2D/CollisionShape2D")
 m_texture = ExtResource("41_formulas")
 
-[connection signal="GeneratedReward" from="." to="GeneratedRewardSFX" method="Trigger"]
+[connection signal="GeneratedReward" from="." to="GeneratedRewardSFX" method="Trigger" unbinds=1]
 [connection signal="input_event" from="Area2D" to="." method="OnClick"]
 [connection signal="Clicked" from="." to="AudioFX" method="Trigger"]
 [connection signal="Produced" from="." to="ParticleSpawner" method="SpawnAmount"]

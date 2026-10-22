@@ -5,18 +5,17 @@
 [ext_resource type="Texture2D" uid="uid://c58fhr1k1k42f" path="res://assets/art/progressbars-icons/progressbar_rightfilled.png" id="3_fill"]
 [ext_resource type="Texture2D" uid="uid://07cl5w1xaah" path="res://assets/art/progressbars-icons/progressbar_right_foreground.png" id="4_outline"]
 [ext_resource type="Texture2D" uid="uid://brx7gntnccs20" path="res://assets/art/progressbars-icons/symbol_right_knowledge.png" id="5_icon"]
-[ext_resource type="Script" uid="uid://mvl7oeixktlca" path="res://scripts/GameFeel/FeelPopupLabel.cs" id="6_popup"]
+[ext_resource type="Script" uid="uid://c3y7xih1m0t7l" path="res://scripts/GameFeel/FeelPopupLabel.cs" id="6_popup"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fill"]
 atlas = ExtResource("3_fill")
 region = Rect2(281, 27, 14, 111)
 
-[node name="KnowledgeProgressBar" type="Node2D" unique_id=260685459 node_paths=PackedStringArray("m_bar", "m_filledPopup", "m_countLabel")]
+[node name="KnowledgeProgressBar" type="Node2D" unique_id=260685459 node_paths=PackedStringArray("m_bar", "m_countLabel")]
 z_index = 10
 scale = Vector2(6.0065217, 6.0065217)
 script = ExtResource("1_script")
 m_bar = NodePath("Fill")
-m_filledPopup = NodePath("FilledPopup")
 m_countLabel = NodePath("CountAnchor/CountLabel")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=622216362]
@@ -45,12 +44,11 @@ position = Vector2(98, -10)
 [node name="FilledPopup" type="Node" parent="." unique_id=1720394854 node_paths=PackedStringArray("m_origin")]
 script = ExtResource("6_popup")
 m_origin = NodePath("../LabelAnchor")
-m_text = "NEW DEGREE!"
 m_fontSize = 44
 m_riseDistance = 60.0
 m_duration = 2.0
 m_followMouse = false
-metadata/_custom_type_script = "uid://mvl7oeixktlca"
+metadata/_custom_type_script = "uid://c3y7xih1m0t7l"
 
 [node name="CountAnchor" type="Node2D" parent="." unique_id=1730224603]
 position = Vector2(128, -7.5)

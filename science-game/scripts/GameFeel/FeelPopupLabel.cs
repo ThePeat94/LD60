@@ -35,6 +35,13 @@ public partial class FeelPopupLabel : Node
         this.m_activeTween.TweenCallback(Callable.From(() => label.Visible = false));
     }
 
+    public void TriggerWithText(string text)
+    {
+        var label = this.GetOrCreateLabel();
+        label.Text = text;
+        this.Trigger();
+    }
+
     private Label GetOrCreateLabel()
     {
         if (this.m_label != null) return this.m_label;

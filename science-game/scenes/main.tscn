@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://bti5vei1w2y8q" path="res://assets/art/glow_skilltree.png" id="32_glowshop"]
 [ext_resource type="Resource" uid="uid://cncajely83dwk" path="res://resources/employees/employee_data_container.tres" id="33_dgi5k"]
 [ext_resource type="Script" uid="uid://c3y7xih1m0t7l" path="res://scripts/GameFeel/FeelPopupLabel.cs" id="33_popup"]
+[ext_resource type="Script" uid="uid://b5vc72ue6cicy" path="res://scripts/GameFeel/FeelPopupGeneratorWrapper.cs" id="34_popup_generator"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_x86fe"]
 clip_count = 2
@@ -201,6 +202,18 @@ m_generator = NodePath("../../PatentGenerator")
 
 [node name="Knowledge Progress Bar" parent="Room" unique_id=1597530862 node_paths=PackedStringArray("m_generator") instance=ExtResource("24_kbar")]
 m_generator = NodePath("../../SkillPointGenerator")
+
+[node name="PatentRewardPopup" type="Node" parent="." node_paths=PackedStringArray("m_generator", "m_popup")]
+script = ExtResource("34_popup_generator")
+m_generator = NodePath("../PatentGenerator")
+m_popup = NodePath("../Room/Patent Progress Bar/FilledPopup")
+m_textFormat = "NEW INVENTION! x{0}"
+
+[node name="DegreeRewardPopup" type="Node" parent="." node_paths=PackedStringArray("m_generator", "m_popup")]
+script = ExtResource("34_popup_generator")
+m_generator = NodePath("../SkillPointGenerator")
+m_popup = NodePath("../Room/Knowledge Progress Bar/FilledPopup")
+m_textFormat = "NEW DEGREE! x{0}"
 
 [node name="GameHUD" parent="." unique_id=1847261213 instance=ExtResource("12_fv21b")]
 

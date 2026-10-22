@@ -1,5 +1,4 @@
 using Godot;
-using Nidavellir.GameFeel;
 using Nidavellir.Generator;
 using Nidavellir.IdleNumbers;
 
@@ -10,7 +9,6 @@ public partial class GeneratorProgressBar : Node2D
 {
     [Export] private GeneratorController m_generator;
     [Export] private TextureProgressBar m_bar;
-    [Export] private FeelPopupLabel m_filledPopup;
     [Export] private Label m_countLabel;
     [Export] private float m_fillDuration = 0.15f;
 
@@ -19,7 +17,6 @@ public partial class GeneratorProgressBar : Node2D
     public override void _Ready()
     {
         this.m_generator.Required.ResourceController.ResourceValueChanged += this.OnGeneratorResourceChanged;
-        this.m_generator.GeneratedReward += this.OnGeneratorFilled;
         this.m_bar.Value = this.GetProgress();
         this.UpdateCountLabel();
     }
@@ -36,11 +33,6 @@ public partial class GeneratorProgressBar : Node2D
 
         this.m_activeTween = this.CreateTween();
         this.m_activeTween.TweenProperty(this.m_bar, "value", target, this.m_fillDuration);
-    }
-
-    private void OnGeneratorFilled()
-    {
-        this.m_filledPopup?.Trigger();
     }
 
     private void UpdateCountLabel()
