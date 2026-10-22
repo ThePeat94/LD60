@@ -2,13 +2,13 @@ using System;
 using Godot;
 using Nidavellir.Automation;
 using Nidavellir.GDResource;
-using Nidavellir.GDResource.SkillTree.EntityStatUpgrades;
 using Nidavellir.GDResource.SkillTree.EntityStatUpgrades.Employee;
 using Nidavellir.GDResource.SkillTree.EntityStatUpgrades.Player;
 using Nidavellir.GDResource.SkillTree.FeatureUnlock;
-using Nidavellir.PlayerStats;
 using Nidavellir.Shop;
 using Nidavellir.Stats;
+using Nidavellir.Stats.Employee;
+using Nidavellir.Stats.Player;
 using Nidavellir.UI;
 
 namespace Nidavellir.SkillTree;
@@ -22,6 +22,7 @@ public partial class SkillTreeUpgradeController : Node
     [Export] private ShopUnlocker m_shopUnlocker;
     [Export] private GameWonUI m_gameWonUi;
     [Export] private EntityStatUpgradeFactory m_entityStatUpgradeFactory;
+    [Export] private EmployeeStatsContainer m_employeeStatsContainer;
     
     public void ApplyPlayerStatUpgrade(PlayerUpgradeData u)
     {
@@ -49,7 +50,7 @@ public partial class SkillTreeUpgradeController : Node
     {
         foreach (var upgrade in u.Upgrades)
         {
-            this.m_employeeController.ApplyEmployeeUpgrades(upgrade);
+            this.m_employeeStatsContainer[upgrade.TargetType][upgrade.TargetStat].AddEntityStatUpgrade(this.m_entityStatUpgradeFactory.Create(upgrade));
         }
     }
 

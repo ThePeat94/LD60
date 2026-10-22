@@ -20,7 +20,9 @@ public partial class EntityStatUpgradeFactory : Node
             return new DynamicEntityStatUpgrade(
                 upgradeData.Amount.ToIdleNumber(), 
                 upgradeData.Operation, 
-                this.GetDynamicCalcFunc(upgradeData)
+                this.GetDynamicCalcFunc(upgradeData), 
+                upgradeData.Synergy.Source, 
+                upgradeData.Synergy.ForEach
             );
         }
         return new FlatEntityStatUpgrade(upgradeData.Amount.ToIdleNumber(), upgradeData.Operation);
@@ -30,7 +32,6 @@ public partial class EntityStatUpgradeFactory : Node
     {
         return () =>
         {
-            GD.Print($"Calculating dynamic amount for {data.Synergy.Source}");
             var quantity = data.Synergy.Source switch
             {
                 SynergySource.PatentLevel => this.m_patentGenerator.CurrentLevel,
@@ -41,9 +42,7 @@ public partial class EntityStatUpgradeFactory : Node
                 _ => 0
             };
 
-            quantity = Mathf.FloorToInt(quantity/Math.Max(data.Synergy.ForEach, 1));
-            GD.Print($"Quantity: {quantity}");
-            
+            quantity /= Math.Max(data.Synergy.ForEach, 1);
             if (quantity == 0)
             {
                 return new IdleNumber(data.Operation == StatOperation.Multiply ? 1 : 0, 0);

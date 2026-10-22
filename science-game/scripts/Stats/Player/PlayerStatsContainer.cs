@@ -1,8 +1,7 @@
 using Godot;
 using Nidavellir.GDResource;
-using Nidavellir.Stats;
 
-namespace Nidavellir.PlayerStats;
+namespace Nidavellir.Stats.Player;
 
 public partial class PlayerStatsContainer : Node
 {

@@ -1,7 +1,7 @@
 using Godot;
 using Nidavellir.GameFeel;
 using Nidavellir.IdleNumbers;
-using Nidavellir.PlayerStats;
+using Nidavellir.Stats.Player;
 
 namespace Nidavellir.Generator;
 

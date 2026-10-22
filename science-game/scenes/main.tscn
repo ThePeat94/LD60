@@ -16,11 +16,11 @@
 [ext_resource type="PackedScene" uid="uid://dcuw26e2ppgd3" path="res://scenes/generators/patent_generator.tscn" id="14_qkpxi"]
 [ext_resource type="PackedScene" uid="uid://cop5xu6120mg3" path="res://scenes/generators/skill_point_generator.tscn" id="15_5q0nq"]
 [ext_resource type="Script" uid="uid://dmywt6vc0vtok" path="res://scripts/ResourceControllerNode.cs" id="16_dgi5k"]
-[ext_resource type="Script" uid="uid://0tgd1yd4japm" path="res://scripts/PlayerStats/PlayerStatsContainer.cs" id="17_j8jky"]
 [ext_resource type="Resource" uid="uid://b0lmcslgtykk4" path="res://resources/base_player_stats.tres" id="18_kmb1v"]
 [ext_resource type="PackedScene" uid="uid://dmvasq8mrr7ks" path="res://scenes/employees/employee_controller.tscn" id="19_fuf3a"]
 [ext_resource type="Script" uid="uid://bv0nr4cjm43w8" path="res://scripts/GameFeel/CursorInstaller.cs" id="21_yc10j"]
 [ext_resource type="AudioStream" uid="uid://b1yc3bgcsiy6y" path="res://assets/music/Science Gamejam.mp3" id="22_jscy8"]
+[ext_resource type="Script" uid="uid://0tgd1yd4japm" path="res://scripts/Stats/Player/PlayerStatsContainer.cs" id="23_5q0nq"]
 [ext_resource type="PackedScene" uid="uid://xqq4tj53sw6c" path="res://scenes/ui/patent_progress_bar.tscn" id="23_pbar"]
 [ext_resource type="PackedScene" uid="uid://b5xjxs7xrwtig" path="res://scenes/ui/knowledge_progress_bar.tscn" id="24_kbar"]
 [ext_resource type="AudioStream" uid="uid://b72ixchox5uo6" path="res://assets/music/Idle Academia Theme.mp3" id="24_og1vs"]
@@ -29,7 +29,9 @@
 [ext_resource type="Script" uid="uid://div4ko4tu80ln" path="res://scripts/GameFeel/FeelGlow.cs" id="30_glow"]
 [ext_resource type="Texture2D" uid="uid://bwearclyoiu7h" path="res://assets/art/glow_shop.png" id="31_glowskill"]
 [ext_resource type="Script" uid="uid://cl7k1dxn5nx45" path="res://scripts/Stats/EntityStatUpgradeFactory.cs" id="31_tel4y"]
+[ext_resource type="Script" uid="uid://0fn3e2nqy5ck" path="res://scripts/Stats/Employee/EmployeeStatsContainer.cs" id="32_5q0nq"]
 [ext_resource type="Texture2D" uid="uid://bti5vei1w2y8q" path="res://assets/art/glow_skilltree.png" id="32_glowshop"]
+[ext_resource type="Resource" uid="uid://cncajely83dwk" path="res://resources/employees/employee_data_container.tres" id="33_dgi5k"]
 [ext_resource type="Script" uid="uid://c3y7xih1m0t7l" path="res://scripts/GameFeel/FeelPopupLabel.cs" id="33_popup"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_x86fe"]
@@ -144,14 +146,15 @@ m_notEnoughPopup = NodePath("../../../GameHUD/NotEnoughDegreesPopup")
 z_index = 5
 position = Vector2(0, 1)
 
-[node name="UpgradeController" parent="Room/Desk/SkilltreeController" index="1" unique_id=1259699767 node_paths=PackedStringArray("m_playerStats", "m_employeeController", "m_shopController", "m_patentUnlocker", "m_shopUnlocker", "m_gameWonUi", "m_entityStatUpgradeFactory")]
-m_playerStats = NodePath("../../../../PlayerStats")
+[node name="UpgradeController" parent="Room/Desk/SkilltreeController" index="1" unique_id=1259699767 node_paths=PackedStringArray("m_playerStats", "m_employeeController", "m_shopController", "m_patentUnlocker", "m_shopUnlocker", "m_gameWonUi", "m_entityStatUpgradeFactory", "m_employeeStatsContainer")]
+m_playerStats = NodePath("../../../../Stats/PlayerStatsContainer")
 m_employeeController = NodePath("../../../../EmployeeController")
 m_shopController = NodePath("../../ShopController")
 m_patentUnlocker = NodePath("../../../../PatentGenerator/Unlocker")
 m_shopUnlocker = NodePath("../../ShopController/Unlocker")
 m_gameWonUi = NodePath("../../../../GameHUD/GameWonUI")
 m_entityStatUpgradeFactory = NodePath("../../../../StatUpgradeFactory")
+m_employeeStatsContainer = NodePath("../../../../Stats/EmployeeStatsContainer")
 
 [node name="AudioStreamPlayer2D" parent="Room/Desk/SkilltreeController" index="2" unique_id=2103824053]
 volume_db = -10.0
@@ -324,7 +327,7 @@ m_labelParent = NodePath("..")
 position = Vector2(5, -27.000004)
 scale = Vector2(6.007, 6.019)
 Generated = NodePath("../ResourceControllers/GlobalScienceController")
-PlayerStatsContainer = NodePath("../PlayerStats")
+PlayerStatsContainer = NodePath("../Stats/PlayerStatsContainer")
 
 [node name="AudioPlayer" parent="ScienceGenerator" index="1" unique_id=1094893019]
 volume_db = -10.0
@@ -349,10 +352,10 @@ scale = Vector2(6.007, 6.007)
 m_consumed = NodePath("../ResourceControllers/GlobalScienceController")
 m_sourceSymbols = NodePath("../ScienceGenerator/Symbols")
 m_payoutTarget = NodePath("../Room/Money Display/Label")
-PlayerStatsContainer = NodePath("../PlayerStats")
+PlayerStatsContainer = NodePath("../Stats/PlayerStatsContainer")
 
 [node name="RewardController" parent="PatentGenerator" index="2" unique_id=1303221621 node_paths=PackedStringArray("m_playerStats", "m_generated")]
-m_playerStats = NodePath("../../PlayerStats")
+m_playerStats = NodePath("../../Stats/PlayerStatsContainer")
 m_generated = NodePath("../../ResourceControllers/GlobalMoneyController")
 
 [node name="Outer2DSprites" parent="PatentGenerator" index="4" unique_id=1124813126]
@@ -392,10 +395,10 @@ scale = Vector2(6.007, 6.007)
 m_consumed = NodePath("../ResourceControllers/GlobalScienceController")
 m_sourceSymbols = NodePath("../ScienceGenerator/Symbols")
 m_payoutTarget = NodePath("../Room/Skillpoints Displa/Label")
-PlayerStatsContainer = NodePath("../PlayerStats")
+PlayerStatsContainer = NodePath("../Stats/PlayerStatsContainer")
 
 [node name="Reward Controller" parent="SkillPointGenerator" index="2" unique_id=2039802272 node_paths=PackedStringArray("m_playerStats", "m_generated")]
-m_playerStats = NodePath("../../PlayerStats")
+m_playerStats = NodePath("../../Stats/PlayerStatsContainer")
 m_generated = NodePath("../../ResourceControllers/GlobalSkillPointsController")
 
 [node name="AudioFX" parent="SkillPointGenerator" index="5" unique_id=304791276]
@@ -420,19 +423,26 @@ script = ExtResource("16_dgi5k")
 [node name="GlobalSkillPointsController" type="Node" parent="ResourceControllers" unique_id=512772517]
 script = ExtResource("16_dgi5k")
 
-[node name="PlayerStats" type="Node" parent="." unique_id=1361375017]
-script = ExtResource("17_j8jky")
+[node name="Stats" type="Node" parent="." unique_id=51406899]
+
+[node name="PlayerStatsContainer" type="Node" parent="Stats" unique_id=1361375017]
+script = ExtResource("23_5q0nq")
 BaseStats = ExtResource("18_kmb1v")
 
-[node name="EmployeeController" parent="." unique_id=130145111 node_paths=PackedStringArray("m_patentGenerator", "m_skillpointGenerator", "m_scienceGenerator", "m_thinkerGnomes", "m_inventorGnomes", "m_scribeGnomes", "m_entityStatUpgradeFactory") instance=ExtResource("19_fuf3a")]
+[node name="EmployeeStatsContainer" type="Node" parent="Stats" unique_id=1389023362]
+script = ExtResource("32_5q0nq")
+m_employeeDataContainer = ExtResource("33_dgi5k")
+metadata/_custom_type_script = "uid://0fn3e2nqy5ck"
+
+[node name="EmployeeController" parent="." unique_id=130145111 node_paths=PackedStringArray("m_patentGenerator", "m_skillpointGenerator", "m_scienceGenerator", "m_employeeStats", "m_thinkerGnomes", "m_inventorGnomes", "m_scribeGnomes") instance=ExtResource("19_fuf3a")]
 m_patentGenerator = NodePath("../PatentGenerator")
 m_skillpointGenerator = NodePath("../SkillPointGenerator")
 m_scienceGenerator = NodePath("../ScienceGenerator")
+m_employeeStats = NodePath("../Stats/EmployeeStatsContainer")
 m_employeesPerGnome = 1
 m_thinkerGnomes = [NodePath("../ScienceGenerator/Board/ThinkerGnome"), NodePath("../ScienceGenerator/Board/ThinkerGnome2"), NodePath("../ScienceGenerator/Board/ThinkerGnome4"), NodePath("../ScienceGenerator/Stool/ThinkerGnome3")]
 m_inventorGnomes = [NodePath("../PatentGenerator/Gnomes/PatentGnome"), NodePath("../PatentGenerator/Gnomes/PatentGnome2"), NodePath("../PatentGenerator/Gnomes/PatentGnome3"), NodePath("../PatentGenerator/Gnomes/PatentGnome4")]
 m_scribeGnomes = [NodePath("../SkillPointGenerator/Sprite2D/ScribeGnome"), NodePath("../SkillPointGenerator/Sprite2D/ScribeGnome2"), NodePath("../SkillPointGenerator/Sprite2D/ScribeGnome3"), NodePath("../SkillPointGenerator/Sprite2D/ScribeGnome4")]
-m_entityStatUpgradeFactory = NodePath("../StatUpgradeFactory")
 
 [node name="CursorInstaller" type="Node" parent="." unique_id=281278508]
 script = ExtResource("21_yc10j")

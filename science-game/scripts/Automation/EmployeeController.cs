@@ -4,9 +4,7 @@ using Godot;
 using Godot.Collections;
 using Nidavellir.GDResource.Employee;
 using Nidavellir.Generator;
-using Nidavellir.Stats;
-using EmployeeDataContainer = Nidavellir.GDResource.Employee.EmployeeDataContainer;
-using EmployeeStatUpgradeData = Nidavellir.GDResource.SkillTree.EntityStatUpgrades.Employee.EmployeeStatUpgradeData;
+using Nidavellir.Stats.Employee;
 
 namespace Nidavellir.Automation;
 
@@ -20,18 +18,16 @@ public partial class EmployeeController : Node
     [Export] private GeneratorController m_patentGenerator;
     [Export] private GeneratorController m_skillpointGenerator;
     [Export] private ScienceGenerator m_scienceGenerator;
-    [Export] private EmployeeDataContainer m_employeeDataContainer;
+    [Export] private EmployeeStatsContainer m_employeeStats;
     
     [Export] private int m_employeesPerGnome = 5;
     [Export] private Array<Sprite2D> m_thinkerGnomes;
     [Export] private Array<Sprite2D> m_inventorGnomes;
     [Export] private Array<Sprite2D> m_scribeGnomes;
-    [Export] private EntityStatUpgradeFactory m_entityStatUpgradeFactory;
     
     private readonly List<Employee> m_thinkers = [];
     private readonly List<Employee> m_inventors = [];
     private readonly List<Employee> m_scribes = [];
-    private System.Collections.Generic.Dictionary<EmployeeType, EmployeeStats> m_employeeStats = new();
     
     public IReadOnlyList<Employee> Thinkers => this.m_thinkers;
     public IReadOnlyList<Employee> Inventors => this.m_inventors;
@@ -46,12 +42,7 @@ public partial class EmployeeController : Node
     public override void _EnterTree()
     {
         base._EnterTree();
-        this.m_employeeStats = new()
-        {
-            [EmployeeType.Scribe] = new(this.m_employeeDataContainer.ScribeData),
-            [EmployeeType.Thinker] = new(this.m_employeeDataContainer.ThinkerData),
-            [EmployeeType.Inventor] = new(this.m_employeeDataContainer.InventorData),
-        };
+
 
         this.HideGnomes(this.m_thinkerGnomes);
         this.HideGnomes(this.m_inventorGnomes);
@@ -124,11 +115,5 @@ public partial class EmployeeController : Node
         {
             gnome.Visible = false;
         }
-    }
-
-    public void ApplyEmployeeUpgrades(EmployeeStatUpgradeData upgradeData)
-    {
-        var affectedEmployeeStats = this.m_employeeStats[upgradeData.TargetType];
-        affectedEmployeeStats[upgradeData.TargetStat].AddEntityStatUpgrade(this.m_entityStatUpgradeFactory.Create(upgradeData));
     }
 }

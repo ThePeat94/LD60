@@ -1,5 +1,5 @@
 using Godot;
-using Nidavellir.PlayerStats;
+using Nidavellir.Stats.Player;
 
 namespace Nidavellir.Generator;
 
