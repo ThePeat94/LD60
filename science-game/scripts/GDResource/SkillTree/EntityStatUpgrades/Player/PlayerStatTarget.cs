@@ -2,5 +2,7 @@ namespace Nidavellir.GDResource.SkillTree.EntityStatUpgrades.Player;
 
 public enum PlayerStatTarget
 {
-    ClickStrength, MoneyConversion, SkillPointConversion
+    ClickStrength = 0, 
+    MoneyConversion = 1, 
+    SkillPointConversion = 2
 }

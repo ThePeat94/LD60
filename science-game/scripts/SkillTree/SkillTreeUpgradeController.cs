@@ -63,13 +63,13 @@ public partial class SkillTreeUpgradeController : Node
         GD.Print($"Unlocking Game Feature {unlockGameFeatureData.GameFeature}");
         switch (unlockGameFeatureData.GameFeature)
         {
-            case GameFeature.Money:
+            case GameFeature.GameFeature.Money:
                 this.m_patentUnlocker.Unlock();
                 break;
-            case GameFeature.Shop:
+            case GameFeature.GameFeature.Shop:
                 this.m_shopUnlocker.Unlock();
                 break;
-            case GameFeature.Skillpoints:
+            case GameFeature.GameFeature.Skillpoints:
                 break;
             default:
                 GD.PrintErr("Unknown GameFeature to unlock");

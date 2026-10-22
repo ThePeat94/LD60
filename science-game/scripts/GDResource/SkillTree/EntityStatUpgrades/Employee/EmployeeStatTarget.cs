@@ -2,5 +2,6 @@ namespace Nidavellir.GDResource.SkillTree.EntityStatUpgrades.Employee;
 
 public enum EmployeeStatTarget
 {
-    BaseForce, TickSpeed
+    BaseForce = 0, 
+    TickSpeed = 1
 }

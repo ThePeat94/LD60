@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using Nidavellir.GDResource.SkillTree.EntityStatUpgrades;
 using Nidavellir.IdleNumbers;
@@ -34,22 +35,8 @@ public class EntityStat(IdleNumber baseValue)
 
     private IdleNumber Recalculate()
     {
-        var baseVal = baseValue;
-        foreach (var additive in this.m_additivePlayerStatUpgrades)
-        {
-            baseVal += additive.Value;
-        }
-
-        foreach (var subtraction in this.m_subtractiveEntityStatUpgrades)
-        {
-            baseVal -= subtraction.Value;
-        }
-
-        foreach (var multiplicative in this.m_multiplicativeEntityStatUpgrades)
-        {
-            baseVal *= multiplicative.Value;
-        }
-
-        return baseVal;
+        var baseVal = this.m_additivePlayerStatUpgrades.Aggregate(baseValue, (current, additive) => current + additive.Value);
+        baseVal = this.m_subtractiveEntityStatUpgrades.Aggregate(baseVal, (current, subtraction) => current - subtraction.Value);
+        return this.m_multiplicativeEntityStatUpgrades.Aggregate(baseVal, (current, multiplicative) => current * multiplicative.Value);
     }
 }

@@ -1,8 +1,8 @@
-namespace Nidavellir.GDResource;
+namespace Nidavellir.GameFeature;
 
 public enum GameFeature
 {
-    Shop, 
-    Money,
-    Skillpoints
+    Shop = 0, 
+    Money = 1,
+    Skillpoints = 2
 }
