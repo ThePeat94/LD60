@@ -14,7 +14,7 @@
 [ext_resource type="Resource" uid="uid://ckvi1f3dnb88n" path="res://resources/skillTree/items/employees/thinker/faster_thinkers.tres" id="10_qeyxp"]
 [ext_resource type="Resource" uid="uid://cpufjmdm5v4pq" path="res://resources/skillTree/items/employees/thinker/unlock_thinkers.tres" id="11_qeyxp"]
 [ext_resource type="Resource" uid="uid://nyvuxy752fwc" path="res://resources/skillTree/items/employees/inventor/stronger_inventors.tres" id="12_hwndf"]
-[ext_resource type="Resource" uid="uid://dnxoqrqqv7av1" path="res://resources/skillTree/items/employees/thinker/skilled_thinkers.tres" id="13_kxwwr"]
+[ext_resource type="Resource" path="res://resources/skillTree/items/applied_knowledge.tres" id="13_applied"]
 [ext_resource type="Resource" uid="uid://dk6kpqvnvb37n" path="res://resources/skillTree/items/employees/inventor/faster_inventors.tres" id="13_pv267"]
 [ext_resource type="Resource" uid="uid://clcr81107edrj" path="res://resources/skillTree/items/employees/inventor/unlock_inventors.tres" id="14_qan5h"]
 [ext_resource type="Resource" uid="uid://bajdkibfmy2lh" path="res://resources/skillTree/items/employees/scribes/unlock_scribes.tres" id="15_fri87"]
@@ -38,6 +38,9 @@
 [ext_resource type="Script" uid="uid://c74cusnxdkpg4" path="res://scripts/UI/PanZoomView.cs" id="42_panzoom"]
 [ext_resource type="Texture2D" path="res://resources/icons/back_button.tres" id="43_back"]
 [ext_resource type="Script" uid="uid://68yhjhhgwmnp" path="res://scripts/GameFeel/FeelHoverScale.cs" id="44_hover"]
+[ext_resource type="Resource" path="res://resources/skillTree/items/employees/thinker/studious_thinkers.tres" id="45_study"]
+[ext_resource type="Resource" path="res://resources/skillTree/items/employees/inventor/experienced_inventors.tres" id="46_exper"]
+[ext_resource type="Resource" path="res://resources/skillTree/items/employees/scribes/educated_scribes.tres" id="47_educa"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pv4st"]
 texture = ExtResource("3_a4fw5")
@@ -178,13 +181,13 @@ offset_top = 60.0
 offset_right = 640.0
 offset_bottom = 220.0
 
-[node name="Base Click Upgrade2" parent="Skill Tree/Panel/ScrollContainer/Container" unique_id=219582235 instance=ExtResource("5_b3s3x")]
+[node name="Applied Knowledge" parent="Skill Tree/Panel/ScrollContainer/Container" unique_id=219582235 instance=ExtResource("5_b3s3x")]
 layout_mode = 0
-offset_left = 1568.8
-offset_top = 67.600006
-offset_right = 1908.8
-offset_bottom = 350.6
-m_data = ExtResource("13_kxwwr")
+offset_left = 300.0
+offset_top = 740.0
+offset_right = 640.0
+offset_bottom = 1023.0
+m_data = ExtResource("13_applied")
 
 [node name="Multiplicative Click Upgrade" parent="Skill Tree/Panel/ScrollContainer/Container" unique_id=127105399 instance=ExtResource("5_b3s3x")]
 layout_mode = 0
@@ -338,6 +341,30 @@ offset_right = 1240.0
 offset_bottom = 560.0
 m_data = ExtResource("18_olu1u")
 
+[node name="Studious Thinkers" parent="Skill Tree/Panel/ScrollContainer/Container" instance=ExtResource("5_b3s3x")]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 1760.0
+offset_right = 400.0
+offset_bottom = 2043.0
+m_data = ExtResource("45_study")
+
+[node name="Experienced Inventors" parent="Skill Tree/Panel/ScrollContainer/Container" instance=ExtResource("5_b3s3x")]
+layout_mode = 0
+offset_left = 1020.0
+offset_top = 2100.0
+offset_right = 1360.0
+offset_bottom = 2383.0
+m_data = ExtResource("46_exper")
+
+[node name="Educated Scribes" parent="Skill Tree/Panel/ScrollContainer/Container" instance=ExtResource("5_b3s3x")]
+layout_mode = 0
+offset_left = 2460.0
+offset_top = 2440.0
+offset_right = 2800.0
+offset_bottom = 2723.0
+m_data = ExtResource("47_educa")
+
 [node name="ControlsHint" type="VBoxContainer" parent="Skill Tree/Panel" unique_id=1912606401]
 layout_mode = 0
 offset_left = 30.0
@@ -457,7 +484,7 @@ visible = false
 
 [editable path="ShopUI"]
 [editable path="Skill Tree/Panel/ScrollContainer/Container/Base Click Upgrade"]
-[editable path="Skill Tree/Panel/ScrollContainer/Container/Base Click Upgrade2"]
+[editable path="Skill Tree/Panel/ScrollContainer/Container/Applied Knowledge"]
 [editable path="Skill Tree/Panel/ScrollContainer/Container/Multiplicative Click Upgrade"]
 [editable path="Skill Tree/Panel/ScrollContainer/Container/Potent Patents"]
 [editable path="Skill Tree/Panel/ScrollContainer/Container/Skilled Skiller"]

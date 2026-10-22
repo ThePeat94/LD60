@@ -11,33 +11,37 @@ public sealed class EntityStatUpgradeFactory(
 {
     public EntityStatUpgrade Create(EntityStatUpgradeData upgradeData)
     {
+        ArgumentOutOfRangeException.ThrowIfLessThanOrEqual(upgradeData.Amount.Value, 0);
         if (upgradeData.Synergy is not null)
         {
-            return new DynamicEntityStatUpgrade(
+            ArgumentOutOfRangeException.ThrowIfLessThanOrEqual(upgradeData.Synergy.ForEach, 0);
+            var upgrade = new DynamicEntityStatUpgrade(
                 upgradeData.Amount.ToIdleNumber(), 
                 upgradeData.Operation, 
-                this.GetDynamicCalcFunc(upgradeData), 
                 upgradeData.Synergy.Source, 
                 upgradeData.Synergy.ForEach, 
                 upgradeData.Synergy.ScalingMode
             );
+            
+            upgrade.DynamicValueProvider = this.GetDynamicCalcFunc(upgrade);
+            return upgrade;
         }
         return new FlatEntityStatUpgrade(upgradeData.Amount.ToIdleNumber(), upgradeData.Operation);
     }
 
-    private Func<IdleNumber> GetDynamicCalcFunc(EntityStatUpgradeData data)
+    private Func<IdleNumber> GetDynamicCalcFunc(DynamicEntityStatUpgrade data)
     {
         return () =>
         {
-            var quantity = synergySourceReader.GetSynergyAmount(data.Synergy.Source);
+            var quantity = synergySourceReader.GetSynergyAmount(data.SynergySource);
 
-            quantity /= Math.Max(data.Synergy.ForEach, 1);
+            quantity /= Math.Max(data.ForEach, 1);
             if (quantity == 0)
             {
                 return new IdleNumber(data.Operation == StatOperation.Multiply ? 1 : 0, 0);
             }
 
-            return CalculateMagnitude(data.Amount.ToIdleNumber(), quantity, data.Synergy.ScalingMode, data.Operation);
+            return CalculateMagnitude(data.BaseValue, quantity, data.ScalingMode, data.Operation);
         };
     }
 

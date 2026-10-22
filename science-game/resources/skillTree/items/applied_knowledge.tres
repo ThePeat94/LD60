@@ -1,0 +1,70 @@
+[gd_resource type="Resource" script_class="SkillTreeItemData" format=3 uid="uid://bfqa05v564h28"]
+
+[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_idle"]
+[ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.cs" id="2_linear"]
+[ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="3_icon"]
+[ext_resource type="Resource" uid="uid://c4dhm6i7m4tr" path="res://resources/skillTree/items/click_upgrade_2.tres" id="4_prereq"]
+[ext_resource type="Script" uid="uid://b1ayjcrr35te0" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/Player/PlayerStatUpgradeData.cs" id="5_statup"]
+[ext_resource type="Script" uid="uid://b0h2rn416ikw4" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/Player/PlayerUpgradeData.cs" id="6_playerup"]
+[ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.cs" id="7_item"]
+[ext_resource type="Script" uid="uid://chgxineeeix0f" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/SynergyData.cs" id="8_synergy"]
+
+[sub_resource type="Resource" id="Resource_costbase"]
+script = ExtResource("1_idle")
+Value = 0.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_costslope"]
+script = ExtResource("1_idle")
+Value = 30.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_cost"]
+script = ExtResource("2_linear")
+Base = SubResource("Resource_costbase")
+Slope = SubResource("Resource_costslope")
+metadata/_custom_type_script = "uid://ddxwa8yrpoypp"
+
+[sub_resource type="Resource" id="Resource_amount"]
+script = ExtResource("1_idle")
+Value = 0.03
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_patentsynergy"]
+script = ExtResource("8_synergy")
+ForEach = 1
+metadata/_custom_type_script = "uid://chgxineeeix0f"
+
+[sub_resource type="Resource" id="Resource_patentstatup"]
+script = ExtResource("5_statup")
+Amount = SubResource("Resource_amount")
+Synergy = SubResource("Resource_patentsynergy")
+metadata/_custom_type_script = "uid://b1ayjcrr35te0"
+
+[sub_resource type="Resource" id="Resource_skillpointsynergy"]
+script = ExtResource("8_synergy")
+Source = 1
+ForEach = 1
+metadata/_custom_type_script = "uid://chgxineeeix0f"
+
+[sub_resource type="Resource" id="Resource_skillpointstatup"]
+script = ExtResource("5_statup")
+Amount = SubResource("Resource_amount")
+Synergy = SubResource("Resource_skillpointsynergy")
+metadata/_custom_type_script = "uid://b1ayjcrr35te0"
+
+[sub_resource type="Resource" id="Resource_upgrade"]
+script = ExtResource("6_playerup")
+Upgrades = Array[Object]([SubResource("Resource_patentstatup"), SubResource("Resource_skillpointstatup")])
+metadata/_custom_type_script = "uid://b0h2rn416ikw4"
+
+[resource]
+script = ExtResource("7_item")
+SkillName = "Applied Knowledge"
+Description = "Clicks gain +0.03 strength per Patent Generator level and +0.03 per Skillpoint Generator level."
+Icon = ExtResource("3_icon")
+CostModel = SubResource("Resource_cost")
+Upgrade = SubResource("Resource_upgrade")
+PreRequisites = Array[Object]([ExtResource("4_prereq")])
+MaximumAmount = 2
+metadata/_custom_type_script = "uid://ccdf3herk8v4r"

@@ -1,0 +1,61 @@
+[gd_resource type="Resource" script_class="SkillTreeItemData" format=3 uid="uid://77dv82xms5dt"]
+
+[ext_resource type="Script" uid="uid://kjgkk8f0mgyv" path="res://scripts/GDResource/IdleNumberResource.cs" id="1_idle"]
+[ext_resource type="Script" uid="uid://ddxwa8yrpoypp" path="res://scripts/GDResource/MathModels/LinearModelResource.cs" id="2_linear"]
+[ext_resource type="Texture2D" uid="uid://bfa7oe85hne6s" path="res://icon.svg" id="3_icon"]
+[ext_resource type="Resource" uid="uid://caj2dhxikemva" path="res://resources/skillTree/items/employees/scribes/master_scribes.tres" id="4_prereq"]
+[ext_resource type="Script" uid="uid://t2go5ui1sips" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/Employee/EmployeeStatUpgradeData.cs" id="5_statup"]
+[ext_resource type="Script" uid="uid://dpajxbew4x3bl" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/Employee/EmployeeUpgradeData.cs" id="6_empup"]
+[ext_resource type="Script" uid="uid://ccdf3herk8v4r" path="res://scripts/GDResource/SkillTree/SkillTreeItemData.cs" id="7_item"]
+[ext_resource type="Script" uid="uid://chgxineeeix0f" path="res://scripts/GDResource/SkillTree/EntityStatUpgrades/SynergyData.cs" id="8_synergy"]
+
+[sub_resource type="Resource" id="Resource_costbase"]
+script = ExtResource("1_idle")
+Value = 0.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_costslope"]
+script = ExtResource("1_idle")
+Value = 25.0
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_cost"]
+script = ExtResource("2_linear")
+Base = SubResource("Resource_costbase")
+Slope = SubResource("Resource_costslope")
+metadata/_custom_type_script = "uid://ddxwa8yrpoypp"
+
+[sub_resource type="Resource" id="Resource_amount"]
+script = ExtResource("1_idle")
+Value = 1.01
+metadata/_custom_type_script = "uid://kjgkk8f0mgyv"
+
+[sub_resource type="Resource" id="Resource_synergy"]
+script = ExtResource("8_synergy")
+Source = 1
+ForEach = 1
+metadata/_custom_type_script = "uid://chgxineeeix0f"
+
+[sub_resource type="Resource" id="Resource_statup"]
+script = ExtResource("5_statup")
+TargetType = 2
+Operation = 1
+Amount = SubResource("Resource_amount")
+Synergy = SubResource("Resource_synergy")
+metadata/_custom_type_script = "uid://t2go5ui1sips"
+
+[sub_resource type="Resource" id="Resource_upgrade"]
+script = ExtResource("6_empup")
+Upgrades = Array[Object]([SubResource("Resource_statup")])
+metadata/_custom_type_script = "uid://dpajxbew4x3bl"
+
+[resource]
+script = ExtResource("7_item")
+SkillName = "Educated Scribes"
+Description = "Scribes produce +1% per Skillpoint Generator level."
+Icon = ExtResource("3_icon")
+CostModel = SubResource("Resource_cost")
+Upgrade = SubResource("Resource_upgrade")
+PreRequisites = Array[Object]([ExtResource("4_prereq")])
+MaximumAmount = 2
+metadata/_custom_type_script = "uid://ccdf3herk8v4r"
